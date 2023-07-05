@@ -18,5 +18,4 @@
   environment.etc."passwd".source = "/persist/etc/passwd";
   environment.etc."subgid".source = "/persist/etc/subgid";
   environment.etc."subuid".source = "/persist/etc/subuid";
-  environment.etc."sudoers".source = "/persist/etc/sudoers";
 }
