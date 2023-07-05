@@ -10,8 +10,12 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    impermanence.url = "github.com:nix-community/impermanence";
-    impermanence.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence = {
+      type = "github";
+      owner = "nix-community";
+      repo = "impermanence";
+      ref = "master";
+    };
   };
 
   outputs = { self, nixpkgs, impermanence, ... }@inputs: {

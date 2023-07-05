@@ -26,6 +26,7 @@
   fileSystems."/persist" = {
     device = "storage/safe/persist";
     fsType = "zfs";
+    neededForBoot = true;
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/279d69f6-8b53-4071-afa3-b1a91b925b0b"; } ];
