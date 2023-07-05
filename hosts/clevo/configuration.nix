@@ -20,6 +20,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostId = "13eb44cc";
+  networking.hostName = "clevo";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Brussels";
