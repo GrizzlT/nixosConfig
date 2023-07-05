@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./persist.nix
   ];
   nixpkgs.config.allowUnfree = true;
 
