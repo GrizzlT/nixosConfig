@@ -27,8 +27,8 @@ in
 
       postDeviceCommands = lib.mkAfter ''
         cryptsetup close cryptkey
+        zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
       '';
-      #   zfs rollback -r storage/local/root@blank
     };
 
     loader = {
