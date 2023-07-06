@@ -2,7 +2,7 @@
   nixosConfigurations = {
     "clevo" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = self.packages.x86_64-linux.grizz-zfs-diff;
+      specialArgs = { grizz-zfs-diff = self.packages.x86_64-linux.grizz-zfs-diff; };
       modules = [
         impermanence.nixosModules.impermanence
           ./clevo/configuration.nix
