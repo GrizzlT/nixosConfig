@@ -1,11 +1,16 @@
-{ self, nixpkgs, impermanence, nixos-generators, ... }: {
+{ self, nixpkgs, nixos-generators, ... }@inputs: {
   nixosConfigurations = {
     "clevo" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { grizz-zfs-diff = self.packages.x86_64-linux.grizz-zfs-diff; };
+      specialArgs = {
+        grizz-zfs-diff = self.packages.x86_64-linux.grizz-zfs-diff;
+        hyprland = inputs.hyprland;
+      };
       modules = [
-        impermanence.nixosModules.impermanence
-          ./clevo/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+        inputs.hyprland.nixosModules.default
+        inputs.impermanence.nixosModules.impermanence
+        ./clevo/configuration.nix
       ];
     };
   };

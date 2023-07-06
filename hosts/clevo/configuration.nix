@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }@inputs:
 let
+  userName = "grizz";
   hostName = "clevo";
   hostId = "13eb44cc";
 in
@@ -7,6 +8,7 @@ in
   imports = [
     ./hardware.nix
     ./persist.nix
+    (import ./home userName)
   ];
   nixpkgs.config.allowUnfree = true;
 
@@ -45,10 +47,11 @@ in
     git
     inputs.grizz-zfs-diff
   ];
+  programs.hyprland.enable = true;
 
   users.mutableUsers = false;
-  users.users.grizz = {
-    passwordFile = "/persist/users/grizz/passwordFile";
+  users.users.${userName} = {
+    passwordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = [ ];
