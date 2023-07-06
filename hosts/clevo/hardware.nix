@@ -1,7 +1,7 @@
 { config, pkgs, lib, modulesPath, ... }:
 let
   deviceCryptKey = "/dev/disk/by-label/CRYPTKEY";
-  deviceCryptRoot = "/dev/disk/by-label/CRYPTKEY";
+  deviceCryptRoot = "/dev/disk/by-label/CRYPTROOT";
   deviceBoot = "/dev/disk/by-label/BOOT";
   deviceSwap = "/dev/disk/by-partlabel/swap";
   zpool = "storage";
@@ -17,9 +17,9 @@ in
         cryptkey = {
           device = deviceCryptKey;
         };
-        cryptRoot = {
-          device = deviceCryptRoot;
+        cryptroot = {
           allowDiscards = true;
+          device = deviceCryptRoot;
           keyFile = "/dev/mapper/cryptkey";
           keyFileSize = 8192;
         };

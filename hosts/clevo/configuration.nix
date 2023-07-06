@@ -30,6 +30,7 @@ in
     git
   ];
 
+  users.mutableUsers = false;
   users.users.grizz = {
     passwordFile = "/persist/users/grizz/passwordFile";
     isNormalUser = true;
