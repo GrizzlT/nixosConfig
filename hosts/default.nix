@@ -13,8 +13,8 @@
   packages.x86_64-linux.myInstaller = nixos-generators.nixosGenerate {
     system = "x86_64-linux";
     format = "iso";
-    pkgs = input.nixpkgs-stable.legacyPackages."x86_64-linux";
-    lib = input.nixpkgs-stable.legacyPackages."x86_64-linux".lib;
+    pkgs = input.nixpkgs-stable.legacyPackages.x86_64-linux;
+    lib = input.nixpkgs-stable.legacyPackages.x86_64-linux.lib;
     specialArgs = let pkgs = self.packages.x86_64-linux; in
     with pkgs; {
       inherit grizz-disk-setup;
