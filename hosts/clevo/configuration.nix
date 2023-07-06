@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }@inputs:
 let
   hostName = "clevo";
   hostId = "13eb44cc";
@@ -28,6 +28,7 @@ in
     wget
     curl
     git
+    inputs.grizz-zfs-diff
   ];
 
   users.mutableUsers = false;
