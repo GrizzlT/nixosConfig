@@ -20,6 +20,7 @@ in
   networking.hostId = hostId;
   networking.hostName = hostName;
   networking.networkmanager.enable = true;
+  security.sudo.extraConfig = "Defaults lecture = never";
 
   time.timeZone = "Europe/Brussels";
 
