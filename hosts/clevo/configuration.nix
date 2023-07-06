@@ -1,7 +1,11 @@
 { config, pkgs, lib, ... }:
+let
+  hostName = "clevo";
+  hostId = "13eb44cc";
+in
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./persist.nix
   ];
   nixpkgs.config.allowUnfree = true;
@@ -13,17 +17,8 @@
     '';
   };
 
-  systemd.enableEmergencyMode = false;
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.kernelParams = [ "nohibernate" ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # boot.initrd.postDeviceCommands = lib.mkAfter ''
-  #   zfs rollback -r storage/local/root@blank
-  # '';
-
-  networking.hostId = "13eb44cc";
-  networking.hostName = "clevo";
+  networking.hostId = hostId;
+  networking.hostName = hostName;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Brussels";
@@ -36,6 +31,7 @@
   ];
 
   users.users.grizz = {
+    passwordFile = "/persist/users/grizz/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     packages = [ ];

@@ -2,7 +2,6 @@
   description = "GrizzlT's NixOS flake";
 
   inputs = {
-    # Official NixOS package source, using nixos-unstable branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # # home-manager, used for managing user configuration
     # home-manager = {
@@ -18,7 +17,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, impermanence, ... }@inputs: {
+  outputs = { self, nixpkgs, impermanence, ... }@inputs:
+  {
     nixosConfigurations = {
       "clevo" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
