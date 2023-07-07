@@ -9,6 +9,10 @@ userName: { pkgs, ... }@inputs:
 
     programs = {
       home-manager.enable = true;
+
+      wezterm = {
+        enable = true;
+      };
     };
   };
 }
