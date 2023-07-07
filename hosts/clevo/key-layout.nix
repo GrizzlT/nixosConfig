@@ -11,5 +11,5 @@ in
     displayManager.sessionCommands =
       "${pkgs.xorg.xkbcomp}/bin/xkbcomp ${compiledLayout} $DISPLAY";
   };
-  # console.useXkbConfig = true;
+  console.useXkbConfig = true;
 }
