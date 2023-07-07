@@ -9,6 +9,7 @@
     inputs.grizz-zfs-diff
 
     # hyprland
+    # temporary
     wev
   ];
   programs.hyprland.enable = true;

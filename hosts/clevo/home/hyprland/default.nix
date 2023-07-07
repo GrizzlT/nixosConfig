@@ -10,4 +10,6 @@
     source = ./hypr-conf;
     recursive = true;
   };
+
+  # home.file.".config/xkb/symbols/grizz".source = ./grizz-keyboard.xkb;
 }

@@ -1,0 +1,69 @@
+// vim:syntax=xkb
+
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+  include "fr(mac)"
+
+  name[Group1]="Grizz coding keyboard";
+
+  replace key <CAPS> { [ Control_L, Control_L ] };
+
+  key <TLDE> {	[          at, numbersign, periodcentered,  VoidSymbol	]	}; // MISSING: Ydiaeresis; eherlent : ok in Latin9
+  key <AE01> {	[   ampersand,    1,   dead_acute,    eacute	]	};
+  key <AE02> {	[      bracketleft,    2,   ediaeresis,        Eacute	]	};
+  key <AE03> {	[    quotedbl,    3,   dead_circumflex,    dead_diaeresis	] 	}; // CHECK all quotemarks
+  key <AE04> {	[  apostrophe,    4,   dead_grave,    VoidSymbol	] 	};
+  key <AE05> {	[   parenleft,    5,    ccedilla,   VoidSymbol	]	};
+  // CHECK section
+  key <AE06> {	[     section,    6,    paragraph,         aring	]	};
+  key <AE07> {	[      egrave,    7, guillemotleft, guillemotright	]	};
+  key <AE08> {	[      exclam,    8,   exclamdown,   Ucircumflex	]	};
+  key <AE09> {	[    bracketright,    9,     Ccedilla,        Aacute	]	};
+  key <AE10> {	[      braceleft,    0,       oslash,    U00D8	]	};
+  key <AE11> {	[  parenright, braceright, degree,  VoidSymbol	]	};
+  key <AE12> {	[       minus, underscore, emdash,        endash	]	}; // CHECK dashes
+
+  key <AD01> {	[           a,  A,           ae,          AE	]	};
+  key <AD02> {	[           z,  Z,  Acircumflex,       Aring	]	};
+  key <AD03> {	[           e,  E,  ecircumflex, Ecircumflex	]	};
+  key <AD04> {	[           r,  R,   registered,    currency	]	};
+  key <AD05> {	[           t,  T,   U2122,  U2020	]	}; trademark dagger
+  key <AD06> {	[           y,  Y,       Uacute,  U0178	]	};
+  key <AD07> {	[           u,  U,   VoidSymbol, VoidSymbol	]	};
+  key <AD08> {	[           i,  I,  icircumflex,  idiaeresis	]	};
+  key <AD09> {	[           o,  O,           oe,          OE	]	}; // MISSING: oe, OE lacking in Latin1; eherlent ok in Latin9
+  key <AD10> {	[           p,  P,   U03C0,  U03A0	]	};
+  key <AD11> {	[asciicircum,backslash, ocircumflex, Ocircumflex	]	};
+  key <AD12> {	[      dollar, asterisk,   EuroSign, yen	]	}; // eherlent : EuroSign in Latin9
+
+  key <AC01> {	[         q, Q, U03C9,         U03A9	]	};
+  key <AC02> {	[         s, S,      Ograve,     U03A3	]	};
+  key <AC03> {	[         d, D,  U03B4,     U0394	]	};
+  key <AC04> {	[         f, F,  VoidSymbol, periodcentered	]	}; // MISSING: oblong script f??
+  key <AC05> {	[         g, G,  VoidSymbol,     VoidSymbol	]	}; // MISSING: kerned fi, fl
+  key <AC06> {	[         h, H,      Igrave,    Icircumflex	]	};
+  key <AC07> {	[         j, J,  Idiaeresis,         Iacute	]	};
+  key <AC08> {	[         k, K,      Egrave,     Ediaeresis	]	};
+  key <AC09> {	[         l, L,     notsign,            Oacute	]	};
+  key <AC10> {	[         m, M,          mu,         ugrave	]	};
+  key <AC11> {	[    percent,bar, Ugrave,    U2030	]	};
+  key <BKSL> {	[ grave, asciitilde,  sterling,     VoidSymbol	]	};
+
+  key <LSGT> {	[      less, greater, U2264, U2265	]	};
+  key <AB01> {	[         w, W, VoidSymbol,   VoidSymbol	]	};
+  key <AB02> {	[         x, X, VoidSymbol,   VoidSymbol	]	}; // CHECK similarequal; MISSING: extra-slanted slash
+  key <AB03> {	[         c, C,  copyright,         cent	]	};
+  key <AB04> {	[         v, V,    diamond,  leftradical	]	}; // CHECK diamond, leftradical
+  key <AB05> {	[         b, B,     ssharp,   VoidSymbol	]	}; // CHECK: Greek_beta or ssharp?; MISSING: oblong script s
+  key <AB06> {	[         n, N,  dead_tilde,  asciitilde	]	};
+  key <AB07> {	[     comma,  question, VoidSymbol,  questiondown	]	};
+  key <AB08> {	[ semicolon,  period, VoidSymbol,  periodcentered	]	};
+  key <AB09> {	[     colon,  slash,   division,        backslash	]	};
+  key <AB10> {	[     equal,   plus, U2260,        plusminus	]	};
+
+  key <SPCE> {	[     space,  space, space,   space	]	};
+
+  key <KPDL> {	[  comma,KP_Decimal	]	};
+
+  include "level3(ralt_switch)"
+};
