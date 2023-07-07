@@ -25,7 +25,7 @@ xkb_symbols "basic" {
   key <AD02> {	[           z,  Z,  Acircumflex,       Aring	]	};
   key <AD03> {	[           e,  E,  ecircumflex, Ecircumflex	]	};
   key <AD04> {	[           r,  R,   registered,    currency	]	};
-  key <AD05> {	[           t,  T,   U2122,  U2020	]	}; trademark dagger
+  key <AD05> {	[           t,  T,   U2122,  U2020	]	}; // trademark dagger
   key <AD06> {	[           y,  Y,       Uacute,  U0178	]	};
   key <AD07> {	[           u,  U,   VoidSymbol, VoidSymbol	]	};
   key <AD08> {	[           i,  I,  icircumflex,  idiaeresis	]	};
