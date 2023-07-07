@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }@inputs:
+{ config, pkgs, lib, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
@@ -9,7 +9,9 @@ in
     ./hardware.nix
     ./persist.nix
     (import ./home userName)
+    ./packages.nix
   ];
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -33,21 +35,12 @@ in
   networking.hostName = hostName;
   networking.networkmanager.enable = true;
   networking.extraHosts = ''
-    0.0.0.0 facebook.com m.facebook.com
+    127.0.0.1 facebook.com m.facebook.com
   '';
 
   security.sudo.extraConfig = "Defaults lecture = never";
 
   time.timeZone = "Europe/Brussels";
-
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    git
-    inputs.grizz-zfs-diff
-  ];
-  programs.hyprland.enable = true;
 
   users.mutableUsers = false;
   users.users.${userName} = {
