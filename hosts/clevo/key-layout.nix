@@ -9,4 +9,6 @@
       description = "Grizz's personal coding layout";
     };
   };
+
+  console.useXkbConfig = true;
 }
