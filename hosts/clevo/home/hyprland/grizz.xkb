@@ -6,8 +6,6 @@ xkb_symbols "basic" {
 
   name[Group1]="Grizz coding keyboard";
 
-  replace key <CAPS> { [ Control_L, Control_L ] };
-
   key <TLDE> {	[          at, numbersign, periodcentered,  VoidSymbol	]	}; // MISSING: Ydiaeresis; eherlent : ok in Latin9
   key <AE01> {	[   ampersand,    1,   dead_acute,    eacute	]	};
   key <AE02> {	[      bracketleft,    2,   ediaeresis,        Eacute	]	};
