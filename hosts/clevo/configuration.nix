@@ -10,7 +10,6 @@ in
     ./persist.nix
     (import ./home userName)
     ./packages.nix
-    ./key-layout.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
