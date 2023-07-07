@@ -10,6 +10,4 @@
     source = ./hypr-conf;
     recursive = true;
   };
-
-  home.file.".config/xkb/symbols/grizz.xkb".source = ./grizz.xkb;
 }
