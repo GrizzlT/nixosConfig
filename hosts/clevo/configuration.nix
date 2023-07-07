@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./hardware.nix
+    ./power.nix
     ./persist.nix
     (import ./home userName)
     ./packages.nix

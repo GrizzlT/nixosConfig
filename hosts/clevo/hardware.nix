@@ -11,7 +11,7 @@ in
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
+      availableKernelModules = [ "intel_idle" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
       # devices must be alphabetical!!!
       luks.devices = {
         cryptkey = {
