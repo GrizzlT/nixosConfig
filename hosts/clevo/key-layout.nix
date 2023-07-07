@@ -2,6 +2,7 @@
 {
   services.xserver = {
     layout = "grizz";
+    xkbOptions = "ctrl:nocaps,shift:both_capslock";
     extraLayouts."grizz" = {
       languages = [ "nld" ];
       symbolsFile = ./grizz-keyboard;
