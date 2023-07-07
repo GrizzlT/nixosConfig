@@ -11,5 +11,5 @@
     recursive = true;
   };
 
-  home.file.".config/xkb/symbols/grizz".source = ./grizz.xkb;
+  home.file.".config/xkb/symbols/grizz.xkb".source = ./grizz.xkb;
 }
