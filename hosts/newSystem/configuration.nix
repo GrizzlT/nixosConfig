@@ -2,6 +2,7 @@
 {
   imports = [
     ./installation-cd-minimal.nix
+    ../common/key-layout.nix
   ];
 
   environment.systemPackages = [
