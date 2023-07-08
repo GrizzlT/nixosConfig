@@ -12,7 +12,7 @@
     brightnessctl
 
     # polkit agent
-    libsForQt5.polkit-kde-agent
+    pantheon.pantheon-agent-polkit
   ];
   programs.hyprland.enable = true;
 }
