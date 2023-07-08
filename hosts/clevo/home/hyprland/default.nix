@@ -1,14 +1,21 @@
 { pkgs, ... }:
+let
+    configPath = ".config/hypr/grizz";
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
     recommendedEnvironment = true;
-    extraConfig = "source=~/.config/hypr/grizz/hyprland.conf";
+    extraConfig = "source=~/${configPath}/hyprland.conf";
   };
 
-  home.file.".config/hypr/grizz" = {
+  home.file."${configPath}" = {
     source = ./hypr-conf;
     recursive = true;
   };
-  home.file.".config/hypr/grizz/scripts/gamemode.sh".executable = true;
+
+  home.file."${configPath}/scripts/gamemode.sh" = {
+    source = ./scripts/gamemode.sh;
+    executable = true;
+  };
 }
