@@ -30,6 +30,28 @@ in
         "#686868" "#ff5c57" "#5af78e" "#f3f99d"
         "#57c7ff" "#ff6ac1" "#9aedfe" "#eff0eb"
       ];
+      tab_bar = {
+        active_tab = {
+          bg_color = "#282a36";
+          fg_color = "#eff0eb";
+        };
+        inactive_tab = {
+          bg_color = "#686868";
+          fg_color = "#f1f1f0";
+        };
+        inactive_tab_hover = {
+          bg_color = "#686868";
+          fg_color = "#f1f1f0";
+        };
+        new_tab = {
+          bg_color = "#686868";
+          fg_color = "#282a36";
+        };
+        new_tab_hover = {
+          bg_color = "#686868";
+          fg_color = "#282a36";
+        };
+      };
     };
   };
 
