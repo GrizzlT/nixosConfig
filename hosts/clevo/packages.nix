@@ -14,5 +14,7 @@
     # polkit agent
     mate.mate-polkit
   ];
+
   programs.hyprland.enable = true;
+  programs.waybar.enable = true;
 }

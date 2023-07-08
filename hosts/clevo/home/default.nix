@@ -16,7 +16,11 @@ userName: { pkgs, ... }@inputs:
 
     home.packages = with pkgs; [
       neofetch
+
+      (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
+
+    fonts.fontconfig.enable = true;
 
     home = {
       stateVersion = "23.05";
