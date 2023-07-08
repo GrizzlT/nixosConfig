@@ -16,11 +16,4 @@
   ];
 
   programs.hyprland.enable = true;
-
-  console = {
-    packages = [
-      (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
-    ];
-    font = "Hack Nerd Font Mono";
-  };
 }
