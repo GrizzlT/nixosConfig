@@ -9,6 +9,4 @@
 
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
-
-    fonts.fontconfig.enable = true;
 }
