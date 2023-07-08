@@ -4,6 +4,7 @@ userName: { pkgs, ... }@inputs:
     imports = [
       inputs.hyprland.homeManagerModules.default
       ./hyprland
+      ./waybar
       ./packages.nix
       ./services.nix
     ];

@@ -2,10 +2,6 @@
 {
     programs = {
       home-manager.enable = true;
-
-      wezterm = {
-        enable = true;
-      };
     };
 
     home.packages = with pkgs; [
