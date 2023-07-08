@@ -26,7 +26,7 @@ in
         "#282a36" "#ff5c57" "#5af78e" "#f3f99d"
         "#57c7ff" "#ff6ac1" "#9aedfe" "#f1f1f0"
       ];
-      bright = [
+      brights = [
         "#686868" "#ff5c57" "#5af78e" "#f3f99d"
         "#57c7ff" "#ff6ac1" "#9aedfe" "#eff0eb"
       ];
