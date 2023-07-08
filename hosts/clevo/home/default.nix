@@ -14,6 +14,10 @@ userName: { pkgs, ... }@inputs:
       };
     };
 
+    home.packages = with pkgs; [
+      neofetch
+    ];
+
     home = {
       stateVersion = "23.05";
       keyboard = null;

@@ -38,7 +38,7 @@ in
 
     supportedFilesystems = [ "zfs" ];
     kernelParams = [ "nohibernate" ];
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-intel" "i915" ];
     extraModulePackages = [ ];
   };
 
