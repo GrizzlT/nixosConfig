@@ -10,8 +10,6 @@
 
     # backlight
     brightnessctl
-    light
-    xorg.xset
   ];
   programs.hyprland.enable = true;
 }
