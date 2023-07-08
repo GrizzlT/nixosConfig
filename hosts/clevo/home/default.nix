@@ -1,9 +1,6 @@
 userName: { pkgs, ... }@inputs:
 {
   home-manager.users.${userName} = {
-    home.stateVersion = "23.05";
-    home.keyboard = null;
-
     imports = [
       inputs.hyprland.homeManagerModules.default
       ./hyprland
@@ -14,6 +11,16 @@ userName: { pkgs, ... }@inputs:
 
       wezterm = {
         enable = true;
+      };
+    };
+
+    home = {
+      stateVersion = "23.05";
+      keyboard = null;
+      pointerCursor = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata Modern Ice";
+        size = 24;
       };
     };
   };
