@@ -8,9 +8,10 @@
     git
     inputs.grizz-zfs-diff
 
-    # hyprland
-    # temporary
-    wev
+    # backlight
+    brightnessctl
+    light
+    xorg.xset
   ];
   programs.hyprland.enable = true;
 }
