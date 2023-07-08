@@ -5,6 +5,8 @@ userName: { pkgs, ... }@inputs:
       inputs.hyprland.homeManagerModules.default
       ./hyprland
       ./waybar
+      ./wezterm
+
       ./packages.nix
       ./services.nix
     ];
