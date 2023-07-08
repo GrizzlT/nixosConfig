@@ -4,23 +4,9 @@ userName: { pkgs, ... }@inputs:
     imports = [
       inputs.hyprland.homeManagerModules.default
       ./hyprland
+      ./packages.nix
+      ./services.nix
     ];
-
-    programs = {
-      home-manager.enable = true;
-
-      wezterm = {
-        enable = true;
-      };
-    };
-
-    home.packages = with pkgs; [
-      neofetch
-
-      (nerdfonts.override { fonts = [ "Hack" ]; })
-    ];
-
-    fonts.fontconfig.enable = true;
 
     home = {
       stateVersion = "23.05";
