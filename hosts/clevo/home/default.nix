@@ -19,7 +19,7 @@ userName: { pkgs, ... }@inputs:
       keyboard = null;
       pointerCursor = {
         package = pkgs.bibata-cursors;
-        name = "Bibata Modern Ice";
+        name = "Bibata-Modern-Ice";
         size = 24;
       };
     };
