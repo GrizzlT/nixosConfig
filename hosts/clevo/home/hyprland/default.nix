@@ -10,4 +10,5 @@
     source = ./hypr-conf;
     recursive = true;
   };
+  home.file.".config/hypr/grizz/scripts/gamemode.sh".executable = true;
 }
