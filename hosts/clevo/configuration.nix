@@ -11,6 +11,7 @@ in
     ./persist.nix
     (import ./home userName)
     ./packages.nix
+    ./services.nix
     ../common/key-layout.nix
   ];
 

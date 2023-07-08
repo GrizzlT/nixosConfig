@@ -10,6 +10,9 @@
 
     # backlight
     brightnessctl
+
+    # polkit agent
+    libsForQt5.polkit-kde-agent
   ];
   programs.hyprland.enable = true;
 }
