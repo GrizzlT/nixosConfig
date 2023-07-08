@@ -12,7 +12,7 @@
     brightnessctl
 
     # polkit agent
-    pantheon.pantheon-agent-polkit
+    mate.mate-polkit
   ];
   programs.hyprland.enable = true;
 }
