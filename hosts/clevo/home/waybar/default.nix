@@ -3,7 +3,7 @@
   programs.waybar = {
     enable = true;
     style = ./style.css;
-    settings = {
+    settings.mainBar = {
       layer = "top";
       position = "top";
       modules-left = [ "cpu" "temperature" "backlight" ];
