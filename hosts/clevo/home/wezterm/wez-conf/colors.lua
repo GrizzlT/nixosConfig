@@ -20,6 +20,7 @@ M.apply_tab_colors = function (config)
       }
     end
     return {
+      {Background={Color=C_BG}},
       {Foreground={Color=C_INACTIVE_FG}},
       {Text=" " .. tab.tab_index+1},
       {Foreground={Color=C_INACTIVE_FG}},

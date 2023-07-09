@@ -9,6 +9,9 @@ M.apply_to_config = function (config)
 
   config.font = wezterm.font 'Hack Nerd Font Mono'
   config.harfbuzz_features = {}
+
+  config.tab_bar_at_bottom = true
+  config.use_fancy_tab_bar = false
 end
 
 return M
