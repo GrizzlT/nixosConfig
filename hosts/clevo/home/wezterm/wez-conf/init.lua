@@ -10,6 +10,7 @@ M.apply_to_config = function (config)
   keys.apply_to_config(config)
 
   config.font = wezterm.font 'Hack Nerd Font Mono'
+  config.font_size = 10.0
   config.harfbuzz_features = {}
 end
 

@@ -7,6 +7,9 @@
     home.packages = with pkgs; [
       neofetch
 
+      pavucontrol
+      libnotify
+
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
 }
