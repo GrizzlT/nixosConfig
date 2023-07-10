@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  grizzConfig = "/home/grizz/.config/hypr/grizz/options.conf";
-in
 {
   services.greetd = {
     enable = true;
@@ -16,8 +13,9 @@ in
 
   environment.etc = {
     "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
+    "regreet/options.conf".source = ./options.conf;
     "regreet/hyprland.conf".text = ''
-      source=${grizzConfig}
+      source=/etc/regreet/options.conf
       exec-once=regreet; hyprctl dispatch exit
     '';
     "greetd/regreet.toml".text = ''
