@@ -1,11 +1,14 @@
 { pkgs, ... }:
+let
+  grizzConfig = "/home/grizz/.config/hypr/grizz/options.conf";
+in
 {
   services.greetd = {
     enable = true;
     restart = false;
     settings = {
       default_session = {
-        command = "agreety --cmd Hyprland";
+        command = "Hyprland --config /etc/regreet/hyprland.conf";
         user = "greeter";
       };
     };
@@ -15,6 +18,7 @@
     "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
     "regreet/hyprland.conf".text = ''
       exec-once=regreet; hyprctl dispatch exit
+      source=${grizzConfig}
     '';
     "regreet/regreet.toml".text = ''
       [background]
