@@ -11,4 +11,8 @@
     '';
     network.startWhenNeeded = true;
   };
+
+  services.dunst = {
+    enable = true;
+  };
 }

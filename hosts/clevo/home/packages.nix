@@ -4,7 +4,6 @@
       home-manager.enable = true;
       htop.enable = true;
       bottom.enable = true;
-      dunst.enable = true;
 
       librewolf.enable = true;
     };
