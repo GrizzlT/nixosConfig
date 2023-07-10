@@ -13,7 +13,7 @@
         anyrun.packages.${pkgs.system}.symbols
       ];
       width = { fraction = 0.3; };
-      x = { relative = 0.5; };
+      x = { fraction = 0.5; };
       y = { absolute = 10; };
       ignoreExclusiveZones = false;
       layer = "overlay";
