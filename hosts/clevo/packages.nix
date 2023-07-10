@@ -13,6 +13,9 @@
 
     # polkit agent
     mate.mate-polkit
+
+    greetd.greetd
+    greetd.regreet
   ];
 
   programs.hyprland.enable = true;
