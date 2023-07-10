@@ -12,12 +12,13 @@
   };
 
   environment.etc = {
+    "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
     "regreet/hyprland.conf".text = ''
       exec-once=regreet; hyprctl dispatch exit
     '';
     "regreet/regreet.toml".text = ''
       [background]
-      path = "${./home/hyprland/color-bg.jpg}"
+      path = "/etc/regreet/bg.jpg"
       fit = "Fill"
       [commands]
       reboot = [ "systemctl", "reboot" ]

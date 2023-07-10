@@ -19,5 +19,5 @@ in
     executable = true;
   };
 
-  home.file.".config/swaybg/bg.jpg".source = ./color-bg.jpg;
+  home.file.".config/swaybg/bg.jpg".source = ./../../../../wallpapers/color-bg.jpg;
 }
