@@ -2,6 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: Hack Nerd Font;
+    font-size: 10px;
     min-height: 20px;
 }
 
@@ -53,13 +54,13 @@ window#waybar.hidden {
   padding-right: 5px;
   border-radius: 10px 0px 0px 10px;
   transition: none;
-  color: #fffff;
+  color: #ffffff;
   background: #383c4a;
 }
 
 #custom-mem {
     margin-right: 8px;
-    padding-left: 5;
+    padding-left: 5px;
     padding-right: 16px;
     border-radius: 0px 10px 10px 0px;
     transition: none;
@@ -79,15 +80,6 @@ window#waybar.hidden {
 
 #temperature.critical {
     background-color: #eb4d4b;
-}
-
-#backlight {
-    padding-left: 16px;
-    padding-right: 5px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
 }
 
 #keyboard-state {

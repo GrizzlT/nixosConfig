@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./dunst
+  ];
+
   services.mpd = {
     enable = true;
     musicDirectory = "~/Music";
@@ -10,9 +14,5 @@
       }
     '';
     network.startWhenNeeded = true;
-  };
-
-  services.dunst = {
-    enable = true;
   };
 }

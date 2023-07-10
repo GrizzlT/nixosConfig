@@ -9,7 +9,7 @@ in
     settings.mainBar = {
       layer = "top";
       position = "top";
-      modules-left = [ "cpu" "custom/mem" "temperature" "backlight" "keyboard-state" ];
+      modules-left = [ "cpu" "custom/mem" "temperature" "keyboard-state" ];
       modules-center = [ "clock" ];
       modules-right = [ "pulseaudio" "network" "battery" ];
 
@@ -27,10 +27,6 @@ in
           format = "{temperatureC}°C {icon}";
           format-icons = ["" "" "" "" ""];
           tooltip = false;
-      };
-      backlight = {
-        format = "{percent}% {icon}";
-        format-icons = ["" "" "" "" "" "" ""];
       };
       keyboard-state = {
         numlock = true;

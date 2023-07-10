@@ -17,7 +17,6 @@
       hyprpicker
       cliphist
 
-      discord
       fractal
       spotifywm
 

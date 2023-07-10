@@ -1,6 +1,8 @@
 userName: { pkgs, ... }@inputs:
 {
   home-manager.users.${userName} = {
+    nixpkgs.config.allowUnfree = true;
+
     imports = [
       inputs.hyprland.homeManagerModules.default
       ./hyprland

@@ -18,4 +18,6 @@ in
     source = ./scripts/gamemode.sh;
     executable = true;
   };
+
+  home.file.".config/swaybg/bg.jpg".source = ./color-bg.jpg;
 }
