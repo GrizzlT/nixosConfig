@@ -2,6 +2,11 @@
 {
     programs = {
       home-manager.enable = true;
+      htop.enable = true;
+      bottom.enable = true;
+      dunst.enable = true;
+
+      librewolf.enable = true;
     };
 
     home.packages = with pkgs; [
@@ -9,6 +14,13 @@
 
       pavucontrol
       libnotify
+      swaybg
+      hyprpicker
+      cliphist
+
+      discord
+      fractal
+      spotifywm
 
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
