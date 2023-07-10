@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    swaybg
+    greetd.greetd
+    greetd.regreet
+  ];
+
   services.greetd = {
     enable = true;
     restart = false;
@@ -7,6 +13,10 @@
       default_session = {
         command = "Hyprland --config /etc/regreet/hyprland.conf";
         user = "greeter";
+      };
+      initial_session = {
+        command = "Hyprland";
+        user = "grizz";
       };
     };
   };
@@ -16,6 +26,7 @@
     "regreet/options.conf".source = ./options.conf;
     "regreet/hyprland.conf".text = ''
       source=/etc/regreet/options.conf
+      exec-once=swaybg --mode fill --image /etc/regreet/bg.jpg
       exec-once=regreet; hyprctl dispatch exit
     '';
     "greetd/regreet.toml".text = ''

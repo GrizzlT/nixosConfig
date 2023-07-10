@@ -6,6 +6,7 @@
       { directory = "/etc/NetworkManager/system-connections"; user = "root"; group = "root"; mode = "u=rwx,g=,o="; }
       { directory = "/var/log/regreet"; user = "greeter"; group = "greeter"; }
       { directory = "/var/cache/regreet"; user = "greeter"; group = "greeter"; }
+      { directory = "/usr/share/wayland-sessions"; user = "greeter"; group = "greeter"; }
     ];
   };
 

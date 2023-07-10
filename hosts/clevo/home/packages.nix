@@ -16,6 +16,7 @@
       swaybg
       hyprpicker
       cliphist
+      swaylock
 
       fractal
       spotifywm

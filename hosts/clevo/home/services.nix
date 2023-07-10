@@ -2,6 +2,7 @@
 {
   imports = [
     ./dunst
+    ./swayidle
   ];
 
   services.mpd = {
