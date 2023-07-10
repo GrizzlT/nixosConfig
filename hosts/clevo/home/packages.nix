@@ -20,6 +20,7 @@
       fractal
       spotifywm
 
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      (nerdfonts.override { fonts = [ "Hack" "NerdFontsSymbolsOnly" ]; })
+      font-awesome
     ];
 }

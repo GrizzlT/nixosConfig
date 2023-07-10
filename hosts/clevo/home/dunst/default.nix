@@ -9,7 +9,7 @@
         height = 120;
         notification_limit = 4;
         origin = "top-right";
-        offset = "10x30";
+        offset = "10x10";
         progress_bar_max_width = 200;
         progress_bar_corner_radius = 5;
         icon_corner_radius = 3;

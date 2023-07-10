@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./greetd
+  ];
+
   # Pipewire settings
   security.rtkit.enable = true;
   services.pipewire = {
