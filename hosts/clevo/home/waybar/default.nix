@@ -9,7 +9,7 @@ in
     settings.mainBar = {
       layer = "top";
       position = "top";
-      modules-left = [ "cpu" "custom/mem" "temperature" "backlight" ];
+      modules-left = [ "cpu" "custom/mem" "temperature" "backlight" "keyboard-state" ];
       modules-center = [ "clock" ];
       modules-right = [ "pulseaudio" "network" "battery" ];
 
@@ -27,6 +27,22 @@ in
           format = "{temperatureC}°C {icon}";
           format-icons = ["" "" "" "" ""];
           tooltip = false;
+      };
+      backlight = {
+        format = "{percent}% {icon}";
+        format-icons = ["" "" "" "" "" "" ""];
+      };
+      keyboard-state = {
+        numlock = true;
+        capslock = true;
+        format = {
+          numlock = "N {icon}";
+          capslock = "C {icon}";
+        };
+        format-icons = {
+          locked = "";
+          unlocked = "";
+        };
       };
 
       clock = {
@@ -53,6 +69,12 @@ in
         };
         on-click = "pavucontrol";
         min-length = 13;
+      };
+      network = {
+        format = "{icon}";
+        format-wifi = "{essid} {icon}";
+        format-ethernet = "";
+        format-disconnected = "...";
       };
       battery = {
         states = {
