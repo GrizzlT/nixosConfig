@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    swayidle
-  ];
-
   programs.swaylock = {
     enable = true;
     settings = {
@@ -18,6 +14,7 @@
   services.swayidle = {
     enable = true;
     extraArgs = [ "-w" ];
+    systemdTarget = "default.target";
     events = [
       {
         event = "before-sleep";
