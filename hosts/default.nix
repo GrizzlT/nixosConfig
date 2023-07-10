@@ -1,10 +1,11 @@
 { self, nixpkgs, nixos-generators, ... }@inputs: {
   nixosConfigurations = {
-    "clevo" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+    "clevo" = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+      inherit system;
       specialArgs = {
-        grizz-zfs-diff = self.packages.x86_64-linux.grizz-zfs-diff;
+        grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
         hyprland = inputs.hyprland;
+        anyrun = inputs.anyrun;
       };
       modules = [
         inputs.home-manager.nixosModules.home-manager

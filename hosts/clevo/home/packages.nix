@@ -1,27 +1,31 @@
 { pkgs, ... }:
 {
-    programs = {
-      home-manager.enable = true;
-      htop.enable = true;
-      bottom.enable = true;
+  imports = [
+    # ./anyrun
+  ];
 
-      librewolf.enable = true;
-    };
+  programs = {
+    home-manager.enable = true;
+    htop.enable = true;
+    bottom.enable = true;
 
-    home.packages = with pkgs; [
-      neofetch
+    librewolf.enable = true;
+  };
 
-      pavucontrol
-      libnotify
-      swaybg
-      hyprpicker
-      cliphist
-      swaylock
+  home.packages = with pkgs; [
+    neofetch
 
-      fractal
-      spotifywm
+    pavucontrol
+    libnotify
+    swaybg
+    hyprpicker
+    cliphist
+    swaylock
 
-      (nerdfonts.override { fonts = [ "Hack" "NerdFontsSymbolsOnly" ]; })
-      font-awesome
-    ];
+    fractal
+    spotifywm
+
+    (nerdfonts.override { fonts = [ "Hack" "NerdFontsSymbolsOnly" ]; })
+    font-awesome
+  ];
 }

@@ -9,6 +9,8 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
+    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
     impermanence = {
       type = "github";
