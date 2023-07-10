@@ -17,10 +17,10 @@ in
   environment.etc = {
     "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
     "regreet/hyprland.conf".text = ''
-      exec-once=regreet; hyprctl dispatch exit
       source=${grizzConfig}
+      exec-once=regreet; hyprctl dispatch exit
     '';
-    "regreet/regreet.toml".text = ''
+    "greetd/regreet.toml".text = ''
       [background]
       path = "/etc/regreet/bg.jpg"
       fit = "Fill"
