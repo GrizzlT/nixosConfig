@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    # ./anyrun
+    ./anyrun
   ];
 
   programs = {

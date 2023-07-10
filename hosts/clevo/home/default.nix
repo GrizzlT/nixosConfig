@@ -5,6 +5,7 @@ userName: { pkgs, ... }@inputs:
 
     imports = [
       inputs.hyprland.homeManagerModules.default
+      inputs.anyrun.homeManagerModules.default
       ./hyprland
       ./waybar
       ./wezterm
