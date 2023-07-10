@@ -14,7 +14,7 @@
   services.swayidle = {
     enable = true;
     extraArgs = [ "-w" ];
-    systemdTarget = "default.target";
+    systemdTarget = "hyprland-session.target";
     events = [
       {
         event = "before-sleep";
