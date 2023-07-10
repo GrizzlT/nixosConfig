@@ -16,4 +16,6 @@
   ];
 
   programs.hyprland.enable = true;
+
+  environment.etc."pam.d/swaylock".text = ''auth include login'';
 }
