@@ -22,7 +22,6 @@
     cliphist
     swaylock
 
-    fractal
     spotifywm
 
     (nerdfonts.override { fonts = [ "Hack" "NerdFontsSymbolsOnly" ]; })

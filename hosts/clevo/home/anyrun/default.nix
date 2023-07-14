@@ -1,4 +1,7 @@
 { pkgs, anyrun, ... }:
+let
+  configPath = ".config/anyrun";
+in
 {
   home.packages = [ anyrun.packages.${pkgs.system}.stdin ];
 
@@ -14,11 +17,14 @@
       ];
       width = { fraction = 0.3; };
       x = { fraction = 0.5; };
-      y = { absolute = 10; };
+      y = { fraction = 0.3; };
       ignoreExclusiveZones = false;
+      hidePluginInfo = true;
       layer = "overlay";
       closeOnClick = true;
       showResultsImmediately = true;
     };
   };
+
+  home.file."${configPath}/symbols.ron".source = ./symbols.ron;
 }
