@@ -12,7 +12,7 @@ in
     (import ./home userName)
     ./packages.nix
     ./services.nix
-    ../common/key-layout.nix
+    ../../keyboard/grizz-keyboard.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

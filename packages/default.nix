@@ -1,10 +1,15 @@
-{ self, nixpkgs, flake-utils, ... }:
-  flake-utils.lib.eachDefaultSystem (system:
-    let pkgs = nixpkgs.legacyPackages.${system}; in
-    {
-      packages = {
-        grizz-disk-setup = import ./grizz-disk-setup.nix { inherit pkgs; };
-        grizz-zfs-diff = import ./grizz-zfs-diff.nix { inherit pkgs; };
-      };
-    }
-  )
+{
+  self,
+  pkgs,
+  flake-inputs,
+}:
+{
+  grizz-disk-setup = pkgs.callPackage ./grizz-disk-setup.nix {};
+  grizz-zfs-diff = pkgs.callPackage ./grizz-zfs-diff.nix {};
+
+  grizz-installer-iso = import ./grizz-installer.nix {
+    inherit self;
+    inherit pkgs;
+    inherit (flake-inputs) nixos-generators;
+  };
+}

@@ -5,7 +5,7 @@
     xkbOptions = "ctrl:nocaps,shift:both_capslock";
     extraLayouts."grizz" = {
       languages = [ "nld" ];
-      symbolsFile = ./grizz-keyboard;
+      symbolsFile = ./grizz-keyboard.xkb;
       description = "Grizz's personal coding layout";
     };
   };

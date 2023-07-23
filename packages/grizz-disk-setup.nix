@@ -1,13 +1,7 @@
-{ pkgs, ... }:
-let
-  my-name = "grizz-disk-setup";
-  my-buildInputs = with pkgs; [ parted zfs coreutils util-linux cryptsetup ];
-  my-script = (pkgs.writeScriptBin my-name (builtins.readFile ../scripts/grizz-disk-setup.sh)).overrideAttrs(old: {
-    buildCommand = "${old.buildCommand}\n patchShebangs $out";
-  });
-in pkgs.symlinkJoin {
-  name = my-name;
-  paths = [ my-script ] ++ my-buildInputs;
-  buildInputs = [ pkgs.makeWrapper ];
-  postBuild = "wrapProgram $out/bin/${my-name} --prefix PATH : $out/bin";
-}
+{ resholve, bash, parted, zfs, coreutils, dosfstools, util-linux, cryptsetup }:
+resholve.writeScriptBin "grizz-disk-setup" {
+  inputs = [ parted zfs coreutils dosfstools util-linux cryptsetup ];
+  interpreter = "${bash}/bin/bash";
+  execer = [ "cannot:${util-linux}/bin/swapon" ];
+  fix = { mount = true; };
+} (builtins.readFile ../scripts/grizz-disk-setup.sh)
