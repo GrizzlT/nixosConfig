@@ -15,7 +15,7 @@ nixos-generators.nixosGenerate {
         # Provide an initial copy of the NixOS channel so that the user
         # doesn't need to run "nix-channel --update" first.
         (modulesPath +  "/installer/cd-dvd/channel.nix")
-        ../keyboard/grizz-keyboard.nix
+        ../common/grizz-keyboard.nix
       ];
 
       environment.systemPackages = [

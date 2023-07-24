@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, home-manager, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
@@ -9,37 +9,13 @@ in
     ./hardware.nix
     ./optimize.nix
     ./persist.nix
-    (import ./home userName)
     ./packages.nix
     ./services.nix
-    ../../keyboard/grizz-keyboard.nix
+    ../../common/grizz-keyboard.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings = {
-      auto-optimise-store = true;
-      builders-use-substitutes = true;
-      substituters = [
-        "https://hyprland.cachix.org"
-        "https://anyrun.cachix.org"
-      ];
-      trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-  };
+  nix = (import ../../common/nix-settings.nix) { inherit pkgs; };
 
   networking.hostId = hostId;
   networking.hostName = hostName;
@@ -57,7 +33,7 @@ in
     passwordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
-    packages = [ ];
+    packages = [ home-manager.packages.${pkgs.system}.default ];
   };
 
   system.stateVersion = "23.05";

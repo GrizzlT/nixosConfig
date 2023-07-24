@@ -22,7 +22,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     packages = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./packages {
       inherit self;
       pkgs = nixpkgs.legacyPackages.${system};
@@ -33,15 +33,28 @@
       inherit system;
       specialArgs = {
         grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
-        hyprland = inputs.hyprland;
-        anyrun = inputs.anyrun;
-        inherit inputs;
+        inherit home-manager;
       };
       modules = [
-        inputs.home-manager.nixosModules.home-manager
         inputs.hyprland.nixosModules.default
         inputs.impermanence.nixosModules.impermanence
         ./hosts/clevo/configuration.nix
+      ];
+    };
+
+    homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      extraSpecialArgs = inputs;
+      modules = [
+        ./home/base
+        ./home/desktop
+        {
+          home = {
+            username = "grizz";
+            homeDirectory = "/home/grizz";
+            stateVersion = "23.05";
+          };
+        }
       ];
     };
   };

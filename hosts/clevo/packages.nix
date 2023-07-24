@@ -8,8 +8,8 @@
     git
     inputs.grizz-zfs-diff
 
-    # backlight
-    brightnessctl
+    # # backlight
+    # brightnessctl
 
     # polkit agent
     mate.mate-polkit
