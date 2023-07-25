@@ -271,7 +271,7 @@ in
         groupbar_gradients = false
       }
 
-      binds = {
+      binds {
         workspace_back_and_forth = true
       }
     '';
