@@ -19,12 +19,13 @@
   home.packages = with pkgs; [
     neofetch
 
-    # pavucontrol
-    # libnotify
-    # swaybg
-    # hyprpicker
-    # cliphist
-    # swaylock
+    pavucontrol
+    libnotify
+    swaybg
+    hyprpicker
+    cliphist
+    wl-clipboard
+    swaylock
 
     # spotifywm
   ];
