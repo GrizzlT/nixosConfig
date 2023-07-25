@@ -34,12 +34,12 @@ writeShellApplication {
 
 # Increase brightness
     inc_backlight() {
-      light -A 5 && get_icon && notify_user
+      light -A 5 # && get_icon && notify_user
     }
 
 # Decrease brightness
     dec_backlight() {
-      light -U 5 && get_icon && notify_user
+      light -U 5 # && get_icon && notify_user
     }
 
 # Execute accordingly

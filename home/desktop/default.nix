@@ -26,7 +26,6 @@
     cliphist
     wl-clipboard
     swaylock
-    light
 
     # spotifywm
   ];

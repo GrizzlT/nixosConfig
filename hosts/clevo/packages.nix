@@ -14,6 +14,7 @@
     # polkit agent
     # mate.mate-polkit
   ];
+  programs.light.enable = true;
 
   programs.hyprland = {
     enable = true;
