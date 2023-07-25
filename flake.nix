@@ -8,8 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
-    anyrun.url = "github:Kirottu/anyrun";
-    anyrun.inputs.nixpkgs.follows = "nixpkgs";
+    stylix.url = "github:danth/stylix";
     impermanence = {
       type = "github";
       owner = "nix-community";
@@ -34,6 +33,7 @@
       specialArgs = {
         grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
         inherit home-manager;
+        inherit (inputs) hyprland stylix;
       };
       modules = [
         inputs.hyprland.nixosModules.default
@@ -42,20 +42,22 @@
       ];
     };
 
-    homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      extraSpecialArgs = inputs;
-      modules = [
-        ./home/base
-        ./home/desktop
-        {
-          home = {
-            username = "grizz";
-            homeDirectory = "/home/grizz";
-            stateVersion = "23.05";
-          };
-        }
-      ];
+    homeConfigurations."grizz@clevo" = let pkgs = nixpkgs.legacyPackages."x86_64-linux"; in
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = inputs;
+        modules = [
+          ./home/base
+          ./home/desktop
+          {
+            home = {
+              username = "grizz";
+              homeDirectory = "/home/grizz";
+              stateVersion = "23.05";
+            };
+            nix.settings = import ./common/nix-settings.nix { inherit pkgs; };
+          }
+        ];
     };
   };
 }

@@ -11,10 +11,10 @@ in
     ./persist.nix
     ./packages.nix
     ./services.nix
+    ./style.nix
     ../../common/grizz-keyboard.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
   nix = (import ../../common/nix-settings.nix) { inherit pkgs; };
 
   networking.hostId = hostId;

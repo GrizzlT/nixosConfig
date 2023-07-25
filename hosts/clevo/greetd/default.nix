@@ -14,10 +14,10 @@
         command = "Hyprland --config /etc/regreet/hyprland.conf";
         user = "greeter";
       };
-      initial_session = {
-        command = "Hyprland";
-        user = "grizz";
-      };
+      # initial_session = {
+      #   command = "Hyprland";
+      #   user = "grizz";
+      # };
     };
   };
 

@@ -1,4 +1,4 @@
-{ pkgs, ... }@inputs:
+{ pkgs, hyprland, ... }@inputs:
 {
   environment.systemPackages = with pkgs; [
     # minimal basics
@@ -12,10 +12,13 @@
     # brightnessctl
 
     # polkit agent
-    mate.mate-polkit
+    # mate.mate-polkit
   ];
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
+  };
 
   environment.etc."pam.d/swaylock".text = ''auth include login'';
 }
