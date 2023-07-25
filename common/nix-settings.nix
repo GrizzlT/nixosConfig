@@ -1,9 +1,8 @@
-{ pkgs }:
-{
-  package = pkgs.nixFlakes;
+let
+  package = pkgs: pkgs.nixFlakes;
   extraOptions = ''
     experimental-features = nix-command flakes
-    '';
+  '';
   settings = {
     auto-optimise-store = true;
     builders-use-substitutes = true;
@@ -16,9 +15,19 @@
       # "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
     ];
   };
-  gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+in
+{
+  home = { pkgs }: {
+    package = package pkgs;
+    inherit extraOptions settings;
+  };
+  system = { pkgs }: {
+    package = package pkgs;
+    inherit extraOptions settings;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
 }

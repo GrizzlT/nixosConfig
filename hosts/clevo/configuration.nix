@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ config, pkgs, lib, home-manager, nixSettings, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
@@ -15,7 +15,7 @@ in
     ../../common/grizz-keyboard.nix
   ];
 
-  nix = (import ../../common/nix-settings.nix) { inherit pkgs; };
+  nix = nixSettings.system { inherit pkgs; };
 
   networking.hostId = hostId;
   networking.hostName = hostName;

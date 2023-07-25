@@ -21,7 +21,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  let nixSettings = import ./common/nix-settings.nix; in {
     packages = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./packages {
       inherit self;
       pkgs = nixpkgs.legacyPackages.${system};
@@ -34,6 +35,7 @@
         grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
         inherit home-manager;
         inherit (inputs) hyprland stylix;
+        inherit nixSettings;
       };
       modules = [
         inputs.hyprland.nixosModules.default
@@ -55,7 +57,7 @@
               homeDirectory = "/home/grizz";
               stateVersion = "23.05";
             };
-            nix.settings = import ./common/nix-settings.nix { inherit pkgs; };
+            nix = nixSettings.home { inherit pkgs; };
           }
         ];
     };
