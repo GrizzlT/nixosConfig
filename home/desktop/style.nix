@@ -19,12 +19,15 @@
         name = "Noto Color Emoji";
       };
       sizes.terminal = 13;
+      sizes.desktop = 12;
     };
 
     autoEnable = false;
     targets.gtk.enable = true;
     targets.waybar.enable = true;
     targets.wezterm.enable = true;
+    targets.dunst.enable = true;
+    targets.swaylock.enable = true;
   };
 
   home.pointerCursor = {

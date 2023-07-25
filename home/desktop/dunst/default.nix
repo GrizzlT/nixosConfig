@@ -14,13 +14,8 @@
         progress_bar_corner_radius = 5;
         icon_corner_radius = 3;
         frame_width = 2;
-        font = "Hack Nerd Font 10";
-# dmenu = "anyrun?";
         corner_radius = 8;
-        background = "#383c4a";
-        foreground = "#ffffff";
-        highlight = "#5af78e";
-        frame_color = "#ffffff";
+# dmenu = "anyrun?";
       };
     };
   };

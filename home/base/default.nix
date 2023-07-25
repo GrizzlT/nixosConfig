@@ -1,4 +1,8 @@
 { pkgs, ... }:
 {
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    htop.enable = true;
+    bottom.enable = true;
+  };
 }

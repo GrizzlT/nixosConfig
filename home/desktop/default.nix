@@ -13,6 +13,8 @@
     ./dunst
 
     ./style.nix
+    ./librewolf.nix
+    ./idle.nix
   ];
 
   home.keyboard = null;
