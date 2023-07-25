@@ -13,9 +13,14 @@ in
     ./services.nix
     ./style.nix
     ../../common/grizz-keyboard.nix
+    ../../common/nix-settings.nix
   ];
 
-  nix = nixSettings.system { inherit pkgs; };
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   networking.hostId = hostId;
   networking.hostName = hostName;
