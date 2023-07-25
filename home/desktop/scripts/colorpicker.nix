@@ -4,7 +4,7 @@ writeShellApplication {
   runtimeInputs = [ hyprpicker wl-clipboard libnotify ];
   text = ''
     COLOR=$(hyprpicker)
-    echo ''${COLOR} | wl-copy -n
+    echo "''${COLOR}" | wl-copy -n
     notify-send "Color Picker" "''${COLOR}"
   '';
 }
