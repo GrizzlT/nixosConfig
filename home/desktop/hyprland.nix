@@ -31,7 +31,7 @@ in
       $volume=${scripts.volume}/bin/volume
       $brightness=${scripts.brightness}/bin/brightness
       $playerctl=${pkgs.playerctl}/bin/playerctl
-      $systemSleep=${pkgs.systemd}/bin/systemctl suspend
+      $lock=${pkgs.swaylock}/bin/swaylock -f
 
       bind=$mainMod,delete,exit
       bind=$mainMod,return,exec,wezterm start --always-new-process
@@ -42,7 +42,7 @@ in
       bind=$mainMod,t,togglefloating
       bind=$mainMod,j,cyclenext,prev
       bind=$mainMod,k,cyclenext,
-      bind=$mainMod,l,exec,$systemSleep
+      bind=$mainMod,l,exec,$lock
       bind=$mainMod_SHIFT,o,exec,$colorPicker
       bind=$mainMod,y,exec,[workspace special:trash] $music
 
