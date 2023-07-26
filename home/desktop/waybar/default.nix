@@ -1,32 +1,25 @@
-{ pkgs, myScripts, ... }:
+{ pkgs, config, myScripts, ... }:
 let
   scripts = myScripts.waybar;
 in
+with config.lib.stylix.colors.withHashTag;
+with config.stylix.fonts;
 {
   programs.waybar = {
     enable = true;
-    # style = ./style.css;
     settings.mainBar = {
       layer = "top";
       position = "top";
-      modules-left = [ "cpu" "custom/mem" "temperature" "keyboard-state" ];
+      modules-left = [ "hyprland/workspaces" "hyprland/submap" "keyboard-state" "idle_inhibitor" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "network" "battery" ];
+      modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" ];
 
-      cpu = {
-        format = "{usage}%";
+      "hyprland/workspaces" = {
+        format = "{id}";
       };
-      "custom/mem" = {
-        format = "{} 󰍛";
-        interval = 5;
-        exec = "free -h | awk '/Mem:/{printf $3}'";
-        tooltip = false;
-      };
-      temperature = {
-        critical-threshold = 80;
-          format = "{temperatureC}°C {icon}";
-          format-icons = ["" "" "" "" ""];
-          tooltip = false;
+      "hyprland/submap" = {
+        on-click = "hyprctl dispatch submap reset";
+        tooltip = "false";
       };
       keyboard-state = {
         numlock = true;
@@ -38,6 +31,13 @@ in
         format-icons = {
           locked = "";
           unlocked = "";
+        };
+      };
+      idle_inhibitor = {
+        format = "{icon}";
+        format-icons = {
+          activated = "";
+          deactivated = "󰒲";
         };
       };
 
@@ -66,11 +66,23 @@ in
         on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         min-length = 13;
       };
+      cpu = {
+        interval = 5;
+        format = "CPU {usage}%";
+      };
+      memory = {
+        interval = 15;
+        format = "Mem {percentage}%";
+        tooltip-format = "Mem: {used:0.1f}GiB/{total:0.1f}GiB<br>Swap: {swapUsed:0.1f}GiB/{swapTotal:0.1f}GiB";
+      };
       network = {
         format = "{icon}";
         format-wifi = "{essid} {icon}";
         format-ethernet = "";
         format-disconnected = "...";
+        tooltip-format-wifi = "{essid} ({signalStrength}%)";
+        tooltip-format-disconnected = "Disconnected";
+        format-icons = [ "󰤟" "󰤢" "󰤥" "󰖩"];
       };
       battery = {
         states = {
@@ -85,5 +97,21 @@ in
         on-update = "${scripts.check_battery}/bin/check_battery";
       };
     };
+    style = (''
+      @define-color base00 ${base00}; @define-color base01 ${base01}; @define-color base02 ${base02}; @define-color base03 ${base03};
+      @define-color base04 ${base04}; @define-color base05 ${base05}; @define-color base06 ${base06}; @define-color base07 ${base07};
+
+      @define-color base08 ${base08}; @define-color base09 ${base09}; @define-color base0A ${base0A}; @define-color base0B ${base0B};
+      @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
+
+      * {
+        font-family: ${sansSerif.name};
+        font-size: 15px;
+        border: none;
+        border-radius: 0;
+        margin-top: 2px;
+        min-height: 20px;
+      }
+    '') + (builtins.readFile ./style.css);
   };
 }
