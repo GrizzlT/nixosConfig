@@ -29,6 +29,8 @@
     wl-clipboard
     swaylock
 
+    bemenu
+
     # spotifywm
   ];
 }
