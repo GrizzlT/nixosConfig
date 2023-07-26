@@ -24,6 +24,9 @@ in
       windowrule = size 100% 100%, wlogout
       windowrule = animation slide, wlogout
 
+      windowrule = float, my-fzf-menu
+      windowrule = center, my-fzf-menu
+
       $mainMod=SUPER
       $browser=${pkgs.librewolf}/bin/librewolf
       $gamemode=${scripts.gamemode}/bin/gamemode

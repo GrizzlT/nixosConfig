@@ -12,7 +12,6 @@
     ./wezterm
     ./dunst
 
-    ./style.nix
     ./librewolf.nix
     ./idle.nix
   ];
