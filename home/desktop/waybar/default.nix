@@ -10,13 +10,10 @@ with config.stylix.fonts;
     settings.mainBar = {
       layer = "top";
       position = "top";
-      modules-left = [ "hyprland/workspaces" "hyprland/submap" "keyboard-state" "idle_inhibitor" ];
+      modules-left = [ "hyprland/submap" "keyboard-state" "idle_inhibitor" ];
       modules-center = [ "clock" ];
       modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" ];
 
-      "hyprland/workspaces" = {
-        format = "{id}";
-      };
       "hyprland/submap" = {
         on-click = "hyprctl dispatch submap reset";
         tooltip = "false";

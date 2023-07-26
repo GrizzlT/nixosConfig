@@ -37,7 +37,7 @@ in
   users.users.${userName} = {
     passwordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     packages = [ home-manager.packages.${pkgs.system}.default ];
   };
 

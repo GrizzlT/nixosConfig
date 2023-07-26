@@ -14,10 +14,9 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  margin-left: 10px;
-  padding-right: 3px;
-  padding-left: 10px;
-  border-radius: 10px 0px 0px 10px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
   background: @base00;
 }
 
@@ -35,11 +34,10 @@ window#waybar.hidden {
 }
 
 #submap {
-  margin-right: 10px;
-  padding-left: 3px;
-  padding-right: 10px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
   background: @base00;
-  border-radius: 0px 10px 10px 0px;
 }
 
 #idle_inhibitor,
@@ -66,11 +64,11 @@ window#waybar.hidden {
   margin: 0px 10px 0px 10px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
-  background: @base03;
+  background: @base00;
 }
 
 #pulseaudio.muted {
-    background-color: @base00;
+    background-color: @base03;
 }
 
 #cpu {
@@ -94,6 +92,7 @@ window#waybar.hidden {
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base0B;
+  color: @base00;
 }
 
 #network.disabled {
@@ -105,7 +104,7 @@ window#waybar.hidden {
   margin: 0px 10px 0px 10px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
-  background: @base04;
+  background: @base03;
 }
 
 #battery.charging {
