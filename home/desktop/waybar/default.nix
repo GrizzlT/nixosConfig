@@ -10,7 +10,7 @@ with config.stylix.fonts;
     settings.mainBar = {
       layer = "top";
       position = "top";
-      modules-left = [ "hyprland/submap" "keyboard-state" "idle_inhibitor" ];
+      modules-left = [ "keyboard-state" "idle_inhibitor" "hyprland/submap" ];
       modules-center = [ "clock" ];
       modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" ];
 
@@ -70,7 +70,7 @@ with config.stylix.fonts;
       memory = {
         interval = 15;
         format = "Mem {percentage}%";
-        tooltip-format = "Mem: {used:0.1f}GiB/{total:0.1f}GiB<br>Swap: {swapUsed:0.1f}GiB/{swapTotal:0.1f}GiB";
+        tooltip-format = "Mem: {used:0.1f}GiB/{total:0.1f}GiB\nSwap: {swapUsed:0.1f}GiB/{swapTotal:0.1f}GiB";
       };
       network = {
         format = "{icon}";
