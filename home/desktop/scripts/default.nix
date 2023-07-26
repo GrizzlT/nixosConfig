@@ -1,6 +1,7 @@
 { pkgs, hyprland, ... }:
 let
   callPackage = pkgs.callPackage;
+  wlogout = callPackage ./wlogout.nix {};
 in
 {
   hyprland = {
@@ -8,9 +9,11 @@ in
     colorPicker = callPackage ./colorpicker.nix {};
     brightness = callPackage ./brightness.nix {};
     volume = callPackage ./volume.nix {};
+    inherit wlogout;
   };
 
   waybar = {
     check_battery = callPackage ./check_battery.nix {};
+    inherit wlogout;
   };
 }

@@ -52,7 +52,7 @@ with config.stylix.fonts;
 
       /** ********** Main Window ********** **/
       window {
-        background-color: @base00;
+        background-color: rgba(0, 0, 0, 0.5);
       }
 
       /** ********** Buttons ********** **/

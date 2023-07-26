@@ -134,3 +134,11 @@ window#waybar.hidden {
         color: #000000;
     }
 }
+
+#custom-wlogout {
+  margin: 0px 10px 0px 2px;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+  background: @base08;
+  color: @base00;
+}

@@ -12,7 +12,7 @@ with config.stylix.fonts;
       position = "top";
       modules-left = [ "keyboard-state" "idle_inhibitor" "hyprland/submap" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" ];
+      modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" "custom/wlogout" ];
 
       "hyprland/submap" = {
         on-click = "hyprctl dispatch submap reset";
@@ -92,6 +92,11 @@ with config.stylix.fonts;
         format-alt = "{time} {icon}";
         format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         on-update = "${scripts.check_battery}/bin/check_battery";
+      };
+      "custom/wlogout" = {
+        format = "";
+        on-click = "${scripts.wlogout}/bin/wlogout";
+        tooltip = false;
       };
     };
     style = (''

@@ -35,8 +35,10 @@ in
       $brightness=${scripts.brightness}/bin/brightness
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
+      $wlogout=${scripts.wlogout}/bin/wlogout
 
       bind=$mainMod,delete,exit
+      bind=$mainMod_SHIFT,q,exec,$wlogout
       bind=$mainMod,return,exec,wezterm start --always-new-process
       bind=$mainMod,b,exec,[workspace 2] $browser
       bind=$mainMod_SHIFT,f,fakefullscreen
