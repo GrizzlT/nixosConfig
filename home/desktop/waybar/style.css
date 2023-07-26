@@ -14,7 +14,7 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  margin: 0px 3px 0px 10px;
+  margin: 0px 2px 0px 10px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base00;
@@ -34,7 +34,7 @@ window#waybar.hidden {
 }
 
 #submap {
-  margin: 0px 10px 0px 3px;
+  margin: 0px 10px 0px 2px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base00;
@@ -42,10 +42,14 @@ window#waybar.hidden {
 
 #idle_inhibitor,
 #keyboard-state {
-  margin: 0px 3px 0px 3px;
+  margin: 0px 2px 0px 2px;
   padding: 0px 10px 0px 10px;
   background: @base00;
   border-radius: 10px;
+}
+
+#keyboard-state label {
+  padding: 0px 1px 0px 1px;
 }
 
 #idle_inhibitor.activated {
@@ -60,7 +64,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  margin: 0px 3px 0px 10px;
+  margin: 0px 2px 0px 10px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base00;
@@ -71,8 +75,7 @@ window#waybar.hidden {
 }
 
 #cpu {
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 2px;
   padding-right: 3px;
   padding-left: 10px;
   border-radius: 10px 0px 0px 10px;
@@ -80,7 +83,7 @@ window#waybar.hidden {
 }
 
 #memory {
-  margin-right: 10px;
+  margin-right: 2px;
   padding-left: 3px;
   padding-right: 10px;
   border-radius: 0px 10px 10px 0px;
@@ -88,7 +91,7 @@ window#waybar.hidden {
 }
 
 #network {
-  margin: 0px 3px 0px 3px;
+  margin: 0px 2px 0px 2px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base0B;
@@ -101,7 +104,7 @@ window#waybar.hidden {
 }
 
 #battery {
-  margin: 0px 10px 0px 3px;
+  margin: 0px 10px 0px 2px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base00;
@@ -109,6 +112,7 @@ window#waybar.hidden {
 
 #battery.charging {
     background-color: @base0B;
+    color: @base00;
 }
 
 #battery.warning:not(.charging) {
