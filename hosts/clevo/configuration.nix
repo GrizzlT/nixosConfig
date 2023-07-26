@@ -12,8 +12,8 @@ in
     ./packages.nix
     ./services.nix
     ./style.nix
-    ../../common/grizz-keyboard.nix
-    ../../common/nix-settings.nix
+    ../../modules/grizz-keyboard.nix
+    ../../modules/nix-settings.nix
   ];
 
   nix.gc = {
