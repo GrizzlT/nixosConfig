@@ -83,15 +83,15 @@ with config.stylix.fonts;
       }
 
       #suspend {
-        background-image: image(url('${.icons/suspend.png}'), url('/usr/share/wlogout/icons/suspend.png'));
+        background-image: image(url('${./icons/suspend.png}'), url('/usr/share/wlogout/icons/suspend.png'));
       }
 
       #shutdown {
-        background-image: image(url('${.icons/shutdown.png}'), url('/usr/share/wlogout/icons/shutdown.png'));
+        background-image: image(url('${./icons/shutdown.png}'), url('/usr/share/wlogout/icons/shutdown.png'));
       }
 
       #reboot {
-        background-image: image(url('${.icons/reboot.png}'), url('/usr/share/wlogout/icons/reboot.png'));
+        background-image: image(url('${./icons/reboot.png}'), url('/usr/share/wlogout/icons/reboot.png'));
       }
     '';
   };
