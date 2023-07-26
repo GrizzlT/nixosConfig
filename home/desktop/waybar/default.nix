@@ -17,7 +17,7 @@ in
         format = "{usage}%";
       };
       "custom/mem" = {
-        format = "{} ";
+        format = "{} 󰍛";
         interval = 5;
         exec = "free -h | awk '/Mem:/{printf $3}'";
         tooltip = false;
@@ -50,18 +50,18 @@ in
         reverse-scrolling = 1;
         format = "{volume}% {icon} {format_source}";
         format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = "婢 {format_source}";
+        format-bluetooth-muted = "󰋎 {icon} {format_source}";
+        format-muted = "󰖁 {format_source}";
         format-source = "{volume}% ";
         format-source-muted = "";
         format-icons = {
             headphone = "";
-            hands-free = "";
-            headset = "";
+            hands-free = "󰏴";
+            headset = "󰋎";
             phone = "";
             portable = "";
             car = "";
-            default = ["奄" "奔" "墳"];
+            default = ["󰕿" "󰖀" "󰕾"];
         };
         on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
         min-length = 13;
@@ -78,10 +78,10 @@ in
           critical = 15;
         };
         format = "{capacity}% {icon}";
-        format-charging = "{capacity}% ";
+        format-charging = "{capacity}% 󰂄";
         format-plugged = "{capacity}% ";
         format-alt = "{time} {icon}";
-        format-icons = ["" "" "" "" "" "" "" "" "" ""];
+        format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         on-update = "${scripts.check_battery}/bin/check_battery";
       };
     };

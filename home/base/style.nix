@@ -26,6 +26,7 @@
     targets.gtk.enable = true;
     targets.waybar.enable = true;
     targets.wezterm.enable = true;
+    targets.foot.enable = true;
     targets.dunst.enable = true;
     targets.swaylock.enable = true;
     targets.bemenu.enable = true;
