@@ -27,7 +27,7 @@ with config.stylix.fonts;
         };
         format-icons = {
           locked = "";
-          unlocked = "";
+          unlocked = "";
         };
       };
       idle_inhibitor = {
