@@ -2,7 +2,7 @@
 let
   scripts = myScripts.waybar;
 in
-with config.lib.stylix.colors.withHashTag;
+with config.lib.stylix.colors.withHashtag;
 with config.stylix.fonts;
 {
   programs.waybar = {
@@ -107,7 +107,6 @@ with config.stylix.fonts;
       * {
         font-family: ${sansSerif.name};
         font-size: 15px;
-        border: none;
         border-radius: 0;
         margin-top: 2px;
         min-height: 20px;

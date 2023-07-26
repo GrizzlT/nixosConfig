@@ -5,6 +5,8 @@ window#waybar, tooltip {
 
 tooltip {
   border-color: @base0D;
+  border-radius: 8px;
+  background: @base00;
 }
 
 window#waybar.hidden {
@@ -13,7 +15,7 @@ window#waybar.hidden {
 
 #workspaces {
   margin-left: 10px;
-  padding: 3px;
+  padding-right: 3px;
   padding-left: 10px;
   border-radius: 10px 0px 0px 10px;
   background: @base00;
@@ -23,7 +25,7 @@ window#waybar.hidden {
     transition: none;
     color: @base00;
     background: @base07;
-    padding: 3px;
+    padding: 1px;
 }
 
 #workspaces button:hover,
@@ -34,7 +36,7 @@ window#waybar.hidden {
 
 #submap {
   margin-right: 10px;
-  padding: 3px;
+  padding-left: 3px;
   padding-right: 10px;
   background: @base00;
   border-radius: 0px 10px 10px 0px;
@@ -42,8 +44,8 @@ window#waybar.hidden {
 
 #idle_inhibitor,
 #keyboard-state {
-  margin: 10px 0px 10px 0px;
-  padding: 10px 3px 10px 3px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   background: @base00;
   border-radius: 10px;
 }
@@ -53,16 +55,16 @@ window#waybar.hidden {
 }
 
 #clock {
-  padding: 10px 3px 10px 3px;
-  margin: 10px 0px 10px 0px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   border-radius: 10px;
   transition: none;
   background: @base00;
 }
 
 #pulseaudio {
-  margin: 10px 0px 10px 0px;
-  padding: 10px 3px 10px 3px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base03;
 }
@@ -73,7 +75,7 @@ window#waybar.hidden {
 
 #cpu {
   margin-left: 10px;
-  padding: 3px;
+  padding-right: 3px;
   padding-left: 10px;
   border-radius: 10px 0px 0px 10px;
   background: @base00;
@@ -81,15 +83,15 @@ window#waybar.hidden {
 
 #memory {
   margin-right: 10px;
-  padding: 3px;
+  padding-left: 3px;
   padding-right: 10px;
-  border-radius: 0px 10px 10px 00px;
+  border-radius: 0px 10px 10px 0px;
   background: @base00;
 }
 
 #network {
-  margin: 10px 0px 10px 0px;
-  padding: 10px 3px 10px 3px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base0B;
 }
@@ -100,8 +102,8 @@ window#waybar.hidden {
 }
 
 #battery {
-  margin: 10px 0px 10px 0px;
-  padding: 10px 3px 10px 3px;
+  margin: 0px 10px 0px 10px;
+  padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base04;
 }
