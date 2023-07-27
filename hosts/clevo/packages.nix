@@ -1,7 +1,6 @@
 { pkgs, hyprland, ... }@inputs:
 {
   environment = {
-    shells = with pkgs; [ bash zsh ];
     systemPackages = with pkgs; [
       # minimal basics
       vim
@@ -9,12 +8,6 @@
       curl
       git
       inputs.grizz-zfs-diff
-
-      # # backlight
-      # brightnessctl
-
-      # polkit agent
-      # mate.mate-polkit
     ];
   };
   programs.light.enable = true;
@@ -25,4 +18,8 @@
   };
 
   environment.etc."pam.d/swaylock".text = ''auth include login'';
+
+  programs.zsh = {
+    enable = true;
+  };
 }
