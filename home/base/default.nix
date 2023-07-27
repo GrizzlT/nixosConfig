@@ -3,7 +3,7 @@
   imports = [
     ./style.nix
 
-    ./zsh.nix
+    ./zsh
   ];
 
   programs = {
