@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, myPackages, ... }:
 {
   imports = [
     ../exa.nix
@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     fd
     zsh-powerlevel10k
+    myPackages.emoji-fzf
   ];
 
   programs.zoxide = {
@@ -54,6 +55,15 @@
           owner = "davidde";
           repo = "git";
           rev = "b60e5e36c65f76a29eeacbfb7f5de1cd00c86115";
+          sha256 = "C3Ny3QXlOzkA47oCMvhhduCgOnkVBSTKaPgO9TUtRjo=";
+        };
+      }
+      {
+        name = "emoji-fzf";
+        src = pkgs.fetchFromGitHub {
+          owner = "pschmitt";
+          repo = "emoji-fzf.zsh";
+          rev = "75d6feeb67594e0d7e4c5395f2e995b978e14312";
         };
       }
     ];

@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, ... }@inputs:
 {
+  _module.args = {
+    myPackages = inputs.self.packages.${pkgs.system};
+  };
+
   imports = [
     ./style.nix
 
