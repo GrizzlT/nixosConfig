@@ -2,6 +2,8 @@
 {
   imports = [
     ./style.nix
+
+    ./zsh.nix
   ];
 
   programs = {

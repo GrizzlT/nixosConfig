@@ -1,19 +1,22 @@
 { pkgs, hyprland, ... }@inputs:
 {
-  environment.systemPackages = with pkgs; [
-    # minimal basics
-    vim
-    wget
-    curl
-    git
-    inputs.grizz-zfs-diff
+  environment = {
+    shells = with pkgs; [ bash zsh ];
+    systemPackages = with pkgs; [
+      # minimal basics
+      vim
+      wget
+      curl
+      git
+      inputs.grizz-zfs-diff
 
-    # # backlight
-    # brightnessctl
+      # # backlight
+      # brightnessctl
 
-    # polkit agent
-    # mate.mate-polkit
-  ];
+      # polkit agent
+      # mate.mate-polkit
+    ];
+  };
   programs.light.enable = true;
 
   programs.hyprland = {

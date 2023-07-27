@@ -39,6 +39,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     packages = [ home-manager.packages.${pkgs.system}.default ];
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = "23.05";
