@@ -16,4 +16,9 @@ in
     check_battery = callPackage ./check_battery.nix {};
     inherit wlogout;
   };
+
+  zsh = {
+    # untested v
+    # fzf-pass = callPackage ./fzf-pass.nix {};
+  };
 }

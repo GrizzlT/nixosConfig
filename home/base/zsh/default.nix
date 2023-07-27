@@ -29,7 +29,7 @@
       EMOJI_FZF_BIN_PATH = "${myPackages.emoji-fzf}/bin/emoji-fzf";
       EMOJI_FZF_BINDKEY = "^k";
       EMOJI_FZF_FUZZY_FINDER = "${pkgs.fzf}/bin/fzf";
-      EMOJI_FZF_CLIPBOARD = "${pkgs.wl-clipboard}/wl-copy";
+      EMOJI_FZF_CLIPBOARD = "${pkgs.wl-clipboard}/bin/wl-copy";
     };
     shellAliases = {
       ls = "exa";
