@@ -21,6 +21,7 @@
     enableCompletion = true;
     defaultKeymap = "emacs";
     envExtra = ''
+      GPG_TTY=$TTY
       setopt no_global_rcs
     '';
     shellAliases = {
@@ -46,8 +47,9 @@
     '';
     initExtra = ''
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+
+      # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+      [[ ! -f ${./p10k.zsh} ]] || source ${./p10k.zsh};
     '';
   };
-
-  home.file.".p10k.zsh".source = ./p10k.zsh;
 }
