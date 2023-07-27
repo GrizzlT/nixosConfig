@@ -7,7 +7,7 @@ python3.pkgs.buildPythonApplication rec {
     owner = "noahp";
     repo = "emoji-fzf";
     rev = version;
-    sha256 = "KpJW91kGMvUe10kThCdtb/XZ+NCZoNDTsoDdCddSIao=";
+    sha256 = "KpJW91kGMvUe1OkThCdtb/XZ+NCZoNDTsoDdCddSIao=";
     fetchSubmodules = true;
   };
 

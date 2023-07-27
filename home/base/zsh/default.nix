@@ -25,6 +25,12 @@
       GPG_TTY=$TTY
       setopt no_global_rcs
     '';
+    sessionVariables = {
+      EMOJI_FZF_BIN_PATH = "${myPackages.emoji-fzf}/bin/emoji-fzf";
+      EMOJI_FZF_BINDKEY = "^k";
+      EMOJI_FZF_FUZZY_FINDER = "${pkgs.fzf}/bin/fzf";
+      EMOJI_FZF_CLIPBOARD = "${pkgs.wl-clipboard}/wl-copy";
+    };
     shellAliases = {
       ls = "exa";
       cd = "z";
@@ -64,6 +70,7 @@
           owner = "pschmitt";
           repo = "emoji-fzf.zsh";
           rev = "75d6feeb67594e0d7e4c5395f2e995b978e14312";
+          sha256 = "gfkl4cCKDlynfUZfHymN6JsL+j4lqeFZ0vC7+2SdJIQ=";
         };
       }
     ];
