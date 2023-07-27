@@ -6,6 +6,7 @@
 
   home.packages = with pkgs; [
     fd
+    zsh-powerlevel10k
   ];
 
   programs.zoxide = {
@@ -19,12 +20,15 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     defaultKeymap = "emacs";
+    envExtra = ''
+      setopt no_global_rcs
+    '';
     shellAliases = {
       ls = "exa";
       systemUpdate = "sudo nixos-rebuild switch --flake";
       homeUpdate = "home-manager switch --flake";
-      weMain = "curl wttr.in/Leuven";
-      weSecond = "curl wttr.in/Bonheiden";
+      weMain = "${pkgs.curl}/bin/curl wttr.in/Leuven";
+      weSecond = "${pkgs.curl}/bin/curl wttr.in/Bonheiden";
     };
     history = {
       ignoreDups = true;
@@ -32,6 +36,8 @@
       share = true;
       save = 10000;
     };
-    historySubstringSearch.enable = true;
+    initExtra = ''
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k
+    '';
   };
 }
