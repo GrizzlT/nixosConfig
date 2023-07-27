@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # for zsh graphical plugins
-  programs.antidote.plugins = [
+  programs.zsh.antidote.plugins = [
     "MichaelAquilina/zsh-auto-notify"
   ];
 }
