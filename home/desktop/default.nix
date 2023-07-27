@@ -15,6 +15,7 @@
     ./librewolf.nix
     ./idle.nix
     ./wlogout
+    ./zsh.nix
   ];
 
   home.keyboard = null;

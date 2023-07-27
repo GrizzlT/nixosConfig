@@ -26,6 +26,7 @@
     '';
     shellAliases = {
       ls = "exa";
+      cd = "z";
       systemUpdate = "sudo nixos-rebuild switch --flake";
       homeUpdate = "home-manager switch --flake";
       weMain = "${pkgs.curl}/bin/curl wttr.in/Leuven";
@@ -37,6 +38,12 @@
       share = true;
       save = 10000;
     };
+    antidote = {
+      enable = true;
+      plugins = [
+
+      ];
+    };
     initExtraFirst = ''
       # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
       # Initialization code that may require console input (password prompts, [y/n]
@@ -46,6 +53,8 @@
       fi
     '';
     initExtra = ''
+      bindkey '^ ' autosuggest-accept
+
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
       # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
