@@ -14,9 +14,18 @@
     {
       name = "clipboard";
       src = pkgs.fetchFromGitHub {
-        owner = "zpm-zsh/clipboard";
+        owner = "zpm-zsh";
         repo = "clipboard";
         rev = "7fbd15150fe0fc84a34b6aa9e31c5589de3c9ffc";
+        sha256 = "BaYYzl6JArfPWASJtzk44scGejwgyT5+W94ugVDCV3I=";
+      };
+    }
+    {
+      name = "colored-man-pages";
+      src = pkgs.fetchFromGitHub {
+        owner = "ael-code";
+        repo = "zsh-colored-man-pages";
+        rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
       };
     }
   ];
