@@ -26,6 +26,7 @@
         owner = "ael-code";
         repo = "zsh-colored-man-pages";
         rev = "57bdda68e52a09075352b18fa3ca21abd31df4cb";
+        sha256 = "087bNmB5gDUKoSriHIjXOVZiUG5+Dy9qv3D69E8GBhs=";
       };
     }
   ];
