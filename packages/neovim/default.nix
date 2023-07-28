@@ -5,6 +5,7 @@ makeNixvimWithModule {
       imports = [
         ./options.nix
         ./autocmd.nix
+        ./colorscheme.nix
       ];
     };
   }
