@@ -7,5 +7,8 @@ makeNixvimWithModule {
         ./autocmd.nix
         ./colorscheme.nix
       ];
+
+      clipboard.providers.wl-copy.enable = true;
+      luaLoader.enable = true;
     };
   }

@@ -2,6 +2,7 @@
 {
   autoCmd = [
     {
+      event = "BufEnter";
       pattern = "*";
       callback = { __raw = ''
         function()

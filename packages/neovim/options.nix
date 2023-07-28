@@ -30,7 +30,6 @@
       backup = false;
       writebackup = true;
 
-      undodir = ''os.getenv("HOME") .. "/.vim/undodir"'';
       undofile = true;
 
       hlsearch = false;
