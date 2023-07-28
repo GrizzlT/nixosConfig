@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     fd
     zsh-powerlevel10k
+
     myPackages.emoji-fzf
   ];
 

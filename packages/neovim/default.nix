@@ -6,6 +6,7 @@ makeNixvimWithModule {
         ./options.nix
         ./autocmd.nix
         ./colorscheme.nix
+        ./editor.nix
       ];
 
       clipboard.providers.wl-copy.enable = true;
