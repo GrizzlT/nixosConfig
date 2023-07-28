@@ -4,6 +4,7 @@ makeNixvimWithModule {
     module = {
       imports = [
         ./options.nix
+        ./autocmd.nix
       ];
     };
   }
