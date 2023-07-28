@@ -8,7 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim.url = "github:nix-community/nixvim/nixos-23.05";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
     impermanence = {
       type = "github";
       owner = "nix-community";
@@ -23,11 +27,15 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
   {
-    packages = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./packages {
+    packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
       inherit self;
       pkgs = nixpkgs.legacyPackages.${system};
       flake-inputs = inputs;
-    });
+    })) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: import ./packages {
+      inherit self;
+      pkgs = nixpkgs.legacyPackages.${system};
+      flake-inputs = inputs;
+    }));
 
     nixosConfigurations."clevo" = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
       inherit system;

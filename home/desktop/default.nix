@@ -30,8 +30,8 @@
     wl-clipboard
     swaylock
 
-    foot
-
     # spotifywm
   ];
+
+  programs.foot.enable = true;
 }
