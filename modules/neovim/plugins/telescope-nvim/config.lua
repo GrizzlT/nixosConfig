@@ -1,6 +1,6 @@
 local telescope = require('telescope')
-local actions = require('telescope.action')
-local action_layout = require('telescope.action.layout')
+local actions = require('telescope.actions')
+local actions_layout = require('telescope.actions.layout')
 local trouble = require('trouble')
 local builtin = require('telescope.builtin')
 local map = vim.api.nvim_set_keymap
@@ -9,12 +9,12 @@ telescope.setup({
   defaults = {
     mappings = {
       n = {
-        ["<M-p>"] = action_layout.toggle_preview,
+        ["<M-p>"] = actions_layout.toggle_preview,
         ["<c-t>"] = trouble.open_with_trouble,
       },
       i = {
         ["<C-u>"] = false,
-        ["<M-p>"] = action_layout.toggle_preview,
+        ["<M-p>"] = actions_layout.toggle_preview,
         ["<c-t>"] = trouble.open_with_trouble,
       },
     }
