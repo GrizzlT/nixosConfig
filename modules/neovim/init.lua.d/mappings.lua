@@ -6,15 +6,14 @@ local map = vim.keymap.set
 map({ "n", "x" }, "<leader>", "<nop>")
 
 -- emacs-like mappings
-map("!", "<C-b>", "<left>")
+map("!", "<C-d>", "<left>")
 map("!", "<C-f>", "<right>")
-map("!", "<M-b>", "<C-left>")
+map("!", "<M-d>", "<C-left>")
 map("!", "<M-f>", "<C-right>")
 map("i", "<C-n>", "<down>")
 map("i", "<C-p>", "<up>")
-map("c", "<C-a>", "<C-b>")
 map("!", "<M-BS>", "<C-w>")
-map("c", "<M-d>", "<C-f>dw<C-c>")
+map("c", "<C-a>", "<C-b>")
 
 -- New lines in insert mode
 map("i", "<M-n>", "<C-o>o")

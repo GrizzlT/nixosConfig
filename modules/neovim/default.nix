@@ -99,7 +99,17 @@ in
         onedark-nvim
         # Libraries
         plenary-nvim
+        nvim-web-devicons
+        # Treesitter
         nvim-treesitter'
+        nvim-ts-context-commentstring
+        playground
+        # Trouble
+        trouble-nvim
+        # Telescope
+        telescope-nvim
+        telescope-fzf-native-nvim
+        telescope-ui-select-nvim
         # Auto-completion
         nvim-cmp
         cmp-buffer
