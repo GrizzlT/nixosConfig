@@ -36,7 +36,10 @@ in
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
+      $suspend=${pkgs.systemd}/bin/systemctl suspend
 
+
+      bindl=,switch:off:[Lid Switch],exec,$suspend
       bind=$mainMod,delete,exit
       bind=$mainMod_SHIFT,q,exec,$wlogout
       bind=$mainMod,return,exec,wezterm start --always-new-process
