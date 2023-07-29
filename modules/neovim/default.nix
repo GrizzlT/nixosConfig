@@ -88,10 +88,10 @@ in
     plugins = let
       # All plugins with its dependencies are placed in a start directory
       # Python deps are not supported
-      plugins = with pkgs.unstable.vimPlugins; let
+      plugins = with pkgs.vimPlugins; let
         nvim-treesitter' = nvim-treesitter.withPlugins (parsers:
           with parsers; [
-            query toml lua rust gitcommit gitignore json markdown nix
+            query toml lua rust gitcommit gitignore json markdown nix bash
           ]
         );
       in [

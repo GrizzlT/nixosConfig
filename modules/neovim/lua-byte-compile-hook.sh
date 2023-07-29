@@ -7,8 +7,8 @@ luaByteCompile() {
     fi
   else
     (
-      shopt -s nullglob globstar
-      @nvimBin@ -l @luaByteCompileScript@ $out/**/*.lua
+      shopt -s nullglob globstar extglob
+      @nvimBin@ -l @luaByteCompileScript@ $out/\!\(**\)/*.lua
     )
   fi
 }
