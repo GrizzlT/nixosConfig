@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/16d05a5c8bf06c1e945f90c8bae4131dea54c290";
+    hyprland.url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     stylix.url = "github:danth/stylix/5c829554280f3139ddbfce8561d7430efbf2abfb";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
