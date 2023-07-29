@@ -76,6 +76,9 @@ in
       # Nix
       nil
       nixpkgs-fmt
+      # Telescope
+      fd
+      ripgrep
     ];
 
     extraLuaConfig = lib.pipe ([./init.lua] ++ (lib.lists.optionals (builtins.pathExists ./init.lua.d) (lib.filesystem.listFilesRecursive ./init.lua.d))) [
