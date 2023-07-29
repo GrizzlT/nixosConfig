@@ -45,7 +45,7 @@ vim.opt.splitbelow = true
 
 -- context
 vim.opt_global.scrolloff = 5
-vim.opg_global.sidescrolloff = 5
+vim.opt_global.sidescrolloff = 5
 
 -- Fire CursorHold event faster
 vim.opt.updatetime = 700
