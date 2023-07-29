@@ -9,6 +9,40 @@ local function char_matches_end_pair(opts)
   return opts.char == opts.next_char:sub(1,1)
 end
 
+local function is_rust_generic_param(opts)
+  local identifier = "[%w_]+"
+  local str = opts.line:sub(1, opts.col - 1)
+  if str:find(":%s" .. identifier .. "%s*$")
+    or str:find(":%s*impl%s+" .. identifier .. "%s*$")
+    or str:find("->%s*" .. identifier .. "%s*$")
+    or str:find("->%s*impl%s+" .. identifier .. "%s*$")
+    or str:find("fn%s+" .. identifier .. "%s*$")
+    or str:find("struct%s+" .. identifier .. "%s*$")
+    or str:find("enum%s+" .. identifier .. "%s*$")
+    or str:find("impl%s*$")
+    or str:find("impl%s+" .. identifier .. "%s*$")
+    or str:find("impl%s*%b<>%s*" .. identifier .. "%s*$")
+    or str:find("trait%s+" .. identifier .. "%s*$")
+    or str:find("type%s+" .. identifier .. "%s*$")
+    or str:find("::%s*$")
+  then
+    return true
+  end
+  return false
+end
+
+local function is_rust_closure(opts)
+  local str = opts.line:sub(1, opts.col - 1)
+  if str:find("move%s+$") -- move |
+    or str:find("=%s*$") -- let statement: = |
+    or str:find("[(,]%s*$") -- function parametes: (| or , |
+  then
+    return true
+  else
+    return false
+  end
+end
+
 local pairs = {}
 
 -- Add spaces between parentheses
@@ -24,7 +58,7 @@ table.insert(pairs,
       }, pair)
     end)
 )
-for _,bracket in pairs(brackets) do
+for _,bracket in ipairs(brackets) do
   table.insert(pairs,
     Rule(bracket[1]..' ', ' '..bracket[2])
       :with_pair(function() return false end)
@@ -64,13 +98,13 @@ table.insert(pairs,
 table.insert(pairs,
   -- Generic parameter
   Rule("<", ">", "rust")
-    :with_pair(ts_conds.is_ts_node({ 'type_parameters' }))
+    :with_pair(is_rust_generic_param)
     :with_cr(conds.none())
     :with_move(char_matches_end_pair)
 )
 table.insert(pairs,
   Rule("|", "|", "rust")
-    :with_pair(ts_conds.is_ts_node({ 'closure_parameters' }))
+    :with_pair(is_rust_closure)
     :with_cr(conds.none())
     :with_move(char_matches_end_pair)
 )
