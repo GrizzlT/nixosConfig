@@ -113,14 +113,17 @@ in
         telescope-nvim
         telescope-fzf-native-nvim
         telescope-ui-select-nvim
+        # Snippets
+        luasnip
         # Auto-completion
         nvim-cmp
         cmp-buffer
         cmp-path
         cmp-nvim-lsp
         cmp_luasnip
-        # Snippets
-        luasnip
+        # Editor utitilies
+        comment-nvim
+        nvim-autopairs
         # Languages
         vim-nix
       ];
