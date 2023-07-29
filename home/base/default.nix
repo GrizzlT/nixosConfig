@@ -6,7 +6,8 @@
 
   imports = [
     ./style.nix
-    ./neovim.nix
+    # ./neovim.nix
+    ../../modules/neovim
 
     ./zsh
   ];
