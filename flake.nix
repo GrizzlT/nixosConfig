@@ -2,7 +2,7 @@
   description = "GrizzlT's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/491480224bea92b171f927a8b37790b3000b26cd";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";

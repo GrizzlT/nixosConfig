@@ -78,7 +78,7 @@ in
       nixpkgs-fmt
     ];
 
-    extraLuaConfig = lib.pipe ([./init.lua] ++ lib.filesystem.listFilesRecursive ./init.lua.d) [
+    extraLuaConfig = lib.pipe ([./init.lua] ++ lib.lists.optional (builtins.pathExists ./init.lua.d) (lib.filesystem.listFilesRecursive ./init.lua.d)) [
       (builtins.filter (name: lib.hasSuffix ".lua" name))
       (builtins.map (file: luaBlock (baseNameOf file) file))
       concatNonEmptyStringsSep
@@ -218,7 +218,9 @@ in
           };
         };
       in
-        builtins.foldl' (r1: r2: r1 // r2) (mkRuntimeAttrs ./runtime // luaLsLibrary) pluginRuntimes;
+        builtins.foldl' (r1: r2: r1 // r2) (
+          lib.optionalAttrs (builtins.pathExists ./runtime) (mkRuntimeAttrs ./runtime) // luaLsLibrary
+        ) pluginRuntimes;
     in [
       {
         plugin = mergedPlugins;
@@ -226,16 +228,16 @@ in
         type = "lua";
       }
     ];
-
-    # Byte-compile init.lua
-    xdg.configFile."nvim/init.lua" = let
-      initLua = pkgs.writeText "init.lua" ''
-        ${cfg.extraLuaConfig}
-        ${cfg.generatedConfigs.lua}'';
-      initLuaCompiled = byteCompileLuaFile initLua;
-    in
-      lib.mkForce {
-        source = initLuaCompiled;
-      };
   };
+
+  # Byte-compile init.lua
+  xdg.configFile."nvim/init.lua" = let
+    initLua = pkgs.writeText "init.lua" ''
+      ${cfg.extraLuaConfig}
+      ${cfg.generatedConfigs.lua}'';
+    initLuaCompiled = byteCompileLuaFile initLua;
+  in
+    lib.mkForce {
+      source = initLuaCompiled;
+    };
 }

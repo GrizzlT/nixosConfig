@@ -1,6 +1,6 @@
 -- Optimize `runtimepath` when running from Nix
 for _, dir in ipairs(vim.opt.runtimepath:get()) do
-  if vim.endsWith(dir, "vim-pack-dir") then
+  if vim.endswith(dir, "vim-pack-dir") then
     local config_home = vim.fn.stdpath("config")
     vim.opt.runtimepath = {
       config_home,
