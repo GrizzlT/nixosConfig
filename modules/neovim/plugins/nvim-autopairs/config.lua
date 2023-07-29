@@ -13,7 +13,7 @@ local pairs = {}
 
 -- Add spaces between parentheses
 local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
-pairs.insert({
+table.insert(pairs,
   Rule(' ', ' ')
     :with_pair(function (opts)
       local pair = opts.line:sub(opts.col - 1, opts.col)
@@ -23,53 +23,57 @@ pairs.insert({
         brackets[3][1]..brackets[3][2],
       }, pair)
     end)
-})
+)
 for _,bracket in pairs(brackets) do
-  pairs.insert({
+  table.insert(pairs,
     Rule(bracket[1]..' ', ' '..bracket[2])
       :with_pair(function() return false end)
       :with_move(function(opts)
         return opts.prev_char:match('.%'..bracket[2]) ~= nil
       end)
       :use_key(bracket[2])
-  })
+  )
 end
 
 -- Lua
 -- add commas after assignment
-pairs.insert({
+table.insert(pairs,
   Rule('=', ',', "lua")
     :with_pair(conds.not_after_regex("%s?}", 2), nil)
     :with_pair(ts_conds.is_ts_node({ "table_constructor", "field", "bracket_index_expression" }))
     :with_cr(conds.none())
-    :with_move(char_matches_end_pair),
-})
+    :with_move(char_matches_end_pair)
+)
 
 -- Nix
-pairs.insert({
+table.insert(pairs,
 -- Auto end with semicolon
   Rule('=', ',', "nix")
     :with_pair(ts_conds.is_not_ts_node({ 'comment', 'source', 'string_expression', 'indented_string_expression' }))
     :with_cr(conds.none())
-    :with_move(char_matches_end_pair),
+    :with_move(char_matches_end_pair)
+)
+table.insert(pairs,
   Rule("''", "''", "nix")
     :with_pair(ts_conds.is_not_ts_node({ 'comment', 'source', 'string_expression', 'indented_string_expression' }))
     :with_pair(conds.not_before_text("''"))
-    :with_move(char_matches_end_pair),
-})
+    :with_move(char_matches_end_pair)
+)
 
 -- Rust
-pairs.inesrt({
+table.insert(pairs,
   -- Generic parameter
   Rule("<", ">", "rust")
     :with_pair(ts_conds.is_ts_node({ 'type_parameters' }))
     :with_cr(conds.none())
-    :with_move(char_matches_end_pair),
+    :with_move(char_matches_end_pair)
+)
+table.insert(pairs,
   Rule("|", "|", "rust")
     :with_pair(ts_conds.is_ts_node({ 'closure_parameters' }))
     :with_cr(conds.none())
-    :with_move(char_matches_end_pair),
-})
+    :with_move(char_matches_end_pair)
+)
 
 npairs.setup({
   enable_check_bracket_line = false,
@@ -106,7 +110,5 @@ end
 
 require('cmp').event:on(
   "confirm_done",
-  completion_cmp.on_confirm_done({
-    sh = false,
-  })
+  completion_cmp.on_confirm_done()
 )
