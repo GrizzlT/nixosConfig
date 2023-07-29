@@ -58,10 +58,10 @@ local listchars_update = vim.api.nvim_create_augroup('listchars_update', {})
 vim.api.nvim_create_autocmd("InsertEnter", {
   group = listchars_update,
   pattern = "*",
-  command = "setlocal listchars=tab:󰌒 ,extends:❭,precedes:❬"
+  command = 'setlocal listchars="tab:󰌒 ,extends:❭,precedes:❬"'
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = listchars_update,
   pattern = "*",
-  command = "setlocal listchars=tab:󰌒 ,trail:⋅,precedes:❬,extends:❭"
+  command = 'setlocal listchars="tab:󰌒 ,trail:⋅,precedes:❬,extends:❭"'
 })
