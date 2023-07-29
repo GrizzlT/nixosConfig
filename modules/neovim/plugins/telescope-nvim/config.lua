@@ -3,7 +3,7 @@ local actions = require('telescope.actions')
 local actions_layout = require('telescope.actions.layout')
 local trouble = require('trouble')
 local builtin = require('telescope.builtin')
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 
 telescope.setup({
   defaults = {
