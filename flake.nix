@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,8 +24,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-  {
+  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
+  let
+    overlay-unstable = final: prev: {
+      unstable = unstable.legacyPackages.${prev.system};
+    };
+  in {
     packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
       inherit self;
       pkgs = nixpkgs.legacyPackages.${system};
@@ -49,8 +54,9 @@
       ];
     };
 
-    homeConfigurations."grizz@clevo" = let pkgs = nixpkgs.legacyPackages."x86_64-linux"; in
-      home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."grizz@clevo" = let
+      pkgs = import nixpkgs { overlays = [ overlay-unstable ]; system = "x86_64-linux"; };
+    in home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = inputs;
         modules = [

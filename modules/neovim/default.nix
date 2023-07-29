@@ -78,7 +78,7 @@ in
       nixpkgs-fmt
     ];
 
-    extraLuaConfig = lib.pipe ([./init.lua] ++ lib.lists.optional (builtins.pathExists ./init.lua.d) (lib.filesystem.listFilesRecursive ./init.lua.d)) [
+    extraLuaConfig = lib.pipe ([./init.lua] ++ (lib.lists.optionals (builtins.pathExists ./init.lua.d) (lib.filesystem.listFilesRecursive ./init.lua.d))) [
       (builtins.filter (name: lib.hasSuffix ".lua" name))
       (builtins.map (file: luaBlock (baseNameOf file) file))
       concatNonEmptyStringsSep
@@ -88,7 +88,7 @@ in
     plugins = let
       # All plugins with its dependencies are placed in a start directory
       # Python deps are not supported
-      plugins = with pkgs.vimPlugins; let
+      plugins = with pkgs.unstable.vimPlugins; let
         nvim-treesitter' = nvim-treesitter.withPlugins (parsers:
           with parsers; [
             query toml lua rust gitcommit gitignore json markdown nix

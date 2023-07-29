@@ -212,7 +212,8 @@
         "impermanence": "impermanence",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "unstable": "unstable"
       }
     },
     "stylix": {
@@ -236,6 +237,22 @@
         "owner": "danth",
         "repo": "stylix",
         "rev": "5c829554280f3139ddbfce8561d7430efbf2abfb",
+        "type": "github"
+      }
+    },
+    "unstable": {
+      "locked": {
+        "lastModified": 1690548937,
+        "narHash": "sha256-x3ZOPGLvtC0/+iFAg9Kvqm/8hTAIkGjc634SqtgaXTA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2a9d660ff0f7ffde9d73be328ee6e6f10ef66b28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
