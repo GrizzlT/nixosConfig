@@ -15,7 +15,7 @@ vim.keymap.set({ "i", "s" }, "<C-f>", function() luasnip.jump(1) end, { silent =
 vim.keymap.set({ "i", "s" }, "<C-_>", function() luasnip.jump(-1) end, { silent = true })
 
 local opts = {
-  paths = vim.fs.joinpath(vim.fn.stdpath("config"), "snippets")
+  paths = vim.fn.stdpath("config") .. "/snippets"
 }
 require('luasnip.loaders.from_lua').lazy_load(opts)
 

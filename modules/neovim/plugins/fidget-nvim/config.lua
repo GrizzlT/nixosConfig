@@ -4,7 +4,7 @@ require('fidget').setup({
   },
   text = {
     spinner = "bouncing_bar",         -- animation shown when tasks are ongoing
-    done = "‚úî",               -- character shown when all tasks are complete
+    done = "",               -- character shown when all tasks are complete
     commenced = "Allow me!",    -- message shown when task starts
     completed = "Outta here!",  -- message shown when task completes
   },
