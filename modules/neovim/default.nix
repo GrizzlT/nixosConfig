@@ -73,6 +73,8 @@ in
       };
 
     extraPackages = with pkgs; [
+      # Toml
+      taplo
       # Nix
       nil
       nixpkgs-fmt
@@ -120,7 +122,11 @@ in
         cmp-buffer
         cmp-path
         cmp-nvim-lsp
+        cmp-nvim-lsp-signature-help
         cmp_luasnip
+        # Lsp
+        nvim-lspconfig
+        fidget-nvim
         # Editor utitilies
         comment-nvim
         nvim-autopairs
