@@ -38,6 +38,13 @@ let
 
       pluginDeps = map (dep: pluginNormalizeName (lib.getName dep)) lazyPlugin.plugin.dependencies or [];
       pluginDepsString = lib.concatMapStringsSep ", " (depName: "'" + depName + "'") pluginDeps;
+
+      priorityString = lib.optionalString (lazyPlugin ? priority) ''priority = ${toString lazyPlugin.priority},'';
+      listToString = ls: lib.concatMapStringsSep ", " (elem: "'" + elem + "'") ls;
+      stringOrListToString = value: if (builtins.isList value) then "{${listToString value}}" else "'" + value + "'";
+      eventString = lib.optionalString (lazyPlugin ? event) ''event = ${stringOrListToString lazyPlugin.event},'';
+      cmdString = lib.optionalString (lazyPlugin ? cmd) ''cmd = ${stringOrListToString lazyPlugin.cmd},'';
+      ftString = lib.optionalString (lazyPlugin ? ft) ''ft = ${stringOrListToString lazyPlugin.ft},'';
     in ''
       {
         dir = "${lazyPlugin.plugin}",
@@ -49,7 +56,10 @@ let
         config = function()
           ${pluginConfig (pluginName lazyPlugin)}
         end,
-    '' + lib.optionalString (lazyPlugin ? priority) ''priority = ${toString lazyPlugin.priority},'' + ''
+        ${priorityString}
+        ${eventString}
+        ${cmdString}
+        ${ftString}
       }
     '';
   in

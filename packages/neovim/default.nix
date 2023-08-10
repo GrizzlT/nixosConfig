@@ -31,8 +31,13 @@ let
     }
     {
       plugin = nvim-treesitter';
-      event = "BufRead";
+      lazy = false;
     }
+    {
+      plugin = playground;
+      cmd = "TSPlaygroundToggle";
+    }
+    nvim-ts-context-commentstring
     lush-nvim
   ];
 
