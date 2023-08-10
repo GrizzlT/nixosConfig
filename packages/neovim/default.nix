@@ -31,7 +31,7 @@ let
     }
     {
       plugin = nvim-treesitter';
-      lazy = false;
+      event = "BufRead";
     }
     {
       plugin = playground;
