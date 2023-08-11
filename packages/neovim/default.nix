@@ -17,29 +17,7 @@ let
     ripgrep
   ];
 
-  plugins = let
-    nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
-      with parsers; [
-        query toml lua rust gitcommit gitignore json markdown nix bash
-      ]);
-  in with vimPlugins;
-  [
-    {
-      plugin = dracula-nvim;
-      lazy = false;
-      priority = 1000;
-    }
-    {
-      plugin = nvim-treesitter';
-      event = "BufRead";
-    }
-    {
-      plugin = playground;
-      cmd = "TSPlaygroundToggle";
-    }
-    nvim-ts-context-commentstring
-    lush-nvim
-  ];
+  plugins = import ./plugins.nix { inherit vimPlugins; };
 
   lua-utils = import ./lua-utils.nix { inherit lib runCommand makeSetupHook neovim-unwrapped fd; };
   plugin-utils = import ./plugin-utils.nix {

@@ -15,7 +15,7 @@ let
     pluginWithDeps = acc: plugin:
       (if (containsPlugin acc plugin) then [] else [plugin])
       ++ builtins.concatMap (pluginWithDeps acc) plugin.dependencies or [];
-    allDeps = lib.concatMap (lazyPlugin: lazyPlugin.plugin.dependencies or []) lazyPlugins;
+    allDeps = lib.unique (lib.concatMap (lazyPlugin: lazyPlugin.plugin.dependencies or [] ++ lazyPlugin.dependencies or []) lazyPlugins);
   in
     normalizeLazyPlugins (lib.foldl (acc: plugin: acc ++ pluginWithDeps acc plugin) lazyPlugins allDeps);
 
@@ -36,7 +36,7 @@ let
       in
         lib.optionalString (builtins.pathExists configPath) (luaBlock name configPath);
 
-      pluginDeps = map (dep: pluginNormalizeName (lib.getName dep)) lazyPlugin.plugin.dependencies or [];
+      pluginDeps = map (dep: pluginNormalizeName (lib.getName dep)) (lib.unique lazyPlugin.plugin.dependencies or [] ++ lazyPlugin.dependencies or []);
       pluginDepsString = lib.concatMapStringsSep ", " (depName: "'" + depName + "'") pluginDeps;
 
       priorityString = lib.optionalString (lazyPlugin ? priority) ''priority = ${toString lazyPlugin.priority},'';
@@ -45,6 +45,18 @@ let
       eventString = lib.optionalString (lazyPlugin ? event) ''event = ${stringOrListToString lazyPlugin.event},'';
       cmdString = lib.optionalString (lazyPlugin ? cmd) ''cmd = ${stringOrListToString lazyPlugin.cmd},'';
       ftString = lib.optionalString (lazyPlugin ? ft) ''ft = ${stringOrListToString lazyPlugin.ft},'';
+
+      lazyKey = key: let
+        lhs = "'${key.lhs}', ";
+        rhs = lib.optionalString (key ? rhs) "'${key.rhs}', ";
+        mode = lib.optionalString (key ? mode) "mode = ${stringOrListToString key.mode}, ";
+        opts = lib.optionalString (key ? opts) key.opts;
+      in ''{ ${lhs} ${rhs} ${mode} ${opts} }'';
+      keySpec = keys: if (builtins.isString keys) then ("'" + keys + "'") else (if (builtins.isList keys) then (lib.concatMapStringsSep ", " listKeySpec keys) else lazyKey keys);
+      listKeySpec = key: if (builtins.isString key) then "{ '" + key + "', mode = 'n'}" else lazyKey key;
+      keysString = lib.optionalString (lazyPlugin ? keys) ''keys = {
+        ${keySpec lazyPlugin.keys}
+      }'';
     in ''
       {
         dir = "${lazyPlugin.plugin}",
@@ -60,6 +72,7 @@ let
         ${eventString}
         ${cmdString}
         ${ftString}
+        ${keysString}
       }
     '';
   in
