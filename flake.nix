@@ -60,7 +60,7 @@
     };
 
     homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = pkgs "x86_64-linux";
         extraSpecialArgs = inputs;
         modules = [
           ./home/base
