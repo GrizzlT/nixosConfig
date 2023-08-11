@@ -11,6 +11,7 @@ let
     };
   in
     runCommand "onedarkpro-nvim" {} ''
+      mkdir -p $out/lua/lualine/themes
       ${neovim}/bin/nvim -l ${../onedarkpro-nvim-config.lua}
       cd $out/colors
       rm cache
@@ -75,6 +76,38 @@ in with vimPlugins;
     cmd = "TSPlaygroundToggle";
   }
   nvim-ts-context-commentstring
+
+  # LSP + completion
+  {
+    plugin = nvim-lspconfig;
+    event = [ "BufReadPre" "BufNewFile" ];
+    dependencies = [
+      cmp-nvim-lsp
+    ];
+  }
+  {
+    plugin = nvim-cmp;
+    event = "InsertEnter";
+    dependencies = [
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp_luasnip
+      cmp-nvim-lsp-signature-help
+    ];
+  }
+  {
+    plugin = luasnip;
+    lazy = false;
+  }
+
+  # LuaLine
+  {
+    plugin = lualine-nvim;
+    lazy = false;
+    event = "VeryLazy";
+    dependencies = [ nvim-web-devicons ];
+  }
 
   # Autopairs
   {

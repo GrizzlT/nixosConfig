@@ -7,8 +7,8 @@ vim.opt.expandtab = true
 -- Options
 vim.opt.termguicolors = true
 vim.opt.mouse = ""
-vim.opt_global.showmode = false
-vim.opt_global.completeopt = "menu,menuone,noinsert"
+vim.opt.showmode = false
+vim.opt.completeopt = "menu,menuone,noinsert"
 vim.opt.virtualedit = "block"
 
 -- Backup
@@ -43,14 +43,14 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- context
-vim.opt_global.scrolloff = 5
-vim.opt_global.sidescrolloff = 5
+vim.opt.scrolloff = 5
+vim.opt.sidescrolloff = 5
 
 -- Fire CursorHold event faster
 vim.opt.updatetime = 700
 
 vim.opt.list = true
-vim.opt_global.listchars = "tab:󰌒 ,trail:⋅,precedes:❬,extends:❭"
+vim.opt.listchars = "tab:󰌒 ,trail:⋅,precedes:❬,extends:❭"
 
 -- don't show trailing spaces during insert mode
 local listchars_update = vim.api.nvim_create_augroup('listchars_update', {})
