@@ -1,4 +1,4 @@
-{ lib, vimPlugins, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, vimUtils,
+{ lib, vimPlugins, neovim, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, vimUtils,
   writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv,
   taplo, # Toml
   nil, nixpkgs-fmt, # Nix
@@ -17,7 +17,7 @@ let
     ripgrep
   ];
 
-  plugins = import ./plugins.nix { inherit vimPlugins; };
+  plugins = import ./plugins.nix { inherit vimPlugins runCommand; neovim-raw = neovim; };
 
   lua-utils = import ./lua-utils.nix { inherit lib runCommand makeSetupHook neovim-unwrapped fd; };
   plugin-utils = import ./plugin-utils.nix {

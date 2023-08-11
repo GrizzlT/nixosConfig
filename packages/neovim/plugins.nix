@@ -1,14 +1,25 @@
-{ vimPlugins }:
+{ vimPlugins, neovim-raw, runCommand }:
 let
   nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
     with parsers; [
       query toml lua rust gitcommit gitignore json markdown nix bash
     ]);
+
+  onedarkpro = let
+    neovim = neovim-raw.override {
+      configure.packages.onedarkpro.start = [vimPlugins.onedarkpro-nvim];
+    };
+  in
+    runCommand "onedarkpro-nvim" {} ''
+      ${neovim}/bin/nvim -l ${./onedarkpro-nvim-config.lua}
+      cd $out/colors
+      rm cache
+    '';
 in with vimPlugins;
 [
   # Colorscheme
   {
-    plugin = onedarkpro-nvim;
+    plugin = onedarkpro;
     lazy = false;
     priority = 1000;
   }
