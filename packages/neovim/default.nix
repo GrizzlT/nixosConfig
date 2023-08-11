@@ -26,11 +26,26 @@ let
   };
 
   lazyNvim = plugin-utils.compilePlugin vimPlugins.lazy-nvim;
+  runtimePlugin = plugin-utils.compilePlugin (vimUtils.buildVimPlugin {
+    pname = "grizz-runtime";
+    version = "0.1.0";
+    src = ./runtime;
+  });
+
 
   lazyPlugins = plugin-utils.buildLazyPlugins plugins;
   lazyConfig = ''
     vim.opt.rtp:prepend("${lazyNvim}")
     require('lazy').setup({
+      {
+        dir = '${runtimePlugin}',
+        lazy = false,
+        name = 'grizz-runtime',
+        config = function()
+          require('grizz-runtime').setup({path = '${runtimePlugin}'})
+        end,
+        priority = 1500,
+      },
       ${lazyPlugins}
     }, {
       install = {
