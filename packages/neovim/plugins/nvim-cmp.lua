@@ -1,46 +1,56 @@
 local cmp = require('cmp')
 local mapping = cmp.mapping
 local luasnip = require('luasnip')
-
-local completion_menu_map = {
-  luasnip = "[Snip]",
-  nvim_lsp = "[LSP]",
-  buffer = "[Buf]",
-  cmdline = "[Cmd]",
-}
-
-local function format_vim_entry(entry, vim_item)
-  vim_item.menu = completion_menu_map[entry.source.name] or string.format("[%s]", entry.source.name)
-  return vim_item
-end
+local lspkind = require('lspkind')
 
 cmp.setup({
-  completion = {
-    completeopt = 'menu,menuone,noinsert',
-  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip', keyword_length = 2, },
+    { name = 'path' },
+    { name = 'buffer' },
+  }),
   snippet = {
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help' },
-      { name = 'luasnip', keyword_length = 2, },
-      { name = 'path' },
-      { name = 'buffer' },
-    }),
     expand = function (args)
       luasnip.lsp_expand(args.body)
     end,
-    mapping = mapping.preset.insert({
-      ["<C-y>"] = mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-      ["<M-y>"] = mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
-      ["<M-d>"] = mapping.scroll_docs(8),
-      ["<M-u>"] = mapping.scroll_docs(-8),
+  },
+  mapping = {
+    ["<C-n>"] = mapping(function ()
+      if cmp.visible() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior })
+      else
+        cmp.complete()
+      end
+    end),
+    ["<C-p>"] = mapping(function ()
+      if cmp.visible then
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior })
+      else
+        cmp.complete()
+      end
+    end),
+    ["<C-e>"] = mapping.abort(),
+    ["<C-y>"] = mapping(mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })),
+    ["<M-y>"] = mapping(mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert })),
+    ["<M-d>"] = mapping(mapping.scroll_docs(8)),
+    ["<M-u>"] = mapping(mapping.scroll_docs(-8)),
+  },
+  preselect = cmp.PreselectMode.Item,
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol',
+      menu = ({
+        buffer = "[Buf]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[Snip]",
+        cmdline = "[Cmd]",
+        path = "[Path]",
+      })
     }),
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
-    formatting = {
-      format = format_vim_entry,
-    },
-  }
+  },
 })

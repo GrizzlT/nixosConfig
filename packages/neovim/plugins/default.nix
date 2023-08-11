@@ -1,4 +1,4 @@
-{ vimPlugins, neovim-raw, runCommand }:
+{ vimPlugins, vimExtraPlugins, neovim-raw, runCommand }:
 let
   nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
     with parsers; [
@@ -93,7 +93,7 @@ in with vimPlugins;
       cmp-buffer
       cmp-path
       cmp_luasnip
-      cmp-nvim-lsp-signature-help
+      lspkind-nvim
     ];
   }
   {
@@ -106,7 +106,11 @@ in with vimPlugins;
     plugin = lualine-nvim;
     lazy = false;
     event = "VeryLazy";
-    dependencies = [ nvim-web-devicons ];
+    dependencies = [ nvim-web-devicons vimExtraPlugins.lsp-progress-nvim];
+  }
+  {
+    plugin = vimExtraPlugins.lsp-progress-nvim;
+    dependencies = [nvim-web-devicons];
   }
 
   # Autopairs

@@ -15,9 +15,9 @@ require('onedarkpro').setup({
     nvim_tree = false,
     packer = false,
   },
-  options = {
-    transparency = true,
-  }
+  -- options = {
+  --   transparency = true,
+  -- }
 })
 
 for _, flavor in ipairs({ 'onedark', 'onedark_dark', 'onedark_vivid', 'onelight' }) do

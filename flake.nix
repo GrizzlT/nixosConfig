@@ -18,6 +18,8 @@
       repo = "impermanence";
       ref = "master";
     };
+    nixneovimplugins.url = "github:NixNeovim/NixNeovimPlugins";
+    nixneovimplugins.inputs.nixpkgs.follows = "nixpkgs";
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,14 +31,17 @@
     overlay-unstable = final: prev: {
       unstable = unstable.legacyPackages.${prev.system};
     };
+    pkgs = system: import nixpkgs { overlays = [
+      overlay-unstable inputs.nixneovimplugins.overlays.default
+    ]; inherit system; };
   in {
     packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
       inherit self;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = pkgs system;
       flake-inputs = inputs;
     })) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: import ./packages {
       inherit self;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = pkgs system;
       flake-inputs = inputs;
     }));
 
@@ -54,9 +59,7 @@
       ];
     };
 
-    homeConfigurations."grizz@clevo" = let
-      pkgs = import nixpkgs { overlays = [ overlay-unstable ]; system = "x86_64-linux"; };
-    in home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = inputs;
         modules = [
