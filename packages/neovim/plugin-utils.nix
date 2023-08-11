@@ -48,7 +48,7 @@ let
 
       lazyKey = key: let
         lhs = "'${key.lhs}', ";
-        rhs = lib.optionalString (key ? rhs) "'${key.rhs}', ";
+        rhs = lib.optionalString (key ? rhs) "${key.rhs}, ";
         mode = lib.optionalString (key ? mode) "mode = ${stringOrListToString key.mode}, ";
         opts = lib.optionalString (key ? opts) key.opts;
       in ''{ ${lhs} ${rhs} ${mode} ${opts} }'';

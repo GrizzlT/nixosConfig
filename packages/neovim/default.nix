@@ -17,7 +17,7 @@ let
     ripgrep
   ];
 
-  plugins = import ./plugins.nix { inherit vimPlugins runCommand; neovim-raw = neovim; };
+  plugins = import ./plugins { inherit vimPlugins runCommand; neovim-raw = neovim; };
 
   lua-utils = import ./lua-utils.nix { inherit lib runCommand makeSetupHook neovim-unwrapped fd; };
   plugin-utils = import ./plugin-utils.nix {
@@ -82,8 +82,8 @@ let
     lua-utils.concatNonEmptyStrings
   ];
   initLuaCompiled = lua-utils.luaFileByteCompile (writeText "init.lua" ''
-    ${lazyConfig}
     ${extraLuaConfig}
+    ${lazyConfig}
   '');
 
   initLuaWrapperArgs = [ "--add-flags" "-u ${initLuaCompiled}" ];
