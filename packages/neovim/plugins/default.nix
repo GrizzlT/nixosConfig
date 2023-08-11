@@ -104,9 +104,9 @@ in with vimPlugins;
   # LuaLine
   {
     plugin = lualine-nvim;
-    lazy = false;
+    # lazy = false;
     event = "VeryLazy";
-    dependencies = [ nvim-web-devicons vimExtraPlugins.lsp-progress-nvim];
+    dependencies = [ nvim-web-devicons ];
   }
   {
     plugin = vimExtraPlugins.lsp-progress-nvim;

@@ -1,7 +1,7 @@
 { lib, vimPlugins, vimExtraPlugins, neovim, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, vimUtils,
   writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv,
   taplo, # Toml
-  nil, nixpkgs-fmt, # Nix
+  nixd, nixpkgs-fmt, # Nix
   fd, ripgrep, # Telescope
 }:
 let
@@ -10,7 +10,7 @@ let
     # Toml
     taplo
     # Nix
-    nil
+    nixd
     nixpkgs-fmt
     # Telescope
     fd

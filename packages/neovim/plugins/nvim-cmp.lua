@@ -36,7 +36,9 @@ cmp.setup({
     ["<M-d>"] = mapping(mapping.scroll_docs(8)),
     ["<M-u>"] = mapping(mapping.scroll_docs(-8)),
   },
-  preselect = cmp.PreselectMode.Item,
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),

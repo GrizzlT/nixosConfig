@@ -1,4 +1,19 @@
 local lspconfig = require('lspconfig')
+local lsp_util = require('lspconfig.util')
+local configs = require('lspconfig.configs')
+if not configs.nixd then
+  configs.nixd = {
+    default_config = {
+      cmd = { 'nixd' },
+      filetypes = { "nix" },
+      single_file_support = true,
+      root_dir = function (fname)
+        return lsp_util.root_pattern(unpack { '.nixd.json', 'flake.nix' })(fname) or lsp_util.find_git_ancestor(fname)
+      end,
+      settings = {},
+    }
+  }
+end
 
 local lsp_capabilities = vim.tbl_deep_extend(
   "force",
@@ -7,7 +22,7 @@ local lsp_capabilities = vim.tbl_deep_extend(
 )
 
 local servers = {
-  nil_ls = {},
+  nixd = {},
   taplo = {},
 }
 

@@ -28,11 +28,11 @@
 
   outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
   let
-    overlay-unstable = final: prev: {
+    flakeOverlay = final: prev: {
       unstable = unstable.legacyPackages.${prev.system};
     };
     pkgs = system: import nixpkgs { overlays = [
-      overlay-unstable inputs.nixneovimplugins.overlays.default
+      flakeOverlay inputs.nixneovimplugins.overlays.default
     ]; inherit system; };
   in {
     packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
