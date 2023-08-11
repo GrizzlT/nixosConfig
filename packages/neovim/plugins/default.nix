@@ -76,6 +76,12 @@ in with vimPlugins;
   }
   nvim-ts-context-commentstring
 
+  # Autopairs
+  {
+    plugin = nvim-autopairs;
+    event = "InsertEnter";
+  }
+
   # Colorscheme dev
   lush-nvim
 ]
