@@ -1,5 +1,16 @@
-{ vimPlugins, vimExtraPlugins, neovim-raw, runCommand }:
+{ vimPlugins, vimExtraPlugins, buildVimPlugin, neovim-raw, runCommand, fetchFromGitHub }:
 let
+  hex-nvim = buildVimPlugin {
+    pname = "hex-nvim";
+    version = "2023-08-12";
+    src = fetchFromGitHub {
+      owner = "RaafatTurki";
+      repo = "hex.nvim";
+      rev = "63411ffe59fb8ecc3611367731cf13effc4d706f";
+      sha256 = "TWP6TyC6KEKxSglG1bc3nZ5JOJitowkC9sOFi/1pzlk=";
+    };
+  };
+
   nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
     with parsers; [
       query toml lua rust gitcommit gitignore json markdown nix bash
@@ -117,6 +128,18 @@ in with vimPlugins;
   {
     plugin = nvim-autopairs;
     event = "InsertEnter";
+  }
+
+  # Markdown previewing
+  {
+    plugin = markdown-preview-nvim;
+    cmd = [ "MarkdownPreview" "MarkdownPreviewToggle" ];
+  }
+
+  # Hex editing
+  {
+    plugin = hex-nvim;
+    cmd = [ "HexDump" "HexAssemble" "HexToggle" ];
   }
 
   # Colorscheme dev

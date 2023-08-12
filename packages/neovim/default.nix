@@ -1,8 +1,9 @@
 { lib, vimPlugins, vimExtraPlugins, neovim, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, vimUtils,
-  writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv,
+  writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv, fetchFromGitHub,
   taplo, # Toml
   nixd, nixpkgs-fmt, # Nix
   fd, ripgrep, # Telescope
+  unixtools, # xxd
 }:
 let
   # binaries available to Neovim
@@ -15,9 +16,15 @@ let
     # Telescope
     fd
     ripgrep
+    # Hex.nvim
+    unixtools.xxd
   ];
 
-  plugins = import ./plugins { inherit vimPlugins vimExtraPlugins runCommand; neovim-raw = neovim; };
+  plugins = import ./plugins {
+    inherit vimPlugins vimExtraPlugins runCommand fetchFromGitHub;
+    inherit (vimUtils) buildVimPlugin;
+    neovim-raw = neovim;
+  };
 
   lua-utils = import ./lua-utils.nix { inherit lib runCommand makeSetupHook neovim-unwrapped fd; };
   plugin-utils = import ./plugin-utils.nix {
