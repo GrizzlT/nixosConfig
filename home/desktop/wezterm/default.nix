@@ -6,7 +6,7 @@
       local act = wezterm.action
 
       local is_vim = function(pane)
-        return pane.get_user_vars().IS_NVIM = 'true'
+        return pane:get_user_vars().IS_NVIM == 'true'
       end
       local direction_keys = {
         Left = 'h',
@@ -23,7 +23,7 @@
         return {
           key = key,
           mods = resize_or_move == 'resize' and 'ALT' or 'CTRL',
-          action = w.action_callback(function(win, pane)
+          action = wezterm.action_callback(function(win, pane)
             if is_vim(pane) then
               win:perform_action({
                 SendKey = { key = key, mods = resize_or_move == 'resize' and 'ALT' or 'CTRL' },
@@ -75,6 +75,7 @@
           { key = 'n', mods = 'SUPER|SHIFT', action = act.SpawnTab 'DefaultDomain' },
           { key = 'w', mods = 'SUPER', action = act.CloseCurrentTab { confirm = true } },
           { key = 'x', mods = 'SUPER', action = act.CloseCurrentPane { confirm = true }},
+          { key = 'l', mods = 'CTRL|SHIFT', action = act.ShowDebugOverlay },
 
           { key = 'F1', action = act.ActivateTab(0) },
           { key = 'F2', action = act.ActivateTab(1) },
