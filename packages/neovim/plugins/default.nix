@@ -77,6 +77,17 @@ in with vimPlugins;
     ];
   }
 
+  # Todo comments
+  {
+    plugin = todo-comments-nvim;
+    dependencies = [plenary-nvim];
+    event = "InsertEnter";
+    keys = [
+      { lhs = "<leader>tt"; rhs = "'<cmd>TodoTrouble<cr>'"; opts = silentNoRemap; }
+      { lhs = "<leader>tT"; rhs = "'<cmd>TodoTelescope<cr>'"; opts = silentNoRemap; }
+    ];
+  }
+
   # Treesitter
   {
     plugin = nvim-treesitter';
