@@ -11,6 +11,7 @@
         tab_bar_at_bottom = true,
         colors = {
           cursor_fg = 'rgba(40, 42, 54)',
+          compose_cursor = 'orange',
         },
 
         disable_default_key_bindings = true,
@@ -83,15 +84,11 @@
         },
 
         wezterm.on('update-right-status', function(window, pane)
-          local leader = '''
-          if window:leader_is_active() then
-            leader = 'LEADER'
-          end
           local name = window:active_key_table()
           if name then
             name = 'TABLE: ' .. name
           end
-          window:set_right_status(leader .. ' ' .. name or ''')
+          window:set_right_status(name or ''')
         end)
       }
     '';
