@@ -20,13 +20,14 @@
         keys = {
           { key = 'c', mods = 'SUPER', action = act.CopyTo 'Clipboard' },
           { key = 'v', mods = 'SUPER', action = act.PasteFrom 'Clipboard' },
-          { key = '-', mods = 'SUPER|SHIFT', action = act.DecreaseFontSize },
-          { key = '=', mods = 'SUPER|SHIFT', action = act.IncreaseFontSize },
-          { key = '{', mods = 'SUPER|SHIFT', action = act.ResetFontSize },
+          { key = '-', mods = 'SUPER|ALT', action = act.DecreaseFontSize },
+          { key = '=', mods = 'SUPER|ALT', action = act.IncreaseFontSize },
+          { key = '{', mods = 'SUPER|ALT', action = act.ResetFontSize },
 
           { key = 'n', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
           { key = 'n', mods = 'SUPER|SHIFT', action = act.SpawnTab 'DefaultDomain' },
           { key = 'w', mods = 'SUPER', action = act.CloseCurrentTab { confirm = true } },
+          { key = 'x', mods = 'SUPER', action = act.CloseCurrentPane { confirm = true }},
 
           { key = 'F1', action = act.ActivateTab(0) },
           { key = 'F2', action = act.ActivateTab(1) },
@@ -41,9 +42,9 @@
           { key = 'f', mods = 'LEADER', action = act.Search({CaseInSensitiveString=""})},
           { key = 'c', mods = 'LEADER', action = act.ActivateCopyMode },
 
-          { key = '-', mods = 'SUPER', action = act.SplitVertical({domain = "CurrentPaneDomain"})},
-          { key = '%', mods = 'SUPER', action = act.SplitHorizontal({domain = "CurrentPaneDomain"})},
-          { key = 'z', mods = 'SUPER', action = act.TogglePaneZoomState },
+          { key = '-', mods = 'LEADER', action = act.SplitVertical({domain = "CurrentPaneDomain"})},
+          { key = '%', mods = 'LEADER', action = act.SplitHorizontal({domain = "CurrentPaneDomain"})},
+          { key = 'z', mods = 'LEADER', action = act.TogglePaneZoomState },
 
           { key = 's', mods = 'LEADER|CTRL', action = act.SendKey { key = 's', mods = 'CTRL' }},
           { key = 'o', mods = 'LEADER', action = act.ActivateLastTab },
@@ -59,6 +60,10 @@
             { key = 'j', action = act.AdjustPaneSize { 'Down', 1 }},
             { key = 'k', action = act.AdjustPaneSize { 'Up', 1 }},
             { key = 'l', action = act.AdjustPaneSize { 'Right', 1 }},
+            { key = 'h', mods = 'SHIFT', action = act.AdjustPaneSize { 'Left', 5 }},
+            { key = 'j', mods = 'SHIFT', action = act.AdjustPaneSize { 'Down', 5 }},
+            { key = 'k', mods = 'SHIFT', action = act.AdjustPaneSize { 'Up', 5 }},
+            { key = 'l', mods = 'SHIFT', action = act.AdjustPaneSize { 'Right', 5 }},
             { key = 'Escape', action = 'PopKeyTable' },
           },
           activate_pane = {
@@ -71,8 +76,8 @@
           move_tab = {
             { key = 'p', action = act.ActivateTabRelative(-1) },
             { key = 'n', action = act.ActivateTabRelative(1) },
-            { key = 'p', mods = 'SHIFT', action = act.Multiple({ act.MoveTabRelative(-1), act.ActivateTabRelative(-1) }) },
-            { key = 'n', mods = 'SHIFT', action = act.Multiple({ act.MoveTabRelative(1), act.ActivateTabRelative(1) }) },
+            { key = 'p', mods = 'SHIFT', action = act.MoveTabRelative(-1) },
+            { key = 'n', mods = 'SHIFT', action = act.MoveTabRelative(1) },
             { key = 'Escape', action = act.PopKeyTable },
           },
         },
