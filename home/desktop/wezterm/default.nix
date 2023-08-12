@@ -16,7 +16,7 @@
         disable_default_key_bindings = true,
         key_map_preference = "Mapped",
 
-        leader = { key = 'Space', mods = 'SUPER|SHIFT', timeout_milliseconds = 1000 },
+        leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 1000 },
         keys = {
           { key = 'c', mods = 'SUPER', action = act.CopyTo 'Clipboard' },
           { key = 'v', mods = 'SUPER', action = act.PasteFrom 'Clipboard' },
@@ -38,18 +38,20 @@
           { key = 'F8', action = act.ActivateTab(7) },
           { key = 'F9', action = act.ActivateTab(-1) },
 
-          { key = '[', mods = 'ALT', action = act.ActivateTabRelative(-1) },
-          { key = ']', mods = 'ALT', action = act.ActivateTabRelative(1) },
-
-          { key = 'f', mods = 'SUPER', action = act.Search({CaseInSensitiveString=""})},
-          { key = 'c', mods = 'SUPER|SHIFT', action = act.ActivateCopyMode },
+          { key = 'f', mods = 'LEADER', action = act.Search({CaseInSensitiveString=""})},
+          { key = 'c', mods = 'LEADER', action = act.ActivateCopyMode },
 
           { key = '-', mods = 'SUPER', action = act.SplitVertical({domain = "CurrentPaneDomain"})},
-          { key = '|', mods = 'SUPER', action = act.SplitHorizontal({domain = "CurrentPaneDomain"})},
+          { key = '%', mods = 'SUPER', action = act.SplitHorizontal({domain = "CurrentPaneDomain"})},
           { key = 'z', mods = 'SUPER', action = act.TogglePaneZoomState },
 
-          { key = 'r', mods = 'LEADER', action = act.ActivateKeyTable { name = 'resize_pane', one_shot = 'false' } },
-          { key = 'a', mods = 'LEADER', action = act.ActivateKeyTable { name = 'activate_pane', timeout_milliseconds = 1000 } },
+          { key = 's', mods = 'LEADER|CTRL', action = act.SendKey { key = 's', mods = 'CTRL' }},
+          { key = 'o', mods = 'LEADER', action = act.ActivateLastTab },
+          { key = 't', mods = 'LEADER', action = act.ActivateKeyTable { name = 'move_tab', one_shot = false }},
+          { key = 'p', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+          { key = 'n', mods = 'LEADER', action = act.ActivateTabRelative(1) },
+          { key = 'r', mods = 'LEADER', action = act.ActivateKeyTable { name = 'resize_pane', one_shot = false }},
+          { key = 'a', mods = 'LEADER', action = act.ActivateKeyTable { name = 'activate_pane', timeout_milliseconds = 1000 }},
         },
         key_tables = {
           resize_pane = {
@@ -64,7 +66,14 @@
             { key = 'j', action = act.ActivatePaneDirection 'Down' },
             { key = 'k', action = act.ActivatePaneDirection 'Up' },
             { key = 'l', action = act.ActivatePaneDirection 'Right' },
-            { key = 'Escape', action = 'PopKeyTable' },
+            { key = 'Escape', action = act.PopKeyTable },
+          },
+          move_tab = {
+            { key = 'p', action = act.ActivateTabRelative(-1) },
+            { key = 'n', action = act.ActivateTabRelative(1) },
+            { key = 'p', mods = 'SHIFT', action = act.Multiple(act.MoveTabRelative(-1), act.ActivateTabRelative(-1)) },
+            { key = 'n', mods = 'SHIFT', action = act.Multiple(act.MoveTabRelative(1), act.ActivateTabRelative(1)) },
+            { key = 'Escape', action = act.PopKeyTable },
           },
         },
 
