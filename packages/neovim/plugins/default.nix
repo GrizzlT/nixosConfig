@@ -48,6 +48,12 @@ in with vimPlugins;
     ];
   }
 
+  # Smart splits
+  {
+    plugin = smart-splits-nvim;
+    lazy = false;
+  }
+
   # Telescope
   {
     plugin = telescope-nvim;

@@ -27,6 +27,8 @@ in
       windowrule = float, my-fzf-menu
       windowrule = center, my-fzf-menu
 
+      windowrule = float, title:^(Picture-in-Picture)$
+
       $mainMod=SUPER
       $browser=${pkgs.librewolf}/bin/librewolf
       $gamemode=${scripts.gamemode}/bin/gamemode
