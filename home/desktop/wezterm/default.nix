@@ -71,8 +71,8 @@
           move_tab = {
             { key = 'p', action = act.ActivateTabRelative(-1) },
             { key = 'n', action = act.ActivateTabRelative(1) },
-            { key = 'p', mods = 'SHIFT', action = act.Multiple(act.MoveTabRelative(-1), act.ActivateTabRelative(-1)) },
-            { key = 'n', mods = 'SHIFT', action = act.Multiple(act.MoveTabRelative(1), act.ActivateTabRelative(1)) },
+            { key = 'p', mods = 'SHIFT', action = act.Multiple({ act.MoveTabRelative(-1), act.ActivateTabRelative(-1) }) },
+            { key = 'n', mods = 'SHIFT', action = act.Multiple({ act.MoveTabRelative(1), act.ActivateTabRelative(1) }) },
             { key = 'Escape', action = act.PopKeyTable },
           },
         },
