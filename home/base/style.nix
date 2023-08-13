@@ -30,6 +30,7 @@
     targets.dunst.enable = true;
     targets.swaylock.enable = true;
     targets.bemenu.enable = true;
+    stylix.targets.bat.enable = true;
   };
 
   home.pointerCursor = {

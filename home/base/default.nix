@@ -7,6 +7,7 @@
   imports = [
     ./style.nix
     ./neovim.nix
+    ./git.nix
 
     ./zsh
   ];
@@ -16,6 +17,7 @@
     htop.enable = true;
     bottom.enable = true;
     bash.enable = true;
+    bat.enable = true;
 
     fzf = {
       enable = true;
