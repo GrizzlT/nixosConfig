@@ -12,6 +12,10 @@
     ./zsh
   ];
 
+  home.packages = with pkgs; [
+    tokei
+  ];
+
   programs = {
     home-manager.enable = true;
     htop.enable = true;
