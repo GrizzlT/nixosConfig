@@ -66,6 +66,10 @@
           ./home/base
           ./home/desktop
           {
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (pkgs.lib.getName pkg) [
+                "spotify"
+              ];
             home = {
               username = "grizz";
               homeDirectory = "/home/grizz";

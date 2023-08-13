@@ -30,8 +30,14 @@
     wl-clipboard
     swaylock
 
-    # spotifywm
+    discord
+    spotifywm
+
+    darktable
+    inkscape
+    gimp
   ];
 
   programs.foot.enable = true;
+  programs.imv.enable = true;
 }

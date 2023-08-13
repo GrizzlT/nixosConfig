@@ -8,6 +8,7 @@
     ./style.nix
     ./neovim.nix
     ./git.nix
+    ./xplr.nix
 
     ./zsh
   ];
