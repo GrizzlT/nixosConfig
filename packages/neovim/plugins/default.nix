@@ -53,6 +53,11 @@ in with vimPlugins;
     plugin = smart-splits-nvim;
     lazy = false;
   }
+  {
+    plugin = oil-nvim;
+    dependencies = [nvim-web-devicons];
+    lazy = false;
+  }
 
   # Telescope
   {
