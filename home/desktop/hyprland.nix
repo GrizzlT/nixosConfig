@@ -39,6 +39,8 @@ in
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
       $suspend=${pkgs.systemd}/bin/systemctl suspend
+      $music=${pkgs.spotify}/bin/spotify
+      $discord=${pkgs.discord}/bin/discord
 
 
       bindl=,switch:off:[Lid Switch],exec,$suspend
@@ -55,6 +57,7 @@ in
       bind=$mainMod,l,exec,$lock
       bind=$mainMod_SHIFT,o,exec,$colorPicker
       bind=$mainMod,y,exec,[workspace special:trash] $music
+      bind=$mainMod,d,exec,[workspace special:discord] $discord
 
       bind=$mainMod,g,togglegroup
       bind=$mainMod,tab,changegroupactive
@@ -161,8 +164,8 @@ in
       bind = $mainMod, U, togglespecialworkspace,
       bind = $mainMod SHIFT, Backspace, movetoworkspace, special:work
       bind = $mainMod, Backspace, togglespecialworkspace, work
-      bind = $mainMod SHIFT, rightparen, movetoworkspace, special:trash
-      bind = $mainMod, rightparen, togglespecialworkspace, trash
+      bind = $mainMod SHIFT, parenright, movetoworkspace, special:trash
+      bind = $mainMod, parenright, togglespecialworkspace, trash
       bind = $mainMod SHIFT, minus, movetoworkspace, special:discord
       bind = $mainMod, minus, togglespecialworkspace, discord
 

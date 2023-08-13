@@ -65,17 +65,18 @@
         modules = [
           ./home/base
           ./home/desktop
-          {
+          ({ pkgs, lib, ... }: {
             nixpkgs.config.allowUnfreePredicate = pkg:
-              builtins.elem (pkgs.lib.getName pkg) [
+              builtins.elem (lib.getName pkg) [
                 "spotify"
+                "discord"
               ];
             home = {
               username = "grizz";
               homeDirectory = "/home/grizz";
               stateVersion = "23.05";
             };
-          }
+          })
         ];
     };
   };

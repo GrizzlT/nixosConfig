@@ -36,8 +36,8 @@
     darktable
     inkscape
     gimp
+    imv
   ];
 
   programs.foot.enable = true;
-  programs.imv.enable = true;
 }
