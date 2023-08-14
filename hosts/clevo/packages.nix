@@ -8,6 +8,9 @@
       curl
       git
       inputs.grizz-zfs-diff
+
+      libimobiledevice
+      ifuse
     ];
   };
   programs.light.enable = true;
