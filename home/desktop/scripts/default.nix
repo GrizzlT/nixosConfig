@@ -1,14 +1,16 @@
 { pkgs, hyprland, ... }:
 let
+  hyprlandPkg = hyprland.packages.${pkgs.system}.hyprland;
   callPackage = pkgs.callPackage;
   wlogout = callPackage ./wlogout.nix {};
 in
 {
   hyprland = {
-    gamemode = callPackage ./gamemode.nix { hyprland = hyprland.packages.${pkgs.system}.hyprland; };
+    gamemode = callPackage ./gamemode.nix { hyprland = hyprlandPkg; };
     colorPicker = callPackage ./colorpicker.nix {};
     brightness = callPackage ./brightness.nix {};
     volume = callPackage ./volume.nix {};
+    launcher = callPackage ./launcher.nix { hyprland = hyprlandPkg; };
     inherit wlogout;
   };
 

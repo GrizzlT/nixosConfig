@@ -30,6 +30,7 @@ in
       windowrule = float, title:^(Picture-in-Picture)$
 
       $mainMod=SUPER
+      $launcher=${scripts.launcher}/bin/launcher
       $browser=${pkgs.librewolf}/bin/librewolf
       $gamemode=${scripts.gamemode}/bin/gamemode
       $colorPicker=${scripts.colorPicker}/bin/colorpicker
@@ -56,6 +57,7 @@ in
       bind=$mainMod,k,cyclenext,
       bind=$mainMod,l,exec,$lock
       bind=$mainMod_SHIFT,o,exec,$colorPicker
+      bind=$mainMod,space,exec,$launcher
       bind=$mainMod,y,exec,[workspace special:trash] $music
       bind=$mainMod,d,exec,[workspace special:discord] $discord
 
