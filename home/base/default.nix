@@ -14,8 +14,10 @@
   ];
 
   home.packages = with pkgs; [
+    neofetch
     tokei
-    ifuse
+    jq
+    fd
   ];
 
   programs = {
@@ -29,6 +31,12 @@
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
     };
   };
 }

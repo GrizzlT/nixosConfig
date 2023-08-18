@@ -64,12 +64,14 @@
         extraSpecialArgs = inputs;
         modules = [
           ./home/base
-          ./home/desktop
+          ./home/desktop/wm
+          ./home/desktop/apps
           ({ pkgs, lib, ... }: {
             nixpkgs.config.allowUnfreePredicate = pkg:
               builtins.elem (lib.getName pkg) [
                 "spotify"
                 "discord"
+                "lunar-client"
               ];
             home = {
               username = "grizz";

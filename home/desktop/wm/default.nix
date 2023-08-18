@@ -9,19 +9,14 @@
   imports = [
     ./hyprland.nix
     ./waybar
-    ./wezterm
     ./dunst
 
-    ./librewolf.nix
     ./idle.nix
     ./wlogout
-    ./zsh.nix
   ];
 
   home.keyboard = null;
   home.packages = with pkgs; [
-    neofetch
-
     pavucontrol
     libnotify
     swaybg
@@ -30,14 +25,7 @@
     wl-clipboard
     swaylock
 
-    discord
-    spotifywm
-
-    darktable
-    inkscape
-    gimp
-    imv
+    grim
+    slurp
   ];
-
-  programs.foot.enable = true;
 }

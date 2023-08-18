@@ -1,11 +1,13 @@
 { pkgs, ... }:
 {
+  # Regreet packages requirements
   environment.systemPackages = with pkgs; [
     swaybg
     greetd.greetd
     greetd.regreet
   ];
 
+  # Regreet service definition
   services.greetd = {
     enable = true;
     restart = false;
@@ -21,6 +23,7 @@
     };
   };
 
+  # Regreet files
   environment.etc = {
     "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
     "regreet/options.conf".source = ./options.conf;

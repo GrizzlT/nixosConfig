@@ -5,17 +5,10 @@
   ];
 
   home.packages = with pkgs; [
-    fd
     zsh-powerlevel10k
 
     myPackages.emoji-fzf
   ];
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-    enableBashIntegration = true;
-  };
 
   programs.zsh = {
     enable = true;

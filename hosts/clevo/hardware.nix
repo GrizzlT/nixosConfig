@@ -36,7 +36,7 @@ in
       efi.canTouchEfiVariables = true;
     };
 
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = [ "zfs" "nfs" "cifs" ];
     kernelParams = [ "nohibernate" ];
     kernelModules = [ "kvm-intel" "i915" ];
     extraModulePackages = [ ];

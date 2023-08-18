@@ -16,7 +16,7 @@ in
       exec-once=${pkgs.dunst}/bin/dunst
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
-      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../wallpapers/color-bg.jpg}
+      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/color-bg.jpg}
 
       windowrule = float, pavucontrol
       windowrule = float, wlogout
@@ -253,12 +253,17 @@ in
         animation = workspaces, 1, 5, wind
       }
 
+      device:logitech-usb-optical-mouse {
+        sensitivity = -0.5
+        accel_profile = custom 200 0.0 0.3 0.8 0.9 0.9
+      }
+
       input {
         numlock_by_default=true
 
         repeat_delay=300
         kb_layout=grizz
-        kb_options=ctrl:nocaps,shift:both_capslock
+        kb_options=ctrl:nocaps
 
         # mouse is independent from keyboard
         follow_mouse=1

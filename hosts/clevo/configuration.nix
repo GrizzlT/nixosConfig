@@ -7,7 +7,7 @@ in
 {
   imports = [
     ./hardware.nix
-    ./optimize.nix
+    ./performance.nix
     ./persist.nix
     ./packages.nix
     ./services.nix

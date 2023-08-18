@@ -4,8 +4,9 @@
     ./greetd
   ];
 
-  # Pipewire settings
+  # Authority kit
   security.rtkit.enable = true;
+  # Pipewire settings
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -22,4 +23,8 @@
       }
     '';
   };
+
+  # Iphone mounting
+  services.usbmuxd.enable = true;
+  services.rpcbind.enable = true;
 }
