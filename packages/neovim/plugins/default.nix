@@ -65,7 +65,7 @@ in with vimPlugins;
     dependencies = [ plenary-nvim ];
     cmd = "Telescope";
     keys = [
-      { lhs = "<leader>pf"; rhs = ''function() require('telescope.builtin').find_files() end''; opts = ''desc = "Find file"''; }
+      { lhs = "<leader>pf"; rhs = ''function() require('telescope.builtin').find_files({no_ignore = true}) end''; opts = ''desc = "Find file"''; }
       { lhs = "<leader>pp"; rhs = ''function() require('telescope.builtin').git_files() end''; opts = ''desc = "Git files"''; }
       { lhs = "<leader>pg"; rhs = ''function() require('telescope.builtin').live_grep() end''; opts = ''desc = "Live grep"''; }
       { lhs = "<leader>pb"; rhs = ''function() require('telescope.builtin').buffers() end''; opts = ''desc = "Find buffer"''; }

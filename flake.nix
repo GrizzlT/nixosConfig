@@ -4,22 +4,40 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
-    hyprland.inputs.nixpkgs.follows = "nixpkgs";
-    stylix.url = "github:danth/stylix/5c829554280f3139ddbfce8561d7430efbf2abfb";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    flakeSecrets = {
+      url = "git+file:./flakeSecrets?shallow=1";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix/5c829554280f3139ddbfce8561d7430efbf2abfb";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixneovimplugins = {
+      url = "github:NixNeovim/NixNeovimPlugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence = {
       type = "github";
       owner = "nix-community";
       repo = "impermanence";
       ref = "master";
     };
-    nixneovimplugins.url = "github:NixNeovim/NixNeovimPlugins";
-    nixneovimplugins.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +81,7 @@
         pkgs = pkgs "x86_64-linux";
         extraSpecialArgs = inputs;
         modules = [
+          inputs.flakeSecrets.homeManagerModules.default
           ./home/base
           ./home/desktop/wm
           ./home/desktop/apps

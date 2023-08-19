@@ -5,9 +5,14 @@
     userName = "GrizzlT";
     userEmail = "13691001+GrizzlT@users.noreply.github.com";
     extraConfig = {
-      core = {
+      init = {
         defaultBranch = "main";
+      };
+      core = {
         autocrlf = "input";
+      };
+      status = {
+        showUntrackedFiles = "all";
       };
     };
     lfs.enable = true;

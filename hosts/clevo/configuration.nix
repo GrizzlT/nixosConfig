@@ -12,6 +12,8 @@ in
     ./packages.nix
     ./services.nix
     ./style.nix
+
+    ./bashmount.nix
     ../../modules/grizz-keyboard.nix
     ../../modules/nix-settings.nix
   ];
