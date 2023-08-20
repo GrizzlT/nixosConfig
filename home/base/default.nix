@@ -10,6 +10,9 @@
     ./git.nix
     ./xplr.nix
 
+    ./passage.nix
+    ./gpg.nix
+
     ./zsh
   ];
 

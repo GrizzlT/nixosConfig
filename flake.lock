@@ -81,7 +81,7 @@
       },
       "locked": {
         "lastModified": 1692462932,
-        "narHash": "sha256-8NWvi+tZf45qFodydqdzoqbCAm1rQjWqPCLvxxlYQgg=",
+        "narHash": "sha256-BqMGq+cQHs9TW7Bo1Sp+J+CEvD+mNxsIesTYEVeO7Pc=",
         "shallow": true,
         "type": "git",
         "url": "file:./flakeSecrets"
