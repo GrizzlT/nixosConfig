@@ -13,7 +13,7 @@ in
     ./services.nix
     ./style.nix
 
-    ./bashmount.nix
+    ./mounts.nix
     ../../modules/grizz-keyboard.nix
     ../../modules/nix-settings.nix
   ];
