@@ -38,8 +38,10 @@ in
 
     supportedFilesystems = [ "zfs" "nfs" "cifs" ];
     kernelParams = [ "nohibernate" ];
-    kernelModules = [ "kvm-intel" "i915" ];
-    extraModulePackages = [ ];
+    kernelModules = [ "kvm-intel" "i915" "v4l2loopback" ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
   };
 
   systemd.enableEmergencyMode = false;

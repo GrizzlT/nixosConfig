@@ -17,6 +17,8 @@
     gimp
     imv
 
+    obs-studio
+
     lunar-client
 
     pkgs.unstable.planify
