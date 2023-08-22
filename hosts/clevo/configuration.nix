@@ -12,6 +12,8 @@ in
     ./packages.nix
     ./services.nix
     ./style.nix
+    ./vpn.nix
+    ./firewall.nix
 
     ./mounts.nix
     ../../modules/grizz-keyboard.nix
