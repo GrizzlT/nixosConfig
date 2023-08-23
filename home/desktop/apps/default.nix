@@ -18,8 +18,8 @@
     imv
 
     obs-studio
-
-    lunar-client
+    qpwgraph
+    vlc
 
     pkgs.unstable.planify
 

@@ -90,7 +90,6 @@
               builtins.elem (lib.getName pkg) [
                 "spotify"
                 "discord"
-                "lunar-client"
               ];
             home = {
               username = "grizz";

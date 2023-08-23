@@ -21,6 +21,9 @@
     tokei
     jq
     fd
+    unzip
+
+    appimage-run
   ];
 
   programs = {
