@@ -7,6 +7,8 @@ in
     inputs.hyprland.homeManagerModules.default
   ];
 
+  home.packages = with pkgs; [ grimblast ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     recommendedEnvironment = true;
@@ -42,6 +44,7 @@ in
       $suspend=${pkgs.systemd}/bin/systemctl suspend
       $music=${pkgs.spotify}/bin/spotify
       $discord=${pkgs.discord}/bin/discord
+      $grimblast=${pkgs.grimblast}/bin/grimblast
 
 
       bindl=,switch:off:[Lid Switch],exec,$suspend
@@ -78,7 +81,12 @@ in
       bind=,escape,submap,reset
       submap=reset
 
-      # TODO: screenshot binds
+      bind = SUPER, p, exec, $grimblast save active
+      bind = SUPER ALT, p, exec, $grimblast copy active
+      bind = SUPER SHIFT, p, exec, $grimblast save area
+      bind = SUPER SHIFT ALT, p, exec, $grimblast copy area
+      bind = SUPER CTRL, p, exec, $grimblast save screen
+      bind = SUPER CTRL ALT, p, exec, $grimblast copy screen
 
       bind=$mainMod,equal,submap,volume
       submap=volume

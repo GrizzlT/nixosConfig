@@ -80,10 +80,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1692631000,
+        "lastModified": 1692783389,
         "narHash": "sha256-4vS76sWjvW8DGyKKJcAsL7zqSbZV/2sv/YAU10n7jQs=",
         "ref": "refs/heads/main",
-        "rev": "a5490aae3bf613ec151e6c167aa8a97b46469643",
+        "rev": "a236433e579f7cb8d347ae7289d3d073e6fd2b55",
         "shallow": true,
         "type": "git",
         "url": "file:./flakeSecrets"
@@ -176,6 +176,26 @@
         "type": "github"
       }
     },
+    "hyprland-contrib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1690635289,
+        "narHash": "sha256-ec77Yf7mqusmGkxrmYXEG4D0DqEcNRA3vFextWVQOVA=",
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "rev": "bef073cff65917ba2d888aa4dc39bd9868e2b0a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "type": "github"
+      }
+    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -213,6 +233,22 @@
         "type": "github"
       }
     },
+    "mcversions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1648176147,
+        "narHash": "sha256-9xqPSKlSDZZx3z683ZoMhR6jyRd1eS6L+mIdjnqu6Cw=",
+        "owner": "yushijinhun",
+        "repo": "minecraft-version-json-history",
+        "rev": "a8487697562bf897d0688f4edb9f9fc4b2b4bbfb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yushijinhun",
+        "repo": "minecraft-version-json-history",
+        "type": "github"
+      }
+    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -232,6 +268,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-github-actions",
+        "type": "github"
+      }
+    },
+    "nix-minecraft": {
+      "inputs": {
+        "mcversions": "mcversions",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1655551827,
+        "narHash": "sha256-sUdTici3FjWTMvfKtW+h9R6LFvdWrlWub/SI5pAdkAI=",
+        "owner": "12Boti",
+        "repo": "nix-minecraft",
+        "rev": "a2c657b54d86bc1c912ce99597253cfdb4042010",
+        "type": "github"
+      },
+      "original": {
+        "owner": "12Boti",
+        "repo": "nix-minecraft",
         "type": "github"
       }
     },
@@ -337,7 +394,9 @@
         "flakeSecrets": "flakeSecrets",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprland-contrib": "hyprland-contrib",
         "impermanence": "impermanence",
+        "nix-minecraft": "nix-minecraft",
         "nixneovimplugins": "nixneovimplugins",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",

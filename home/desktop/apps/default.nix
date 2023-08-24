@@ -3,11 +3,15 @@
   imports = [
     ./wezterm
     ./librewolf.nix
-    ./thunderbird.nix
     ./zsh.nix
   ];
 
   home.packages = with pkgs; [
+    thunderbird
+    gpgme
+
+    brave
+
     fluffychat
     discord
     spotifywm

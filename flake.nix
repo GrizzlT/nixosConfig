@@ -20,6 +20,10 @@
       url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix = {
       url = "github:danth/stylix/5c829554280f3139ddbfce8561d7430efbf2abfb";
@@ -50,7 +54,9 @@
       unstable = unstable.legacyPackages.${prev.system};
     };
     pkgs = system: import nixpkgs { overlays = [
-      flakeOverlay inputs.nixneovimplugins.overlays.default
+      flakeOverlay
+      inputs.nixneovimplugins.overlays.default
+      inputs.hyprland-contrib.overlays.default
     ]; inherit system; };
   in {
     packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
