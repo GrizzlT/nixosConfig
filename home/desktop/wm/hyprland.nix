@@ -45,6 +45,7 @@ in
       $music=${pkgs.spotify}/bin/spotify
       $discord=${pkgs.discord}/bin/discord
       $grimblast=${pkgs.grimblast}/bin/grimblast
+      $passage=${scripts.passage-fzf}/bin/passage-fzf-type
 
 
       bindl=,switch:off:[Lid Switch],exec,$suspend
@@ -63,6 +64,8 @@ in
       bind=$mainMod,space,exec,$launcher
       bind=$mainMod,y,exec,[workspace special:trash] $music
       bind=$mainMod,d,exec,[workspace special:discord] $discord
+
+      bind=$mainMod,i,exec,$passage
 
       bind=$mainMod,g,togglegroup
       bind=$mainMod,tab,changegroupactive
@@ -264,6 +267,10 @@ in
       device:logitech-usb-optical-mouse {
         sensitivity = -0.5
         accel_profile = custom 200 0.0 0.3 0.8 0.9 0.9
+      }
+      device:ydotoold-virtual-device {
+        kb_layout=us
+        kb_options=grp:shifts_toggle,caps:swapescape
       }
 
       input {

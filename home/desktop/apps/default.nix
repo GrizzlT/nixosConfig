@@ -21,9 +21,16 @@
     gimp
     imv
 
-    obs-studio
+    (pkgs.wrapOBS {
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-pipewire-audio-capture
+      ];
+    })
+    easyeffects
     qpwgraph
     vlc
+
+    prismlauncher
 
     pkgs.unstable.planify
 

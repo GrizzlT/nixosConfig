@@ -233,22 +233,6 @@
         "type": "github"
       }
     },
-    "mcversions": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1648176147,
-        "narHash": "sha256-9xqPSKlSDZZx3z683ZoMhR6jyRd1eS6L+mIdjnqu6Cw=",
-        "owner": "yushijinhun",
-        "repo": "minecraft-version-json-history",
-        "rev": "a8487697562bf897d0688f4edb9f9fc4b2b4bbfb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "yushijinhun",
-        "repo": "minecraft-version-json-history",
-        "type": "github"
-      }
-    },
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
@@ -268,27 +252,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-github-actions",
-        "type": "github"
-      }
-    },
-    "nix-minecraft": {
-      "inputs": {
-        "mcversions": "mcversions",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1655551827,
-        "narHash": "sha256-sUdTici3FjWTMvfKtW+h9R6LFvdWrlWub/SI5pAdkAI=",
-        "owner": "12Boti",
-        "repo": "nix-minecraft",
-        "rev": "a2c657b54d86bc1c912ce99597253cfdb4042010",
-        "type": "github"
-      },
-      "original": {
-        "owner": "12Boti",
-        "repo": "nix-minecraft",
         "type": "github"
       }
     },
@@ -396,7 +359,6 @@
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "impermanence": "impermanence",
-        "nix-minecraft": "nix-minecraft",
         "nixneovimplugins": "nixneovimplugins",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",

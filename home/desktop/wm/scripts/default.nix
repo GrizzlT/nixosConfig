@@ -11,6 +11,7 @@ in
     brightness = callPackage ./brightness.nix {};
     volume = callPackage ./volume.nix {};
     launcher = callPackage ./launcher.nix { hyprland = hyprlandPkg; };
+    passage-fzf = callPackage ./passage-fzf.nix { hyprland = hyprlandPkg; };
     inherit wlogout;
   };
 

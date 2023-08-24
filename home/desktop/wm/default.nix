@@ -25,6 +25,8 @@
     wl-clipboard
     swaylock
 
+    ydotool
+
     grim
     slurp
   ];
