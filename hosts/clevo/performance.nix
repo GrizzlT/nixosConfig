@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
   services.thermald.enable = true;
   services.tlp = {
@@ -11,7 +11,7 @@
       CPU_MIN_PERF_ON_AC = 0;
       CPU_MAX_PERF_ON_AC = 100;
       CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 30;
+      CPU_MAX_PERF_ON_BAT = 50;
       START_CHARGE_THRESH_BAT0=75;
       STOP_CHARGE_THRESH_BAT0=80;
     };
@@ -28,4 +28,7 @@
   };
 
   environment.variables.VDPAU_DRIVER = "va_gl";
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

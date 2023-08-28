@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./greetd
-  ];
-
   # Authority kit
   security.rtkit.enable = true;
   # Pipewire settings
@@ -24,16 +20,5 @@
         ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
       }
     '';
-  };
-
-  # Iphone mounting
-  services.usbmuxd.enable = true;
-  services.rpcbind.enable = true;
-
-  services.printing.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
   };
 }

@@ -24,6 +24,7 @@ local lsp_capabilities = vim.tbl_deep_extend(
 local servers = {
   nixd = {},
   taplo = {},
+  clangd = {},
 }
 
 for server_name, config in pairs(servers) do

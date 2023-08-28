@@ -22,6 +22,7 @@
     jq
     fd
     unzip
+    p7zip
 
     appimage-run
   ];

@@ -79,7 +79,7 @@
       modules = [
         inputs.hyprland.nixosModules.default
         inputs.impermanence.nixosModules.impermanence
-        ./hosts/clevo/configuration.nix
+        ./hosts/clevo
       ];
     };
 
@@ -92,11 +92,6 @@
           ./home/desktop/wm
           ./home/desktop/apps
           ({ pkgs, lib, ... }: {
-            nixpkgs.config.allowUnfreePredicate = pkg:
-              builtins.elem (lib.getName pkg) [
-                "spotify"
-                "discord"
-              ];
             home = {
               username = "grizz";
               homeDirectory = "/home/grizz";

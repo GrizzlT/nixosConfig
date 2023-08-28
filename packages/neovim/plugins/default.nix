@@ -56,7 +56,9 @@ in with vimPlugins;
   {
     plugin = oil-nvim;
     dependencies = [nvim-web-devicons];
-    lazy = false;
+    keys = [
+      { lhs = "<leader>-"; rhs = "'<cmd>Oil<cr>'"; opts = ''desc = "Open file explorer"''; }
+    ];
   }
 
   # Telescope

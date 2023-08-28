@@ -2,6 +2,13 @@
 {
   environment.systemPackages = with pkgs; [
     bashmount
+    # iPhone
+    libimobiledevice
+    ifuse
+    # NFS
+    nfs-utils
+    # Samba
+    cifs-utils
   ];
 
   environment.etc."bashmount.conf".text = ''
@@ -24,4 +31,11 @@
       "data=journal"
     ];
   };
+
+  # Iphone mounting
+  services.usbmuxd.enable = true;
+  services.rpcbind.enable = true;
+
+  # CIFS, NFS
+  boot.supportedFilesystems = [ "cifs" "nfs" ];
 }

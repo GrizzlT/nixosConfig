@@ -1,4 +1,4 @@
-{ pkgs, ... }@inputs:
+{ pkgs, lib, ... }@inputs:
 {
   imports = [
     ./wezterm
@@ -6,16 +6,25 @@
     ./zsh.nix
   ];
 
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "spotify"
+      "discord"
+    ];
+
   home.packages = with pkgs; [
+    xdg-utils
     thunderbird
     gpgme
 
+    firefox
     brave
 
     fluffychat
     discord
     spotifywm
 
+    freecad
     darktable
     inkscape
     gimp

@@ -36,7 +36,7 @@ in
       efi.canTouchEfiVariables = true;
     };
 
-    supportedFilesystems = [ "zfs" "nfs" "cifs" ];
+    supportedFilesystems = [ "zfs" ];
     kernelParams = [ "nohibernate" ];
     kernelModules = [ "kvm-intel" "i915" "v4l2loopback" ];
     extraModulePackages = with config.boot.kernelPackages; [
@@ -85,11 +85,4 @@ in
   };
 
   swapDevices = [ { device = deviceSwap; randomEncryption = true; } ];
-
-  # networking.useDHCP = lib.mkDefault true;
-  networking.interfaces.enp46s0.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
