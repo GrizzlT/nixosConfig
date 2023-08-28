@@ -4,4 +4,9 @@
     enable = true;
     # TODO: add settings
   };
+
+  home.packages = with pkgs; [
+    firefox
+    brave
+  ];
 }

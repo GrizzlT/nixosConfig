@@ -1,9 +1,12 @@
 { pkgs, lib, ... }@inputs:
 {
   imports = [
-    ./wezterm
-    ./librewolf.nix
+    ./wezterm.nix
+    ./browser.nix
+    ./images.nix
+    ./sound.nix
     ./zsh.nix
+    ./chat.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -17,34 +20,14 @@
     thunderbird
     gpgme
 
-    firefox
-    brave
-
-    fluffychat
-    discord
-    spotifywm
-
-    freecad
-    darktable
-    inkscape
-    gimp
-    imv
-
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-pipewire-audio-capture
       ];
     })
-    easyeffects
-    qpwgraph
-    vlc
-
-    prismlauncher
 
     pkgs.unstable.planify
 
     gtkwave
   ];
-
-  programs.foot.enable = true;
 }

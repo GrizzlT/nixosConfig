@@ -15,19 +15,11 @@
     ./wlogout
   ];
 
+  programs.foot.enable = true;
+
   home.keyboard = null;
   home.packages = with pkgs; [
     pavucontrol
     libnotify
-    swaybg
-    hyprpicker
-    cliphist
-    wl-clipboard
-    swaylock
-
-    ydotool
-
-    grim
-    slurp
   ];
 }

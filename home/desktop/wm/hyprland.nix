@@ -7,7 +7,12 @@ in
     inputs.hyprland.homeManagerModules.default
   ];
 
-  home.packages = with pkgs; [ grimblast ];
+  home.packages = with pkgs; [
+    grimblast
+    hyprpicker
+    cliphist
+    wl-clipboard
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
