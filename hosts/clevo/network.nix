@@ -1,7 +1,8 @@
 hostName: hostId:
 { lib, ... }:
 {
-  networking.useDHCP = lib.mkDefault true;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.enp46s0.useDHCP = true;
   networking.hostId = hostId;
   networking.hostName = hostName;
   networking.networkmanager.enable = true;

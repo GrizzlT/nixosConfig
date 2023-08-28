@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixSettings, ... }:
+{ config, pkgs, lib, grizz-zfs-diff, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
@@ -36,7 +36,7 @@ in
     wget
     curl
     git
-    inputs.grizz-zfs-diff
+    grizz-zfs-diff
   ];
 
   nix.gc = {
