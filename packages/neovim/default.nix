@@ -1,9 +1,11 @@
 { lib, vimPlugins, vimExtraPlugins, neovim, neovim-unwrapped, wrapNeovimUnstable, neovimUtils, vimUtils,
-  writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv, fetchFromGitHub,
+  writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv, fetchFromGitHub, fetchgit,
+  tree-sitter, # Tree sitter
   taplo, # Toml
   nixd, nixpkgs-fmt, # Nix
   fd, ripgrep, # Telescope
   unixtools, # xxd
+  ltex-ls # ltex-ls
 }:
 let
   # binaries available to Neovim
@@ -18,10 +20,12 @@ let
     ripgrep
     # Hex.nvim
     unixtools.xxd
+    # ltex-ls
+    ltex-ls
   ];
 
   plugins = import ./plugins {
-    inherit vimPlugins vimExtraPlugins runCommand fetchFromGitHub;
+    inherit vimPlugins vimExtraPlugins runCommand fetchFromGitHub fetchgit tree-sitter;
     inherit (vimUtils) buildVimPlugin;
     neovim-raw = neovim;
   };

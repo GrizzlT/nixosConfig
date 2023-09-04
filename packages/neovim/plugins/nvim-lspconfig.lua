@@ -25,6 +25,16 @@ local servers = {
   nixd = {},
   taplo = {},
   clangd = {},
+  digestif = {},
+  ltex = {
+    on_attach = function(client, bufnr)
+      require("ltex_extra").setup({
+        load_langs = { "en-US", "en-GB", "nl-BE" },
+        path = ".ltex-data/",
+      })
+    end,
+  },
+  typst_lsp = {},
 }
 
 for server_name, config in pairs(servers) do

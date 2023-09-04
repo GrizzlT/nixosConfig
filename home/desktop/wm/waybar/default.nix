@@ -12,7 +12,7 @@ with config.stylix.fonts;
       position = "top";
       modules-left = [ "keyboard-state" "idle_inhibitor" "hyprland/submap" ];
       modules-center = [ "clock" ];
-      modules-right = [ "pulseaudio" "cpu" "memory" "network" "battery" "custom/wlogout" ];
+      modules-right = [ "custom/pipewire" "cpu" "memory" "network" "battery" "custom/wlogout" ];
 
       "hyprland/submap" = {
         on-click = "hyprctl dispatch submap reset";
@@ -43,25 +43,16 @@ with config.stylix.fonts;
         format = "{:%a %d %b, %I:%M %p}";
       };
 
-      pulseaudio = {
-        reverse-scrolling = 1;
-        format = "{volume}% {icon} {format_source}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = "󰋎 {icon} {format_source}";
-        format-muted = "󰖁 {format_source}";
-        format-source = "{volume}% ";
-        format-source-muted = "";
-        format-icons = {
-            headphone = "";
-            hands-free = "󰏴";
-            headset = "󰋎";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["󰕿" "󰖀" "󰕾"];
-        };
-        on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
-        min-length = 13;
+      "custom/pipewire" = {
+          exec = "${pkgs.pw-volume}/bin/pw-volume status";
+          return-type = "json";
+          interval = "once";
+          signal = 8;
+          format = "{icon} {percentage}";
+          format-icons = {
+              mute = "󰖁";
+              default = ["󰕿" "󰖀" "󰕾"];
+          };
       };
       cpu = {
         interval = 5;

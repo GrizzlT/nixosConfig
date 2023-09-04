@@ -9,7 +9,6 @@ in
     gamemode = callPackage ./gamemode.nix { hyprland = hyprlandPkg; };
     colorPicker = callPackage ./colorpicker.nix {};
     brightness = callPackage ./brightness.nix {};
-    volume = callPackage ./volume.nix {};
     launcher = callPackage ./launcher.nix { hyprland = hyprlandPkg; };
     passage-fzf = callPackage ./passage-fzf.nix { hyprland = hyprlandPkg; };
     inherit wlogout;

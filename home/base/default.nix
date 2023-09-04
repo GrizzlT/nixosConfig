@@ -23,6 +23,7 @@
     fd
     unzip
     p7zip
+    d2
 
     appimage-run
   ];

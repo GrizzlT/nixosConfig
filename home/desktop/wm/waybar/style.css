@@ -63,14 +63,14 @@ window#waybar.hidden {
   background: @base00;
 }
 
-#pulseaudio {
+#custom-pipewire {
   margin: 0px 2px 0px 10px;
   padding: 0px 10px 0px 10px;
   border-radius: 10px;
   background: @base00;
 }
 
-#pulseaudio.muted {
+#custom-pipewire.mute {
     background-color: @base03;
 }
 

@@ -4,9 +4,11 @@
     ./wezterm.nix
     ./browser.nix
     ./images.nix
+    ./games.nix
     ./sound.nix
     ./zsh.nix
     ./chat.nix
+    ./zathura.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -19,6 +21,8 @@
     xdg-utils
     thunderbird
     gpgme
+
+    filezilla
 
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [

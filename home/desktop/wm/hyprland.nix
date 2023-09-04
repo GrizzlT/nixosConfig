@@ -41,7 +41,7 @@ in
       $browser=${pkgs.librewolf}/bin/librewolf
       $gamemode=${scripts.gamemode}/bin/gamemode
       $colorPicker=${scripts.colorPicker}/bin/colorpicker
-      $volume=${scripts.volume}/bin/volume
+      $volume=${pkgs.pw-volume}/bin/pw-volume
       $brightness=${scripts.brightness}/bin/brightness
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
@@ -98,21 +98,21 @@ in
 
       bind=$mainMod,equal,submap,volume
       submap=volume
-      bind=,equal,exec,$volume --inc
-      bind=,minus,exec,$volume --dec
-      bind=,k,exec,$volume --inc
-      bind=,j,exec,$volume --dec
-      bind=,up,exec,$volume --inc
-      bind=,down,exec,$volume --dec
-      bind=,braceleft,exec,$volume --toggle
-      bind=,bracketright,exec,$volume --toggle-mic
+      bind=,equal,exec,$volume change +2.5%; pkill -RTMIN+8 waybar
+      bind=,minus,exec,$volume change -2.5%; pkill -RTMIN+8 waybar
+      bind=,k,exec,$volume change +2.5%; pkill -RTMIN+8 waybar
+      bind=,j,exec,$volume change -2.5%; pkill -RTMIN+8 waybar
+      bind=,up,exec,$volume change +2.5%; pkill -RTMIN+8 waybar
+      bind=,down,exec,$volume change -2.5%; pkill -RTMIN+8 waybar
+      bind=,braceleft,exec,$volume mute toggle; pkill -RTMIN+8 waybar
+      # bind=,bracketright,exec,$volume --toggle-mic
       bind=,escape,submap,reset
       submap=reset
 
       # Volume Keys
-      bindl=,xf86audioraisevolume,exec,$volume --inc
-      bindl=,xf86audiolowervolume,exec,$volume --dec
-      bindl=,xf86audiomute,exec,$volume --toggle
+      bindl=,xf86audioraisevolume,exec,$volume change +2.5%; pkill -RTMIN+8 waybar
+      bindl=,xf86audiolowervolume,exec,$volume change -2.5%; pkill -RTMIN+8 waybar
+      bindl=,xf86audiomute,exec,$volume mute toggle; pkill -RTMIN+8 waybar
       bindl=,xf86monbrightnessup,exec,$brightness --inc
       bindl=,xf86monbrightnessdown,exec,$brightness --dec
       bindl=,xf86audioplay,exec,$playerctl play-pause

@@ -1,7 +1,9 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    easyeffects
     qpwgraph
+    qjackctl
+    jackmix
+    pw-volume
   ];
 }
