@@ -78,21 +78,6 @@ table.insert(pairs,
     :with_move(char_matches_end_pair)
 )
 
--- Nix
-table.insert(pairs,
--- Auto end with semicolon
-  Rule('=', ';', "nix")
-    :with_pair(ts_conds.is_not_ts_node({ 'comment', 'source', 'string_expression', 'indented_string_expression' }))
-    :with_cr(conds.none())
-    :with_move(char_matches_end_pair)
-)
-table.insert(pairs,
-  Rule("''", "''", "nix")
-    :with_pair(ts_conds.is_not_ts_node({ 'comment', 'source', 'string_expression', 'indented_string_expression' }))
-    :with_pair(conds.not_before_text("''"))
-    :with_move(char_matches_end_pair)
-)
-
 -- Rust
 table.insert(pairs,
   -- Generic parameter
