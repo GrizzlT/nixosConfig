@@ -66,11 +66,13 @@ local function on_attach(client, bufnr)
   end
   local telescope = require('telescope.builtin')
 
+  if client ~= 'rust-analyzer' then
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts('Hover'))
+  end
   vim.keymap.set("n", "gd", telescope.lsp_definitions, opts('Goto definition'))
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts('Goto declaration'))
   vim.keymap.set("n", "go", telescope.lsp_type_definitions, opts('Goto type def'))
   vim.keymap.set("n", "gi", telescope.lsp_implementations, opts('Goto implementations'))
-  vim.keymap.set("n", "K", vim.lsp.buf.hover, opts('Hover'))
   vim.keymap.set("n", "<leader>lws", telescope.lsp_dynamic_workspace_symbols, opts('Workspace symbols'))
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts('Diagnostics Float'))
   vim.keymap.set("n", "<leader>lwd", telescope.diagnostics, opts('Workspace diagnostics'))

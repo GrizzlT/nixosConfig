@@ -157,6 +157,12 @@ in with vimPlugins;
     lazy = false;
   }
 
+  {
+    plugin = vimExtraPlugins.rust-tools-nvim;
+    ft = "rust";
+    dependencies = [ nvim-lspconfig ];
+  }
+
   # LuaLine
   {
     plugin = lualine-nvim;
