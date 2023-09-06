@@ -24,6 +24,7 @@
       EMOJI_FZF_BINDKEY = "^k";
       EMOJI_FZF_FUZZY_FINDER = "${pkgs.fzf}/bin/fzf";
       EMOJI_FZF_CLIPBOARD = "${pkgs.wl-clipboard}/bin/wl-copy";
+      FORGIT_COPY_CMD = "${pkgs.wl-clipboard}/bin/wl-copy";
     };
     shellAliases = {
       ls = "exa";
@@ -50,13 +51,8 @@
         };
       }
       {
-        name = "git";
-        src = pkgs.fetchFromGitHub {
-          owner = "davidde";
-          repo = "git";
-          rev = "b60e5e36c65f76a29eeacbfb7f5de1cd00c86115";
-          sha256 = "C3Ny3QXlOzkA47oCMvhhduCgOnkVBSTKaPgO9TUtRjo=";
-        };
+        name = "forgit";
+        src = "${pkgs.zsh-forgit}/share/zsh/zsh-forgit";
       }
       {
         name = "emoji-fzf";
