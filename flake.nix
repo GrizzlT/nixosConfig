@@ -17,12 +17,12 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:hyprwm/Hyprland/v0.29.1";
+      inputs.nixpkgs.follows = "unstable";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     stylix = {
@@ -51,7 +51,10 @@
   outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
   let
     flakeOverlay = final: prev: {
-      unstable = unstable.legacyPackages.${prev.system};
+      unstable = import unstable {
+        system = prev.system;
+        config.allowUnfree = true;
+      };
     };
     pkgs = system: import nixpkgs { overlays = [
       flakeOverlay

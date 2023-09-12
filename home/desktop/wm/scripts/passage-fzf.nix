@@ -13,7 +13,7 @@ let
           fzf --height 40% --reverse --no-multi)"
       pass=$(passage "$name" | head -n 1)
       hyprctl dispatch focuswindow "address:$1"
-      ydotool type "''${pass}"
+      echo "$pass" | tr -d '\n' | ydotool type --file -
     }
 
     export YDOTOOL_SOCKET=/tmp/ydotools

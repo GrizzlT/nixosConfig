@@ -23,6 +23,7 @@
     gpgme
 
     filezilla
+    unstable.gitkraken
 
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [

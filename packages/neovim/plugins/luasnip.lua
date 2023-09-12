@@ -12,7 +12,7 @@ luasnip.config.set_config({
 vim.keymap.set({"i", "s"}, "<C-B>", function() if require('luasnip').choice_active() then require('luasnip').change_choice(1) end end, { remap = false, desc = "Next choice"})
 vim.keymap.set({ "i", "s" }, "<C-k>", luasnip.expand, { silent = true })
 vim.keymap.set({ "i", "s" }, "<C-f>", function() luasnip.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-_>", function() luasnip.jump(-1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-v>", function() luasnip.jump(-1) end, { silent = true })
 
 local opts = {
   paths = require('grizz-runtime').grizz_runtime_path .. '/snippets'

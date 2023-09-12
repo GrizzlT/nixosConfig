@@ -6,6 +6,11 @@
     inkscape
     gimp
     imv
+    swayimg
     vlc
   ];
+
+  programs.mpv = {
+    enable = true;
+  };
 }
