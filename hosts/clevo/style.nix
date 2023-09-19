@@ -5,7 +5,7 @@
   ];
 
   stylix = {
-    image = ../../wallpapers/color-bg.jpg;
+    image = ../../wallpapers/sunset-1920x1080.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/snazzy.yaml";
     fonts = {
       monospace = {

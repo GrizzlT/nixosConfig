@@ -23,7 +23,7 @@ in
       exec-once=${pkgs.dunst}/bin/dunst
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
-      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/color-bg.jpg}
+      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
 
       windowrule = float, pavucontrol
       windowrule = float, wlogout

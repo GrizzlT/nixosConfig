@@ -25,8 +25,8 @@
     filezilla
     unstable.gitkraken
 
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
+    (unstable.wrapOBS {
+      plugins = with unstable.obs-studio-plugins; [
         obs-pipewire-audio-capture
       ];
     })

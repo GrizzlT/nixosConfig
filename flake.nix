@@ -17,12 +17,12 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.29.1";
-      inputs.nixpkgs.follows = "unstable";
+      url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stylix = {

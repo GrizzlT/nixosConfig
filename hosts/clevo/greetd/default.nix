@@ -25,7 +25,7 @@
 
   # Regreet files
   environment.etc = {
-    "regreet/bg.jpg".source = ../../../wallpapers/color-bg.jpg;
+    "regreet/bg.jpg".source = ../../../wallpapers/sunset-1920x1080.jpg;
     "regreet/options.conf".source = ./options.conf;
     "regreet/hyprland.conf".text = ''
       source=/etc/regreet/options.conf
