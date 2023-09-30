@@ -28,6 +28,9 @@ nixos-generators.nixosGenerate {
         inputs.grizz-zfs-diff
       ];
 
+      networking.networkmanager.enable = true;
+      networking.wireless.enable = false;
+
       isoImage.squashfsCompression = "gzip -Xcompression-level 1";
     })
   ];

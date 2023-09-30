@@ -36,6 +36,10 @@ in
       efi.canTouchEfiVariables = true;
     };
 
+    kernel.sysctl = {
+      "net.ipv4.conf.all.forwarding" = true;
+    };
+
     supportedFilesystems = [ "zfs" ];
     kernelParams = [ "nohibernate" ];
     kernelModules = [ "kvm-intel" "i915" "v4l2loopback" ];
