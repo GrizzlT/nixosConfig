@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  wanInterface = "wlp0s20f3";
-  lanInterface = "enp46s0";
+  wanInterface = "enp46s0";
+  lanInterface = "wlp0s20f3";
 in
 {
   networking.firewall = {

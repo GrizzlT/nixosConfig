@@ -1,7 +1,7 @@
 hostName: hostId:
 { pkgs, lib, ... }:
 let
-  ethernetToWifi = false;
+  ethernetToWifi = true;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -29,6 +29,7 @@ in
         address = [ "192.168.213.1/24" ];
         linkConfig.RequiredForOnline = "no-carrier";
       };
+    } // lib.optionalAttrs ethernetToWifi {
       "40-enp46s0" = {
         matchConfig.Name = "enp46s0";
         address = [ "192.168.12.1/24" ];
@@ -65,7 +66,7 @@ in
   '';
 
   services.create_ap = {
-    enable = false;
+    enable = ethernetToWifi;
     settings = {
     CHANNEL="default";
     GATEWAY="192.168.12.1";
