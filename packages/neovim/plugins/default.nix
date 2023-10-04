@@ -29,11 +29,21 @@ let
       hash = "sha256-m7ZCxnW4Q1bQp1GhntUF7l+p6DV1p/2AJXhVeRy8Rec=";
     };
   };
+  tree-sitter-typst = tree-sitter.buildGrammar {
+    language = "typst";
+    version = "0.0.0+rev=8e00691"; # 7b90a3615356a36cf1c8d00cb3e0211f2";
+    src = fetchFromGitHub {
+      owner = "uben0";
+      repo = "tree-sitter-typst";
+      rev = "8e006917b90a3615356a36cf1c8d00cb3e0211f2";
+      sha256 = "Xex0BDBpWwU6Tit19WtwU6zt94GuJtNnw81YHEa8YOs=";
+    };
+  };
 
   nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
     with parsers; [
-      query toml lua rust gitcommit gitignore json markdown nix bash
-      tree-sitter-d2
+      query toml lua rust gitcommit gitignore json markdown nix bash typescript
+      tree-sitter-d2 tree-sitter-typst
     ]);
 
   onedarkpro = let
@@ -131,6 +141,10 @@ in with vimPlugins;
     cmd = "TSPlaygroundToggle";
   }
   nvim-ts-context-commentstring
+  {
+    plugin = vimExtraPlugins.typst-vim;
+    lazy = false;
+  }
 
   # LSP + completion
   {
@@ -162,6 +176,11 @@ in with vimPlugins;
     ft = "rust";
     dependencies = [ nvim-lspconfig ];
   }
+
+  # {
+  #   plugin = vimExtraPlugins.nvim-ghost-nvim;
+  #   lazy = false;
+  # }
 
   # LuaLine
   {
