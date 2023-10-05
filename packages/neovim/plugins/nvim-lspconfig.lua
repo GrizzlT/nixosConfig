@@ -73,11 +73,11 @@ local function on_attach(client, bufnr)
 
   if client ~= 'rust-analyzer' then
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts('Hover'))
-  else if client == 'tsserver' then
-    vim.api.nvim_create_autocmd('FormatOnSave', {
-      buffer = bufnr,
-      callback = vim.lsp.buf.format
-    })
+  -- else if client == 'tsserver' then
+  --   vim.api.nvim_create_autocmd('FormatOnSave', {
+  --     buffer = bufnr,
+  --     callback = vim.lsp.buf.format
+  --   })
   end
 
   vim.keymap.set("n", "gd", telescope.lsp_definitions, opts('Goto definition'))
