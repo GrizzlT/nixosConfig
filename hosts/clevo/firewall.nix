@@ -18,9 +18,9 @@ in
           # established/related connections
           ct state { established, related } accept
 
-          # loopback interface
+          # trusted interfaces
           iifname {
-            "lo",
+            "lo", "tailscale0"
           } counter accept
 
           # DHCP + DNS for VMs + LAN

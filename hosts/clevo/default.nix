@@ -15,6 +15,7 @@ in
     ./style.nix
     ./vpn.nix
     ./firewall.nix
+    ./tailscale.nix
     ./virtualization.nix
     ./storage.nix
     (import ./user.nix userName)

@@ -1,14 +1,24 @@
 hostName: hostId:
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
-  ethernetToWifi = true;
+  # Whether to share internet from the ethernet port over wifi or reverse
+  ethernetToWifi = false;
 in
 {
   environment.systemPackages = with pkgs; [
     dnsmasq
   ];
 
-  services.resolved.enable = false;
+  services.resolved = {
+    enable = true;
+    domains = [ "~." ];
+    fallbackDns = [ "1.1.1.1" "1.0.0.1" ];
+    extraConfig = ''
+      DNSOverTLS=yes
+      DNSStubListener=no
+    '';
+  };
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.useDHCP = false;
   networking.interfaces.wlp0s20f3.useDHCP = !ethernetToWifi;
   networking.interfaces.enp46s0.useDHCP = ethernetToWifi;
@@ -27,9 +37,9 @@ in
       "30-vmbridge0" = {
         matchConfig.Name = "vmbridge0";
         address = [ "192.168.213.1/24" ];
-        linkConfig.RequiredForOnline = "no-carrier";
+        linkConfig.RequiredForOnline = "no";
       };
-    } // lib.optionalAttrs ethernetToWifi {
+    } // lib.optionalAttrs (!ethernetToWifi) {
       "40-enp46s0" = {
         matchConfig.Name = "enp46s0";
         address = [ "192.168.12.1/24" ];
@@ -55,7 +65,8 @@ in
 
   networking.networkmanager = {
     enable = true;
-    unmanaged = [ "except:interface-name:wlp0s20f3" ] ++ lib.optional ethernetToWifi "except:interface-name:enp46s0";
+    unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
+    firewallBackend = "nftables";
   };
   networking.extraHosts = ''
     127.0.0.1 facebook.com m.facebook.com
@@ -64,41 +75,40 @@ in
     127.0.0.1 test2.example.org
     127.0.0.1 test3.example.org
   '';
-
-  services.create_ap = {
-    enable = ethernetToWifi;
-    settings = {
-    CHANNEL="default";
-    GATEWAY="192.168.12.1";
-    WPA_VERSION=2;
-    ETC_HOSTS=0;
-    DHCP_DNS="gateway";
-    NO_DNS=1;
-    NO_DNSMASQ=1;
-    HIDDEN=0;
-    MAC_FILTER=0;
-    MAC_FILTER_ACCEPT="/etc/hostapd/hostapd.accept";
-    ISOLATE_CLIENTS=0;
-    SHARE_METHOD="nat";
-    IEEE80211N=1;
-    IEEE80211AC=1;
-    HT_CAPAB="[HT40+]";
-    VHT_CAPAB="";
-    DRIVER="nl80211";
-    NO_VIRT=1;
-    COUNTRY="";
-    FREQ_BAND="2.4";
-    NEW_MACADDR="";
-    DAEMONIZE=0;
-    DAEMON_PIDFILE="";
-    DAEMON_LOGFILE="/dev/null";
-    NO_HAVEGED=0;
-    WIFI_IFACE="wlp0s20f3";
-    INTERNET_IFACE="enp46s0";
-    SSID="Clevo Hotspot";
-    PASSPHRASE="0KChFbe[Lz";
-    USE_PSK=0;
-    ADDN_HOSTS="";
-    };
-  };
+  # services.create_ap = {
+  #   enable = ethernetToWifi;
+  #   settings = {
+  #     CHANNEL="default";
+  #     GATEWAY="192.168.12.1";
+  #     WPA_VERSION=2;
+  #     ETC_HOSTS=0;
+  #     DHCP_DNS="gateway";
+  #     NO_DNS=1;
+  #     NO_DNSMASQ=1;
+  #     HIDDEN=0;
+  #     MAC_FILTER=0;
+  #     MAC_FILTER_ACCEPT="/etc/hostapd/hostapd.accept";
+  #     ISOLATE_CLIENTS=0;
+  #     SHARE_METHOD="nat";
+  #     IEEE80211N=1;
+  #     IEEE80211AC=1;
+  #     HT_CAPAB="[HT40+]";
+  #     VHT_CAPAB="";
+  #     DRIVER="nl80211";
+  #     NO_VIRT=1;
+  #     COUNTRY="";
+  #     FREQ_BAND="2.4";
+  #     NEW_MACADDR="";
+  #     DAEMONIZE=0;
+  #     DAEMON_PIDFILE="";
+  #     DAEMON_LOGFILE="/dev/null";
+  #     NO_HAVEGED=0;
+  #     WIFI_IFACE="wlp0s20f3";
+  #     INTERNET_IFACE="enp46s0";
+  #     SSID="Clevo Hotspot";
+  #     PASSPHRASE="0KChFbe[Lz";
+  #     USE_PSK=0;
+  #     ADDN_HOSTS="";
+  #   };
+  # };
 }

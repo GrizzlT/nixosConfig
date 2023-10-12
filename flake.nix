@@ -83,6 +83,7 @@
         inputs.hyprland.nixosModules.default
         inputs.impermanence.nixosModules.impermanence
         ./hosts/clevo
+        { nixpkgs.overlays = [ flakeOverlay ]; }
       ];
     };
 
