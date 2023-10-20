@@ -2,7 +2,7 @@ hostName: hostId:
 { pkgs, lib, config, ... }:
 let
   # Whether to share internet from the ethernet port over wifi or reverse
-  ethernetToWifi = false;
+  # ethernetToWifi = false;
 in
 {
   environment.systemPackages = with pkgs; [
@@ -14,14 +14,16 @@ in
     domains = [ "~." ];
     fallbackDns = [ "1.1.1.1" "1.0.0.1" ];
     extraConfig = ''
-      DNSOverTLS=yes
       DNSStubListener=no
+      LLMNR=no
     '';
   };
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = !ethernetToWifi;
-  networking.interfaces.enp46s0.useDHCP = ethernetToWifi;
+  # networking.interfaces.wlp0s20f3.useDHCP = !ethernetToWifi;
+  # networking.interfaces.enp46s0.useDHCP = ethernetToWifi;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.enp46s0.useDHCP = true;
   networking.hostId = hostId;
   networking.hostName = hostName;
 
@@ -39,18 +41,20 @@ in
         address = [ "192.168.213.1/24" ];
         linkConfig.RequiredForOnline = "no";
       };
-    } // lib.optionalAttrs (!ethernetToWifi) {
-      "40-enp46s0" = {
-        matchConfig.Name = "enp46s0";
-        address = [ "192.168.12.1/24" ];
-        linkConfig.RequiredForOnline = "no";
-      };
     };
+    # } // lib.optionalAttrs (!ethernetToWifi) {
+    #   "40-enp46s0" = {
+    #     matchConfig.Name = "enp46s0";
+    #     address = [ "192.168.12.1/24" ];
+    #     linkConfig.RequiredForOnline = "no";
+    #   };
+    # };
   };
 
   services.dnsmasq = {
     enable = true;
     settings = {
+      server = [ "1.1.1.1" "1.0.0.1"];
       dhcp-authoritative = true;
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"
@@ -65,7 +69,7 @@ in
 
   networking.networkmanager = {
     enable = true;
-    unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
+    # unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
     firewallBackend = "nftables";
   };
   networking.extraHosts = ''
@@ -74,6 +78,8 @@ in
     127.0.0.1 test1.example.org
     127.0.0.1 test2.example.org
     127.0.0.1 test3.example.org
+    #
+    # 100.91.153.130 keycloak.falconmc.org
   '';
   # services.create_ap = {
   #   enable = ethernetToWifi;

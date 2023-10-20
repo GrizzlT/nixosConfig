@@ -18,8 +18,12 @@ in
     ./tailscale.nix
     ./virtualization.nix
     ./storage.nix
+
+    # ./ecsc-dry-run.nix
+
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)
+
     ../../modules/grizz-keyboard.nix
     ../../modules/nix-settings.nix
   ];

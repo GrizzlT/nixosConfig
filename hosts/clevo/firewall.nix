@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  wanInterface = "enp46s0";
-  lanInterface = "wlp0s20f3";
+  wanInterface = "wlp0s20f3";
+  lanInterface = "enp46s0";
 in
 {
   networking.firewall = {
@@ -12,6 +12,10 @@ in
     enable = true;
     ruleset = ''
       table inet firewall {
+        chain output {
+          type filter hook output priority 100; policy accept;
+        }
+
         chain incoming {
           type filter hook input priority 0; policy drop;
 
@@ -26,6 +30,8 @@ in
           # DHCP + DNS for VMs + LAN
           iifname { "vmbridge0", "${lanInterface}" } tcp dport 53 accept
           iifname { "vmbridge0", "${lanInterface}" } udp dport { 53, 67 } accept
+
+          iifname ${wanInterface} udp dport 5353 accept
 
           # icmp
           icmp type echo-request accept
@@ -66,7 +72,7 @@ in
         chain incoming {
           type filter hook input priority 0; policy drop;
           # established/related connections
-          ct state established,related accept
+          ct state { established, related, } accept
           # invalid connections
           ct state invalid drop
           # loopback interface
