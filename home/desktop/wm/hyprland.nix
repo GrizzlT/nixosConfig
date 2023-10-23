@@ -299,6 +299,15 @@ in
         }
       }
 
+      group {
+        groupbar {
+          render_titles = true
+          gradients = false
+          font_size = 11
+          text_color = 0x353741
+        }
+      }
+
       misc {
         disable_hyprland_logo = true
         disable_splash_rendering = true
@@ -306,9 +315,6 @@ in
         no_direct_scanout = true
         focus_on_activate = true
         allow_session_lock_restore = true
-        render_titles_in_groupbar = true
-        groupbar_titles_font_size = 11
-        groupbar_gradients = false
       }
 
       binds {

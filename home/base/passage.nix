@@ -1,4 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, ... }@inputs:
+let
+  toolchain = inputs.fenix.packages.${pkgs.system}.minimal.toolchain;
+  rustPlatform = pkgs.makeRustPlatform {
+    cargo = toolchain;
+    rustc = toolchain;
+  };
+in
 {
   home.sessionVariables = {
     PASSAGE_DIR = "$HOME/DATA/.passage/store";
@@ -10,6 +17,8 @@
   home.packages = with pkgs; [
     passage
     age
+
+    (callPackage ./paperage.nix { inherit rustPlatform; })
 
     (callPackage ({ writeShellApplication, findutils, passage, gnused, fzf }:
     writeShellApplication {

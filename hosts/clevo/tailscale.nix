@@ -5,5 +5,5 @@
     package = pkgs.unstable.tailscale;
   };
 
-  systemd.services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
+  systemd.services.tailscaled.after = [ "network.target" "systemd-resolved.service" ];
 }

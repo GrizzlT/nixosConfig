@@ -19,7 +19,7 @@ in
     ./virtualization.nix
     ./storage.nix
 
-    # ./ecsc-dry-run.nix
+    ./ecsc-dry-run.nix
 
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)

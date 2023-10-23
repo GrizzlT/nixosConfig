@@ -17,12 +17,12 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/603de16f9a98688b79f19baa24d6e2c0346545f5";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:hyprwm/Hyprland/v0.31.0";
+      inputs.nixpkgs.follows = "unstable";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     stylix = {
@@ -44,6 +44,11 @@
 
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -80,7 +85,6 @@
         inherit (inputs) hyprland stylix;
       };
       modules = [
-        inputs.hyprland.nixosModules.default
         inputs.impermanence.nixosModules.impermanence
         ./hosts/clevo
         { nixpkgs.overlays = [ flakeOverlay ]; }

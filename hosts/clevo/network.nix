@@ -12,14 +12,16 @@ in
   services.resolved = {
     enable = true;
     domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1" "1.0.0.1" ];
+    fallbackDns = [ "1.1.1.1" ];
+    dnssec = "false";
     extraConfig = ''
       DNSStubListener=no
       LLMNR=no
     '';
   };
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  networking.nameservers = [ "127.0.0.1" "::1" ];
   networking.useDHCP = false;
+  networking.dhcpcd.extraConfig = "nohook resolv.conf";
   # networking.interfaces.wlp0s20f3.useDHCP = !ethernetToWifi;
   # networking.interfaces.enp46s0.useDHCP = ethernetToWifi;
   networking.interfaces.wlp0s20f3.useDHCP = true;
@@ -54,7 +56,7 @@ in
   services.dnsmasq = {
     enable = true;
     settings = {
-      server = [ "1.1.1.1" "1.0.0.1"];
+      server = [ "100.91.153.130" ];
       dhcp-authoritative = true;
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"
@@ -71,15 +73,16 @@ in
     enable = true;
     # unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
     firewallBackend = "nftables";
+    dns = lib.mkForce "none";
+    extraConfig = ''
+      [main]
+      systemd-resolved=false
+    '';
   };
   networking.extraHosts = ''
-    127.0.0.1 facebook.com m.facebook.com
-
     127.0.0.1 test1.example.org
     127.0.0.1 test2.example.org
     127.0.0.1 test3.example.org
-    #
-    # 100.91.153.130 keycloak.falconmc.org
   '';
   # services.create_ap = {
   #   enable = ethernetToWifi;

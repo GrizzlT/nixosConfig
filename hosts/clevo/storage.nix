@@ -9,6 +9,8 @@
     nfs-utils
     # Samba
     cifs-utils
+    # SSHFS
+    sshfs
   ];
 
   environment.etc."bashmount.conf".text = ''
@@ -37,5 +39,5 @@
   services.rpcbind.enable = true;
 
   # CIFS, NFS
-  boot.supportedFilesystems = [ "cifs" "nfs" ];
+  boot.supportedFilesystems = [ "cifs" "nfs" "sshfs" ];
 }
