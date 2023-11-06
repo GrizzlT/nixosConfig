@@ -43,14 +43,13 @@ in
         address = [ "192.168.213.1/24" ];
         linkConfig.RequiredForOnline = "no";
       };
-    };
     # } // lib.optionalAttrs (!ethernetToWifi) {
-    #   "40-enp46s0" = {
-    #     matchConfig.Name = "enp46s0";
-    #     address = [ "192.168.12.1/24" ];
-    #     linkConfig.RequiredForOnline = "no";
-    #   };
-    # };
+      # "40-enp46s0" = {
+      #   matchConfig.Name = "enp46s0";
+      #   address = [ "192.168.12.1/24" ];
+      #   linkConfig.RequiredForOnline = "no";
+      # };
+    };
   };
 
   services.dnsmasq = {
@@ -71,6 +70,7 @@ in
 
   networking.networkmanager = {
     enable = true;
+    unmanaged = [ "except:interface-name:wlp0s20f3" "except:interface-name:enp46s0" ];
     # unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
     firewallBackend = "nftables";
     dns = lib.mkForce "none";

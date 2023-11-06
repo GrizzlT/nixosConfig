@@ -13,7 +13,6 @@ in
     ./printing.nix
     ./greetd
     ./style.nix
-    ./vpn.nix
     ./firewall.nix
     ./tailscale.nix
     ./virtualization.nix

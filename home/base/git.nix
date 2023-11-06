@@ -19,6 +19,14 @@
         };
       }
     ];
+    aliases = {
+      s = "status";
+      co = "checkout";
+      br = "branch";
+      c = "commit --verbose";
+      ca = "commit --amend --verbose";
+      can = "commit --amend --no-edit --verbose";
+    };
     extraConfig = {
       init = {
         defaultBranch = "main";

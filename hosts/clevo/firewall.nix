@@ -24,7 +24,7 @@ in
 
           # trusted interfaces
           iifname {
-            "lo", "tailscale0"
+            "lo", "tailscale0",
           } counter accept
 
           # DHCP + DNS for VMs + LAN
@@ -64,7 +64,7 @@ in
         # Setup NAT masquerading on the wan interface
         chain postrouting {
           type nat hook postrouting priority filter; policy accept;
-          oifname "${wanInterface}" masquerade
+          oifname { "${wanInterface}", } masquerade
         }
       }
 

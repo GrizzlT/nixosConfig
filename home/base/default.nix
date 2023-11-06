@@ -12,6 +12,7 @@
 
     ./passage.nix
     ./gpg.nix
+    ./network-tools.nix
 
     ./zsh
   ];
