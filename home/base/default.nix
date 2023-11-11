@@ -10,6 +10,8 @@
     ./git.nix
     ./xplr.nix
 
+    ./productivity.nix
+
     ./passage.nix
     ./gpg.nix
     ./network-tools.nix
@@ -25,6 +27,7 @@
     unzip
     p7zip
     d2
+    du-dust
 
     appimage-run
   ];

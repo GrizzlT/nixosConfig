@@ -1,9 +1,5 @@
 hostName: hostId:
 { pkgs, lib, config, ... }:
-let
-  # Whether to share internet from the ethernet port over wifi or reverse
-  # ethernetToWifi = false;
-in
 {
   environment.systemPackages = with pkgs; [
     dnsmasq
@@ -11,7 +7,7 @@ in
 
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
+    # domains = [ "~." ];
     fallbackDns = [ "1.1.1.1" ];
     dnssec = "false";
     extraConfig = ''
@@ -19,15 +15,38 @@ in
       LLMNR=no
     '';
   };
-  networking.nameservers = [ "127.0.0.1" "::1" ];
-  networking.useDHCP = false;
-  networking.dhcpcd.extraConfig = "nohook resolv.conf";
-  # networking.interfaces.wlp0s20f3.useDHCP = !ethernetToWifi;
-  # networking.interfaces.enp46s0.useDHCP = ethernetToWifi;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
-  networking.interfaces.enp46s0.useDHCP = true;
-  networking.hostId = hostId;
-  networking.hostName = hostName;
+  networking = {
+    networkmanager.enable = lib.mkForce false;
+    nameservers = [ "127.0.0.1" "::1" ];
+    useDHCP = false;
+    dhcpcd.extraConfig = "nohook resolv.conf";
+
+    hostId = hostId;
+    hostName = hostName;
+
+    wireless = {
+      userControlled.enable = true;
+      enable = true;
+      allowAuxiliaryImperativeNetworks = true;
+      environmentFile = config.age.secrets.wpaPasswords.path;
+      networks = {
+        "Tapaki" = {
+          psk = "@TAPAKI_PASSWORD@";
+          priority = 10;
+        };
+        "TOP" = {
+          psk = "@TOP_PASSWORD@";
+          priority = 10;
+        };
+        "OnePlus Nord CE 2 Lite" = {
+          psk = "@ROB_HOTSPOT@";
+        };
+        "TP-Link_4DA4" = {
+          psk = "@ROB_DORM@";
+        };
+      };
+    };
+  };
 
   systemd.network = {
     enable = true;
@@ -38,17 +57,30 @@ in
       };
     };
     networks = {
+      "10-wifi" = {
+        matchConfig.Name = "wlp0s20f3";
+        linkConfig.RequiredForOnline = "no";
+        networkConfig = {
+          DHCP = "ipv4";
+        };
+        dhcpV4Config = {
+          UseDNS = false;
+        };
+      };
+      "20-enp46s0" = {
+        #### When connecting to external network ####
+        matchConfig.name = "enp46s0";
+        linkConfig.RequiredForOnline = "no";
+        networkConfig.DHCP = "ipv4";
+        dhcpV4Config.UseDNS = false;
+        #### When used to set up LAN ####
+        # address = [ "192.168.12.1/24" ];
+      };
       "30-vmbridge0" = {
         matchConfig.Name = "vmbridge0";
         address = [ "192.168.213.1/24" ];
         linkConfig.RequiredForOnline = "no";
       };
-    # } // lib.optionalAttrs (!ethernetToWifi) {
-      # "40-enp46s0" = {
-      #   matchConfig.Name = "enp46s0";
-      #   address = [ "192.168.12.1/24" ];
-      #   linkConfig.RequiredForOnline = "no";
-      # };
     };
   };
 
@@ -68,56 +100,9 @@ in
     };
   };
 
-  networking.networkmanager = {
-    enable = true;
-    unmanaged = [ "except:interface-name:wlp0s20f3" "except:interface-name:enp46s0" ];
-    # unmanaged = [ (if ethernetToWifi then "except:interface-name:enp46s0" else "except:interface-name:wlp0s20f3") ];
-    firewallBackend = "nftables";
-    dns = lib.mkForce "none";
-    extraConfig = ''
-      [main]
-      systemd-resolved=false
-    '';
-  };
   networking.extraHosts = ''
     127.0.0.1 test1.example.org
     127.0.0.1 test2.example.org
     127.0.0.1 test3.example.org
   '';
-  # services.create_ap = {
-  #   enable = ethernetToWifi;
-  #   settings = {
-  #     CHANNEL="default";
-  #     GATEWAY="192.168.12.1";
-  #     WPA_VERSION=2;
-  #     ETC_HOSTS=0;
-  #     DHCP_DNS="gateway";
-  #     NO_DNS=1;
-  #     NO_DNSMASQ=1;
-  #     HIDDEN=0;
-  #     MAC_FILTER=0;
-  #     MAC_FILTER_ACCEPT="/etc/hostapd/hostapd.accept";
-  #     ISOLATE_CLIENTS=0;
-  #     SHARE_METHOD="nat";
-  #     IEEE80211N=1;
-  #     IEEE80211AC=1;
-  #     HT_CAPAB="[HT40+]";
-  #     VHT_CAPAB="";
-  #     DRIVER="nl80211";
-  #     NO_VIRT=1;
-  #     COUNTRY="";
-  #     FREQ_BAND="2.4";
-  #     NEW_MACADDR="";
-  #     DAEMONIZE=0;
-  #     DAEMON_PIDFILE="";
-  #     DAEMON_LOGFILE="/dev/null";
-  #     NO_HAVEGED=0;
-  #     WIFI_IFACE="wlp0s20f3";
-  #     INTERNET_IFACE="enp46s0";
-  #     SSID="Clevo Hotspot";
-  #     PASSPHRASE="0KChFbe[Lz";
-  #     USE_PSK=0;
-  #     ADDN_HOSTS="";
-  #   };
-  # };
 }

@@ -42,6 +42,10 @@
       ref = "master";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -82,10 +86,11 @@
       specialArgs = {
         grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
         inherit home-manager;
-        inherit (inputs) hyprland stylix;
+        inherit (inputs) hyprland stylix agenix;
       };
       modules = [
         inputs.impermanence.nixosModules.impermanence
+        inputs.agenix.nixosModules.default
         ./hosts/clevo
         { nixpkgs.overlays = [ flakeOverlay ]; }
       ];

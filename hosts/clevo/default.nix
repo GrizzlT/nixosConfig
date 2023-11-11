@@ -1,4 +1,4 @@
-{ config, pkgs, lib, grizz-zfs-diff, ... }:
+{ config, pkgs, lib, grizz-zfs-diff, agenix, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
@@ -17,8 +17,9 @@ in
     ./tailscale.nix
     ./virtualization.nix
     ./storage.nix
+    ./age.nix
 
-    ./ecsc-dry-run.nix
+    # ./ecsc-dry-run.nix
 
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)
@@ -41,6 +42,8 @@ in
     curl
     git
     grizz-zfs-diff
+
+    agenix.packages.${pkgs.system}.default
   ];
 
   nix.gc = {

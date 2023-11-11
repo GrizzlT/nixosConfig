@@ -1,8 +1,4 @@
 { pkgs, ... }:
-let
-  wanInterface = "wlp0s20f3";
-  lanInterface = "enp46s0";
-in
 {
   networking.firewall = {
     enable = false;
@@ -28,10 +24,10 @@ in
           } counter accept
 
           # DHCP + DNS for VMs + LAN
-          iifname { "vmbridge0", "${lanInterface}" } tcp dport 53 accept
-          iifname { "vmbridge0", "${lanInterface}" } udp dport { 53, 67 } accept
+          iifname { "vmbridge0", } tcp dport 53 accept # DNS
+          iifname { "vmbridge0", } udp dport { 53, 67 } accept # DNS + DHCP
 
-          iifname ${wanInterface} udp dport 5353 accept
+          iifname { wlp0s20f3, } udp dport 5353 accept # AVAHI
 
           # icmp
           icmp type echo-request accept
@@ -42,16 +38,16 @@ in
 
           # Allow trusted network WAN access
           iifname {
-            "vmbridge0", "${lanInterface}"
+            "vmbridge0",
           } oifname {
-            "${wanInterface}",
+            wlp0s20f3,
           } counter accept comment "Allow trusted LAN to WAN"
 
           # Allow established WAN to return
           iifname {
-            "${wanInterface}",
+            wlp0s20f3,
           } oifname {
-            "vmbridge0", "${lanInterface}"
+            "vmbridge0",
           } ct state { established,related } counter accept comment "Allow established back to LANs"
         }
       }
@@ -64,7 +60,7 @@ in
         # Setup NAT masquerading on the wan interface
         chain postrouting {
           type nat hook postrouting priority filter; policy accept;
-          oifname { "${wanInterface}", } masquerade
+          oifname { wlp0s20f3, } masquerade
         }
       }
 

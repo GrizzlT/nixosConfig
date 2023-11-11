@@ -11,4 +11,5 @@
   };
 
   environment.etc."machine-id".source = "/persist/etc/machine-id";
+  environment.etc."wpa_supplicant.conf".source = "/persist/etc/wpa_supplicant.conf";
 }
