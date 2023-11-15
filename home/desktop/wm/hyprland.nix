@@ -1,6 +1,7 @@
-{ pkgs, hyprland, myScripts, ... }@inputs:
+{ pkgs, hyprland, myScripts, myPackages, ... }@inputs:
 let
   scripts = myScripts.hyprland;
+  awServerPort = 5600;
 in
 {
   imports = [
@@ -24,6 +25,8 @@ in
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
+      exec-once=${pkgs.aw-server-rust}/bin/aw-server --port ${toString awServerPort} --dbpath "$HOME/DATA/.activity-watch/aw-server-rust.sqlite"
+      exec-once=${myPackages.awatcher}/bin/awatcher --port ${toString awServerPort}
 
       windowrule = float, pavucontrol
       windowrule = float, wlogout
@@ -235,6 +238,7 @@ in
       env=XDG_SESSION_DESKTOP,Hyprland
 
       monitor=eDP-1,1920x1080@60,0x0,1.15
+      monitor=HDMI-A-1,1366x768@60,-1366x0,1
 
       dwindle {
         pseudotile=true

@@ -4,10 +4,12 @@
     hyprland = inputs.hyprland;
     stylix = inputs.stylix;
     myScripts = import ./scripts { inherit (inputs) pkgs hyprland; };
+    myPackages = inputs.self.packages.${pkgs.system};
   };
 
   imports = [
     ./hyprland.nix
+    ./kanshi.nix
     ./waybar
     ./dunst
 

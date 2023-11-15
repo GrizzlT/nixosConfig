@@ -16,6 +16,9 @@
       "spotify"
       "discord"
     ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "openssl-1.1.1v"
+  ];
 
   home.packages = with pkgs; [
     xdg-utils

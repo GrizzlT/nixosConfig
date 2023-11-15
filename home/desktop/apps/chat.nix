@@ -4,6 +4,8 @@
     fluffychat
     discord
     webcord
+    element-desktop
+    cinny-desktop
 
     spotifywm
   ];
