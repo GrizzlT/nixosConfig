@@ -69,7 +69,7 @@ hostName: hostId:
       };
       "20-enp46s0" = {
         #### When connecting to external network ####
-        matchConfig.name = "enp46s0";
+        matchConfig.Name = "enp46s0";
         linkConfig.RequiredForOnline = "no";
         networkConfig.DHCP = "ipv4";
         dhcpV4Config.UseDNS = false;

@@ -39,6 +39,16 @@ in
 
       windowrule = float, title:^(Picture-in-Picture)$
 
+      workspace = HDMI-A-1,1
+      workspace = HDMI-A-2,2
+      workspace = HDMI-A-3,3
+      workspace = eDP-1,4
+      workspace = eDP-1,5
+      workspace = eDP-1,6
+      workspace = eDP-1,7
+      workspace = eDP-1,8
+      workspace = eDP-1,9
+
       $mainMod=SUPER
       $launcher=${scripts.launcher}/bin/launcher
       $browser=${pkgs.librewolf}/bin/librewolf
@@ -49,14 +59,11 @@ in
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
-      $suspend=${pkgs.systemd}/bin/systemctl suspend
       $music=${pkgs.spotify}/bin/spotify
       $discord=${pkgs.discord}/bin/discord
       $grimblast=${pkgs.grimblast}/bin/grimblast
       $passage=${scripts.passage-fzf}/bin/passage-fzf-type
 
-
-      bindl=,switch:off:[Lid Switch],exec,$suspend
       bind=$mainMod,delete,exit
       bind=$mainMod_SHIFT,q,exec,$wlogout
       bind=$mainMod,return,exec,wezterm start --always-new-process
@@ -190,6 +197,12 @@ in
       bind = $mainMod SHIFT, minus, movetoworkspace, special:discord
       bind = $mainMod, minus, togglespecialworkspace, discord
 
+      # Bypass global keybinds to pass binds directly to application (eg: VMs)
+      bind = $mainMod CTRL, At, submap, passthru
+      submap = passthru
+      bind = $mainMod, Escape, submap, reset
+      submap = reset
+
       # workspaces
       # binds $mainMod + [alt|shift + ] {1..10} to [move|(move silently) to] workspace {1..10}
       ${builtins.concatStringsSep "\n" (builtins.genList (
@@ -210,6 +223,12 @@ in
       bind=$mainMod_ALT,dollar,movetoworkspace,+1
       bind=$mainMod_SHIFT,asciicircum,movetoworkspacesilent,-1
       bind=$mainMod_SHIFT,dollar,movetoworkspacesilent,+1
+
+      bind=$mainMod, comma, focusmonitor, l
+      bind=$mainMod, semicolon, focusmonitor, r
+      bind=$mainMod_SHIFT, comma, movecurrentworkspacetomonitor, l
+      bind=$mainMod_SHIFT, semicolon, movecurrentworkspacetomonitor, r
+      bind=$mainMod_SHIFT, comma, swapactiveworkspaces, l r
 
       # Scroll through existing workspaces with mainMod + scroll
       bind = $mainMod, mouse_down, workspace, e+1

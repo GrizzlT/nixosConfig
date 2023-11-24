@@ -20,6 +20,7 @@ in
     ./age.nix
 
     # ./ecsc-dry-run.nix
+    ./xorg.nix
 
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)

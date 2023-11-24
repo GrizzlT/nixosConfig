@@ -9,7 +9,7 @@
   };
 
   services.swayidle = {
-    enable = true;
+    # enable = true;
     extraArgs = [ "-w" ];
     systemdTarget = "hyprland-session.target";
     events = [

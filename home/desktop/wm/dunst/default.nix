@@ -15,6 +15,7 @@
         icon_corner_radius = 3;
         frame_width = 2;
         corner_radius = 8;
+        follow = "keyboard";
 # dmenu = "anyrun?";
       };
     };
