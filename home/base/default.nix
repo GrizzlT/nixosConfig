@@ -25,6 +25,7 @@
     jq
     fd
     unzip
+    zip
     p7zip
     d2
     du-dust

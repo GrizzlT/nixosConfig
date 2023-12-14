@@ -2,11 +2,11 @@
   description = "GrizzlT's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -17,16 +17,20 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.31.0";
+      url = "github:hyprwm/Hyprland/v0.33.1";
       inputs.nixpkgs.follows = "unstable";
     };
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "unstable";
     };
+    xdg-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.2.5";
+      inputs.nixpkgs.follows = "unstable";
+    };
 
     stylix = {
-      url = "github:danth/stylix/5c829554280f3139ddbfce8561d7430efbf2abfb";
+      url = "github:danth/stylix/41d218597590a89324a4b7c50cf0bf088a7214ba";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -86,7 +90,7 @@
       specialArgs = {
         grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
         inherit home-manager;
-        inherit (inputs) hyprland stylix agenix;
+        inherit (inputs) hyprland stylix agenix xdg-portal-hyprland;
       };
       modules = [
         inputs.impermanence.nixosModules.impermanence
@@ -108,7 +112,7 @@
             home = {
               username = "grizz";
               homeDirectory = "/home/grizz";
-              stateVersion = "23.05";
+              stateVersion = "23.11";
             };
           })
         ];

@@ -5,16 +5,16 @@ alsa-lib, pkg-config
 
 rustPlatform.buildRustPackage rec {
   pname = "porsmo";
-  version = "0.2.4";
+  version = "0.3.0";
 
   src = fetchFromGitHub {
     owner = "ColorCookie-dev";
     repo = pname;
-    rev = "4a629d69bc9993433a595f9396f6e16fa7c010d6";
-    sha256 = "T1cAQi/mEokbg/tcDphP58NWeZLI7YGaUvRJeCtojtk=";
+    rev = "724d3e283222fd658ae3aba18f334a565ada6148";
+    sha256 = "WoLh1i5S4X//F2RRHTyFfM2e53SP+wSQd57rD7CGQik=";
   };
 
-  cargoSha256 = "58I1go9YErqaL4Kw/vRMvVH8+0keFhXjXyvorDqyBcc=";
+  cargoSha256 = "EVo8iewKs4D7H2GP/T5oFO6LlTSzuIUqEdpwgjCKtJ8=";
 
   buildInputs = [ alsa-lib ];
   nativeBuildInputs = [ pkg-config ];

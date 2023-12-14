@@ -43,6 +43,9 @@
       return {
         harfbuzz_features = {},
 
+        enable_wayland = false,
+        audible_bell = "Disabled",
+
         tab_bar_at_bottom = true,
         colors = {
           cursor_fg = 'rgba(40, 42, 54)',

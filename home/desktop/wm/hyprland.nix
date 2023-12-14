@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
+    # inputs.hyprland.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [
@@ -17,7 +17,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    recommendedEnvironment = true;
+    package = hyprland.packages.${pkgs.system}.hyprland;
     extraConfig = ''
       exec-once=${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
       exec-once=${pkgs.waybar}/bin/waybar
@@ -244,6 +244,7 @@ in
 
       env=MOZ_ENABLE_WAYLAND,1
       env=WLR_NO_HARDWARE_CURSORS,1
+      env=WLR_RENDERER_ALLOW_SOFTWARE,1
       env=GDK_BACKEND,wayland,x11
       env=CLUTTER_BACKEND,wayland
 
@@ -293,8 +294,8 @@ in
       }
 
       device:logitech-usb-optical-mouse {
-        sensitivity = -0.5
-        accel_profile = custom 200 0.0 0.3 0.8 0.9 0.9
+        sensitivity = -0.3
+        # accel_profile = custom 200 0.0 0.3 0.8 0.9 0.9
       }
       device:ydotoold-virtual-device {
         kb_layout=us

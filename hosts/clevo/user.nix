@@ -1,5 +1,5 @@
 userName:
-{ pkgs, home-manager, hyprland, ... }:
+{ pkgs, home-manager, hyprland, xdg-portal-hyprland, ... }:
 {
   time.timeZone = "Europe/Brussels";
   i18n = {
@@ -18,7 +18,7 @@ userName:
 
   users.mutableUsers = false;
   users.users.${userName} = {
-    passwordFile = "/persist/users/${userName}/passwordFile";
+    hashedPasswordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     packages = [ home-manager.packages.${pkgs.system}.default ];
@@ -31,6 +31,7 @@ userName:
   programs.hyprland = {
     enable = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = xdg-portal-hyprland.packages.${pkgs.system}.default;
   };
 
   # Necessary for swaylock

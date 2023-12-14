@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "grizz";
-    xkbOptions = "ctrl:nocaps";
+    options = "ctrl:nocaps";
     extraLayouts = {
       "grizz" = {
         languages = [ "nld" ];

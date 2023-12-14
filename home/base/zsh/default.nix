@@ -1,7 +1,7 @@
 { pkgs, myPackages, ... }:
 {
   imports = [
-    ../exa.nix
+    ../eza.nix
   ];
 
   home.packages = with pkgs; [
@@ -27,7 +27,6 @@
       FORGIT_COPY_CMD = "${pkgs.wl-clipboard}/bin/wl-copy";
     };
     shellAliases = {
-      ls = "exa";
       cd = "z";
       systemUpdate = "sudo nixos-rebuild switch --flake";
       homeUpdate = "home-manager switch --flake";
@@ -73,6 +72,7 @@
       fi
     '';
     initExtra = ''
+      unsetopt beep
       bindkey '^ ' autosuggest-accept
 
       source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme

@@ -15,11 +15,16 @@
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
       sizes.terminal = 13;
       sizes.desktop = 12;
+    };
+    cursor = {
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors";
+      size = 24;
     };
 
     autoEnable = false;
@@ -34,9 +39,9 @@
   };
 
   home.pointerCursor = {
-    package = pkgs.phinger-cursors;
-    name = "phinger-cursors";
-    size = 24;
+    # package = pkgs.phinger-cursors;
+    # name = "phinger-cursors";
+    # size = 24;
     gtk.enable = true;
   };
 

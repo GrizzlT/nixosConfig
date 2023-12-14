@@ -7,6 +7,8 @@
     greetd.regreet
   ];
 
+  environment.variables.WLR_RENDERER_ALLOW_SOFTWARE = "1";
+
   # Regreet service definition
   services.greetd = {
     enable = true;
