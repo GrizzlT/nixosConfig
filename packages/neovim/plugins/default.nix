@@ -170,6 +170,7 @@ in with vimPlugins;
     plugin = luasnip;
     lazy = false;
   }
+  vimExtraPlugins.fidget-nvim
 
   {
     plugin = vimExtraPlugins.rust-tools-nvim;
