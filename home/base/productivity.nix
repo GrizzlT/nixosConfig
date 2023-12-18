@@ -1,6 +1,7 @@
-{ myPackages, ... }:
+{ pkgs, myPackages, ... }:
 {
-  home.packages = [
+  home.packages = with pkgs; [
     myPackages.porsmo
+    qrcp
   ];
 }
