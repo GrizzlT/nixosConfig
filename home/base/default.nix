@@ -9,6 +9,7 @@
     ./neovim.nix
     ./git.nix
     ./xplr.nix
+    ./broot.nix
 
     ./productivity.nix
 
