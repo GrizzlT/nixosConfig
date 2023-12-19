@@ -223,6 +223,25 @@ in with vimPlugins;
     ft = "d2";
   }
 
+  # Git
+  {
+    plugin = vimExtraPlugins.diffview-nvim;
+    cmd = [ "DiffviewFileHistory" "DiffviewOpen" "DiffviewToggleFiles" ];
+    keys = [
+      { lhs = "<leader>do"; rhs = "'<cmd>DiffviewOpen<cr>'"; opts = silentNoRemap; }
+      { lhs = "<leader>dc"; rhs = "'<cmd>DiffviewClose<cr>'"; opts = silentNoRemap; }
+      { lhs = "<leader>df"; rhs = "'<cmd>DiffviewFileHistory<cr>'"; opts = silentNoRemap; }
+      { lhs = "<leader>dF"; rhs = "'<cmd>DiffviewToggleFiles<cr>'"; opts = silentNoRemap; }
+    ];
+  }
+  {
+    plugin = vimExtraPlugins.lazygit-nvim;
+    cmd = [ "LazyGit" ];
+    keys = [
+      { lhs = "<leader>gg"; rhs = "'<cmd>LazyGit<cr>'"; opts = silentNoRemap; }
+    ];
+  }
+
   # Colorscheme dev
   lush-nvim
 ]
