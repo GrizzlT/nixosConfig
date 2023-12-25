@@ -12,6 +12,7 @@
     ./broot.nix
 
     ./productivity.nix
+    ./ttrpg.nix
 
     ./passage.nix
     ./gpg.nix

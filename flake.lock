@@ -9,17 +9,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1701216516,
-        "narHash": "sha256-jKSeJn+7hZ1dZdiH1L+NWUGT2i/BGomKAJ54B9kT06Q=",
-        "owner": "ryantm",
-        "repo": "agenix",
-        "rev": "13ac9ac6d68b9a0896e3d43a082947233189e247",
-        "type": "github"
+        "lastModified": 1703089996,
+        "narHash": "sha256-ipqShkBmHKC9ft1ZAsA6aeKps32k7+XZSPwfxeHLsAU=",
+        "rev": "564595d0ad4be7277e07fa63b5a991b3c645655d",
+        "revCount": 278,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/ryantm/agenix/0.14.1/018c881c-43eb-7268-8c31-114bc555963f/source.tar.gz"
       },
       "original": {
-        "owner": "ryantm",
-        "repo": "agenix",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/ryantm/agenix/0.14.tar.gz"
       }
     },
     "base16": {
@@ -182,17 +181,16 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1702534966,
-        "narHash": "sha256-jMJ54aI5xk5vpoGIKFHw0HMOIS8a03tZ46gBtW+ghIk=",
-        "owner": "nix-community",
-        "repo": "fenix",
-        "rev": "aa8f8228044e2fc224ceb9f751b5e0d5b580745a",
-        "type": "github"
+        "lastModified": 1701411808,
+        "narHash": "sha256-K8QDx8UgbvGdENuvPvcsCXcd8brd55OkRDFLBT7xUVY=",
+        "rev": "3776d0e2a30184cc6a0ba20fb86dc6df5b41fccd",
+        "revCount": 1694,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/nix-community/fenix/0.1.1694%2Brev-3776d0e2a30184cc6a0ba20fb86dc6df5b41fccd/018c2471-ae06-7cb3-a542-c80f7a549d7b/source.tar.gz"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "fenix",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/nix-community/fenix/0.1.tar.gz"
       }
     },
     "flake-compat": {
@@ -297,18 +295,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1702195709,
-        "narHash": "sha256-+zRjWkm5rKqQ57PuLZ3JF3xi3vPMiOJzItb1m/43Cq4=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "6761b8188b860f374b457eddfdb05c82eef9752f",
-        "type": "github"
+        "lastModified": 1703367386,
+        "narHash": "sha256-FMbm48UGrBfOWGt8+opuS+uLBLQlRfhiYXhHNcYMS5k=",
+        "rev": "d5824a76bc6bb93d1dce9ebbbcb09a9b6abcc224",
+        "revCount": 3167,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.2311.3167%2Brev-d5824a76bc6bb93d1dce9ebbbcb09a9b6abcc224/018c98a0-5f50-7071-a8af-c03472b9e9e6/source.tar.gz"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "release-23.11",
-        "repo": "home-manager",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz"
       }
     },
     "home-manager_3": {
@@ -345,16 +341,14 @@
       "locked": {
         "lastModified": 1701881246,
         "narHash": "sha256-p7el5oQZPy9l1zyIrlHu6nA4BAu59eLoSqBjhkw2jaw=",
-        "owner": "hyprwm",
-        "repo": "Hyprland",
         "rev": "d74607e414dcd16911089a6d4b6aeb661c880923",
-        "type": "github"
+        "revCount": 3766,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/hyprwm/Hyprland/0.33.1/018c400c-e6ce-7a3e-a4c9-aba1d5492b20/source.tar.gz"
       },
       "original": {
-        "owner": "hyprwm",
-        "ref": "v0.33.1",
-        "repo": "Hyprland",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz"
       }
     },
     "hyprland-contrib": {
@@ -429,18 +423,16 @@
     },
     "impermanence": {
       "locked": {
-        "lastModified": 1697303681,
-        "narHash": "sha256-caJ0rXeagaih+xTgRduYtYKL1rZ9ylh06CIrt1w5B4g=",
-        "owner": "nix-community",
-        "repo": "impermanence",
-        "rev": "0f317c2e9e56550ce12323eb39302d251618f5b5",
-        "type": "github"
+        "lastModified": 1702984171,
+        "narHash": "sha256-reIUBrUXibohXmvXRsgpvtlCE0QQSvWSA+qQCKohgR0=",
+        "rev": "123e94200f63952639492796b8878e588a4a2851",
+        "revCount": 120,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/nix-community/impermanence/0.1.120%2Brev-123e94200f63952639492796b8878e588a4a2851/018c81c5-0d8e-77e4-ae98-2c1bd21b34ab/source.tar.gz"
       },
       "original": {
-        "owner": "nix-community",
-        "ref": "master",
-        "repo": "impermanence",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/nix-community/impermanence/0.1.tar.gz"
       }
     },
     "nix-github-actions": {
@@ -489,11 +481,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1702563644,
-        "narHash": "sha256-aCNKE/3tk7h+xQ4ZXVT1ejqhCvQQGPSfgtuEJZlzQjs=",
+        "lastModified": 1703427455,
+        "narHash": "sha256-lsLMvYeaLBj9a+MuwFtKVQwaqcTRiKX1hLi9SXpfiVE=",
         "owner": "NixNeovim",
         "repo": "NixNeovimPlugins",
-        "rev": "52dca550282a076795efe30b519ae50ddc47bb0b",
+        "rev": "169065600720dee47bec93af29e37e5a6624c159",
         "type": "github"
       },
       "original": {
@@ -512,31 +504,28 @@
       "locked": {
         "lastModified": 1701689616,
         "narHash": "sha256-ewnfgvRy73HoP5KnYmy1Rcr4m4yShvsb6TCCaKoW8pc=",
-        "owner": "nix-community",
-        "repo": "nixos-generators",
         "rev": "246219bc21b943c6f6812bb7744218ba0df08600",
-        "type": "github"
+        "revCount": 330,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/nix-community/nixos-generators/0.1.330%2Brev-246219bc21b943c6f6812bb7744218ba0df08600/018c349b-ad3c-734d-b2e3-233d936e9911/source.tar.gz"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "nixos-generators",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/nix-community/nixos-generators/0.1.tar.gz"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1702346276,
-        "narHash": "sha256-eAQgwIWApFQ40ipeOjVSoK4TEHVd6nbSd9fApiHIw5A=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "cf28ee258fd5f9a52de6b9865cdb93a1f96d09b7",
-        "type": "github"
+        "lastModified": 1703200384,
+        "narHash": "sha256-q5j06XOsy0qHOarsYPfZYJPWbTbc8sryRxianlEPJN0=",
+        "rev": "0b3d618173114c64ab666f557504d6982665d328",
+        "revCount": 553533,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.2311.553533%2Brev-0b3d618173114c64ab666f557504d6982665d328/018c9e9e-d94b-7b68-b28b-3c199885e76c/source.tar.gz"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-23.11",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.2311.tar.gz"
       }
     },
     "poetry2nix": {
@@ -585,11 +574,11 @@
     "rust-analyzer-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1702503018,
-        "narHash": "sha256-KTz3cZL2NypvIPb594j9GUizhifhfX6BJ1ks58fTWbM=",
+        "lastModified": 1701372675,
+        "narHash": "sha256-MSHhnAoLjJuoPxzsTzBOzNhjhlCTHPs4nvkPAZVV1eY=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "dd07f1f2fbfd7e6ea581240af07131a1b7368b0f",
+        "rev": "c9d189d1375e59a6c9b4d62fdede94ade001f6ee",
         "type": "github"
       },
       "original": {
@@ -616,18 +605,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1702559747,
-        "narHash": "sha256-d6AmQp3M00WMPJquNfGVzIol5iojD1pi9slek+4N9VY=",
-        "owner": "danth",
-        "repo": "stylix",
-        "rev": "41d218597590a89324a4b7c50cf0bf088a7214ba",
-        "type": "github"
+        "lastModified": 1703473871,
+        "narHash": "sha256-ycthAgQEKE1Vz8stcK+mFw7/qr9ycBmaOrBHEr7j2iU=",
+        "rev": "a1cbd98719daec528538d2b7d56279ddf68f90e6",
+        "revCount": 277,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/danth/stylix/0.1.277%2Brev-a1cbd98719daec528538d2b7d56279ddf68f90e6/018c9f00-5f97-7c37-94ca-392c7339c0f8/source.tar.gz"
       },
       "original": {
-        "owner": "danth",
-        "repo": "stylix",
-        "rev": "41d218597590a89324a4b7c50cf0bf088a7214ba",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/danth/stylix/0.1.tar.gz"
       }
     },
     "systems": {
@@ -677,18 +664,16 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1702312524,
-        "narHash": "sha256-gkZJRDBUCpTPBvQk25G0B7vfbpEYM5s5OZqghkjZsnE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a9bf124c46ef298113270b1f84a164865987a91c",
-        "type": "github"
+        "lastModified": 1703255338,
+        "narHash": "sha256-Z6wfYJQKmDN9xciTwU3cOiOk+NElxdZwy/FiHctCzjU=",
+        "rev": "6df37dc6a77654682fe9f071c62b4242b5342e04",
+        "revCount": 562218,
+        "type": "tarball",
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.562218%2Brev-6df37dc6a77654682fe9f071c62b4242b5342e04/018c99c5-83a2-762d-ae43-a38f3be5b2d9/source.tar.gz"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "tarball",
+        "url": "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz"
       }
     },
     "wlroots": {
@@ -719,16 +704,16 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1700508250,
-        "narHash": "sha256-X4o/mifI7Nhu0UKYlxx53wIC+gYDo3pVM9L2u3PE2bE=",
+        "lastModified": 1703514399,
+        "narHash": "sha256-VRr5Xc4S/VPr/gU3fiOD3vSIL2+GJ+LUrmFTWTwnTz4=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "eb120ff25265ecacd0fc13d7dab12131b60d0f47",
+        "rev": "0a318a7a217a6402b0b705837cd5b50b0e94b31b",
         "type": "github"
       },
       "original": {
         "owner": "hyprwm",
-        "ref": "v1.2.5",
+        "ref": "v1.2.6",
         "repo": "xdg-desktop-portal-hyprland",
         "type": "github"
       }

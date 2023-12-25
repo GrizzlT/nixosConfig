@@ -2,11 +2,11 @@
   description = "GrizzlT's NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2311.tar.gz";
+    unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -17,7 +17,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.33.1";
+      url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
       inputs.nixpkgs.follows = "unstable";
     };
     hyprland-contrib = {
@@ -25,12 +25,12 @@
       inputs.nixpkgs.follows = "unstable";
     };
     xdg-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.2.5";
+      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.2.6";
       inputs.nixpkgs.follows = "unstable";
     };
 
     stylix = {
-      url = "github:danth/stylix/41d218597590a89324a4b7c50cf0bf088a7214ba";
+      url = "https://flakehub.com/f/danth/stylix/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,24 +39,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence = {
-      type = "github";
-      owner = "nix-community";
-      repo = "impermanence";
-      ref = "master";
-    };
+    impermanence.url = "https://flakehub.com/f/nix-community/impermanence/0.1.tar.gz";
 
     agenix = {
-      url = "github:ryantm/agenix";
+      url = "https://flakehub.com/f/ryantm/agenix/0.14.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+      url = "https://flakehub.com/f/nix-community/nixos-generators/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fenix = {
-      url = "github:nix-community/fenix";
+      url = "https://flakehub.com/f/nix-community/fenix/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

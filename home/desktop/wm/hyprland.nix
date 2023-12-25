@@ -277,6 +277,10 @@ in
         inactive_opacity=0.85
       }
 
+      xwayland {
+        use_nearest_neighbor = false
+      }
+
       animations {
         enabled = yes
         bezier = wind, 0.05, 0.9, 0.1, 1.05
