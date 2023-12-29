@@ -16,10 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
-      inputs.nixpkgs.follows = "unstable";
-    };
+    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "unstable";

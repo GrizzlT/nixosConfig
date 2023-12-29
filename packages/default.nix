@@ -15,5 +15,5 @@ in
   porsmo = pkgs.callPackage ./porsmo.nix {};
   awatcher = pkgs.callPackage ./awatcher.nix { inherit rustPlatform; };
 
-  neovim = pkgs.callPackage ./neovim { nixd = pkgs.unstable.nixd; };
+  neovim = pkgs.callPackage ./neovim {};
 }

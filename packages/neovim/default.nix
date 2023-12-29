@@ -2,7 +2,7 @@
   writeText, runCommand, makeSetupHook, symlinkJoin, buildEnv, fetchFromGitHub, fetchgit,
   tree-sitter, # Tree sitter
   taplo, # Toml
-  nixd, nixpkgs-fmt, # Nix
+  nil, nixpkgs-fmt, # Nix
   fd, ripgrep, # Telescope
   unixtools, # xxd
   ltex-ls # ltex-ls
@@ -13,7 +13,7 @@ let
     # Toml
     taplo
     # Nix
-    nixd
+    nil
     nixpkgs-fmt
     # Telescope
     fd
