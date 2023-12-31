@@ -180,6 +180,11 @@ in with vimPlugins;
     ft = "rust";
     dependencies = [ nvim-lspconfig ];
   }
+  {
+    plugin = vimExtraPlugins.crates-nvim;
+    event = "BufRead Cargo.toml";
+    dependencies = [ plenary-nvim nvim-cmp ];
+  }
 
   # {
   #   plugin = vimExtraPlugins.nvim-ghost-nvim;
