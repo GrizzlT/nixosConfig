@@ -1,4 +1,4 @@
-{ pkgs, myPackages, ... }:
+{ myPackages, ... }:
 {
   home.packages = [
     myPackages.neovim

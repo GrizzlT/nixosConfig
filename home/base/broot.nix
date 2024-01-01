@@ -2,7 +2,6 @@
 {
   programs.broot = {
     enable = true;
-    enableZshIntegration = true;
     settings.verbs = [
       {
         invocation = "lazygit";

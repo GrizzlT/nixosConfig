@@ -1,9 +1,5 @@
 { pkgs, myPackages, ... }:
 {
-  imports = [
-    ../eza.nix
-  ];
-
   home.packages = with pkgs; [
     zsh-powerlevel10k
 

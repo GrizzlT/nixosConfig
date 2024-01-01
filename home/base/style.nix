@@ -36,6 +36,7 @@
     targets.swaylock.enable = true;
     targets.bemenu.enable = true;
     targets.bat.enable = true;
+    targets.fish.enable = true;
   };
 
   home.pointerCursor = {

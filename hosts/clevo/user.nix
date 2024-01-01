@@ -22,7 +22,7 @@ userName:
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     packages = [ home-manager.packages.${pkgs.system}.default ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   programs.light.enable = true;
@@ -47,4 +47,5 @@ userName:
   programs.zsh = {
     enable = true;
   };
+  programs.fish.enable = true;
 }

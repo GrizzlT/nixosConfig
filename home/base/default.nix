@@ -10,6 +10,7 @@
     ./git.nix
     ./xplr.nix
     ./broot.nix
+    ./eza.nix
 
     ./productivity.nix
     ./ttrpg.nix
@@ -19,6 +20,7 @@
     ./network-tools.nix
 
     ./zsh
+    ./fish
   ];
 
   home.packages = with pkgs; [
@@ -41,17 +43,7 @@
     bottom.enable = true;
     bash.enable = true;
     bat.enable = true;
-
-    fzf = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-    };
-
-    zoxide = {
-      enable = true;
-      enableZshIntegration = true;
-      enableBashIntegration = true;
-    };
+    fzf.enable = true;
+    zoxide.enable = true;
   };
 }
