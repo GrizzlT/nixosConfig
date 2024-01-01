@@ -18,6 +18,7 @@
     ];
     interactiveShellInit = ''
       set -x FORGIT_COPY_CMD '${pkgs.wl-clipboard}/bin/wl-copy'
+      set -g fish_greeting
     '';
   };
 }
