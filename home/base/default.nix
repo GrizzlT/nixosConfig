@@ -20,7 +20,7 @@
     ./network-tools.nix
 
     ./zsh
-    ./fish
+    ./fish.nix
   ];
 
   home.packages = with pkgs; [
