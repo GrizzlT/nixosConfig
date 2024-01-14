@@ -16,13 +16,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
+    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.34.tar.gz";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "unstable";
     };
     xdg-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.2.6";
+      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
       inputs.nixpkgs.follows = "unstable";
     };
 

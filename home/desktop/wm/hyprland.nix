@@ -257,7 +257,7 @@ in
       env=XDG_SESSION_TYPE,wayland
       env=XDG_SESSION_DESKTOP,Hyprland
 
-      monitor=eDP-1,1920x1080@60,0x0,1.15
+      monitor=eDP-1,1920x1080@60,0x0,1
       monitor=HDMI-A-1,1366x768@60,-1366x0,1
 
       dwindle {
