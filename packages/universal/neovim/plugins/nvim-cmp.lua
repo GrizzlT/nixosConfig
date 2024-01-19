@@ -6,6 +6,7 @@ local lspkind = require('lspkind')
 cmp.setup({
   sources = cmp.config.sources({
     { name = 'crates' },
+    { name = 'hledger' },
   }, {
     { name = 'nvim_lsp' },
     { name = 'luasnip', keyword_length = 2, },

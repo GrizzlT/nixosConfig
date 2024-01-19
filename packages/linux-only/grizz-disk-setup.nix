@@ -4,4 +4,4 @@ resholve.writeScriptBin "grizz-disk-setup" {
   interpreter = "${bash}/bin/bash";
   execer = [ "cannot:${util-linux}/bin/swapon" ];
   fix = { mount = true; };
-} (builtins.readFile ../scripts/grizz-disk-setup.sh)
+} (builtins.readFile ./scripts/grizz-disk-setup.sh)

@@ -1,12 +1,8 @@
-{ self, pkgs, nixos-generators, ...}:
+{ pkgs, nixos-generators, grizzScripts, ...}:
 nixos-generators.nixosGenerate {
   system = pkgs.system;
   format = "iso";
-  specialArgs = let custom-pkgs = self.packages.${pkgs.system}; in
-  with custom-pkgs; {
-    inherit grizz-disk-setup;
-    inherit grizz-zfs-diff;
-  };
+  specialArgs = grizzScripts;
   modules = [
     ({ config, pkgs, lib, modulesPath, ... }@inputs:
     {
@@ -15,7 +11,7 @@ nixos-generators.nixosGenerate {
         # Provide an initial copy of the NixOS channel so that the user
         # doesn't need to run "nix-channel --update" first.
         (modulesPath +  "/installer/cd-dvd/channel.nix")
-        ../modules/grizz-keyboard.nix
+        ../../modules/grizz-keyboard.nix
       ];
 
       environment.systemPackages = [

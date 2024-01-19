@@ -1,19 +1,14 @@
-{
-  self,
-  pkgs,
-  flake-inputs,
-}:
+{ nixpkgs, inputs, }:
 let
-  toolchain = flake-inputs.fenix.packages.${pkgs.system}.minimal.toolchain;
-  rustPlatform = pkgs.makeRustPlatform {
-    cargo = toolchain;
-    rustc = toolchain;
-  };
-in
-{
-  emoji-fzf = pkgs.callPackage ./emoji-fzf.nix {};
-  porsmo = pkgs.callPackage ./porsmo.nix {};
-  awatcher = pkgs.callPackage ./awatcher.nix { inherit rustPlatform; };
+  pkgs = system: nixpkgs.legacyPackages.${system};
 
-  neovim = pkgs.callPackage ./neovim {};
-}
+  universal = { pkgs, inputs }: (import ./universal) { inherit pkgs inputs; };
+  linux-only = { pkgs, inputs }: (import ./linux-only) { inherit pkgs inputs; };
+in
+nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: linux-only {
+  pkgs = pkgs system;
+  inherit inputs;
+})) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: universal {
+  pkgs = pkgs system;
+  inherit inputs;
+}))

@@ -1,5 +1,15 @@
 { vimPlugins, vimExtraPlugins, buildVimPlugin, neovim-raw, runCommand, fetchFromGitHub, fetchgit, tree-sitter }:
 let
+  cmp-hledger = buildVimPlugin {
+    pname = "cmp-hledger";
+    version = "0.0.0+rev=1d237ed";
+    src = fetchFromGitHub {
+      owner = "kirasok";
+      repo = "cmp-hledger";
+      rev = "1d237ed9f5b8748348d600741ef15653050023fb";
+      sha256 = "5P6PsCop8wFdFkCPpShAoCj1ygryOo4VQUZQn+0CNdo=";
+    };
+  };
   d2-vim = buildVimPlugin {
     pname = "d2-vim";
     version = "0.0.0+rev=981c87d";
@@ -43,7 +53,7 @@ let
   nvim-treesitter' = vimPlugins.nvim-treesitter.withPlugins (parsers:
     with parsers; [
       query toml lua rust gitcommit gitignore json markdown nix bash typescript
-      tree-sitter-d2 tree-sitter-typst
+      tree-sitter-d2 tree-sitter-typst ledger
     ]);
 
   onedarkpro = let
@@ -163,6 +173,7 @@ in with vimPlugins;
       cmp-buffer
       cmp-path
       cmp_luasnip
+      cmp-hledger
       lspkind-nvim
     ];
   }
