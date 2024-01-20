@@ -1,32 +1,37 @@
-{ config, pkgs, lib, grizz-zfs-diff, agenix, ... }:
+{ lib, selfNixos, inputNixos, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
   hostId = "13eb44cc";
 in
 {
-  imports = [
+  imports = with selfNixos; [
+    inputNixos.agenix.default
+    inputNixos.impermanence.impermanence
+
+    keyboardConfig
+    nixConfig
+
+    minimalPackages
+    pipewire
+    printing
+    stylix
+    tailscale
+    xorg
+
+    ./age.nix
     ./disks.nix
+    ./firewall.nix
+    ./greetd
     ./performance.nix
     ./persist.nix
-    ./pipewire.nix
-    ./printing.nix
-    ./greetd
-    ./style.nix
-    ./firewall.nix
-    ./tailscale.nix
-    ./virtualization.nix
     ./storage.nix
-    ./age.nix
+    ./virtualisation.nix
 
     # ./ecsc-dry-run.nix
-    ./xorg.nix
 
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)
-
-    ../../modules/grizz-keyboard.nix
-    ../../modules/nix-settings.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -34,24 +39,6 @@ in
     "steam-original"
     "steam-run"
   ];
-
-  # Very basic packages + packages requiring system access
-  environment.systemPackages = with pkgs; [
-    # minimal basics
-    vim
-    wget
-    curl
-    git
-    grizz-zfs-diff
-
-    agenix.packages.${pkgs.system}.default
-  ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
 
   security.sudo.extraConfig = "Defaults lecture = never";
 

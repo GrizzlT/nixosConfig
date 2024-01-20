@@ -1,6 +1,79 @@
 {
   description = "GrizzlT's NixOS flake";
 
+  outputs = { self, nixpkgs, ... }@inputs: let
+    lib = import ./lib.nix { inherit (nixpkgs) lib; };
+
+    selfNixos = import ./modules/nixos;
+    selfHm = import ./modules/hm;
+
+    mkNixosConfig = { hostname, system }: (nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = inputs // (lib.extractInputs system inputs) // {
+        selfPkgs = self.packages.${system};
+        inherit selfNixos;
+      };
+      modules = [(./hosts/${hostname})];
+    });
+
+    mkHmConfig = { hostname, system }: (inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = inputs // (lib.extractInputs system inputs) // {
+        selfPkgs = self.packages.${system};
+        inherit selfHm;
+      };
+      modules = [(./home/grizz + "@${hostname}")];
+    });
+  in {
+    packages = import ./packages {
+      inherit nixpkgs;
+      inputs = inputs // { inherit selfNixos; };
+    };
+
+    # homeConfigurations."grizz@clevo" = mkHmConfig {
+    #   hostname = "clevo";
+    #   system = "x86_64-linux";
+    # };
+
+    nixosConfigurations."clevo" = mkNixosConfig {
+      hostname = "clevo";
+      system = "x86_64-linux";
+    };
+
+    # nixosConfigurations."clevo" = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
+    #   inherit system;
+    #   specialArgs = {
+    #     grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
+    #     inherit home-manager;
+    #     inherit (inputs) hyprland stylix agenix xdg-portal-hyprland;
+    #   };
+    #   modules = [
+    #     inputs.impermanence.nixosModules.impermanence
+    #     inputs.agenix.nixosModules.default
+    #     ./hosts/clevo
+    #     { nixpkgs.overlays = [ flakeOverlay ]; }
+    #   ];
+    # };
+    #
+    # homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = pkgs "x86_64-linux";
+    #     extraSpecialArgs = inputs;
+    #     modules = [
+    #       inputs.flakeSecrets.homeManagerModules.default
+    #       ./home/base
+    #       ./home/desktop/wm
+    #       ./home/desktop/apps
+    #       ({ pkgs, lib, ... }: {
+    #         home = {
+    #           username = "grizz";
+    #           homeDirectory = "/home/grizz";
+    #           stateVersion = "23.11";
+    #         };
+    #       })
+    #     ];
+    # };
+  };
+
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2311.tar.gz";
     unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
@@ -50,64 +123,6 @@
     fenix = {
       url = "https://flakehub.com/f/nix-community/fenix/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
-  let
-    flakeOverlay = final: prev: {
-      unstable = import unstable {
-        system = prev.system;
-        config.allowUnfree = true;
-      };
-    };
-    pkgs = system: import nixpkgs { overlays = [
-      flakeOverlay
-      inputs.nixneovimplugins.overlays.default
-      inputs.hyprland-contrib.overlays.default
-    ]; inherit system; };
-  in {
-    packages = nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: import ./linux-packages {
-      inherit self;
-      pkgs = pkgs system;
-      flake-inputs = inputs;
-    })) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: import ./packages {
-      inherit self;
-      pkgs = pkgs system;
-      flake-inputs = inputs;
-    }));
-
-    nixosConfigurations."clevo" = let system = "x86_64-linux"; in nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {
-        grizz-zfs-diff = self.packages.${system}.grizz-zfs-diff;
-        inherit home-manager;
-        inherit (inputs) hyprland stylix agenix xdg-portal-hyprland;
-      };
-      modules = [
-        inputs.impermanence.nixosModules.impermanence
-        inputs.agenix.nixosModules.default
-        ./hosts/clevo
-        { nixpkgs.overlays = [ flakeOverlay ]; }
-      ];
-    };
-
-    homeConfigurations."grizz@clevo" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs "x86_64-linux";
-        extraSpecialArgs = inputs;
-        modules = [
-          inputs.flakeSecrets.homeManagerModules.default
-          ./home/base
-          ./home/desktop/wm
-          ./home/desktop/apps
-          ({ pkgs, lib, ... }: {
-            home = {
-              username = "grizz";
-              homeDirectory = "/home/grizz";
-              stateVersion = "23.11";
-            };
-          })
-        ];
     };
   };
 }

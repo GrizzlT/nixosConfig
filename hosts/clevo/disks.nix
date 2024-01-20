@@ -1,4 +1,4 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, lib, modulesPath, ... }:
 let
   deviceCryptKey = "/dev/disk/by-label/CRYPTKEY";
   deviceCryptRoot = "/dev/disk/by-label/CRYPTROOT";

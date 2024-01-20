@@ -1,27 +1,12 @@
 userName:
-{ pkgs, home-manager, hyprland, xdg-portal-hyprland, ... }:
+{ pkgs, inputPkgs, ... }:
 {
-  time.timeZone = "Europe/Brussels";
-  i18n = {
-    extraLocaleSettings = {
-      LC_TIME = "nl_BE.UTF-8";
-      LC_COLLATE = "nl_BE.UTF-8";
-      LC_MONETARY = "nl_BE.UTF-8";
-      LC_PAPER = "nl_BE.UTF-8";
-      LC_NAME = "nl_BE.UTF-8";
-      LC_ADDRESS = "nl_BE.UTF-8";
-      LC_TELEPHONE = "nl_BE.UTF-8";
-      LC_MEASUREMENT = "nl_BE.UTF-8";
-      LC_IDENTIFICATION = "nl_BE.UTF-8";
-    };
-  };
-
   users.mutableUsers = false;
   users.users.${userName} = {
     hashedPasswordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    packages = [ home-manager.packages.${pkgs.system}.default ];
+    packages = [ inputPkgs.home-manager.default ];
     shell = pkgs.fish;
   };
 
@@ -30,8 +15,8 @@ userName:
   # My window manager of choice
   programs.hyprland = {
     enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
-    portalPackage = xdg-portal-hyprland.packages.${pkgs.system}.default;
+    package = inputPkgs.hyprland.hyprland;
+    portalPackage = inputPkgs.xdg-portal-hyprland.default;
   };
 
   # Necessary for swaylock
@@ -43,9 +28,7 @@ userName:
     gamescopeSession.enable = true;
   };
 
-  # The Z shell
-  programs.zsh = {
-    enable = true;
-  };
+  # Shell
+  programs.zsh.enable = true;
   programs.fish.enable = true;
 }

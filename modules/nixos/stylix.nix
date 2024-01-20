@@ -1,7 +1,7 @@
-{ pkgs, stylix, config, ... }:
+{ pkgs, config, inputNixos, ... }:
 {
   imports = [
-    stylix.nixosModules.stylix
+    inputNixos.stylix.stylix
   ];
 
   fonts.packages = with pkgs; [ courier-prime ];

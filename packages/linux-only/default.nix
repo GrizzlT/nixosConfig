@@ -8,7 +8,7 @@ in
 
   grizz-installer-iso = import ./grizz-installer.nix {
     inherit pkgs;
-    inherit (inputs) nixos-generators;
+    inherit (inputs) nixos-generators selfNixos;
     grizzScripts = { inherit grizz-disk-setup grizz-zfs-diff; };
   };
 }

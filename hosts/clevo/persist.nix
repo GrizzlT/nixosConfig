@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   environment.persistence."/persist" = {
     hideMounts = true;
