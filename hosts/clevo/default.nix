@@ -12,6 +12,7 @@ in
     keyboardConfig
     nixConfig
 
+    locale
     minimalPackages
     pipewire
     printing
