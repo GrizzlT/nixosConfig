@@ -18,7 +18,7 @@
 
     mkHmConfig = { hostname, system }: (inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = inputs // (lib.extractInputs system inputs) // {
+      extraSpecialArgs = (lib.extractInputs system inputs) // {
         unstable = import inputs.unstable {
           inherit system;
           config.allowUnfree = true;
