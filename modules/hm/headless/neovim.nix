@@ -1,7 +1,7 @@
-{ myPackages, ... }:
+{ selfPkgs, ... }:
 {
   home.packages = [
-    myPackages.neovim
+    selfPkgs.neovim
   ];
 
   # Relative path to nvim for ease of use,

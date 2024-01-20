@@ -1,4 +1,4 @@
-{ writeShellApplication, writeScriptBin, hyprland, foot, fzf, findutils, gnused, coreutils, ydotool, jq }:
+{ writeShellApplication, hyprland, foot, fzf, findutils, gnused, coreutils, ydotool, jq }:
 let
   runtimeInputs = [  hyprland foot fzf findutils gnused coreutils ydotool jq ];
   promptScript = writeShellApplication {

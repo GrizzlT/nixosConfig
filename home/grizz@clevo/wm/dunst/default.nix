@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   services.dunst = {
     enable = true;
@@ -16,7 +16,6 @@
         frame_width = 2;
         corner_radius = 8;
         follow = "keyboard";
-# dmenu = "anyrun?";
       };
     };
   };

@@ -1,15 +1,11 @@
-{ pkgs, hyprland, myScripts, myPackages, ... }@inputs:
+{ pkgs, myScripts, selfPkgs, inputPkgs, ... }:
 let
   scripts = myScripts.hyprland;
   awServerPort = 5600;
 in
 {
-  imports = [
-    # inputs.hyprland.homeManagerModules.default
-  ];
-
-  home.packages = with pkgs; [
-    grimblast
+  home.packages = with pkgs; with inputPkgs; [
+    hyprland-contrib.grimblast
     hyprpicker
     cliphist
     wl-clipboard
@@ -17,7 +13,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
+    package = inputPkgs.hyprland.hyprland;
     extraConfig = ''
       exec-once=${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
       exec-once=${pkgs.waybar}/bin/waybar
@@ -26,7 +22,7 @@ in
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
       exec-once=${pkgs.aw-server-rust}/bin/aw-server --port ${toString awServerPort} --dbpath "$HOME/DATA/.activity-watch/aw-server-rust.sqlite"
-      exec-once=${myPackages.awatcher}/bin/awatcher --port ${toString awServerPort}
+      exec-once=${selfPkgs.awatcher}/bin/awatcher --port ${toString awServerPort}
 
       windowrule = float, pavucontrol
       windowrule = float, wlogout

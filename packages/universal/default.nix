@@ -10,6 +10,7 @@ in
   emoji-fzf = pkgs.callPackage ./emoji-fzf.nix {};
   porsmo = pkgs.callPackage ./porsmo.nix {};
   awatcher = pkgs.callPackage ./awatcher.nix { inherit rustPlatform; };
+  paperage = pkgs.callPackage ./paperage.nix { inherit rustPlatform; };
 
   neovim = pkgs.callPackage ./neovim {
     vimExtraPlugins = inputs.nixneovimplugins.packages.${pkgs.system};

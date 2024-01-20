@@ -1,6 +1,6 @@
 { pkgs, hyprland, ... }:
 let
-  hyprlandPkg = hyprland.packages.${pkgs.system}.hyprland;
+  hyprlandPkg = hyprland.hyprland;
   callPackage = pkgs.callPackage;
   wlogout = callPackage ./wlogout.nix {};
 in

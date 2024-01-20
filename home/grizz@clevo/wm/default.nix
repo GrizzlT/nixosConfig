@@ -1,9 +1,10 @@
 { pkgs, ... }@inputs:
 {
   _module.args = {
-    hyprland = inputs.hyprland;
-    stylix = inputs.stylix;
-    myScripts = import ./scripts { inherit (inputs) pkgs hyprland; };
+    myScripts = import ./scripts {
+      inherit pkgs;
+      inherit (inputs.inputPkgs) hyprland;
+    };
   };
 
   imports = [
@@ -19,6 +20,7 @@
   programs.foot.enable = true;
 
   home.keyboard = null;
+
   home.packages = with pkgs; [
     pavucontrol
     libnotify

@@ -1,11 +1,11 @@
-{ pkgs, config, stylix, ... }:
+{ pkgs, config, inputHm, ... }:
 {
   imports = [
-    stylix.homeManagerModules.stylix
+    inputHm.stylix.stylix
   ];
 
   stylix = {
-    image = ../../wallpapers/sunset-1920x1080.jpg;
+    image = ../../../wallpapers/sunset-1920x1080.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/snazzy.yaml";
     fonts = {
       monospace = {
@@ -39,12 +39,7 @@
     targets.fish.enable = true;
   };
 
-  home.pointerCursor = {
-    # package = pkgs.phinger-cursors;
-    # name = "phinger-cursors";
-    # size = 24;
-    gtk.enable = true;
-  };
+  home.pointerCursor.gtk.enable = true;
 
   gtk = {
     enable = true;
