@@ -54,11 +54,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flakeSecrets = {
-      url = "git+file:./flakeSecrets?shallow=1";
-      inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    flakeSecrets.url = "git+file:./flakeSecrets?shallow=1";
 
     hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.34.tar.gz";
     hyprland-contrib = {
