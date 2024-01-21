@@ -23,7 +23,13 @@ let normalizeName = plugin: builtins.replaceStrings ["."] ["-"] (getName plugin)
       type = listOf package;
       default = [];
       example = literalExpression "[ pkgs.vimPlugins.plenary-nvim ]";
-      description = ''Dependencies of this plugin.'';
+      description = ''Dependency plugins of this plugin.'';
+    };
+    extraBinaries = mkOption {
+      type = listOf package;
+      default = [];
+      example = literalExpression "[ pkgs.nil ]";
+      description = "Extra binaries for neovim's path.";
     };
     priority = mkOption {
       type = nullOr int;
@@ -44,8 +50,14 @@ let normalizeName = plugin: builtins.replaceStrings ["."] ["-"] (getName plugin)
       default = null;
     };
     keys = mkOption {
-      type = nullOr (oneOf [ str (listOf str) (submodule ./plugin-lazy-key.nix) ]);
+      type = nullOr (either str (listOf (oneOf [ str (submodule ./plugin-lazy-key.nix) ])));
       default = null;
+    };
+    config = mkOption {
+      type = nullOr lines;
+      default = null;
+      example = literalExpression "function() require('lualine').setup() end";
+      description = "Config for this plugin";
     };
     _manual = mkOption {
       type = bool;

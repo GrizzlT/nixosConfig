@@ -40,8 +40,6 @@ in
     ft = optionalString (cfg.ft != null) "ft = ${strList cfg.ft}, ";
     opts = optionalString (cfg.opts != null) "{${concatStringsSep ", " (mapAttrsToList (n: v: n + " = \"${toString v}\"") cfg.opts)}}";
   in {
-    lazySpec = ''
-      { '${cfg.lhs}', ${rhs}${mode}${ft}${opts}}
-    '';
+    lazySpec = "{ '${cfg.lhs}', ${rhs}${mode}${ft}${opts}}";
   };
 }
