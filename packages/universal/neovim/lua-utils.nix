@@ -22,8 +22,8 @@ let
       runHook preFixup
     '';
 
-  luaBlock = name: file: let
-    indentedBlock = lib.pipe (lib.fileContents file) [
+  luaBlock = name: contents: let
+    indentedBlock = lib.pipe contents [
       (lib.splitString "\n")
       (builtins.filter (str: str != ""))
       (lib.concatMapStringsSep "\n" (line: "  " + line))
@@ -31,7 +31,7 @@ let
   in ''
     -- ${name}
     do
-    ${lib.removeSuffix "\n" indentedBlock}
+    ${indentedBlock}
     end
   '';
 

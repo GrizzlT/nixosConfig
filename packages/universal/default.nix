@@ -12,7 +12,7 @@ in
   awatcher = pkgs.callPackage ./awatcher.nix { inherit rustPlatform; };
   paperage = pkgs.callPackage ./paperage.nix { inherit rustPlatform; };
 
-  neovim = pkgs.callPackage ./neovim {
+  neovim = pkgs.callPackage ./neovim/eval.nix {
     vimExtraPlugins = inputs.nixneovimplugins.packages.${pkgs.system};
   };
 }

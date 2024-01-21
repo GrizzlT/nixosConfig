@@ -21,6 +21,31 @@ in
       readOnly = true;
       visible = false;
     };
+    neovim.lazyOpts = mkOption {
+      type = str;
+      default = ''{
+        install = {
+          missing = false,
+        },
+        checker = {
+          enabled = false,
+        },
+        performance = {
+          rtp = {
+            disabled_plugins = {
+              'gzip',
+              'matchit',
+              'netrwPlugin',
+              'tarPlugin',
+              'spellfile',
+              'tohtml',
+              'tutor',
+              'zipPlugin',
+            },
+          },
+        },
+      }'';
+    };
   };
 
   config = let
@@ -43,11 +68,11 @@ in
     # Get the plugin definition based on plugin package
     pkgToPlugin = pkg: findFirst (v: v.package == pkg) {} (attrValues allPlugins);
     # Implicit dependency expanded locally, explicit dependency is referenced by name
-    dependencyConfig = dep: let p = pkgToPlugin dep; in
+    dependencyConfig = w: dep: let p = pkgToPlugin dep; in
       if (p ? "_manual") then
         "\n'${p.name}'," else
         ''\n{
-          dir = '${p.package}',
+          dir = '${w p.package}',
           name = '${p.name}',
         },'';
 
@@ -56,11 +81,11 @@ in
     # x => 'x' and [ x v ] => { { 'x', }, { 'v', } }
     lazyKeys = x: if (builtins.isList x) then "{${concatMapStringsSep ", " (e: if e ? "lazySpec" then e.lazySpec else "{ '${e}', }") x}}" else "'${x}'";
 
-    pluginConfig = plugin: ''{
-      dir = '${plugin.package}',
+    pluginConfig = w: plugin: ''{
+      dir = '${w plugin.package}',
       name = '${plugin.name}',
       lazy = ${boolToString plugin.lazy},''
-        + (if (plugin.dependencies != []) then "\ndependencies = { ${toString (map dependencyConfig plugin.dependencies)} }," else "")
+        + (if (plugin.dependencies != []) then "\ndependencies = { ${toString (map dependencyConfig w plugin.dependencies)} }," else "")
         + (if (plugin.priority != null) then "\npriority = ${toString plugin.priority}," else "")
         + (if (plugin.event != null) then "\nevent = ${strOrStringList plugin.event}," else "")
         + (if (plugin.cmd != null) then "\ncmd = ${strOrStringList plugin.cmd}," else "")
@@ -78,7 +103,7 @@ in
     }];
 
     neovim = {
-      _lazyConfig = { config = map pluginConfig (attrValues cfg); plugins = allPlugins; };
+      _lazyConfig = w: map (pluginConfig w) (attrValues cfg);
       _extraBinaries = flatten (mapAttrsToList (_: p: p.extraBinaries) cfg);
     };
   };
