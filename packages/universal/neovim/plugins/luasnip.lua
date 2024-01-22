@@ -15,7 +15,7 @@ vim.keymap.set({ "i", "s" }, "<C-f>", function() luasnip.jump(1) end, { silent =
 vim.keymap.set({ "i", "s" }, "<C-v>", function() luasnip.jump(-1) end, { silent = true })
 
 local opts = {
-  paths = require('grizz-runtime').grizz_runtime_path .. '/snippets'
+  paths = require('local-runtime').local_runtime_path .. '/snippets'
 }
 require('luasnip.loaders.from_lua').lazy_load(opts)
 

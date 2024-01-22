@@ -1,23 +1,3 @@
--- require('lsp-progress').setup({
---   spinner = {
---     "[    ]",
---     "[=   ]",
---     "[==  ]",
---     "[=== ]",
---     "[ ===]",
---     "[  ==]",
---     "[   =]",
---     "[    ]",
---     "[   =]",
---     "[  ==]",
---     "[ ===]",
---     "[====]",
---     "[=== ]",
---     "[==  ]",
---     "[=   ]", },
---   spin_update_time = 60;
--- })
-
 require('lualine').setup({
   options = {
     theme = require('lualine.themes.onedark'),

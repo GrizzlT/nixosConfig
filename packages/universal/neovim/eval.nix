@@ -3,7 +3,7 @@ let
   pluginsEval = (lib.evalModules {
     modules = [
       (pkgs.path + "/nixos/modules/misc/assertions.nix")
-      ./nvim-plugin.nix
+      ./nvim-plugin-module.nix
       ./configuration.nix
     ];
     specialArgs = {

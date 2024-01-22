@@ -16,6 +16,10 @@ in
       readOnly = true;
       visible = false;
     };
+    neovim.extraBinaries = mkOption {
+      type = listOf package;
+      default = [];
+    };
     neovim._extraBinaries = mkOption {
       type = listOf package;
       readOnly = true;
@@ -71,7 +75,7 @@ in
     dependencyConfig = w: dep: let p = pkgToPlugin dep; in
       if (p ? "_manual") then
         "\n'${p.name}'," else
-        ''\n{
+        ''''\n{
           dir = '${w p.package}',
           name = '${p.name}',
         },'';
@@ -85,13 +89,13 @@ in
       dir = '${w plugin.package}',
       name = '${plugin.name}',
       lazy = ${boolToString plugin.lazy},''
-        + (if (plugin.dependencies != []) then "\ndependencies = { ${toString (map dependencyConfig w plugin.dependencies)} }," else "")
+        + (if (plugin.dependencies != []) then "\ndependencies = { ${toString (map (dependencyConfig w) plugin.dependencies)} }," else "")
         + (if (plugin.priority != null) then "\npriority = ${toString plugin.priority}," else "")
         + (if (plugin.event != null) then "\nevent = ${strOrStringList plugin.event}," else "")
         + (if (plugin.cmd != null) then "\ncmd = ${strOrStringList plugin.cmd}," else "")
         + (if (plugin.ft != null) then "\nft = ${strOrStringList plugin.ft}," else "")
         + (if (plugin.keys != null) then "\nkeys = ${lazyKeys plugin.keys}," else "")
-        + (if (plugin.config != null) then "\nconfig = ${plugin.config}," else "")
+        + (if (plugin.config != null) then "\nconfig = function() \n${plugin.config} \nend," else "")
         + "\n}";
   in {
     assertions = [{
@@ -104,7 +108,7 @@ in
 
     neovim = {
       _lazyConfig = w: map (pluginConfig w) (attrValues cfg);
-      _extraBinaries = flatten (mapAttrsToList (_: p: p.extraBinaries) cfg);
+      _extraBinaries = lib.unique (flatten (mapAttrsToList (_: p: p.extraBinaries) cfg) ++ config.neovim.extraBinaries);
     };
   };
 }

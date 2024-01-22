@@ -7,7 +7,7 @@ luaByteCompile() {
     fi
   else
     (
-      @fdBin@ --unrestricted --extension lua --exclude tests --exclude docgen . $out --exec @nvimBin@ -l @luaByteCompileScript@
+      @fdBin@ --unrestricted --extension lua --exclude scripts --exclude tests --exclude docgen . $out --exec @nvimBin@ -l @luaByteCompileScript@
     )
   fi
 }
