@@ -1,4 +1,4 @@
-{ pkgs, lib, selfHm, inputHm, ... }:
+{ pkgs, lib, selfHm, ... }:
 {
   imports = with selfHm; [
     headless.broot
@@ -22,8 +22,6 @@
     desktop.stylix
     desktop.visual
     desktop.wezterm
-
-    inputHm.flakeSecrets.default
 
     ./wm
   ];

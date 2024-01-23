@@ -227,22 +227,6 @@
         "type": "github"
       }
     },
-    "flakeSecrets": {
-      "locked": {
-        "lastModified": 1705722913,
-        "narHash": "sha256-9KosBxNmTnvOymtRZI2jtsjyC4LJWloDD0tPtObMhXY=",
-        "ref": "refs/heads/main",
-        "rev": "e1a58e11bd35100ada8278d666d2ab1047d1b01a",
-        "shallow": true,
-        "type": "git",
-        "url": "file:./flakeSecrets"
-      },
-      "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "file:./flakeSecrets"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -598,7 +582,6 @@
       "inputs": {
         "agenix": "agenix",
         "fenix": "fenix",
-        "flakeSecrets": "flakeSecrets",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
