@@ -1,7 +1,7 @@
-{ selfPkgs, ... }:
+{ pkgs, ... }:
 {
-  home.packages = [
-    selfPkgs.neovim
+  home.packages = with pkgs; [
+    neovim
   ];
 
   # Relative path to nvim for ease of use,

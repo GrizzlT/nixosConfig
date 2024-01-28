@@ -1,4 +1,4 @@
-{ fetchFromGitHub, lib, python3, twine }:
+{ fetchFromGitHub, python3, twine }:
 python3.pkgs.buildPythonApplication rec {
   pname = "emoji-fzf";
   version = "0.8.0";

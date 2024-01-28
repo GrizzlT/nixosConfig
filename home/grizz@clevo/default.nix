@@ -1,27 +1,30 @@
-{ pkgs, lib, selfHm, ... }:
+{ pkgs, lib, ... }:
+let
+  modulePath = ../../modules/hm;
+in
 {
-  imports = with selfHm; [
-    headless.broot
-    headless.essentials
-    headless.eza
-    headless.fish
-    headless.git-base
-    headless.git-extra
-    headless.gpg
-    headless.neovim
-    headless.network-tools
-    headless.passage
-    headless.productivity
+  imports = [
+    (modulePath + "/headless/broot.nix")
+    (modulePath + "/headless/essentials.nix")
+    (modulePath + "/headless/eza.nix")
+    (modulePath + "/headless/fish.nix")
+    (modulePath + "/headless/git-base.nix")
+    (modulePath + "/headless/git-extra.nix")
+    (modulePath + "/headless/gpg.nix")
+    (modulePath + "/headless/neovim.nix")
+    (modulePath + "/headless/network-tools.nix")
+    (modulePath + "/headless/passage.nix")
+    (modulePath + "/headless/productivity.nix")
 
-    desktop.browser
-    desktop.chat
-    desktop.document
-    desktop.games
-    desktop.music
-    desktop.sound
-    desktop.stylix
-    desktop.visual
-    desktop.wezterm
+    (modulePath + "/desktop/browser.nix")
+    (modulePath + "/desktop/chat.nix")
+    (modulePath + "/desktop/document.nix")
+    (modulePath + "/desktop/games.nix")
+    (modulePath + "/desktop/music.nix")
+    (modulePath + "/desktop/sound.nix")
+    (modulePath + "/desktop/stylix.nix")
+    (modulePath + "/desktop/visual.nix")
+    (modulePath + "/desktop/wezterm.nix")
 
     ./wm
   ];

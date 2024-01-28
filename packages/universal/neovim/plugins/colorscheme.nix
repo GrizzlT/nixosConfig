@@ -1,8 +1,10 @@
 { pkgs, vimPlugins, ... }:
 let
   onedarkpro-pkg = let
-    neovim = pkgs.neovim.override {
-      configure.packages.onedarkpro.start = [vimPlugins.onedarkpro-nvim];
+    neovim = pkgs.wrapNeovim pkgs.neovim-unwrapped {
+      configure.packages = {
+        onedarkpro.start = [vimPlugins.onedarkpro-nvim];
+      };
     };
   in
     pkgs.runCommand "onedarkpro-nvim-compile-cached" {} ''

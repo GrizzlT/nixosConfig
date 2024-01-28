@@ -1,16 +1,15 @@
-{ pkgs, hyprland, ... }:
+{ pkgs, ... }:
 let
-  hyprlandPkg = hyprland.hyprland;
   callPackage = pkgs.callPackage;
   wlogout = callPackage ./wlogout.nix {};
 in
 {
   hyprland = {
-    gamemode = callPackage ./gamemode.nix { hyprland = hyprlandPkg; };
+    gamemode = callPackage ./gamemode.nix { hyprland = pkgs.inputPkgs.hyprland; };
     colorPicker = callPackage ./colorpicker.nix {};
     brightness = callPackage ./brightness.nix {};
-    launcher = callPackage ./launcher.nix { hyprland = hyprlandPkg; };
-    passage-fzf = callPackage ./passage-fzf.nix { hyprland = hyprlandPkg; };
+    launcher = callPackage ./launcher.nix { hyprland = pkgs.inputPkgs.hyprland; };
+    passage-fzf = callPackage ./passage-fzf.nix { hyprland = pkgs.inputPkgs.hyprland; };
     inherit wlogout;
   };
 

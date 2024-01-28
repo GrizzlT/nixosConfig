@@ -1,11 +1,11 @@
-{ pkgs, myScripts, selfPkgs, inputPkgs, ... }:
+{ pkgs, myScripts, ... }:
 let
   scripts = myScripts.hyprland;
   awServerPort = 5600;
 in
 {
-  home.packages = with pkgs; with inputPkgs; [
-    hyprland-contrib.grimblast
+  home.packages = with pkgs; [
+    inputPkgs.hyprland-contrib.grimblast
     hyprpicker
     cliphist
     wl-clipboard
@@ -13,7 +13,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputPkgs.hyprland.hyprland;
+    package = pkgs.inputPkgs.hyprland.hyprland;
     extraConfig = ''
       exec-once=${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
       exec-once=${pkgs.waybar}/bin/waybar
@@ -22,7 +22,7 @@ in
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
       exec-once=${pkgs.aw-server-rust}/bin/aw-server --port ${toString awServerPort} --dbpath "$HOME/DATA/.activity-watch/aw-server-rust.sqlite"
-      exec-once=${selfPkgs.awatcher}/bin/awatcher --port ${toString awServerPort}
+      exec-once=${pkgs.awatcher}/bin/awatcher --port ${toString awServerPort}
 
       windowrule = float, pavucontrol
       windowrule = float, wlogout
@@ -238,6 +238,7 @@ in
 
       bind=$mainMod,F1,exec,$gamemode
 
+      env=NIXOS_OZONE_WL,1
       env=MOZ_ENABLE_WAYLAND,1
       env=WLR_NO_HARDWARE_CURSORS,1
       env=WLR_RENDERER_ALLOW_SOFTWARE,1

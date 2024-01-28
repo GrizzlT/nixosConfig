@@ -271,16 +271,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1704099619,
-        "narHash": "sha256-QRVMkdxLmv+aKGjcgeEg31xtJEIsYq4i1Kbyw5EPS6g=",
-        "rev": "7e398b3d76bc1503171b1364c9d4a07ac06f3851",
-        "revCount": 3168,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.2311.3168%2Brev-7e398b3d76bc1503171b1364c9d4a07ac06f3851/018cc441-679c-7ee2-b4fd-7cca9059f4c3/source.tar.gz"
+        "lastModified": 1706106771,
+        "narHash": "sha256-GvykgEyMOOUOjC1C7MbTPgVBxuuLeVEqxcks/pjlnyo=",
+        "owner": "GrizzlT",
+        "repo": "home-manager",
+        "rev": "3df28aaa49ede60b9d1acbedc62c01d877e8392b",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz"
+        "owner": "GrizzlT",
+        "ref": "release-23.11-patched",
+        "repo": "home-manager",
+        "type": "github"
       }
     },
     "home-manager_3": {
@@ -313,16 +315,16 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1704110595,
-        "narHash": "sha256-WSrjBI3k2dM/kGF20At0E6NlrJSB4+pE+WGJ6dFzWEs=",
-        "rev": "03ebbe18ed8517ee22591eac82cd54322f42cb7d",
-        "revCount": 3887,
+        "lastModified": 1701881246,
+        "narHash": "sha256-p7el5oQZPy9l1zyIrlHu6nA4BAu59eLoSqBjhkw2jaw=",
+        "rev": "d74607e414dcd16911089a6d4b6aeb661c880923",
+        "revCount": 3766,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/hyprwm/Hyprland/0.34.0/018cc4f2-5874-7584-b705-b716a33919da/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/hyprwm/Hyprland/0.33.1/018c400c-e6ce-7a3e-a4c9-aba1d5492b20/source.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://flakehub.com/f/hyprwm/Hyprland/0.34.tar.gz"
+        "url": "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz"
       }
     },
     "hyprland-contrib": {
@@ -552,6 +554,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1706191920,
+        "narHash": "sha256-eLihrZAPZX0R6RyM5fYAWeKVNuQPYjAkCUBr+JNvtdE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ae5c332cbb5827f6b1f02572496b141021de335f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": [
@@ -722,9 +740,7 @@
       "inputs": {
         "hyprland-protocols": "hyprland-protocols_2",
         "hyprlang": "hyprlang",
-        "nixpkgs": [
-          "unstable"
-        ],
+        "nixpkgs": "nixpkgs_4",
         "systems": "systems_3"
       },
       "locked": {

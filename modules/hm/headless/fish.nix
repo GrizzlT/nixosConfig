@@ -1,10 +1,10 @@
-{ pkgs, selfPkgs, ... }:
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
     shellAliases = {
       cd = "z";
-      emoj = "${selfPkgs.emoji-fzf}/bin/emoji-fzf preview | fzf -m --preview \"emoji-fzf get --name {1}\" | cut -d \" \" -f 1 | emoji-fzf get";
+      emoj = "${pkgs.emoji-fzf}/bin/emoji-fzf preview | fzf -m --preview \"emoji-fzf get --name {1}\" | cut -d \" \" -f 1 | emoji-fzf get";
       "resetup-tide" = "tide configure --auto --style=Classic --prompt_colors='True color' --classic_prompt_color=Light --show_time='24-hour format' --classic_prompt_separators=Angled --powerline_prompt_heads=Sharp --powerline_prompt_tails=Flat --powerline_prompt_style='Two lines, character' --prompt_connection=Solid --powerline_right_prompt_frame=No --prompt_connection_andor_frame_color=Lightest --prompt_spacing=Sparse --icons='Many icons' --transient=Yes";
     };
     shellAbbrs = {

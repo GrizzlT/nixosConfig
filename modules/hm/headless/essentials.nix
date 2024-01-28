@@ -1,7 +1,7 @@
-{ pkgs, selfHm, ... }:
+{ pkgs, ... }:
 {
-  imports = with selfHm.headless; [
-    eza
+  imports = [
+    ./eza.nix
   ];
 
   home.packages = with pkgs; [

@@ -1,9 +1,8 @@
-{ pkgs, ... }@inputs:
+{ pkgs, ... }:
 {
   _module.args = {
     myScripts = import ./scripts {
       inherit pkgs;
-      inherit (inputs.inputPkgs) hyprland;
     };
   };
 

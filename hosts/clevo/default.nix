@@ -1,24 +1,23 @@
-{ lib, selfNixos, inputNixos, ... }:
+{ lib, ... }:
 let
   userName = "grizz";
   hostName = "clevo";
   hostId = "13eb44cc";
+
+  modulePath = ../../modules/nixos;
 in
 {
-  imports = with selfNixos; [
-    inputNixos.agenix.default
-    inputNixos.impermanence.impermanence
+  imports = [
+    (modulePath + "/grizz-keyboard.nix")
+    (modulePath + "/nix-settings.nix")
 
-    keyboardConfig
-    nixConfig
-
-    locale
-    minimalPackages
-    pipewire
-    printing
-    stylix
-    tailscale
-    xorg
+    (modulePath + "/locale.nix")
+    (modulePath + "/minimalPackages.nix")
+    (modulePath + "/pipewire.nix")
+    (modulePath + "/printing.nix")
+    (modulePath + "/stylix.nix")
+    (modulePath + "/tailscale.nix")
+    (modulePath + "/xorg.nix")
 
     ./age.nix
     ./disks.nix

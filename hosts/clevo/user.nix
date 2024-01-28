@@ -1,12 +1,12 @@
 userName:
-{ pkgs, inputPkgs, ... }:
+{ pkgs, ... }:
 {
   users.mutableUsers = false;
   users.users.${userName} = {
     hashedPasswordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
-    packages = [ inputPkgs.home-manager.default ];
+    packages = [ pkgs.home-manager ];
     shell = pkgs.fish;
   };
 
@@ -15,8 +15,8 @@ userName:
   # My window manager of choice
   programs.hyprland = {
     enable = true;
-    package = inputPkgs.hyprland.hyprland;
-    portalPackage = inputPkgs.xdg-portal-hyprland.default;
+    package = pkgs.inputPkgs.hyprland;
+    portalPackage = pkgs.inputPkgs.xdg-desktop-portal-hyprland;
   };
 
   # Necessary for swaylock

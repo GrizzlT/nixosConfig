@@ -4,5 +4,7 @@
 
   home.packages = with pkgs; [
     thunderbird
+
+    appimage-run
   ];
 }

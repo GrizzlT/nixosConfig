@@ -1,7 +1,7 @@
-{ selfNixos, ... }:
+{ ... }:
 {
   imports = [
-    selfNixos.virtualisation
+    ../../modules/nixos/virtualisation.nix
   ];
 
   virtualisation.docker.storageDriver = "zfs";

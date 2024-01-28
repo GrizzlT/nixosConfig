@@ -1,14 +1,9 @@
-{ nixpkgs, inputs }:
+{ self, nixpkgs }:
 let
-  pkgs = system: nixpkgs.legacyPackages.${system};
-
-  universal = { pkgs, inputs }: (import ./universal) { inherit pkgs inputs; };
-  linux-only = { pkgs, inputs }: (import ./linux-only) { inherit pkgs inputs; };
+  forSystem = system: import nixpkgs { inherit system; overlays = [ self.overlays.default ]; };
 in
-nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: linux-only {
-  pkgs = pkgs system;
-  inherit inputs;
-})) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: universal {
-  pkgs = pkgs system;
-  inherit inputs;
+nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: let pkgs = forSystem system; in {
+  inherit (pkgs) grizz-disk-setup grizz-zfs-diff;
+})) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: let pkgs = forSystem system; in {
+  inherit (pkgs) emoji-fzf porsmo awatcher paperage neovim;
 }))

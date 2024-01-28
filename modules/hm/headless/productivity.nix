@@ -1,7 +1,7 @@
-{ pkgs, selfPkgs, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
-    selfPkgs.porsmo
+    porsmo
     qrcp
 
     hledger

@@ -4,45 +4,35 @@
   outputs = { self, nixpkgs, ... }@inputs: let
     lib = import ./lib.nix { inherit (nixpkgs) lib; };
 
-    selfNixos = import ./modules/nixos;
-    selfHm = import ./modules/hm;
-
-    mkNixosConfig = { hostname, system }: (nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = (lib.extractInputs system inputs) // {
-        selfPkgs = self.packages.${system};
-        inherit selfNixos;
-      };
-      modules = [(./hosts/${hostname})];
-    });
-
-    mkHmConfig = { hostname, system }: (inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = (lib.extractInputs system inputs) // {
-        unstable = import inputs.unstable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        selfPkgs = self.packages.${system};
-        inherit selfHm;
-      };
-      modules = [(./home/grizz + "@${hostname}")];
-    });
+    mkNixosConfig = lib.mkNixosConfig self inputs;
+    mkHmConfig = lib.mkHmConfig self inputs;
   in {
-    packages = import ./packages {
-      inherit nixpkgs;
-      inputs = inputs // { inherit selfNixos; };
-    };
+    packages = import ./packages { inherit self nixpkgs; };
 
-    homeConfigurations."grizz@clevo" = mkHmConfig {
+    homeConfigurations."grizz@clevo" = mkHmConfig (with inputs; [
+      stylix.homeManagerModules.stylix
+    ]) {
       hostname = "clevo";
       system = "x86_64-linux";
     };
 
-    nixosConfigurations.clevo = mkNixosConfig {
+    nixosConfigurations.clevo = mkNixosConfig (with inputs; [
+      agenix.nixosModules.default
+      impermanence.nixosModules.impermanence
+      stylix.nixosModules.stylix
+    ]) {
       hostname = "clevo";
       system = "x86_64-linux";
     };
+
+    overlays.default = nixpkgs.lib.composeManyExtensions [
+      (lib.inputsToOverlays inputs)
+      inputs.hyprland.overlays.hyprland-packages # FIXME: hack until pr gets merged
+      (import ./packages/linux-only)
+      (import ./packages/universal)
+    ];
+
+    inherit lib;
   };
 
   inputs = {
@@ -50,19 +40,19 @@
     unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
 
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz";
+      # url = "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz";
+      url = "github:GrizzlT/home-manager/release-23.11-patched";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.34.tar.gz";
+    # flakeSecrets.url = "git+file:./flakeSecrets?shallow=1";
+
+    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "unstable";
     };
-    xdg-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
-      inputs.nixpkgs.follows = "unstable";
-    };
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
 
     stylix = {
       url = "https://flakehub.com/f/danth/stylix/0.1.tar.gz";

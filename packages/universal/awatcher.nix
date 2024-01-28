@@ -1,4 +1,4 @@
-{ rustPlatform, fetchFromGitHub, pkg-config, libressl_3_7 }:
+{ rustPlatform, fetchFromGitHub, pkg-config, openssl }:
 
 rustPlatform.buildRustPackage rec {
   pname = "awatcher";
@@ -18,6 +18,6 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-  buildInputs = [ libressl_3_7 ];
+  buildInputs = [ openssl ];
   nativeBuildInputs = [ pkg-config ];
 }

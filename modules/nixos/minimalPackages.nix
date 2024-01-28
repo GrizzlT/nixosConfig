@@ -1,4 +1,4 @@
-{ pkgs, inputPkgs, selfPkgs, ... }:
+{ pkgs, ... }:
 {
   # Very basic packages + packages requiring system access
   environment.systemPackages = with pkgs; [
@@ -7,8 +7,8 @@
     wget
     curl
     git
-    selfPkgs.grizz-zfs-diff
+    grizz-zfs-diff
 
-    inputPkgs.agenix.default
+    inputPkgs.agenix
   ];
 }

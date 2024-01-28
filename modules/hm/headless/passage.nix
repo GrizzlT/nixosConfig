@@ -1,4 +1,4 @@
-{ pkgs, selfPkgs, ... }:
+{ pkgs, ... }:
 {
   home.sessionVariables = {
     PASSAGE_DIR = "$HOME/DATA/.passage/store";
@@ -10,6 +10,6 @@
   home.packages = with pkgs; [
     passage
     age
-    selfPkgs.paperage
+    paperage
   ];
 }
