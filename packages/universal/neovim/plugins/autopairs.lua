@@ -98,14 +98,14 @@ npairs.setup({
   fast_wrap = {},
 })
 
-for _, rule in ipairs(npairs.config.rules) do
-  if rule.start_pair == "'" and rule.not_filetypes then
-    -- Disable '' in nix
-    table.insert(rule.not_filetypes, "nix")
-  end
-end
+-- for _, rule in ipairs(npairs.config.rules) do
+--   if rule.start_pair == "'" and rule.not_filetypes then
+--     -- Disable '' in nix
+--     table.insert(rule.not_filetypes, "nix")
+--   end
+-- end
 
-npairs.add_rules(pairs)
+-- npairs.add_rules(pairs)
 
 local ts_node_func_parens_disabled = {
   -- rust

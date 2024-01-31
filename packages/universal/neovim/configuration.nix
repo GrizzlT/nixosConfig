@@ -11,5 +11,6 @@
     ./plugins/telescope.nix
     ./plugins/treesitter.nix
     ./plugins/trouble.nix
+    ./plugins/obsidian.nix
   ];
 }
