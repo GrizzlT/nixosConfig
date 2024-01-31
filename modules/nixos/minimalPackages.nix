@@ -9,6 +9,6 @@
     git
     grizz-zfs-diff
 
-    inputPkgs.agenix
+    agenix
   ];
 }

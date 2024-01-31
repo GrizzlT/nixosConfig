@@ -6,11 +6,19 @@
 
     mkNixosConfig = lib.mkNixosConfig self inputs;
     mkHmConfig = lib.mkHmConfig self inputs;
+
+    unstableOverlay = pkgs: pkgs0: {
+      unstable = import inputs.unstable { inherit (pkgs0) system; config.allowUnfree = true; overlays = [ self.overlays.default ]; };
+    };
   in {
     packages = import ./packages { inherit self nixpkgs; };
 
     homeConfigurations."grizz@clevo" = mkHmConfig (with inputs; [
       stylix.homeManagerModules.stylix
+    ]) (with inputs; [
+      hyprland.overlays.default
+      self.overlays.default
+      unstableOverlay
     ]) {
       hostname = "clevo";
       system = "x86_64-linux";
@@ -20,16 +28,19 @@
       agenix.nixosModules.default
       impermanence.nixosModules.impermanence
       stylix.nixosModules.stylix
+    ]) (with inputs; [
+      agenix.overlays.default
+      hyprland.overlays.default
+      xdg-portal-hyprland.overlays.default
+      self.overlays.default
     ]) {
       hostname = "clevo";
       system = "x86_64-linux";
     };
 
     overlays.default = nixpkgs.lib.composeManyExtensions [
-      (lib.inputsToOverlays inputs)
-      inputs.hyprland.overlays.hyprland-packages # FIXME: hack until pr gets merged
-      (import ./packages/linux-only)
-      (import ./packages/universal)
+      (import ./packages/linux-only inputs)
+      (import ./packages/universal inputs)
     ];
 
     inherit lib;
@@ -44,8 +55,6 @@
       url = "github:GrizzlT/home-manager/release-23.11-patched";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # flakeSecrets.url = "git+file:./flakeSecrets?shallow=1";
 
     hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
     hyprland-contrib = {

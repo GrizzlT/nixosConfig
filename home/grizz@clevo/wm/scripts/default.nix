@@ -5,11 +5,11 @@ let
 in
 {
   hyprland = {
-    gamemode = callPackage ./gamemode.nix { hyprland = pkgs.inputPkgs.hyprland; };
+    gamemode = callPackage ./gamemode.nix {};
     colorPicker = callPackage ./colorpicker.nix {};
     brightness = callPackage ./brightness.nix {};
-    launcher = callPackage ./launcher.nix { hyprland = pkgs.inputPkgs.hyprland; };
-    passage-fzf = callPackage ./passage-fzf.nix { hyprland = pkgs.inputPkgs.hyprland; };
+    launcher = callPackage ./launcher.nix {};
+    passage-fzf = callPackage ./passage-fzf.nix {};
     inherit wlogout;
   };
 

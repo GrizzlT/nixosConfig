@@ -5,7 +5,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    inputPkgs.hyprland-contrib.grimblast
+    grimblast
     hyprpicker
     cliphist
     wl-clipboard
@@ -13,7 +13,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.inputPkgs.hyprland.hyprland;
+    package = pkgs.hyprland;
     extraConfig = ''
       exec-once=${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
       exec-once=${pkgs.waybar}/bin/waybar

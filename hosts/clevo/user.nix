@@ -15,8 +15,6 @@ userName:
   # My window manager of choice
   programs.hyprland = {
     enable = true;
-    package = pkgs.inputPkgs.hyprland;
-    portalPackage = pkgs.inputPkgs.xdg-desktop-portal-hyprland;
   };
 
   # Necessary for swaylock

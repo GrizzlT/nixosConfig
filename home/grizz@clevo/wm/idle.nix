@@ -25,8 +25,8 @@
       }
       {
         timeout = 360;
-        command = "${pkgs.inputPkgs.hyprland}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${pkgs.inputPkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
     ];
   };

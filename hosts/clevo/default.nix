@@ -10,6 +10,7 @@ in
   imports = [
     (modulePath + "/grizz-keyboard.nix")
     (modulePath + "/nix-settings.nix")
+    (modulePath + "/../nix-cache.nix")
 
     (modulePath + "/locale.nix")
     (modulePath + "/minimalPackages.nix")
