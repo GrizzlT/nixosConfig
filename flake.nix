@@ -64,7 +64,7 @@
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
 
     stylix = {
-      url = "https://flakehub.com/f/danth/stylix/0.1.tar.gz";
+      url = "github:danth/stylix/9bc1900b6888efdda39c2e02c7c8666911b72608";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

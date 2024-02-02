@@ -42,22 +42,6 @@
     "base16-alacritty": {
       "flake": false,
       "locked": {
-        "lastModified": 1703982197,
-        "narHash": "sha256-TNxKbwdiUXGi4Z4chT72l3mt3GSvOcz6NZsUH8bQU/k=",
-        "owner": "aarowill",
-        "repo": "base16-alacritty",
-        "rev": "c95c200b3af739708455a03b5d185d3d2d263c6e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aarowill",
-        "repo": "base16-alacritty",
-        "type": "github"
-      }
-    },
-    "base16-alacritty-yaml": {
-      "flake": false,
-      "locked": {
         "lastModified": 1674275109,
         "narHash": "sha256-Adwx9yP70I6mJrjjODOgZJjt4OPPe8gJu7UuBboXO4M=",
         "owner": "aarowill",
@@ -68,7 +52,6 @@
       "original": {
         "owner": "aarowill",
         "repo": "base16-alacritty",
-        "rev": "63d8ae5dfefe5db825dd4c699d0cdc2fc2c3eaf7",
         "type": "github"
       }
     },
@@ -310,11 +293,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1706001011,
-        "narHash": "sha256-J7Bs9LHdZubgNHZ6+eE/7C18lZ1P6S5/zdJSdXFItI4=",
+        "lastModified": 1700847865,
+        "narHash": "sha256-uWaOIemGl9LF813MW0AEgCBpKwFo2t1Wv3BZc6e5Frw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3df2a80f3f85f91ea06e5e91071fa74ba92e5084",
+        "rev": "8cedd63eede4c22deb192f1721dd67e7460e1ebe",
         "type": "github"
       },
       "original": {
@@ -650,7 +633,6 @@
       "inputs": {
         "base16": "base16",
         "base16-alacritty": "base16-alacritty",
-        "base16-alacritty-yaml": "base16-alacritty-yaml",
         "base16-fish": "base16-fish",
         "base16-foot": "base16-foot",
         "base16-helix": "base16-helix",
@@ -664,16 +646,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1706783767,
-        "narHash": "sha256-Rn21YNSa4TgZzTsarghUPQv+fz1dZcfdDKQZS9H79Hg=",
-        "rev": "ccca01b5b0393119822b1888cb7c68e294fc115b",
-        "revCount": 292,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/danth/stylix/0.1.292%2Brev-ccca01b5b0393119822b1888cb7c68e294fc115b/018d643e-09a7-7527-a670-2e020697a93f/source.tar.gz"
+        "lastModified": 1704308480,
+        "narHash": "sha256-88ICCdJyYYtsolRnPhI9IF+bhUIVUyhJ7nrKcKPgf6M=",
+        "owner": "danth",
+        "repo": "stylix",
+        "rev": "9bc1900b6888efdda39c2e02c7c8666911b72608",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/danth/stylix/0.1.tar.gz"
+        "owner": "danth",
+        "repo": "stylix",
+        "rev": "9bc1900b6888efdda39c2e02c7c8666911b72608",
+        "type": "github"
       }
     },
     "systems": {
