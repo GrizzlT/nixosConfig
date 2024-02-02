@@ -25,6 +25,7 @@ in
     (modulePath + "/desktop/music.nix")
     (modulePath + "/desktop/sound.nix")
     (modulePath + "/desktop/stylix.nix")
+    (modulePath + "/desktop/tech.nix")
     (modulePath + "/desktop/visual.nix")
     (modulePath + "/desktop/wezterm.nix")
 
