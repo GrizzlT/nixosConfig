@@ -6,5 +6,6 @@
     thunderbird
 
     appimage-run
+    obsidian
   ];
 }

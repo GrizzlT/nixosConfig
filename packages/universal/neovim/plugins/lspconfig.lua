@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
   --   })
   end
 
-  if vim.bo[bufnr].filetype ~= 'markdown' then
+  if client ~= 'ltex' then
     vim.keymap.set("n", "gd", telescope.lsp_definitions, opts('Goto definition'))
   end
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts('Goto declaration'))

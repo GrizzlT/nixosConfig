@@ -34,9 +34,11 @@ in
 
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
+      "obsidian"
       "spotify"
       "discord"
     ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   home = {
     username = "grizz";
