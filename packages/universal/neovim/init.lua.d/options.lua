@@ -52,6 +52,7 @@ vim.opt.updatetime = 700
 
 vim.opt.list = true
 vim.opt.listchars = "tab:󰌒 ,trail:⋅,precedes:❬,extends:❭"
+vim.opt.conceallevel = 1
 
 -- don't show trailing spaces during insert mode
 local listchars_update = vim.api.nvim_create_augroup('listchars_update', {})

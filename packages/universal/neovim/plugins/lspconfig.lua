@@ -65,7 +65,9 @@ local function on_attach(client, bufnr)
   --   })
   end
 
-  vim.keymap.set("n", "gd", telescope.lsp_definitions, opts('Goto definition'))
+  if vim.bo[bufnr].filetype ~= 'markdown' then
+    vim.keymap.set("n", "gd", telescope.lsp_definitions, opts('Goto definition'))
+  end
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts('Goto declaration'))
   vim.keymap.set("n", "go", telescope.lsp_type_definitions, opts('Goto type def'))
   vim.keymap.set("n", "gi", telescope.lsp_implementations, opts('Goto implementations'))
