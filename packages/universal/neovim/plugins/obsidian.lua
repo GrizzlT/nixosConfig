@@ -46,6 +46,7 @@ require('obsidian').setup({
     return tostring(os.time()) .. "-" .. suffix
   end,
 
+  notes_subdir = "notes",
   completion = {
     new_notes_location = "notes_subdir",
   },
