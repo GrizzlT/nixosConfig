@@ -27,6 +27,10 @@ require('obsidian').setup({
       name = "projects",
       path = "/home/grizz/DATA/02_Informational/Obsidian/Projects",
     },
+    {
+      name = "education",
+      path = "/home/grizz/DATA/02_Informational/Obsidian/Education",
+    },
   },
 
   note_id_func = function(title)
