@@ -18,6 +18,7 @@ local servers = {
         path = ".ltex-data/",
       })
     end,
+    autostart = false,
   },
   typst_lsp = {
     settings = {
