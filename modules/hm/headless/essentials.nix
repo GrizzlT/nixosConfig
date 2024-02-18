@@ -12,6 +12,11 @@
     zip
     p7zip
     du-dust
+    duf
+    gping
+    procs
+    httpie
+    dogdns
   ];
 
   programs = {
