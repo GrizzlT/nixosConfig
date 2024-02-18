@@ -19,6 +19,7 @@ in
     (modulePath + "/stylix.nix")
     (modulePath + "/tailscale.nix")
     (modulePath + "/xorg.nix")
+    (modulePath + "/eid.nix")
 
     ./age.nix
     ./disks.nix

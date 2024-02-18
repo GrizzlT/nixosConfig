@@ -6,7 +6,7 @@
   };
 
   home.packages = with pkgs; [
-    firefox
+    (firefox.override { pkcs11Modules = [ pkgs.eid-mw ]; })
     brave
   ];
 }
