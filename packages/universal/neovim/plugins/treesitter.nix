@@ -30,7 +30,7 @@
 in {
   neovim.plugins = {
     treesitter = {
-      package = nvim-treesitter;
+      package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
       event = "BufRead";
       config = lib.fileContents ./treesitter.lua;
     };
