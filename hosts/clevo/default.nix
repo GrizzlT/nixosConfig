@@ -28,6 +28,7 @@ in
     ./performance.nix
     ./persist.nix
     ./storage.nix
+    ./udev.nix
     ./virtualisation.nix
 
     # ./ecsc-dry-run.nix
