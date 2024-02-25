@@ -22,7 +22,7 @@
   # use vimPlugins from pkgs for withPlugin behavior
   nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
     with p; [
-      toml lua rust json markdown nix bash typescript
+      toml lua rust json markdown nix bash typescript c
       gitcommit gitignore
       tree-sitter-d2 tree-sitter-typst
       ledger query
