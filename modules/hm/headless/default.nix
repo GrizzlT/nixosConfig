@@ -10,4 +10,5 @@
   network-tools = ./network-tools.nix;
   passage = ./passage.nix;
   productivity = ./productivity.nix;
+  qmk = ./qmk.nix;
 }

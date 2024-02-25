@@ -17,6 +17,7 @@ in
     (modulePath + "/headless/network-tools.nix")
     (modulePath + "/headless/passage.nix")
     (modulePath + "/headless/productivity.nix")
+    (modulePath + "/headless/qmk.nix")
 
     (modulePath + "/desktop/browser.nix")
     (modulePath + "/desktop/chat.nix")
