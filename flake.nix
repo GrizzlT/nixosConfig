@@ -1,7 +1,7 @@
 {
   description = "GrizzlT's NixOS flake";
 
-  outputs = { self, nixpkgs, unstable, ... }@inputs: let
+  outputs = { self, nixpkgs, ... }@inputs: let
     lib = import ./lib.nix { inherit (nixpkgs) lib; };
 
     mkNixosConfig = lib.mkNixosConfig self inputs;
@@ -11,7 +11,7 @@
       unstable = import inputs.unstable { inherit (pkgs0) system; config.allowUnfree = true; overlays = [ self.overlays.default ]; };
     };
   in {
-    packages = import ./packages { inherit self unstable; };
+    packages = import ./packages { inherit self nixpkgs; };
 
     homeConfigurations."grizz@clevo" = mkHmConfig (with inputs; [
       stylix.homeManagerModules.stylix

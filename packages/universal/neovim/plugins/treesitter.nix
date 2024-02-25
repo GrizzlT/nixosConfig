@@ -20,17 +20,17 @@
   };
 
   # use vimPlugins from pkgs for withPlugin behavior
-  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
+  nvim-treesitter' = pkgs.vimPlugins.nvim-treesitter.withPlugins (p:
     with p; [
       toml lua rust json markdown nix bash typescript c
       gitcommit gitignore
       tree-sitter-d2 tree-sitter-typst
-      ledger query
+      ledger
     ]);
 in {
   neovim.plugins = {
     treesitter = {
-      package = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+      package = nvim-treesitter';
       event = "BufRead";
       config = lib.fileContents ./treesitter.lua;
     };
