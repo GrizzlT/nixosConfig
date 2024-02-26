@@ -9,7 +9,9 @@ local lsp_capabilities = vim.tbl_deep_extend(
 local servers = {
   nil_ls = {},
   taplo = {},
-  ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
+  -- ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
+  -- ccls = { },
+  clangd = {},
   digestif = {},
   ltex = {
     on_attach = function(client, bufnr)
