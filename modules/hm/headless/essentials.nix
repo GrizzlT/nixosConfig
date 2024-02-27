@@ -13,6 +13,7 @@
     p7zip
     du-dust
     duf
+    tokei
     gping
     procs
     httpie
