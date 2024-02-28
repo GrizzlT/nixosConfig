@@ -5,6 +5,7 @@ return {
     dependencies = {
       'barreiroleo/ltex-extra.nvim',
       'hrsh7th/cmp-nvim-lsp',
+      'folke/neodev.nvim',
     },
     config = function()
       local lspconfig = require('lspconfig')
@@ -17,6 +18,7 @@ return {
 
       local servers = {
         nil_ls = {},
+        lua_ls = {},
         taplo = {},
         -- ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
         -- ccls = { },
