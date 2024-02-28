@@ -1,10 +1,13 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs.unstable; [
-    neovim
-  ];
-
-  # Relative path to nvim for ease of use,
-  # together with the config above will always work
-  home.sessionVariables.EDITOR = "nvim";
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    extraPackages = with pkgs; [
+      taplo nil ltex-ls
+      unixtools.xxd
+      fd ripgrep wl-clipboard
+      gccgo gnumake
+    ];
+  };
 }

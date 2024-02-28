@@ -12,5 +12,5 @@ in {
   awatcher = self.callPackage ./awatcher.nix { inherit rustPlatform; };
   paperage = self.callPackage ./paperage.nix { inherit rustPlatform; };
 
-  neovim = super.callPackage ./neovim/eval.nix { inherit vimExtraPlugins; };
+  # neovim = super.callPackage ./neovim/eval.nix { inherit vimExtraPlugins; };
 }
