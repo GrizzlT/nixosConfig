@@ -4,7 +4,7 @@ return {
     lazy = false,
     config = function()
       require('colorizer').setup({
-        '*',
+        '*', '!TelescopePrompt'
       }, {
         RGB      = true;         -- #RGB hex codes
         RRGGBB   = true;         -- #RRGGBB hex codes
