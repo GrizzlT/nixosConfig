@@ -10,6 +10,8 @@
       unixtools.xxd
       fd ripgrep wl-clipboard
       gccgo gnumake
+
+      manix
     ];
   };
 }
