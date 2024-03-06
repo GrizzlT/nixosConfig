@@ -9,7 +9,7 @@ return {
     },
     config = function()
       require('Comment').setup({
-	pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       })
     end,
   },
@@ -22,7 +22,7 @@ return {
     },
     config = function() require("oil").setup({
       view_options = {
-	show_hidden = true,
+        show_hidden = true,
       },
     }) end,
   },

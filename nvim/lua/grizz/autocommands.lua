@@ -3,7 +3,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local GrizzGroup = augroup('Grizz', {})
 local yank_group = augroup('HighlightYank', {})
-local cargo_source_cmp = augroup('CmpSourceCargo', { clear = true })
 
 autocmd('TextYankPost', {
   group = yank_group,

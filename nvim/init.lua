@@ -37,3 +37,5 @@ require("lazy").setup("grizz.plugins", {
     },
   },
 })
+
+vim.cmd("colorscheme onedark")

@@ -37,7 +37,7 @@ return {
             end
           end),
           ["<C-p>"] = mapping(function ()
-            if cmp.visible then
+            if cmp.visible() then
               cmp.select_prev_item({ behavior = cmp.SelectBehavior })
             else
               cmp.complete()
