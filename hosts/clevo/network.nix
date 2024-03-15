@@ -87,7 +87,7 @@ hostName: hostId:
   services.dnsmasq = {
     enable = true;
     settings = {
-      server = [ "100.91.153.130" ];
+      server = [ "100.91.153.130" "1.1.1.1" "1.0.0.1" ];
       dhcp-authoritative = true;
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"
@@ -96,6 +96,10 @@ hostName: hostId:
       dhcp-option = [
         "tag:vmnet,3,192.168.213.1"
         "tag:lan,3,192.168.12.1"
+      ];
+      listen-address = [
+        "127.0.0.1"
+        "172.17.0.1"
       ];
     };
   };
