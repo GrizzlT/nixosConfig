@@ -11,6 +11,7 @@ self: super: {
     misc = self.callPackage ./misc.nix {};
     audio = self.callPackage ./audio.nix {};
     hardware = self.callPackage ./hardware.nix {};
+    typescript = self.callPackage ./typescript.nix {};
 
     primefac = ps: self.callPackage ./primefac.nix { pythonPackages = ps; };
     rp = self.callPackage ./rp.nix {};
