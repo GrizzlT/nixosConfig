@@ -13,7 +13,7 @@ stdenv.mkDerivation rec {
     rev = "v" + version;
     sha256 = "+jpBgv8lue5rASR5vC6gCtHdeLSwzB/RXwSJxPjfPko=";
   };
-  patches = [ ./0001-Add-install-directive-to-CmakeLists.patch ];
+  patches = [ ./0001-Add-install-directive-to-CMakeLists.patch ];
   sourceRoot = "source/src";
 
   nativeBuildInputs = [ cmake ];

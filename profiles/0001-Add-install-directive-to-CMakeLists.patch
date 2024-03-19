@@ -1,0 +1,24 @@
+From 5a1db3a2ef452ea12ff4b469fc204fa1aa22aaa5 Mon Sep 17 00:00:00 2001
+From: GrizzlT <13691001+GrizzlT@users.noreply.github.com>
+Date: Wed, 18 Oct 2023 12:18:56 +0200
+Subject: [PATCH] Add install directive to CmakeLists
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1c90623..f501114 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,4 +45,6 @@ add_executable(
+ if(UNIX)
+     find_package(Threads)
+     target_link_libraries(${RP_PLAT} ${CMAKE_THREAD_LIBS_INIT})
+-endif()
+\ No newline at end of file
++endif()
++
++install(TARGETS ${RP_PLAT})
+--
+2.40.1
