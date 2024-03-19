@@ -24,7 +24,7 @@
     '';
     functions.refresh_nix_envs = ''
       for file in $GRIZZ_PROFILES/*
-        if not string match --regex -- '-link$' $file
+        if not string match -q --regex -- '-link$' $file
           fish_add_path $file/bin
         end
       end
