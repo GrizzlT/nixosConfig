@@ -39,5 +39,5 @@
   services.rpcbind.enable = true;
 
   # CIFS, NFS
-  boot.supportedFilesystems = [ "cifs" "nfs" "sshfs" ];
+  boot.supportedFilesystems = [ "cifs" "nfs" "sshfs" "exfat" ];
 }

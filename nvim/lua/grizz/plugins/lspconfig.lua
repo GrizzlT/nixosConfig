@@ -22,7 +22,7 @@ return {
         taplo = {},
         -- ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
         -- ccls = { },
-        -- clangd = {},
+        clangd = {},
         -- digestif = {},
         ltex = {
           on_attach = function(client, bufnr)

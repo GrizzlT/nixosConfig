@@ -42,6 +42,7 @@
       (import ./packages/linux-only inputs)
       (import ./packages/universal inputs)
     ];
+    overlays.profiles = import ./profiles/overlay.nix;
 
     inherit lib;
   };

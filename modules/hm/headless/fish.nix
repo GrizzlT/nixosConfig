@@ -19,6 +19,18 @@
     interactiveShellInit = ''
       set -x FORGIT_COPY_CMD '${pkgs.wl-clipboard}/bin/wl-copy'
       set -g fish_greeting
+
+      refresh_nix_envs
     '';
+    functions.refresh_nix_envs = ''
+      for file in $GRIZZ_PROFILES/*
+        if not string match --regex -- '-link$' $file
+          fish_add_path $file/bin
+        end
+      end
+    '';
+  };
+  home.sessionVariables = {
+    GRIZZ_PROFILES = "$HOME/.nix-envs";
   };
 }
