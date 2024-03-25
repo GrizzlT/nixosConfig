@@ -64,7 +64,7 @@ hostName: hostId:
           DHCP = "ipv4";
         };
         dhcpV4Config = {
-          UseDNS = false;
+          UseDNS = true;
         };
       };
       "20-enp46s0" = {
@@ -72,7 +72,7 @@ hostName: hostId:
         matchConfig.Name = "enp46s0";
         linkConfig.RequiredForOnline = "no";
         networkConfig.DHCP = "ipv4";
-        dhcpV4Config.UseDNS = false;
+        dhcpV4Config.UseDNS = true;
         #### When used to set up LAN ####
         # address = [ "192.168.12.1/24" ];
       };

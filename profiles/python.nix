@@ -20,6 +20,11 @@ mkProfile {
       requests
       ply
       pyserial
+
+      tensorflow
+      keras
+      opencv4
+      pyzbar
     ]))
   ];
 }
