@@ -7,6 +7,8 @@
   patchelf,
   ltrace,
   ghidra,
+  radare2,
+  rizin,
   ropgadget,
   rp,
   nmap,
@@ -24,6 +26,8 @@ mkProfile {
     patchelf
     ltrace
     ghidra
+    radare2
+    rizin
 
     ropgadget
     rp

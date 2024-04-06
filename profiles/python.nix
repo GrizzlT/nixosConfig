@@ -16,10 +16,13 @@ mkProfile {
       ecdsa
       netifaces
 
+      r2pipe
+      rzpipe
       pwntools
       requests
       ply
       pyserial
+      pyocd
 
       tensorflow
       keras

@@ -1,33 +1,31 @@
 {
   mkProfile,
   gnumake,
-  screen,
+  tmux,
   minicom,
   usbutils,
-  pulseview,
-  stlink,
   stlink-gui,
   blackmagic,
   orbuculum,
-  saleae-logic-2,
-  segger-ozone,
+  pulseview,
   sigrok-cli,
+  openocd,
+  probe-rs,
 }:
 
 mkProfile {
   name = "hardware";
   paths = [
     gnumake
-    screen
+    tmux
     minicom
     usbutils
-    pulseview
-    stlink
     stlink-gui
     blackmagic
     orbuculum
-    saleae-logic-2
-    segger-ozone
+    pulseview
     sigrok-cli
+    openocd
+    probe-rs
   ];
 }
