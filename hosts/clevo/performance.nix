@@ -14,8 +14,11 @@
       CPU_MAX_PERF_ON_BAT = 50;
       START_CHARGE_THRESH_BAT0=75;
       STOP_CHARGE_THRESH_BAT0=80;
+      TLP_DEFAULT_MODE = "BAT";
+      TLP_PERSISTENT_DEFAULT = 1;
     };
   };
+  powerManagement.powertop.enable = true;
 
   hardware.opengl = {
     enable = true;
