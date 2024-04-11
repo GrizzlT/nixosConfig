@@ -20,6 +20,7 @@ in
     (modulePath + "/tailscale.nix")
     (modulePath + "/xorg.nix")
     (modulePath + "/eid.nix")
+    (modulePath + "/wireshark.nix")
 
     ./age.nix
     ./disks.nix

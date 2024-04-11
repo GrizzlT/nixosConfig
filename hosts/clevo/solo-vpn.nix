@@ -26,7 +26,7 @@
         }];
       };
     };
-    networks.wg0 = {
+    networks.solowg = {
       matchConfig.Name = "solo";
       address = [
         "10.123.13.2/24"
