@@ -5,7 +5,7 @@ userName:
   users.users.${userName} = {
     hashedPasswordFile = "/persist/users/${userName}/passwordFile";
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "wireshark" ];
     packages = [ pkgs.home-manager ];
     shell = pkgs.fish;
   };

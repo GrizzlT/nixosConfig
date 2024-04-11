@@ -28,6 +28,8 @@ mkProfile {
       keras
       opencv4
       pyzbar
+
+      python-kasa
     ]))
   ];
 }
