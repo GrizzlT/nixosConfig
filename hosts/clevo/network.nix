@@ -7,7 +7,7 @@ hostName: hostId:
 
   services.resolved = {
     enable = true;
-    # domains = [ "~." ];
+    domains = [ "~." ];
     fallbackDns = [ "1.1.1.1" ];
     dnssec = "false";
     extraConfig = ''
@@ -63,16 +63,14 @@ hostName: hostId:
         networkConfig = {
           DHCP = "ipv4";
         };
-        dhcpV4Config = {
-          UseDNS = true;
-        };
+        dhcpV4Config.UseDNS = false;
       };
       "20-enp46s0" = {
         #### When connecting to external network ####
         matchConfig.Name = "enp46s0";
         linkConfig.RequiredForOnline = "no";
         networkConfig.DHCP = "ipv4";
-        dhcpV4Config.UseDNS = true;
+        dhcpV4Config.UseDNS = false;
         #### When used to set up LAN ####
         # address = [ "192.168.12.1/24" ];
       };
@@ -87,7 +85,7 @@ hostName: hostId:
   services.dnsmasq = {
     enable = true;
     settings = {
-      server = [ "100.91.153.130" "1.1.1.1" "1.0.0.1" ];
+      server = [ "10.123.13.3" ];
       dhcp-authoritative = true;
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"

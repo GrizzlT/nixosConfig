@@ -1,7 +1,7 @@
 {
   mkProfile,
   python311,
-  primefac
+  primefac,
 }:
 
 mkProfile {
@@ -28,8 +28,6 @@ mkProfile {
       keras
       opencv4
       pyzbar
-
-      python-kasa
     ]))
   ];
 }

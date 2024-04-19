@@ -14,6 +14,7 @@ self: super: {
     typescript = self.callPackage ./typescript.nix {};
     typst-profile = self.callPackage ./typst.nix {};
     vpn = self.callPackage ./vpn.nix {};
+    games = self.callPackage ./games.nix {};
 
     primefac = ps: self.callPackage ./primefac.nix { pythonPackages = ps; };
     rp = self.callPackage ./rp.nix {};

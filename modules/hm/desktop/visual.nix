@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     freecad
     darktable
+    digikam
     inkscape
     gimp
     imv

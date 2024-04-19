@@ -35,6 +35,7 @@ in
     # ./ecsc-dry-run.nix
     ./betweenlands.nix
     ./solo-vpn.nix
+    ./cacert.nix
 
     (import ./user.nix userName)
     (import ./network.nix hostName hostId)

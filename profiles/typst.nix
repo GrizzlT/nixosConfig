@@ -4,6 +4,8 @@
   typstfmt,
   typst-lsp,
   typst-live,
+  poppler_utils,
+  ghostscript_headless,
 }:
 
 mkProfile {
@@ -13,5 +15,7 @@ mkProfile {
     typstfmt
     typst-lsp
     typst-live
+    poppler_utils
+    ghostscript_headless
   ];
 }

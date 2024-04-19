@@ -8,6 +8,7 @@
   perl,
   hashcat,
   john,
+  aircrack-ng,
 }:
 
 mkProfile {
@@ -22,5 +23,6 @@ mkProfile {
 
     hashcat
     john
+    aircrack-ng
   ];
 }
