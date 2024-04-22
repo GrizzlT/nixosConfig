@@ -10,6 +10,7 @@
   home.packages = with pkgs; [
     passage
     age
+    age-plugin-yubikey
     paperage
   ];
 }
