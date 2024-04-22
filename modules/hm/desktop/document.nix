@@ -7,5 +7,6 @@
 
     appimage-run
     obsidian
+    logseq
   ];
 }
