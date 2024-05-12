@@ -2,6 +2,7 @@
   mkProfile,
   python311,
   primefac,
+  padding-oracle,
 }:
 
 mkProfile {
@@ -15,6 +16,7 @@ mkProfile {
       fastecdsa
       ecdsa
       netifaces
+      (padding-oracle ps)
 
       r2pipe
       rzpipe
@@ -28,6 +30,11 @@ mkProfile {
       keras
       opencv4
       pyzbar
+
+      python-lsp-server
+
+      matplotlib
+      portalocker
     ]))
   ];
 }

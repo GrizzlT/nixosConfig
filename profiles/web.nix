@@ -3,6 +3,10 @@
   tcpdump,
   inetutils,
   curl,
+  ngrok,
+  mitmproxy,
+  websploit,
+  nodePackages
 }:
 
 mkProfile {
@@ -11,5 +15,9 @@ mkProfile {
     tcpdump
     inetutils
     curl
+    ngrok
+    mitmproxy
+    websploit
+    nodePackages.localtunnel
   ];
 }

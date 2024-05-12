@@ -2,7 +2,9 @@
   mkProfile,
   pv,
   qrencode,
-  simplex-chat-desktop
+  simplex-chat-desktop,
+  erlang,
+  ungoogled-chromium,
 }:
 
 mkProfile {
@@ -11,5 +13,7 @@ mkProfile {
     pv
     qrencode
     simplex-chat-desktop
+    erlang
+    ungoogled-chromium
   ];
 }

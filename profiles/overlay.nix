@@ -3,6 +3,7 @@ self: super: {
     mkProfile = self.callPackage ./mk-profile.nix {};
 
     c = self.callPackage ./c.nix {};
+    myDeploy = self.callPackage ./deploy.nix {};
     python = self.callPackage ./python.nix {};
     web = self.callPackage ./web.nix {};
     pwn = self.callPackage ./pwn.nix {};
@@ -17,6 +18,7 @@ self: super: {
     games = self.callPackage ./games.nix {};
 
     primefac = ps: self.callPackage ./primefac.nix { pythonPackages = ps; };
+    padding-oracle = ps: self.callPackage ./padding-oracle.nix { pythonPackages = ps; };
     rp = self.callPackage ./rp.nix {};
   });
 }

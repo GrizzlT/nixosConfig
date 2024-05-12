@@ -11,7 +11,7 @@
       unstable = import inputs.unstable { inherit (pkgs0) system; config.allowUnfree = true; overlays = [ self.overlays.default ]; };
     };
   in {
-    packages = import ./packages { inherit self nixpkgs; };
+    packages = import ./packages inputs;
 
     homeConfigurations."grizz@clevo" = mkHmConfig (with inputs; [
       stylix.homeManagerModules.stylix
@@ -42,7 +42,10 @@
       (import ./packages/linux-only inputs)
       (import ./packages/universal inputs)
     ];
-    overlays.profiles = import ./profiles/overlay.nix;
+    overlays.profiles = nixpkgs.lib.composeManyExtensions [
+      inputs.agenix.overlays.default
+      (import ./profiles/overlay.nix)
+    ];
 
     inherit lib;
   };
