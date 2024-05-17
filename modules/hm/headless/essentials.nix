@@ -18,6 +18,7 @@
     procs
     httpie
     dogdns
+    mosh
   ];
 
   programs = {
