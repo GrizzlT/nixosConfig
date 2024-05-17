@@ -4,8 +4,6 @@ let
 in
 {
   imports = [
-    (modulePath + "/../nix-cache.nix")
-
     (modulePath + "/headless/broot.nix")
     (modulePath + "/headless/essentials.nix")
     (modulePath + "/headless/eza.nix")

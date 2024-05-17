@@ -19,6 +19,7 @@
     httpie
     dogdns
     mosh
+    cachix
   ];
 
   programs = {
