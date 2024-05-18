@@ -8,6 +8,7 @@ in
     (modulePath + "/headless/essentials.nix")
     (modulePath + "/headless/eza.nix")
     (modulePath + "/headless/fish.nix")
+    (modulePath + "/headless/atuin.nix")
     (modulePath + "/headless/git-base.nix")
     (modulePath + "/headless/git-extra.nix")
     (modulePath + "/headless/gpg.nix")
