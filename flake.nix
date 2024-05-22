@@ -52,7 +52,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    unstable.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.0.tar.gz";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       # url = "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz";
