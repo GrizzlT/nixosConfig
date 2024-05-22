@@ -60,11 +60,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "https://flakehub.com/f/hyprwm/Hyprland/0.33.tar.gz";
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "unstable";
-    };
+    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
+    hyprland-contrib.url = "github:hyprwm/contrib";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
 
     stylix = {
