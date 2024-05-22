@@ -1,6 +1,5 @@
 inputs:
 self: super: let
-  vimExtraPlugins = (inputs.nixneovimplugins.overlays.default self super).vimExtraPlugins;
   toolchain = (inputs.fenix.overlays.default self super).fenix.stable.minimalToolchain;
   rustPlatform = super.makeRustPlatform {
     cargo = toolchain;

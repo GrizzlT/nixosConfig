@@ -72,11 +72,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixneovimplugins = {
-      url = "github:NixNeovim/NixNeovimPlugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     impermanence.url = "https://flakehub.com/f/nix-community/impermanence/0.1.tar.gz";
 
     agenix = {
