@@ -6,7 +6,7 @@
 }:
 
 mkProfile {
-  name = "c";
+  name = "deploy";
   paths = [
     deploy-rs
     agenix
