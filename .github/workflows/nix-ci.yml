@@ -9,13 +9,13 @@ jobs:
       matrix:
         package:
           - 'nixosConfigurations.clevo.pkgs.hyprland'
+          - 'nixosConfigurations.clevo.pkgs.hyprland.out.dev'
           - 'nixosConfigurations.clevo.pkgs.xdg-desktop-portal-hyprland'
           - 'nixosConfigurations.clevo.pkgs.porsmo'
           - 'nixosConfigurations.clevo.pkgs.awatcher'
           - 'nixosConfigurations.clevo.pkgs.paperage'
           - 'nixosConfigurations.clevo.pkgs.emoji-fzf'
           - 'nixosConfigurations.clevo.pkgs.grimblast'
-          - 'nixosConfigurations.clevo.pkgs.waybar'
 
     runs-on: ubuntu-latest
     steps:
