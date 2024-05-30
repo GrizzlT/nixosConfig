@@ -71,4 +71,4 @@ jobs:
         name: grizzlt
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build '.#${{ matrix.package }}' -L --accept-flake-config
+    - run: nix shell nixpkgs#nix-build-uncached -c nix-build-uncached hm.nix
