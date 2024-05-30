@@ -342,6 +342,7 @@ in
         no_direct_scanout = true
         focus_on_activate = true
         allow_session_lock_restore = true
+        vfr = true
       }
 
       binds {
