@@ -43,7 +43,7 @@
       return {
         harfbuzz_features = {},
 
-        -- enable_wayland = true,
+        enable_wayland = false,
         audible_bell = "Disabled",
 
         tab_bar_at_bottom = true,
