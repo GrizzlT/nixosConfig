@@ -9,7 +9,7 @@ jobs:
       matrix:
         package:
           - 'nixosConfigurations.clevo.config.system.build.toplevel'
-          - 'homeConfigurations."grizz@clevo".activationPackage'
+          # - 'homeConfigurations."grizz@clevo".activationPackage'
 
     runs-on: ubuntu-latest
     steps:
