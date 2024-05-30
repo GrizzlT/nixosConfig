@@ -1,8 +1,8 @@
 { lib, ... }:
 let
-  commonModules = builtins.attrValues (builtins.removeAttrs [
+  commonModules = builtins.attrValues (builtins.removeAttrs (import ../../modules/nixos) [
     "virtualisation"
-  ] (import ../../modules/nixos));
+  ]);
 in
 {
   imports = commonModules ++ [
