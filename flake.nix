@@ -29,10 +29,6 @@
       (import ./packages/linux-only inputs)
       (import ./packages/universal inputs)
     ];
-    overlays.profiles = nixpkgs.lib.composeManyExtensions [
-      inputs.agenix.overlays.default
-      (import ./profiles/overlay.nix)
-    ];
 
     inherit lib;
   };

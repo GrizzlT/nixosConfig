@@ -1,5 +1,5 @@
-{ fetchPypi, pythonPackages }:
-pythonPackages.buildPythonPackage rec {
+{ fetchPypi, buildPythonPackage, setuptools }:
+buildPythonPackage rec {
   pname = "primefac";
   version = "2.0.12";
   src = fetchPypi {
@@ -9,5 +9,5 @@ pythonPackages.buildPythonPackage rec {
   doCheck = false;
   format = "pyproject";
 
-  propagatedBuildInputs = [ pythonPackages.setuptools ];
+  propagatedBuildInputs = [ setuptools ];
 }

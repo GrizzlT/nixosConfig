@@ -1,8 +1,6 @@
 {
   mkProfile,
   python311,
-  primefac,
-  padding-oracle,
 }:
 
 mkProfile {
@@ -11,12 +9,11 @@ mkProfile {
     (python311.withPackages (ps: with ps; [
       pycryptodome gmpy2 pkgs.sage.with-env
       sympy
-      (primefac ps)
+      primefac
       pypng
       fastecdsa
       ecdsa
       netifaces
-      (padding-oracle ps)
 
       r2pipe
       rzpipe

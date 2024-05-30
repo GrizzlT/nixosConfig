@@ -1,7 +1,6 @@
 {
   mkProfile,
   sage,
-  primefac,
   openssl,
 }:
 
@@ -13,7 +12,7 @@ mkProfile {
       extraPythonPackages = ps: with ps; [
         pycryptodome gmpy2
         sympy
-        (primefac ps)
+        primefac
         fastecdsa
         ecdsa
 
