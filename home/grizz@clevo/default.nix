@@ -1,34 +1,12 @@
 { pkgs, lib, ... }:
 let
-  modulePath = ../../modules/hm;
+  common = import ../../modules/hm;
+
+  headlessModules = builtins.attrValues common.headless;
+  desktopModules = builtins.attrValues common.desktop;
 in
 {
-  imports = [
-    (modulePath + "/headless/broot.nix")
-    (modulePath + "/headless/essentials.nix")
-    (modulePath + "/headless/eza.nix")
-    (modulePath + "/headless/fish.nix")
-    (modulePath + "/headless/atuin.nix")
-    (modulePath + "/headless/git-base.nix")
-    (modulePath + "/headless/git-extra.nix")
-    (modulePath + "/headless/gpg.nix")
-    (modulePath + "/headless/neovim.nix")
-    (modulePath + "/headless/network-tools.nix")
-    (modulePath + "/headless/passage.nix")
-    (modulePath + "/headless/productivity.nix")
-    (modulePath + "/headless/qmk.nix")
-
-    (modulePath + "/desktop/browser.nix")
-    (modulePath + "/desktop/chat.nix")
-    (modulePath + "/desktop/document.nix")
-    (modulePath + "/desktop/games.nix")
-    (modulePath + "/desktop/music.nix")
-    (modulePath + "/desktop/sound.nix")
-    (modulePath + "/desktop/stylix.nix")
-    (modulePath + "/desktop/tech.nix")
-    (modulePath + "/desktop/visual.nix")
-    (modulePath + "/desktop/wezterm.nix")
-
+  imports = headlessModules ++ desktopModules ++ [
     ./wm
   ];
 
@@ -37,6 +15,7 @@ in
       "obsidian"
       "spotify"
       "discord"
+      "lunar-client"
     ];
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 

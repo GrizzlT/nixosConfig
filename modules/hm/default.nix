@@ -1,4 +1,4 @@
 {
-  headless = import ./headless;
   desktop = import ./desktop;
+  headless = import ./headless;
 }

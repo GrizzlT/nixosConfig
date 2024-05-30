@@ -1,24 +1,28 @@
-{ lib }:
+{ self, snowcicles, ... }@inputs:
+let
+  lib = inputs.nixpkgs.lib;
+in
 {
-  mkNixosConfig = self: inputs: modules: overlays: { hostname, system }: (inputs.nixpkgs.lib.nixosSystem {
-    inherit system;
+  mkNixOS = snowcicles.lib.mkNixOSes (all: name: {
     modules = [
-      (./hosts/${hostname})
-      ({ pkgs, lib, ... }: {
-        imports = modules;
-        nixpkgs.overlays = overlays;
-      })
+      ./hosts/${name}
     ];
+    overlays = [
+      self.overlays.default
+    ]
+      ++ lib.optional (all.${name}.hyprland or false) (_: _: inputs.hyprland.packages.${all.${name}.system or "x86_64-linux"});
   });
 
-  mkHmConfig = self: inputs: modules: overlays: { hostname, system }: (inputs.home-manager.lib.homeManagerConfiguration {
-    pkgs = inputs.nixpkgs.legacyPackages.${system};
-    modules = [
-      (./home/grizz + "@${hostname}")
-      ({ pkgs, lib, ... }: {
-        imports = modules;
-        nixpkgs.overlays = overlays;
-      })
-    ];
-  });
+  mkHm = snowcicles.lib.mkHmManagers {
+    defaults = all: name: host: {
+      modules = [
+        "${self}/home/${name}@${host.name}"
+      ];
+      overlays = [
+        self.overlays.default
+      ]
+        ++ lib.optional (all.${name}.hyprland or false) (_: _: inputs.hyprland.packages.${host.value});
+    };
+    hosts.clevo = "x86_64-linux";
+  };
 }

@@ -1,7 +1,10 @@
 { ... }:
+let
+  common = import ../../modules/nixos;
+in
 {
   imports = [
-    ../../modules/nixos/virtualisation.nix
+    common.virtualisation
   ];
 
   virtualisation.docker = {

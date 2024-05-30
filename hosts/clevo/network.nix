@@ -1,4 +1,3 @@
-hostName: hostId:
 { pkgs, lib, config, ... }:
 {
   environment.systemPackages = with pkgs; [
@@ -21,8 +20,7 @@ hostName: hostId:
     useDHCP = false;
     dhcpcd.extraConfig = "nohook resolv.conf";
 
-    hostId = hostId;
-    hostName = hostName;
+    hostId = "13eb44cc";
 
     wireless = {
       userControlled.enable = true;

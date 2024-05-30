@@ -1,27 +1,11 @@
 { lib, ... }:
 let
-  userName = "grizz";
-  hostName = "clevo";
-  hostId = "13eb44cc";
-
-  modulePath = ../../modules/nixos;
+  commonModules = builtins.attrValues (builtins.removeAttrs [
+    "virtualisation"
+  ] (import ../../modules/nixos));
 in
 {
-  imports = [
-    (modulePath + "/grizz-keyboard.nix")
-    (modulePath + "/nix-settings.nix")
-    (modulePath + "/../nix-cache.nix")
-
-    (modulePath + "/locale.nix")
-    (modulePath + "/minimalPackages.nix")
-    (modulePath + "/pipewire.nix")
-    (modulePath + "/printing.nix")
-    (modulePath + "/stylix.nix")
-    (modulePath + "/tailscale.nix")
-    (modulePath + "/xorg.nix")
-    (modulePath + "/eid.nix")
-    (modulePath + "/wireshark.nix")
-
+  imports = commonModules ++ [
     ./age.nix
     ./disks.nix
     ./firewall.nix
@@ -36,8 +20,8 @@ in
     ./betweenlands.nix
     ./cacert.nix
 
-    (import ./user.nix userName)
-    (import ./network.nix hostName hostId)
+    ./user.nix
+    ./network.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

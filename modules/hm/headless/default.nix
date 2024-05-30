@@ -1,4 +1,5 @@
 {
+  atuin = ./atuin.nix;
   broot = ./broot.nix;
   essentials = ./essentials.nix;
   eza = ./eza.nix;

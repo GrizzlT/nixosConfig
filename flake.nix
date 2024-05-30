@@ -2,40 +2,27 @@
   description = "GrizzlT's NixOS flake";
 
   outputs = { self, nixpkgs, ... }@inputs: let
-    lib = import ./lib.nix { inherit (nixpkgs) lib; };
-
-    mkNixosConfig = lib.mkNixosConfig self inputs;
-    mkHmConfig = lib.mkHmConfig self inputs;
-
-    unstableOverlay = pkgs: pkgs0: {
-      unstable = import inputs.unstable { inherit (pkgs0) system; config.allowUnfree = true; overlays = [ self.overlays.default ]; };
-    };
+    lib = import ./lib.nix inputs;
   in {
     packages = import ./packages inputs;
 
-    homeConfigurations."grizz@clevo" = mkHmConfig (with inputs; [
-      stylix.homeManagerModules.stylix
-    ]) (with inputs; [
-      hyprland.overlays.default
-      self.overlays.default
-      unstableOverlay
-    ]) {
-      hostname = "clevo";
-      system = "x86_64-linux";
+    homeConfigurations = lib.mkHm {
+      grizz = {
+        modules = [
+          inputs.stylix.homeManagerModules.stylix
+        ];
+        hyprland = true;
+      };
     };
 
-    nixosConfigurations.clevo = mkNixosConfig (with inputs; [
-      agenix.nixosModules.default
-      impermanence.nixosModules.impermanence
-      stylix.nixosModules.stylix
-    ]) (with inputs; [
-      agenix.overlays.default
-      hyprland.overlays.default
-      xdg-portal-hyprland.overlays.default
-      self.overlays.default
-    ]) {
-      hostname = "clevo";
-      system = "x86_64-linux";
+    nixosConfigurations = lib.mkNixOS {
+      clevo = {
+        modules = [
+          inputs.impermanence.nixosModules.impermanence
+          inputs.stylix.nixosModules.stylix
+        ];
+        hyprland = true;
+      };
     };
 
     overlays.default = nixpkgs.lib.composeManyExtensions [
@@ -60,9 +47,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    snowcicles = {
+      url = "github:GrizzlT/snowcicles";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.unstable.follows = "unstable";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland/v1.3.1";
 
     stylix = {
       url = "github:danth/stylix/9bc1900b6888efdda39c2e02c7c8666911b72608";
@@ -71,18 +63,18 @@
 
     impermanence.url = "https://flakehub.com/f/nix-community/impermanence/0.1.tar.gz";
 
-    agenix = {
-      url = "https://flakehub.com/f/ryantm/agenix/0.14.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-generators = {
-      url = "https://flakehub.com/f/nix-community/nixos-generators/0.1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     fenix = {
       url = "https://flakehub.com/f/nix-community/fenix/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://hyprland.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
   };
 }

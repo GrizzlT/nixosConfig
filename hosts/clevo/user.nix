@@ -1,9 +1,13 @@
-userName:
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
+let
+  user = config.grizz.settings.user;
+in
 {
+  grizz.settings.user = lib.mkDefault "grizz";
+
   users.mutableUsers = false;
-  users.users.${userName} = {
-    hashedPasswordFile = "/persist/users/${userName}/passwordFile";
+  users.users.${user} = {
+    hashedPasswordFile = "/persist/users/${user}/passwordFile";
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "wireshark" ];
     packages = [ pkgs.home-manager ];

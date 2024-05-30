@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  user = config.grizz.settings.user;
+in
 {
   virtualisation.libvirtd = {
     enable = true;
@@ -8,5 +11,5 @@
   environment.systemPackages = with pkgs; [ virt-manager ];
 
   virtualisation.docker.enable = true;
-  users.users.grizz.extraGroups = [ "docker" "libvirtd" ];
+  users.users.${user}.extraGroups = [ "docker" "libvirtd" ];
 }
