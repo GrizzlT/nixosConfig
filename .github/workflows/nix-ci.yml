@@ -4,11 +4,16 @@ on:
     branch:
       - main
 jobs:
-  build-nixos:
+  build-uncached:
     strategy:
       matrix:
         package:
-          - 'nixosConfigurations.clevo.config.system.build.toplevel'
+          - 'nixosConfigurations.clevo.pkgs.hyprland'
+          - 'nixosConfigurations.clevo.pkgs.xdg-desktop-portal-hyprland'
+          - 'nixosConfigurations.clevo.pkgs.porsmo'
+          - 'nixosConfigurations.clevo.pkgs.awatcher'
+          - 'nixosConfigurations.clevo.pkgs.paperage'
+          - 'nixosConfigurations.clevo.pkgs.emoji-fzf'
 
     runs-on: ubuntu-latest
     steps:
@@ -24,11 +29,11 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix build '.#${{ matrix.package }}' -L --accept-flake-config
 
-  build-hm:
+  build-nixos:
     strategy:
       matrix:
         package:
-          - 'homeConfigurations."grizz@clevo".activationPackage'
+          - 'nixosConfigurations.clevo.config.system.build.toplevel'
 
     runs-on: ubuntu-latest
     steps:
