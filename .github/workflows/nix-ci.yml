@@ -14,6 +14,8 @@ jobs:
           - 'nixosConfigurations.clevo.pkgs.awatcher'
           - 'nixosConfigurations.clevo.pkgs.paperage'
           - 'nixosConfigurations.clevo.pkgs.emoji-fzf'
+          - 'nixosConfigurations.clevo.pkgs.grimblast'
+          - 'nixosConfigurations.clevo.pkgs.waybar'
 
     runs-on: ubuntu-latest
     steps:
