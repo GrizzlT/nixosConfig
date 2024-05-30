@@ -1,7 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.wezterm = {
     enable = true;
+    package = pkgs.unstable.wezterm;
     extraConfig = ''
       local act = wezterm.action
 
