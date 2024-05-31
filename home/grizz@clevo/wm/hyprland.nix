@@ -294,13 +294,15 @@ in
         animation = workspaces, 1, 5, wind
       }
 
-      device:logitech-usb-optical-mouse {
-        # name = logitech-usb-optical-mouse
+      # device:logitech-usb-optical-mouse {
+      device {
+        name = logitech-usb-optical-mouse
         sensitivity = -0.3
         # accel_profile = custom 200 0.0 0.3 0.8 0.9 0.9
       }
-      device:ydotoold-virtual-device {
-        # name = ydotoold-virtual-device
+      # device:ydotoold-virtual-device {
+      device {
+        name = ydotoold-virtual-device
         kb_layout=us
         kb_options=grp:shifts_toggle,caps:swapescape
       }
