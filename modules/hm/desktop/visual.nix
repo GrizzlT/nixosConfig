@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     freecad
+    blender
     darktable
     digikam
     inkscape
