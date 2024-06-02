@@ -12,6 +12,7 @@
           inputs.stylix.homeManagerModules.stylix
         ];
         hyprland = true;
+        hosts.clevo = "x86_64-linux";
       };
     };
 

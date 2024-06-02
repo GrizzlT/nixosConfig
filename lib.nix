@@ -3,25 +3,27 @@ let
   lib = inputs.nixpkgs.lib;
 in
 {
-  mkNixOS = snowcicles.lib.mkNixOSes (all: name: {
+  mkNixOS = snowcicles.lib.mkNixOSes (all: name: settings: {
+    hyprland = false;
     modules = [
       ./hosts/${name}
     ];
     overlays = [
       self.overlays.default
     ]
-      ++ lib.optional (all.${name}.hyprland or false) (_: _: inputs.hyprland.packages.${all.${name}.system or "x86_64-linux"});
+      ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
   });
 
   mkHm = snowcicles.lib.mkHmManagers {
-    defaults = all: name: host: {
+    defaults = all: name: settings: {
+      hyprland = false;
       modules = [
-        "${self}/home/${name}@${host.name}"
+        "${self}/home/${name}@${settings.hostname}"
       ];
       overlays = [
         self.overlays.default
       ]
-        ++ lib.optional (all.${name}.hyprland or false) (_: _: inputs.hyprland.packages.${host.value});
+        ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
     };
     hosts.clevo = "x86_64-linux";
   };
