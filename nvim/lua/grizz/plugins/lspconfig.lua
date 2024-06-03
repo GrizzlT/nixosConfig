@@ -55,7 +55,8 @@ return {
             jedi_completion = { fuzzy = true },
             -- import sorting
             pyls_isort = { enabled = true },
-        },
+          },
+          openscad_lsp = {},
         }
       }
 
