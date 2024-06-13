@@ -56,8 +56,8 @@ return {
             -- import sorting
             pyls_isort = { enabled = true },
           },
-          openscad_lsp = {},
-        }
+        },
+        openscad_lsp = {},
       }
 
       for server_name, config in pairs(servers) do

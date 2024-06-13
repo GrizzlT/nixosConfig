@@ -23,19 +23,19 @@ return {
       local telescope = require('telescope')
       local actions = require('telescope.actions')
       local actions_layout = require('telescope.actions.layout')
-      local trouble = require("trouble.providers.telescope")
+      local trouble = require("trouble.sources.telescope")
 
       telescope.setup({
         defaults = {
           mappings = {
             n = {
               ["<M-p>"] = actions_layout.toggle_preview,
-              ["<c-t>"] = trouble.open_with_trouble,
+              ["<c-t>"] = trouble.open,
             },
             i = {
               ["<C-u>"] = false,
               ["<M-p>"] = actions_layout.toggle_preview,
-              ["<c-t>"] = trouble.open_with_trouble,
+              ["<c-t>"] = trouble.open,
             },
           }
         },
