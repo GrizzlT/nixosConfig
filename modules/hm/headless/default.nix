@@ -1,6 +1,7 @@
 {
   atuin = ./atuin.nix;
   broot = ./broot.nix;
+  direnv = ./direnv.nix;
   essentials = ./essentials.nix;
   eza = ./eza.nix;
   fish = ./fish.nix;
