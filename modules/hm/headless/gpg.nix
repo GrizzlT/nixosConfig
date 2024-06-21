@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
   programs.gpg = {
     enable = true;
@@ -11,5 +11,6 @@
     enableZshIntegration = false;
     defaultCacheTtl = 1200;
     maxCacheTtl = 7200;
+    pinentryPackage = pkgs.pinentry-gtk2;
   };
 }
