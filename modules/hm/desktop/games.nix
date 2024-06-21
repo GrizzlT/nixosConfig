@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    prismlauncher-qt5
+    prismlauncher
     unstable.lunar-client
   ];
 }
