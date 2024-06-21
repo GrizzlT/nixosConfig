@@ -22,7 +22,7 @@ in
   };
 
   # Necessary for swaylock
-  environment.etc."pam.d/swaylock".text = ''auth include login'';
+  security.pam.services.swaylock = {};
 
   # Gaming
   programs.steam = {

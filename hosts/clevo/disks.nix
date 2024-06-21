@@ -40,7 +40,7 @@ in
       "net.ipv4.conf.all.forwarding" = true;
     };
 
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems.zfs = true;
     kernelParams = [ "nohibernate" ];
     kernelModules = [ "kvm-intel" "i915" "v4l2loopback" ];
     extraModulePackages = with config.boot.kernelPackages; [

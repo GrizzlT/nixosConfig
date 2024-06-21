@@ -35,12 +35,12 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      # url = "https://flakehub.com/f/nix-community/home-manager/0.2311.tar.gz";
-      url = "github:GrizzlT/home-manager/release-23.11-patched";
+      # url = "github:GrizzlT/home-manager/release-23.11-patched";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,7 +54,7 @@
     hyprland.url = "github:hyprwm/Hyprland/v0.35.0";
 
     stylix = {
-      url = "github:danth/stylix/9bc1900b6888efdda39c2e02c7c8666911b72608";
+      url = "github:danth/stylix/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
