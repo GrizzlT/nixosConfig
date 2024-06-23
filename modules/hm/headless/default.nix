@@ -13,4 +13,5 @@
   passage = ./passage.nix;
   productivity = ./productivity.nix;
   qmk = ./qmk.nix;
+  zellij = ./zellij.nix;
 }

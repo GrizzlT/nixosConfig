@@ -1,0 +1,25 @@
+layout {
+    pane split_direction="vertical" {
+        pane
+    }
+
+    pane size=1 borderless=true {
+        plugin location="file:/home/grizz/.config/zellij/plugins/zjstatus-0.16.0.wasm" {
+            format_left  "{mode}#[bg=#181825] {tabs}"
+            format_right "#[fg=#89B4FA,bg=#181825,bold]{session} #[fg=#9399B2]{datetime}"
+            format_space "#[bg=#181825]"
+
+            mode_normal          "#[bg=#89B4FA] "
+
+            tab_normal               "#[fg=#6C7086,bg=#181825] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_active               "#[fg=#9399B2,bg=#181825,bold] {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator}"
+            tab_fullscreen_indicator "□ "
+            tab_sync_indicator       "  "
+            tab_floating_indicator   "󰉈 "
+
+            datetime          "#[fg=#9399B2,bg=#181825] {format} "
+            datetime_format   "%A, %d %b %Y %H:%M"
+            datetime_timezone "Europe/Berlin"
+        }
+    }
+}

@@ -5,6 +5,7 @@ in
 {
   mkNixOS = snowcicles.lib.mkNixOSes (all: name: settings: {
     hyprland = false;
+    flakeDir = toString self;
     modules = [
       ./hosts/${name}
     ];
@@ -17,6 +18,7 @@ in
   mkHm = snowcicles.lib.mkHmManagers {
     defaults = all: name: settings: {
       hyprland = false;
+      flakeDir = toString self;
       modules = [
         "${self}/home/${name}@${settings.hostname}"
       ];
