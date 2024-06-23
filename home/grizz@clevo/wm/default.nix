@@ -16,8 +16,6 @@
     ./wlogout
   ];
 
-  programs.foot.enable = true;
-
   home.keyboard = null;
 
   home.packages = with pkgs; [

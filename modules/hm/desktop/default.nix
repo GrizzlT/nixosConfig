@@ -2,6 +2,7 @@
   browser = ./browser.nix;
   chat = ./chat.nix;
   document = ./document.nix;
+  foot = ./foot.nix;
   games = ./games.nix;
   music = ./music.nix;
   sound = ./sound.nix;
