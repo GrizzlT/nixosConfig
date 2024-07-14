@@ -13,7 +13,7 @@ return {
     cmd = { "Telescope" },
     keys = {
       { "<leader>pf", function() require('telescope.builtin').find_files({no_ignore = true}) end, desc = "Find file", },
-      { "<leader>pp", function() require('telescope.builtin').git_files() end, desc = "Git files", },
+      { "<leader>pj", function() require('telescope.builtin').git_files() end, desc = "Git files", },
       { "<leader>pg", function() require('telescope.builtin').live_grep() end, desc = "Live grep", },
       { "<leader>pb", function() require('telescope.builtin').buffers() end, desc = "Find buffer", },
       { '<leader>pu', '<cmd>Telescope undo<cr>', desc = 'Undo tree' },

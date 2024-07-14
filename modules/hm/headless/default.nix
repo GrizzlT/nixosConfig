@@ -5,6 +5,7 @@
   essentials = ./essentials.nix;
   eza = ./eza.nix;
   fish = ./fish.nix;
+  flatpak = ./flatpak.nix;
   git-base = ./git-base.nix;
   git-extra = ./git-extra.nix;
   gpg = ./gpg.nix;

@@ -3,7 +3,7 @@
   programs.wezterm = {
     enable = true;
     package = pkgs.unstable.wezterm;
-    extraConfig = ''
+    extraConfig = /*lua*/ ''
       local act = wezterm.action
 
       local is_vim = function(pane)
