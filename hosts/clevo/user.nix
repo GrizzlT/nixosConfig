@@ -24,6 +24,8 @@ in
   # Necessary for swaylock
   security.pam.services.swaylock = {};
 
+  services.flatpak.enable = true;
+
   # Gaming
   programs.steam = {
     enable = true;
