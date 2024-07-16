@@ -19,19 +19,19 @@ mkProfile {
       rzpipe
       pwntools
       requests
-      ply
       pyserial
-      pyocd
-
+      # pyocd
+      #
       tensorflow
       keras
       opencv4
       pyzbar
 
+      pyzmq
+
       python-lsp-server
 
       matplotlib
-      portalocker
     ]))
   ];
 }
