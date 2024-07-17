@@ -7,6 +7,7 @@
       taplo nil ltex-ls
       lua-language-server
       openscad-lsp
+      tailwindcss-language-server
 
       unixtools.xxd
       fd ripgrep wl-clipboard

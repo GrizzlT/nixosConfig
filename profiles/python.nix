@@ -1,6 +1,7 @@
 {
   mkProfile,
   python311,
+  pyright,
 }:
 
 mkProfile {
@@ -33,6 +34,7 @@ mkProfile {
 
       matplotlib
     ]))
+    pyright
   ];
 }
 
