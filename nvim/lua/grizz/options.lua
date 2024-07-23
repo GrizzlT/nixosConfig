@@ -12,6 +12,7 @@ vim.opt.completeopt = "menu,menuone,noinsert"
 vim.opt.virtualedit = "block"
 
 -- Backup
+vim.opt.backupcopy = 'yes'
 vim.opt.backup = false
 vim.opt.writebackup = true
 vim.opt.undofile = true
