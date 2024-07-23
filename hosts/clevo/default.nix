@@ -18,6 +18,7 @@ in
 
     # ./ecsc-dry-run.nix
     ./betweenlands.nix
+    ./morti-vpn.nix
     ./cacert.nix
 
     ./user.nix
