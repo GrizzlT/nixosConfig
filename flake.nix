@@ -39,7 +39,6 @@
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      # url = "github:GrizzlT/home-manager/release-23.11-patched";
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -64,6 +63,9 @@
       url = "https://flakehub.com/f/nix-community/fenix/0.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Not flakes
+    wezterm.url = "git+https://github.com/wez/wezterm.git?dir=nix&rev=56a27e93a9ee50aab50ff4d78308f9b3154b5122";
   };
 
   nixConfig = {

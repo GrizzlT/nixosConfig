@@ -29,6 +29,7 @@ mkProfile {
       pyzbar
 
       pyzmq
+      flask
 
       python-lsp-server
 
