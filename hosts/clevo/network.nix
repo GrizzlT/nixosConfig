@@ -46,6 +46,8 @@
     };
   };
 
+  systemd.network.wait-online.anyInterface = true;
+
   systemd.network = {
     enable = true;
     netdevs = {
