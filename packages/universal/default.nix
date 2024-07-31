@@ -11,5 +11,5 @@ in {
   awatcher = self.callPackage ./awatcher.nix { inherit rustPlatform; };
   paperage = self.callPackage ./paperage.nix { inherit rustPlatform; };
 
-  wezterm = inputs.wezterm.packages.${self.stdenv.hostPlatform.system}.default;
+  wezterm = inputs.wezterm.packages.${self.system}.default;
 }
