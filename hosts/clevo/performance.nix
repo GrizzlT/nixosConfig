@@ -22,7 +22,9 @@
 
   hardware.opengl = {
     enable = true;
+    package = pkgs.hyprland-deps-orig.mesa.drivers;
     driSupport32Bit = true;
+    package32 = pkgs.hyprland-deps-orig.pkgsi686Linux.mesa.drivers;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
