@@ -6,6 +6,7 @@
   erlang,
   ungoogled-chromium,
   tomb,
+  ethtool,
 }:
 
 mkProfile {
@@ -18,5 +19,7 @@ mkProfile {
     ungoogled-chromium
 
     tomb
+
+    ethtool
   ];
 }

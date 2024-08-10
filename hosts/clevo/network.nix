@@ -69,9 +69,13 @@
       "10-wifi" = {
         matchConfig.Name = "wlp0s20f3";
         linkConfig.RequiredForOnline = "no";
-        networkConfig.DHCP = "ipv4";
+        networkConfig = {
+          DHCP = "ipv4";
+          MulticastDNS = true;
+          Domains = [ "local" ];
+          LLMNR = false;
+        };
         dhcpV4Config = {
-          UseDNS = false;
           RouteMetric = 600;
         };
       };
