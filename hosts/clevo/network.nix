@@ -51,6 +51,24 @@
   systemd.network = {
     enable = true;
     netdevs = {
+      "10-enp46s0-dhcp" = {
+        netdevConfig = {
+          Kind = "macvlan";
+          Name = "ethslave";
+        };
+        macvlanConfig = {
+          Mode = "bridge";
+        };
+      };
+      "10-enp46s0-lan" = {
+        netdevConfig = {
+          Kind = "macvlan";
+          Name = "ethvlan";
+        };
+        macvlanConfig = {
+          Mode = "bridge";
+        };
+      };
       "20-vmbridge0".netdevConfig = {
         Kind = "bridge";
         Name = "vmbridge0";
@@ -60,19 +78,31 @@
       "10-wifi" = {
         matchConfig.Name = "wlp0s20f3";
         linkConfig.RequiredForOnline = "no";
-        networkConfig = {
-          DHCP = "ipv4";
+        networkConfig.DHCP = "ipv4";
+        dhcpV4Config = {
+          UseDNS = false;
+          RouteMetric = 600;
         };
-        dhcpV4Config.UseDNS = false;
       };
-      "20-enp46s0" = {
-        #### When connecting to external network ####
+      "10-enp46s0" = {
         matchConfig.Name = "enp46s0";
+        networkConfig.MACVLAN = [
+          "ethslave" "ethvlan"
+        ];
+      };
+      "20-enp46s0-dhcp" = {
+        matchConfig.Name = "ethslave";
         linkConfig.RequiredForOnline = "no";
         networkConfig.DHCP = "ipv4";
-        dhcpV4Config.UseDNS = false;
-        #### When used to set up LAN ####
-        # address = [ "192.168.12.1/24" ];
+        dhcpV4Config = {
+          UseDNS = false;
+          RouteMetric = 100;
+        };
+      };
+      "20-enp46s0-lan" = {
+        matchConfig.Name = "ethvlan";
+        linkConfig.RequiredForOnline = "no";
+        address = [ "192.168.12.1/24" ];
       };
       "30-vmbridge0" = {
         matchConfig.Name = "vmbridge0";
@@ -85,7 +115,6 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      server = [ "10.123.13.3" ];
       dhcp-authoritative = true;
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"

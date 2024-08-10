@@ -5,6 +5,7 @@
   simplex-chat-desktop,
   erlang,
   ungoogled-chromium,
+  tomb,
 }:
 
 mkProfile {
@@ -15,5 +16,7 @@ mkProfile {
     simplex-chat-desktop
     erlang
     ungoogled-chromium
+
+    tomb
   ];
 }
