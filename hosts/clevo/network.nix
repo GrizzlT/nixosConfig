@@ -51,15 +51,6 @@
   systemd.network = {
     enable = true;
     netdevs = {
-      "10-enp46s0-dhcp" = {
-        netdevConfig = {
-          Kind = "macvlan";
-          Name = "ethslave";
-        };
-        macvlanConfig = {
-          Mode = "bridge";
-        };
-      };
       "10-enp46s0-lan" = {
         netdevConfig = {
           Kind = "macvlan";
@@ -86,12 +77,10 @@
       };
       "10-enp46s0" = {
         matchConfig.Name = "enp46s0";
-        networkConfig.MACVLAN = [
-          "ethslave" "ethvlan"
-        ];
+        networkConfig.MACVLAN = [ "ethvlan" ];
       };
       "20-enp46s0-dhcp" = {
-        matchConfig.Name = "ethslave";
+        matchConfig.Name = "enp46s0";
         linkConfig.RequiredForOnline = "no";
         networkConfig.DHCP = "ipv4";
         dhcpV4Config = {
