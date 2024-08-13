@@ -18,7 +18,7 @@
             PublicKey = "dVx1RzydmVbq8ou0hHczndyOVv8RhYUdndpz3HpaJm8=";
             PresharedKeyFile = "/persist/etc/mortiWgPresharedKey";
             AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-            Endpoint = "95.182.248.50:51820";
+            Endpoint = "85.234.220.14:51820";
             PersistentKeepalive = 0;
           };
         }];

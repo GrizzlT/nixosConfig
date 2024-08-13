@@ -25,7 +25,7 @@
 
           # DHCP + DNS for VMs + LAN
           iifname { "vmbridge0", "ethvlan" } tcp dport 53 accept # DNS
-          iifname { "vmbridge0", "ethvlan" } udp dport { 53, 67 } accept # DNS + DHCP
+          iifname { "vmbridge0", "ethvlan" } iifname != "ethslave" udp dport { 53, 67 } accept # DNS + DHCP
 
           iifname { wlp0s20f3, ethslave } udp dport 5353 accept # AVAHI
 

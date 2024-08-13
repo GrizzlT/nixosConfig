@@ -57,7 +57,7 @@
           Name = "ethslave";
         };
         macvlanConfig = {
-          Mode = "bridge";
+          Mode = "vepa";
         };
       };
       "10-enp46s0-lan" = {
@@ -69,6 +69,17 @@
           Mode = "bridge";
         };
       };
+      "20-wlan-bond" = {
+        netdevConfig = {
+          Kind = "bond";
+          Name = "bond0";
+        };
+        bondConfig = {
+          Mode = "active-backup";
+          PrimaryReselectPolicy = "always";
+          MIIMonitorSec = "1s";
+        };
+      };
       "20-vmbridge0".netdevConfig = {
         Kind = "bridge";
         Name = "vmbridge0";
@@ -78,34 +89,35 @@
       "10-wifi" = {
         matchConfig.Name = "wlp0s20f3";
         linkConfig.RequiredForOnline = "no";
-        networkConfig = {
-          DHCP = "ipv4";
-          MulticastDNS = true;
-          Domains = [ "local" ];
-          LLMNR = false;
-        };
-        dhcpV4Config = {
-          RouteMetric = 600;
-        };
+        networkConfig.Bond = "bond0";
       };
       "10-enp46s0" = {
         matchConfig.Name = "enp46s0";
         networkConfig.MACVLAN = [
           "ethslave" "ethvlan"
         ];
+        linkConfig.ARP = false;
       };
       "20-enp46s0-dhcp" = {
         matchConfig.Name = "ethslave";
         linkConfig.RequiredForOnline = "no";
-        networkConfig.DHCP = "ipv4";
-        dhcpV4Config = {
-          UseDNS = false;
-          RouteMetric = 100;
+        networkConfig = {
+          Bond = "bond0";
+          PrimarySlave = true;
+        };
+      };
+      "20-bond0" = {
+        matchConfig.Name = "bond0";
+        networkConfig = {
+          DHCP = "ipv4";
+          MulticastDNS = true;
+          Domains = [ "local" ];
+          LLMNR = false;
         };
       };
       "20-enp46s0-lan" = {
         matchConfig.Name = "ethvlan";
-        linkConfig.RequiredForOnline = "no";
+        linkConfig.ActivationPolicy = "manual";
         address = [ "192.168.12.1/24" ];
       };
       "30-vmbridge0" = {
