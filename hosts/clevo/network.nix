@@ -6,8 +6,7 @@
 
   services.resolved = {
     enable = true;
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1" ];
+    fallbackDns = [ "9.9.9.9" "149.112.112.112" ];
     dnssec = "false";
     extraConfig = ''
       DNSStubListener=no

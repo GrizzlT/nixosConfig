@@ -25,9 +25,9 @@
 
           # DHCP + DNS for VMs + LAN
           iifname { "vmbridge0", "ethvlan" } tcp dport 53 accept # DNS
-          iifname { "vmbridge0", "ethvlan" } iifname != "ethslave" udp dport { 53, 67 } accept # DNS + DHCP
+          iifname { "vmbridge0", "ethvlan" } udp dport { 53, 67 } accept # DNS + DHCP
 
-          iifname { wlp0s20f3, ethslave } udp dport 5353 accept # AVAHI
+          iifname { bond0 } udp dport 5353 accept # AVAHI
 
           # icmp
           icmp type echo-request accept
@@ -40,12 +40,12 @@
           iifname {
             "vmbridge0", ethvlan
           } oifname {
-            wlp0s20f3, ethslave
+            bond0,
           } counter accept comment "Allow trusted LAN to WAN"
 
           # Allow established WAN to return
           iifname {
-            wlp0s20f3, ethslave
+            bond0
           } oifname {
             "vmbridge0", ethvlan
           } ct state { established,related } counter accept comment "Allow established back to LANs"
@@ -60,7 +60,7 @@
         # Setup NAT masquerading on the wan interface
         chain postrouting {
           type nat hook postrouting priority filter; policy accept;
-          oifname { wlp0s20f3, ethslave } masquerade
+          oifname { bond0 } masquerade
         }
       }
 
