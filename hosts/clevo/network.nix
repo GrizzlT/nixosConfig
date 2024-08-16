@@ -7,15 +7,15 @@
   services.resolved = {
     enable = true;
     fallbackDns = [ "9.9.9.9" "149.112.112.112" ];
+    domains = [ "hostfile" ];
     dnssec = "false";
     extraConfig = ''
-      DNSStubListener=no
       LLMNR=no
+      DNS=127.0.1.53
     '';
   };
   networking = {
     networkmanager.enable = lib.mkForce false;
-    nameservers = [ "127.0.0.1" "::1" ];
     useDHCP = false;
     dhcpcd.extraConfig = "nohook resolv.conf";
 
@@ -110,7 +110,6 @@
         networkConfig = {
           DHCP = "ipv4";
           MulticastDNS = true;
-          Domains = [ "local" ];
           LLMNR = false;
         };
       };
@@ -130,7 +129,13 @@
   services.dnsmasq = {
     enable = true;
     settings = {
+      listen-address = "127.0.1.53";
+      bind-interfaces = true;
+      server = [ "127.0.0.53" "/hostfile/" ];
+      no-resolv = true;
       dhcp-authoritative = true;
+      no-poll = true;
+      hostsdir = "/persist/etc/hosts";
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"
         "set:lan,192.168.12.101,192.168.12.150,255.255.255.0,6h"
