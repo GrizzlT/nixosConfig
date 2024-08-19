@@ -1,4 +1,4 @@
-{ pkgs, myScripts, ... }:
+{ pkgs, myScripts, config, ... }:
 let
   scripts = myScripts.hyprland;
   awServerPort = 5600;
@@ -55,7 +55,7 @@ in
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
-      $music=${pkgs.spotify}/bin/spotify
+      $music=${config.programs.spicetify.spicetifyPackage}/bin/spicetify
       $discord=${pkgs.discord}/bin/discord
       $grimblast=${pkgs.grimblast}/bin/grimblast
       $passage=${scripts.passage-fzf}/bin/passage-fzf-type

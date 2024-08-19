@@ -12,6 +12,7 @@
           inputs.stylix.homeManagerModules.stylix
         ];
         hyprland = true;
+        spicetify = true;
         hosts.clevo = "x86_64-linux";
       };
     };
@@ -66,6 +67,11 @@
 
     # Not flakes
     wezterm.url = "git+https://github.com/wez/wezterm.git?dir=nix&rev=56a27e93a9ee50aab50ff4d78308f9b3154b5122";
+
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
