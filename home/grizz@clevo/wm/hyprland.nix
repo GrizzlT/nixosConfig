@@ -55,7 +55,7 @@ in
       $playerctl=${pkgs.playerctl}/bin/playerctl
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
-      $music=${config.programs.spicetify.spicetifyPackage}/bin/spicetify
+      $music=${config.programs.spicetify.spicedSpotify}/bin/spotify
       $discord=${pkgs.discord}/bin/discord
       $grimblast=${pkgs.grimblast}/bin/grimblast
       $passage=${scripts.passage-fzf}/bin/passage-fzf-type
