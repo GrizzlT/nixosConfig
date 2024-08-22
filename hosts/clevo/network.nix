@@ -129,8 +129,8 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      listen-address = "127.0.1.53";
-      bind-interfaces = true;
+      listen-address = [ "127.0.1.53" "192.168.213.1" ];
+      bind-dynamic = true;
       server = [ "127.0.0.53" "/hostfile/" ];
       no-resolv = true;
       dhcp-authoritative = true;
