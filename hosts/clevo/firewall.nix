@@ -29,6 +29,8 @@
 
           iifname { bond0 } udp dport 5353 accept # AVAHI
 
+          iifname { between } tcp dport 8080 accept
+
           # icmp
           icmp type echo-request accept
         }

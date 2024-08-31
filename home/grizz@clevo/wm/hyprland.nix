@@ -20,7 +20,8 @@ in
       exec-once=${pkgs.dunst}/bin/dunst
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
-      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
+      # exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
+      exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image "/home/grizz/.config/xyzjt.jpg"
       exec-once=${pkgs.aw-server-rust}/bin/aw-server --port ${toString awServerPort} --dbpath "$HOME/DATA/.activity-watch/aw-server-rust.sqlite"
       exec-once=${pkgs.awatcher}/bin/awatcher --port ${toString awServerPort}
 
