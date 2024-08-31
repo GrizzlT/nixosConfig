@@ -8,6 +8,7 @@
 
   imports = [
     ./hyprland.nix
+    ./hyprpaper.nix
     ./kanshi.nix
     ./waybar
     ./dunst
