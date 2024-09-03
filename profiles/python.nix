@@ -33,6 +33,7 @@ mkProfile {
 
       python-lsp-server
 
+      numpy
       matplotlib
     ]))
     pyright

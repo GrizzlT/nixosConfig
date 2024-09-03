@@ -1,7 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
     dnsmasq
+    wpa_supplicant_gui
   ];
 
   services.resolved = {
@@ -21,26 +22,25 @@
 
     hostId = "13eb44cc";
 
-    wireless = {
-      userControlled.enable = true;
-      enable = true;
-      allowAuxiliaryImperativeNetworks = true;
-      environmentFile = config.age.secrets.wpaPasswords.path;
-      networks = {
-        "Tapaki" = {
-          psk = "@TAPAKI_PASSWORD@";
-          priority = 10;
-        };
-        "TOP" = {
-          psk = "@TOP_PASSWORD@";
-          priority = 10;
-        };
-        "OnePlus Nord CE 2 Lite" = {
-          psk = "@ROB_HOTSPOT@";
-        };
-        "TP-Link_4DA4" = {
-          psk = "@ROB_DORM@";
-        };
+    supplicant = {
+      "wlp0s20f3" = {
+        userControlled.enable = true;
+        configFile.path = "/persist/etc/wpa_supplicant/wireless.conf";
+        extraConf = ''
+          ap_scan=1
+          eapol_version=1
+          fast_reauth=1
+          bgscan=
+        '';
+      };
+      "enp46s0" = {
+        configFile.path = "/persist/etc/wpa_supplicant/wired.conf";
+        extraConf = ''
+          ap_scan=0
+          eapol_version=1
+          fast_reauth=1
+        '';
+        driver = "wired";
       };
     };
   };
@@ -56,7 +56,7 @@
           Name = "ethslave";
         };
         macvlanConfig = {
-          Mode = "vepa";
+          Mode = "bridge";
         };
       };
       "10-enp46s0-lan" = {
@@ -77,6 +77,7 @@
           Mode = "active-backup";
           PrimaryReselectPolicy = "always";
           MIIMonitorSec = "1s";
+          FailOverMACPolicy = "active";
         };
       };
       "20-vmbridge0".netdevConfig = {
