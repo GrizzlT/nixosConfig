@@ -100,7 +100,10 @@
       };
       "20-enp46s0-dhcp" = {
         matchConfig.Name = "ethslave";
-        linkConfig.RequiredForOnline = "no";
+        linkConfig = {
+          RequiredForOnline = "no";
+          ActivationPolicy = "manual";
+        };
         networkConfig = {
           Bond = "bond0";
           PrimarySlave = true;
@@ -130,7 +133,7 @@
   services.dnsmasq = {
     enable = true;
     settings = {
-      listen-address = [ "127.0.1.53" "192.168.213.1" ];
+      listen-address = [ "127.0.1.53" "192.168.213.1" "192.168.12.1" "172.17.0.1" ];
       bind-dynamic = true;
       server = [ "127.0.0.53" "/hostfile/" ];
       no-resolv = true;

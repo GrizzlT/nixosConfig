@@ -38,6 +38,11 @@
         chain forward {
           type filter hook forward priority filter; policy drop;
 
+          # Allow docker networks
+          ip saddr 172.16.0.0/12 oifname bond0 accept
+          ip saddr 172.16.0.0/12 ip daddr 172.16.0.0/12 accept
+          ip daddr 172.16.0.0/12 ct state { established, related } counter accept
+
           # Allow trusted network WAN access
           iifname {
             "vmbridge0", ethvlan
