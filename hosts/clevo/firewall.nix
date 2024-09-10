@@ -27,7 +27,7 @@
           iifname { "vmbridge0", "ethvlan" } tcp dport 53 accept # DNS
           iifname { "vmbridge0", "ethvlan" } udp dport { 53, 67 } accept # DNS + DHCP
 
-          iifname { bond0 } udp dport 5353 accept # AVAHI
+          iifname { vmbridge0, ehtvlan, bond0 } udp dport 5353 accept # mDNS
 
           iifname { between } tcp dport 8080 accept
 
@@ -41,6 +41,8 @@
           # Allow docker networks
           ip saddr 172.16.0.0/12 oifname bond0 accept
           ip saddr 172.16.0.0/12 ip daddr 172.16.0.0/12 accept
+          iifname tailscale0 ip daddr 172.16.0.0/12 accept
+          ip saddr 172.16.0.0/12 ct state { established, related } counter accept
           ip daddr 172.16.0.0/12 ct state { established, related } counter accept
 
           # Allow trusted network WAN access

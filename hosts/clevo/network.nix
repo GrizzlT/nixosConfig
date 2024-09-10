@@ -126,6 +126,7 @@
         matchConfig.Name = "vmbridge0";
         address = [ "192.168.213.1/24" ];
         linkConfig.RequiredForOnline = "no";
+        networkConfig.MulticastDNS = true;
       };
     };
   };
