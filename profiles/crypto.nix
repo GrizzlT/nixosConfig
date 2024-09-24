@@ -16,6 +16,10 @@ mkProfile {
         fastecdsa
         ecdsa
 
+        grpcio
+        grpcio-tools
+        rich
+
         pwntools
         requests
       ];
