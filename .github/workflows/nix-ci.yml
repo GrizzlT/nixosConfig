@@ -9,7 +9,6 @@ jobs:
       matrix:
         package:
           - 'nixosConfigurations.clevo.pkgs.hyprland'
-          - 'nixosConfigurations.clevo.pkgs.hyprland.out.dev'
           - 'nixosConfigurations.clevo.pkgs.xdg-desktop-portal-hyprland'
     runs-on: ubuntu-latest
     steps:
