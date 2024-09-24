@@ -28,6 +28,11 @@
       vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       libvdpau-va-gl
     ];
+    extraPackages32 = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+    ];
   };
 
   environment.variables.VDPAU_DRIVER = "va_gl";
