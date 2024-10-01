@@ -65,6 +65,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Not flakes
     wezterm.url = "git+https://github.com/wez/wezterm.git?dir=nix&rev=56a27e93a9ee50aab50ff4d78308f9b3154b5122";
 

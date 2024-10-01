@@ -1,25 +1,27 @@
 { ... }@inputs:
 (inputs.snowcicles.lib.mkProfiles {
   defs = {
-    c = import ./c.nix;
-    deploy = import ./deploy.nix;
-    python = import ./python.nix;
-    web = import ./web.nix;
-    pwn = import ./pwn.nix;
-    crypto = import ./crypto.nix;
-    forensics = import ./forensics.nix;
-    misc = import ./misc.nix;
     audio = import ./audio.nix;
+    c = import ./c.nix;
+    crypto = import ./crypto.nix;
+    deploy = import ./deploy.nix;
+    forensics = import ./forensics.nix;
+    games = import ./games.nix;
     hardware = import ./hardware.nix;
+    math = import ./math.nix;
+    misc = import ./misc.nix;
+    pwn = import ./pwn.nix;
+    python = import ./python.nix;
     typescript = import ./typescript.nix;
     typst-profile = import ./typst.nix;
     vpn = import ./vpn.nix;
-    games = import ./games.nix;
+    web = import ./web.nix;
   };
   basePathEnvDefault = "GRIZZ_PROFILES";
 }) // {
   overlays = [
     inputs.snowcicles.inputs.agenix.overlays.default
+    inputs.nix-matlab.overlay
     (import ./overlay.nix)
   ];
 }
