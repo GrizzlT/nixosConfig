@@ -7,6 +7,7 @@
   ungoogled-chromium,
   tomb,
   ethtool,
+  tigervnc,
 }:
 
 mkProfile {
@@ -21,5 +22,7 @@ mkProfile {
     tomb
 
     ethtool
+
+    tigervnc
   ];
 }

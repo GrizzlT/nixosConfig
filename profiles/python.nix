@@ -31,8 +31,8 @@ mkProfile {
       # keras
       # opencv4
       # pyzbar
-      #
-      # pyzmq
+
+      pyzmq
       flask
 
       python-lsp-server

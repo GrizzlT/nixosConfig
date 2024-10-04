@@ -25,6 +25,7 @@
         ];
         hyprland = true;
       };
+      installer = {};
     };
 
     overlays.default = nixpkgs.lib.composeManyExtensions [

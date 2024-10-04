@@ -17,7 +17,7 @@
     gping
     procs
     httpie
-    dogdns
+    doggo
     mosh
     cachix
   ];
