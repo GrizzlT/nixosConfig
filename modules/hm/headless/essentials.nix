@@ -15,7 +15,9 @@
     duf
     tokei
     gping
+    bandwhich
     procs
+    has
     httpie
     doggo
     mosh
