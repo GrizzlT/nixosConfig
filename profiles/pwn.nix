@@ -1,6 +1,7 @@
 {
   mkProfile,
   netcat-openbsd,
+  socat,
   cutter,
   gdb,
   pwndbg,
@@ -18,6 +19,7 @@ mkProfile {
   name = "pwn";
   paths = [
     netcat-openbsd
+    socat
     (cutter.withPlugins (p: [
       p.rz-ghidra
     ]))

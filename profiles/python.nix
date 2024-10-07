@@ -39,6 +39,7 @@ mkProfile {
 
       numpy
       matplotlib
+      scapy
     ]))
     pyright
   ];
