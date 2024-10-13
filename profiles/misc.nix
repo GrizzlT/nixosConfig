@@ -8,6 +8,8 @@
   tomb,
   ethtool,
   tigervnc,
+  pandoc,
+  texliveSmall,
 }:
 
 mkProfile {
@@ -24,5 +26,7 @@ mkProfile {
     ethtool
 
     tigervnc
+    pandoc
+    texliveSmall
   ];
 }

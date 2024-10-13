@@ -11,6 +11,7 @@
   sigrok-cli,
   openocd,
   probe-rs,
+  rshell,
   qFlipper,
 }:
 
@@ -30,5 +31,7 @@ mkProfile {
     probe-rs
 
     qFlipper
+
+    rshell
   ];
 }
