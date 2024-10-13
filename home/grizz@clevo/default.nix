@@ -15,9 +15,9 @@ in
       "obsidian"
       "spotify"
       "discord"
-      "lunar-client"
+      "lunarclient"
     ];
-  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
 
   home = {
     username = "grizz";
