@@ -52,7 +52,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.41.2";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland/?submodules=1&ref=refs/tags/v0.41.2";
 
     stylix = {
       url = "github:danth/stylix/release-24.05";
