@@ -12,7 +12,7 @@ in
     overlays = [
       self.overlays.default
     ]
-      ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
+      ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
   });
 
   mkHm = snowcicles.lib.mkHmManagers {
@@ -26,7 +26,7 @@ in
       overlays = [
         self.overlays.default
       ]
-        ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
+        ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
 
       spicetifyPkgs = inputs.spicetify.legacyPackages.${settings.system};
     };
