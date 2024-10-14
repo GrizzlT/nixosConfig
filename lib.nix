@@ -9,10 +9,10 @@ in
     modules = [
       ./hosts/${name}
     ];
-    overlays = lib.optional (settings.hyprland) inputs.hyprland.overlays.default
-      ++ [
-        self.overlays.default
-      ];
+    overlays = [
+      self.overlays.default
+    ]
+      ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
   });
 
   mkHm = snowcicles.lib.mkHmManagers {
@@ -23,10 +23,10 @@ in
       modules = [
         "${self}/home/${name}@${settings.hostname}"
       ] ++ lib.optional (settings.spicetify) inputs.spicetify.homeManagerModules.default;
-      overlays = lib.optional (settings.hyprland) inputs.hyprland.overlays.default
-        ++ [
-          self.overlays.default
-        ];
+      overlays = [
+        self.overlays.default
+      ]
+        ++ lib.optional (settings.hyprland) (_: _: inputs.hyprland.packages.${settings.system});
 
       spicetifyPkgs = inputs.spicetify.legacyPackages.${settings.system};
     };
