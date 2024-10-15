@@ -11,6 +11,10 @@
     git
     grizz-disk-setup
     grizz-zfs-diff
+
+    age
+    rage
+    passage
   ];
 
   # Useless filesystem that gets overriden
