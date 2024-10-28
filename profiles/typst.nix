@@ -1,6 +1,6 @@
 {
   mkProfile,
-  typst,
+  unstable,
   typstfmt,
   typst-lsp,
   typst-live,
@@ -11,7 +11,7 @@
 mkProfile {
   name = "typst";
   paths = [
-    typst
+    unstable.typst
     typstfmt
     typst-lsp
     typst-live

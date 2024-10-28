@@ -6,6 +6,14 @@ let
     inherit system;
     overlays = [
       self.overlays.default
+      (self: super: {
+        unstable = import inputs.unstable {
+          inherit system;
+          overlays = [
+            self.overlays.default
+          ] ++ profiles.overlays;
+        };
+      })
     ] ++ profiles.overlays;
     config.allowUnfreePredicate = pkg:
       builtins.elem (nixpkgs.lib.getName pkg) [
