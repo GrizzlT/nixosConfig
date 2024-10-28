@@ -38,7 +38,7 @@ return {
             exportPdf = "onSave" -- Choose onType, onSave or never.
           },
         },
-        tsserver = {},
+        ts_ls = {},
         tailwindcss = {},
         pyright = {},
         openscad_lsp = {},

@@ -9,6 +9,8 @@
       openscad-lsp
       tailwindcss-language-server
 
+      tree-sitter
+
       unixtools.xxd
       fd ripgrep wl-clipboard
       gccgo gnumake
