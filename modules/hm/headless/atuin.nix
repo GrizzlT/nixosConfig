@@ -30,7 +30,7 @@
         StandardOutput = "journal";
         StandardError = "journal";
       };
-      Install.WantedBy = [ "multi-user.target" ];
+      Install.WantedBy = [ "default.target" ];
     };
     sockets.atuin-daemon = {
       Unit = {
