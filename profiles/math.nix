@@ -2,6 +2,7 @@
   mkProfile,
   matlab,
   libqalculate,
+  gnuplot,
 }:
 
 mkProfile {
@@ -9,5 +10,6 @@ mkProfile {
   paths = [
     matlab
     libqalculate
+    gnuplot
   ];
 }

@@ -2,17 +2,21 @@
 let
   profiles = import "${self}/profiles" inputs;
 
-  forSystem = system: import nixpkgs {
+  forSystem = system: let
+    nixpkgs-unstable = import inputs.unstable {
+      inherit system;
+      overlays = [
+        self.overlays.default
+      ] ++ profiles.overlays;
+    };
+  in import nixpkgs {
     inherit system;
     overlays = [
       self.overlays.default
       (self: super: {
-        unstable = import inputs.unstable {
-          inherit system;
-          overlays = [
-            self.overlays.default
-          ] ++ profiles.overlays;
-        };
+        unstable = self.lib.makeScope self.newScope (self0: {
+          inherit (nixpkgs-unstable) typst;
+        });
       })
     ] ++ profiles.overlays;
     config.allowUnfreePredicate = pkg:

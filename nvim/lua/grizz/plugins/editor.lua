@@ -16,6 +16,8 @@ return {
 
   { 'wakatime/vim-wakatime', lazy = false },
 
+  { 'subnut/nvim-ghost.nvim', lazy = false },
+
   {
     'stevearc/oil.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },

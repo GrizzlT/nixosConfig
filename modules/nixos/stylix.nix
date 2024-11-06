@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 {
-  fonts.packages = with pkgs; [ courier-prime ];
+  fonts.packages = with pkgs; [ courier-prime lmodern ];
 
   stylix = {
     enable = true;

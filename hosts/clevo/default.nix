@@ -29,6 +29,9 @@ in
     "steam"
     "steam-original"
     "steam-run"
+    "corefonts"
+    "helvetica-neue-lt-std"
+    "vista-fonts"
   ];
 
   security.sudo.extraConfig = "Defaults lecture = never";

@@ -35,7 +35,7 @@ return {
         },
         typst_lsp = {
           settings = {
-            exportPdf = "onSave" -- Choose onType, onSave or never.
+            exportPdf = "never" -- Choose onType, onSave or never.
           },
         },
         ts_ls = {},
