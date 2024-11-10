@@ -2,10 +2,11 @@
   mkProfile,
   unstable,
   typstfmt,
-  typst-lsp,
+  tinymist,
   typst-live,
   poppler_utils,
   ghostscript_headless,
+  sioyek,
 }:
 
 mkProfile {
@@ -13,9 +14,10 @@ mkProfile {
   paths = [
     unstable.typst
     typstfmt
-    typst-lsp
+    tinymist
     typst-live
     poppler_utils
     ghostscript_headless
+    sioyek
   ];
 }

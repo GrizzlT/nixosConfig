@@ -33,11 +33,17 @@ return {
           end,
           autostart = false,
         },
-        typst_lsp = {
+        tinymist = {
           settings = {
-            exportPdf = "never" -- Choose onType, onSave or never.
-          },
+            exportPdf = "onType",
+            outputPath = "$root/target/$dir/$name",
+          }
         },
+        -- typst_lsp = {
+        --   settings = {
+        --     exportPdf = "onType" -- Choose onType, onSave or never.
+        --   },
+        -- },
         ts_ls = {},
         tailwindcss = {},
         pyright = {},

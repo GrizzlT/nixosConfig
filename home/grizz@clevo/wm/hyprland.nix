@@ -34,6 +34,7 @@ in
       windowrule = center, my-fzf-menu
 
       windowrule = float, title:^(Picture-in-Picture)$
+      windowrule = fakefullscreen, ^(typst-preview)$
 
       workspace = HDMI-A-1,1
       workspace = HDMI-A-2,2

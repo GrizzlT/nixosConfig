@@ -15,7 +15,7 @@ let
       self.overlays.default
       (self: super: {
         unstable = self.lib.makeScope self.newScope (self0: {
-          inherit (nixpkgs-unstable) typst;
+          inherit (nixpkgs-unstable) typst tinymist;
         });
       })
     ] ++ profiles.overlays;
