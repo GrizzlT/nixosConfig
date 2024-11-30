@@ -2,7 +2,6 @@
   mkProfile,
   unstable,
   typstfmt,
-  tinymist,
   typst-live,
   poppler_utils,
   ghostscript_headless,
@@ -13,8 +12,8 @@ mkProfile {
   name = "typst";
   paths = [
     unstable.typst
+    unstable.tinymist
     typstfmt
-    tinymist
     typst-live
     poppler_utils
     ghostscript_headless

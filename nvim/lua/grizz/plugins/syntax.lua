@@ -13,7 +13,7 @@ return {
     config = function ()
       require 'typst-preview'.setup {
         -- Example: open_cmd = 'firefox %s -P typst-preview --class typst-preview'
-        open_cmd = 'librewolf %s -P Typst --class typst-preview',
+        open_cmd = 'librewolf %s -P Typst --name typst-preview',
 
         -- Whether the preview will follow the cursor in the source file
         follow_cursor = true,

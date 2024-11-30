@@ -27,7 +27,7 @@ require("lazy").setup("grizz.plugins", {
       disabled_plugins = {
         'gzip',
         'matchit',
-        'netrwPlugin',
+        -- 'netrwPlugin',
         'tarPlugin',
         'spellfile',
         'tohtml',
