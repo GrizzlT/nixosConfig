@@ -19,12 +19,10 @@
           ListenPort = 9918;
         };
         wireguardPeers = [{
-          wireguardPeerConfig = {
-            PublicKey = "FN9RP0sx6ncqBCUPoSoeGcmaV40qD3VsvjnJ+klsSHA=";
-            AllowedIPs = [ "172.23.0.0/24" ];
-            Endpoint = "141.147.65.85:51820";
-            PersistentKeepalive = 25;
-          };
+          PublicKey = "FN9RP0sx6ncqBCUPoSoeGcmaV40qD3VsvjnJ+klsSHA=";
+          AllowedIPs = [ "172.23.0.0/24" ];
+          Endpoint = "141.147.65.85:51820";
+          PersistentKeepalive = 25;
         }];
       };
     };

@@ -34,7 +34,7 @@ in
       windowrule = center, my-fzf-menu
 
       windowrule = float, title:^(Picture-in-Picture)$
-      windowrule = fakefullscreen, ^(typst-preview)$
+      windowrule = fullscreenstate * 2, ^(typst-preview)$
 
       workspace = HDMI-A-1,1
       workspace = HDMI-A-2,2
@@ -65,7 +65,7 @@ in
       bind=$mainMod_SHIFT,q,exec,$wlogout
       bind=$mainMod,return,exec,wezterm start --always-new-process
       bind=$mainMod,b,exec,[workspace 2] $browser
-      bind=$mainMod_SHIFT,f,fakefullscreen
+      bind=$mainMod_SHIFT,f,fullscreenstate,* 2
       bind=$mainMod,f,fullscreen,0
       # bind=$mainMod,e,exec,xplr # TODO: do something fancy with xplr
       bind=$mainMod,t,togglefloating
@@ -342,10 +342,13 @@ in
         disable_hyprland_logo = true
         disable_splash_rendering = true
         mouse_move_enables_dpms = true
-        no_direct_scanout = true
         focus_on_activate = true
         allow_session_lock_restore = true
         vfr = true
+      }
+
+      render {
+        direct_scanout = false
       }
 
       binds {

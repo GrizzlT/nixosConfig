@@ -27,6 +27,7 @@ in
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
+    "steam-unwrapped"
     "steam-original"
     "steam-run"
     "corefonts"

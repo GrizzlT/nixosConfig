@@ -14,13 +14,11 @@
         };
         wireguardConfig.PrivateKeyFile = "/persist/etc/mortiWgPrivate";
         wireguardPeers = [{
-          wireguardPeerConfig = {
-            PublicKey = "dVx1RzydmVbq8ou0hHczndyOVv8RhYUdndpz3HpaJm8=";
-            PresharedKeyFile = "/persist/etc/mortiWgPresharedKey";
-            AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-            Endpoint = "85.234.220.14:51820";
-            PersistentKeepalive = 0;
-          };
+          PublicKey = "dVx1RzydmVbq8ou0hHczndyOVv8RhYUdndpz3HpaJm8=";
+          PresharedKeyFile = "/persist/etc/mortiWgPresharedKey";
+          AllowedIPs = [ "0.0.0.0/0" "::/0" ];
+          Endpoint = "85.234.220.14:51820";
+          PersistentKeepalive = 0;
         }];
       };
     };

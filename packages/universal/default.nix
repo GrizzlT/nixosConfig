@@ -1,6 +1,6 @@
 inputs:
 self: super: let
-  toolchain = (inputs.fenix.overlays.default self super).fenix.stable.minimalToolchain;
+  toolchain = self.rust-bin.stable."1.83.0".minimal;
   rustPlatform = super.makeRustPlatform {
     cargo = toolchain;
     rustc = toolchain;
