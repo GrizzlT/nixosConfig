@@ -11,8 +11,8 @@ in
     ];
     overlays = [
       self.overlays.default
-    ]
-      ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
+    ];
+      # ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
   });
 
   mkHm = snowcicles.lib.mkHmManagers {
@@ -25,8 +25,8 @@ in
       ] ++ lib.optional (settings.spicetify) inputs.spicetify.homeManagerModules.default;
       overlays = [
         self.overlays.default
-      ]
-        ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
+      ];
+        # ++ lib.optional (settings.hyprland) inputs.hyprland.overlays.default;
 
       spicetifyPkgs = inputs.spicetify.legacyPackages.${settings.system};
     };
