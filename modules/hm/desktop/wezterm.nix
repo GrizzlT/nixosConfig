@@ -48,6 +48,8 @@
         audible_bell = "Disabled",
 
         tab_bar_at_bottom = true,
+        use_fancy_tab_bar = false,
+        hide_tab_bar_if_only_one_tab = true,
         colors = {
           cursor_fg = 'rgba(40, 42, 54)',
           compose_cursor = 'orange',
