@@ -14,6 +14,7 @@ in
     ./persist.nix
     ./storage.nix
     ./udev.nix
+    ./syncthing.nix
     ./virtualisation.nix
 
     # ./ecsc-dry-run.nix

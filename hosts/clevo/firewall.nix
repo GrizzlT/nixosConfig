@@ -30,6 +30,8 @@
           iifname { vmbridge0, ehtvlan, bond0 } udp dport 5353 accept # mDNS
 
           tcp dport 8080 accept
+          tcp dport 22000 accept
+          udp dport { 21027, 22000 } accept
 
           # icmp
           icmp type echo-request accept
