@@ -42,7 +42,7 @@ in
 
     supportedFilesystems.zfs = true;
     kernelParams = [ "nohibernate" ];
-    kernelModules = [ "kvm-intel" "i915" "v4l2loopback" ];
+    kernelModules = [ "kvm-intel" "i915" "v4l2loopback devices=2 video_nr=9,10 card_label=\"Android Cam\",\"OBS Cam\" exclusive_caps=1" ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
