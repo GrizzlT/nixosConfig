@@ -22,6 +22,8 @@
     doggo
     mosh
     cachix
+
+    shellcheck
   ];
 
   programs = {
