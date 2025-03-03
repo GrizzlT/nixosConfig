@@ -3,6 +3,7 @@
   matlab,
   libqalculate,
   gnuplot,
+  octave,
 }:
 
 mkProfile {
@@ -11,5 +12,6 @@ mkProfile {
     matlab
     libqalculate
     gnuplot
+    (octave.withPackages (opkgs: [ opkgs.communications ]))
   ];
 }
