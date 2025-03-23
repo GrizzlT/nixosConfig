@@ -11,6 +11,8 @@
   sslsplit,
   tcpreplay,
 
+  whatsapp-chat-exporter,
+
   fetchFromGitHub,
 }:
 
@@ -38,5 +40,7 @@ mkProfile {
       patches = [];
     }))
     tcpreplay
+
+    whatsapp-chat-exporter
   ];
 }

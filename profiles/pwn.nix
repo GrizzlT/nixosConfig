@@ -5,10 +5,12 @@
   cutter,
   gdb,
   pwndbg,
+  gef,
   patchelf,
   ltrace,
   ghidra,
   radare2,
+  iaito,
   rizin,
   ropgadget,
   rp,
@@ -25,10 +27,12 @@ mkProfile {
     ]))
     gdb
     pwndbg
+    gef
     patchelf
     ltrace
     ghidra
     radare2
+    iaito
     rizin
 
     ropgadget

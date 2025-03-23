@@ -29,17 +29,23 @@ mkProfile {
 
       # tensorflow
       # keras
-      # opencv4
+      opencv4
       # pyzbar
+      pillow
 
       pyzmq
       flask
 
       python-lsp-server
 
+      iphone-backup-decrypt
+      javaobj-py3
+
       numpy
       matplotlib
       scapy
+      control
+      scipy
     ]))
     pyright
   ];

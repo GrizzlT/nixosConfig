@@ -10,6 +10,9 @@
   tigervnc,
   pandoc,
   texliveSmall,
+  binwalk,
+  sqlitebrowser,
+  sqlite,
 }:
 
 mkProfile {
@@ -24,9 +27,12 @@ mkProfile {
     tomb
 
     ethtool
+    binwalk
 
     tigervnc
     pandoc
     texliveSmall
+    sqlitebrowser
+    sqlite
   ];
 }
