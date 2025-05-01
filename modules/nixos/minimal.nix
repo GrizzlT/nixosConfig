@@ -7,6 +7,7 @@
     wget
     curl
     git
+    git-filter-repo
     grizz-zfs-diff
 
     agenix

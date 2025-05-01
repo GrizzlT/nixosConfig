@@ -13,6 +13,9 @@
   binwalk,
   sqlitebrowser,
   sqlite,
+  imagemagick,
+  uv,
+  graphviz,
 }:
 
 mkProfile {
@@ -34,5 +37,10 @@ mkProfile {
     texliveSmall
     sqlitebrowser
     sqlite
+
+    graphviz
+
+    uv
+    imagemagick
   ];
 }

@@ -156,5 +156,6 @@
     127.0.0.1 test1.example.org
     127.0.0.1 test2.example.org
     127.0.0.1 test3.example.org
+    49.12.154.190 pastebin.com
   '';
 }

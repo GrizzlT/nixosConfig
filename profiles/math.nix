@@ -4,6 +4,7 @@
   libqalculate,
   gnuplot,
   octave,
+  numbat,
 }:
 
 mkProfile {
@@ -11,6 +12,7 @@ mkProfile {
   paths = [
     matlab
     libqalculate
+    numbat
     gnuplot
     (octave.withPackages (opkgs: [ opkgs.communications ]))
   ];

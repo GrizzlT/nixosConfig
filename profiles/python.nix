@@ -20,6 +20,7 @@ mkProfile {
       grpcio-tools
       rich
 
+      angr
       r2pipe
       rzpipe
       pwntools
@@ -38,7 +39,7 @@ mkProfile {
 
       python-lsp-server
 
-      iphone-backup-decrypt
+      # iphone-backup-decrypt
       javaobj-py3
 
       numpy
