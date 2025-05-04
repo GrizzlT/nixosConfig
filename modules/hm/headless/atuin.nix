@@ -38,7 +38,7 @@
         Requires = [ "atuin-daemon.service" ];
       };
       Socket = {
-        ListenStream="%t/atuin.socket";
+        ListenStream="%t/atuin.sock";
         Accept = false;
       };
     };
