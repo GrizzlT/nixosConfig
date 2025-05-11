@@ -20,7 +20,7 @@
       }
     ];
     aliases = {
-      s = "status";
+      s = "status --short";
       co = "checkout";
       br = "branch";
       c = "commit --verbose";
@@ -35,6 +35,8 @@
         autocrlf = "input";
       };
       status = {
+        branch = true;
+        showStash = true;
         showUntrackedFiles = "all";
       };
     };
