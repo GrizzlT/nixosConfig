@@ -15,7 +15,7 @@ let
       self.overlays.default
       (self: super: {
         unstable = self.lib.makeScope self.newScope (self0: {
-          inherit (nixpkgs-unstable) typst tinymist binwalk;
+          inherit (nixpkgs-unstable) typst tinymist binwalk harper;
           unstable-python311 = nixpkgs-unstable.python311;
         });
       })
