@@ -6,6 +6,7 @@
   poppler_utils,
   ghostscript_headless,
   sioyek,
+  harper,
 }:
 
 mkProfile {
@@ -18,5 +19,7 @@ mkProfile {
     poppler_utils
     ghostscript_headless
     sioyek
+
+    harper
   ];
 }

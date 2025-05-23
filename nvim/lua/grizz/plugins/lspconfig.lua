@@ -48,6 +48,33 @@ return {
         tailwindcss = {},
         pyright = {},
         openscad_lsp = {},
+
+        harper_ls = {
+          userDictPath = "",
+          fileDictPath = "",
+          linters = {
+            SpellCheck = false,
+            SpelledNumbers = false,
+            AnA = true,
+            SentenceCapitalization = true,
+            UnclosedQuotes = true,
+            WrongQuotes = false,
+            LongSentences = true,
+            RepeatedWords = true,
+            Spaces = true,
+            Matcher = true,
+            CorrectNumberSuffix = true
+          },
+          codeActions = {
+            ForceStable = false
+          },
+          markdown = {
+            IgnoreLinkTitle = true
+          },
+          diagnosticSeverity = "hint",
+          isolateEnglish = false,
+          dialect = "American"
+        },
       }
 
       for server_name, config in pairs(servers) do
