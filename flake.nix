@@ -70,7 +70,7 @@
     };
 
     # Not flakes
-    wezterm.url = "git+https://github.com/wez/wezterm.git?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";
+    wezterm.url = "github:wezterm/wezterm?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";
 
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";

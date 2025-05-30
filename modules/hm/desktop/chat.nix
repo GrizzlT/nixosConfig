@@ -2,6 +2,6 @@
 {
   home.packages = with pkgs; [
     discord
-    element-desktop-wayland
+    element-desktop
   ];
 }
