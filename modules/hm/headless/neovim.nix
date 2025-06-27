@@ -9,7 +9,7 @@
       openscad-lsp
       tailwindcss-language-server
       yaml-language-server
-      nodePackages.vscode-json-languageserver
+      vscode-langservers-extracted
 
       tree-sitter
 
