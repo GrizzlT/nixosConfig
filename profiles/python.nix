@@ -16,6 +16,8 @@ mkProfile {
       ecdsa
       netifaces
 
+      z3-solver
+
       grpcio
       grpcio-tools
       rich

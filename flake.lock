@@ -1032,17 +1032,17 @@
         "dir": "nix",
         "lastModified": 1733412933,
         "narHash": "sha256-2OPDEgUEh0B6OIcSWtBbkw/zFi8r2VfluLj7FebTaVA=",
-        "ref": "refs/heads/main",
+        "owner": "wezterm",
+        "repo": "wezterm",
         "rev": "6f375e29a2c4d70b8b51956edd494693196c6692",
-        "revCount": 8180,
-        "type": "git",
-        "url": "https://github.com/wez/wezterm.git?dir=nix"
+        "type": "github"
       },
       "original": {
         "dir": "nix",
+        "owner": "wezterm",
+        "repo": "wezterm",
         "rev": "6f375e29a2c4d70b8b51956edd494693196c6692",
-        "type": "git",
-        "url": "https://github.com/wez/wezterm.git?dir=nix"
+        "type": "github"
       }
     },
     "xdph": {

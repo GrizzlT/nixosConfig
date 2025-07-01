@@ -9,6 +9,7 @@
     hledger-utils
 
     taskwarrior3
+    timewarrior
     zk
   ];
 

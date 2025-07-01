@@ -15,7 +15,9 @@
   sqlite,
   imagemagick,
   uv,
+  unstable,
   graphviz,
+  gv,
 }:
 
 mkProfile {
@@ -31,6 +33,10 @@ mkProfile {
 
     ethtool
     binwalk
+
+    unstable.saw-tools
+    unstable.yosys
+    gv
 
     tigervnc
     pandoc
