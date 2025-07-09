@@ -24,7 +24,6 @@ return {
         -- ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
         -- ccls = { },
         clangd = {},
-        -- digestif = {},
         ltex = {
           on_attach = function(client, bufnr)
             require("ltex_extra").setup({
@@ -40,12 +39,20 @@ return {
             outputPath = "$root/target/$dir/$name",
           }
         },
-        -- typst_lsp = {
-        --   settings = {
-        --     exportPdf = "onType" -- Choose onType, onSave or never.
-        --   },
+        -- ts_ls = {
+          -- init_options = {
+          --   preferences = {
+          --     includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+          --     includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          --     includeInlayVariableTypeHints = true,
+          --     includeInlayFunctionParameterTypeHints = true,
+          --     includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+          --     includeInlayPropertyDeclarationTypeHints = true,
+          --     includeInlayFunctionLikeReturnTypeHints = true,
+          --     includeInlayEnumMemberValueHints = true,
+          --   }
+          -- }
         -- },
-        ts_ls = {},
         tailwindcss = {},
         pyright = {},
         openscad_lsp = {},
@@ -68,33 +75,6 @@ return {
             }
           }
         },
-
-      --   harper_ls = {
-      --     userDictPath = "",
-      --     fileDictPath = "",
-      --     linters = {
-      --       SpellCheck = false,
-      --       SpelledNumbers = false,
-      --       AnA = true,
-      --       SentenceCapitalization = true,
-      --       UnclosedQuotes = true,
-      --       WrongQuotes = false,
-      --       LongSentences = true,
-      --       RepeatedWords = true,
-      --       Spaces = true,
-      --       Matcher = true,
-      --       CorrectNumberSuffix = true
-      --     },
-      --     codeActions = {
-      --       ForceStable = false
-      --     },
-      --     markdown = {
-      --       IgnoreLinkTitle = true
-      --     },
-      --     diagnosticSeverity = "hint",
-      --     isolateEnglish = false,
-      --     dialect = "American"
-      --   },
       }
 
       for server_name, config in pairs(servers) do
@@ -159,6 +139,8 @@ return {
         desc = "Configure LSP for a buffer",
         callback = on_attach,
       })
+
+      vim.lsp.inlay_hint.enable()
     end,
   },
 

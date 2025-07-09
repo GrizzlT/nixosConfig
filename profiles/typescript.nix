@@ -1,13 +1,15 @@
 {
   mkProfile,
   nodejs_20,
-  nodePackages,
+  unstable,
+  yarn-berry,
 }:
 
 mkProfile {
   name = "typescript";
   paths = [
     nodejs_20
-    nodePackages.typescript-language-server
+    unstable.typescript-language-server
+    yarn-berry
   ];
 }
