@@ -9,6 +9,7 @@ mkProfile {
   paths = [
     (python311.withPackages (ps: with ps; [
       pycryptodome gmpy2
+      wandb
       sympy
       primefac
       pypng

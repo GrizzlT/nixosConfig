@@ -15,6 +15,8 @@
     age
     rage
     passage
+
+    nixos-install-tools
   ];
 
   # Useless filesystem that gets overriden
