@@ -7,6 +7,10 @@
 
   home.packages = with pkgs; [
     (firefox.override { pkcs11Modules = [ pkgs.eid-mw ]; })
-    brave
+    (brave.override {
+      commandLineArgs = [
+        "--password-store=basic"
+      ];
+    })
   ];
 }
