@@ -21,17 +21,17 @@ in
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
       # exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
 
-      windowrule = float, pavucontrol
-      windowrule = float, wlogout
-      windowrule = move 0 0, wlogout
-      windowrule = size 100% 100%, wlogout
-      windowrule = animation slide, wlogout
+      windowrule = float, class:pavucontrol
+      windowrule = float, class:wlogout
+      windowrule = move 0 0, class:wlogout
+      windowrule = size 100% 100%, class:wlogout
+      windowrule = animation slide, class:wlogout
 
-      windowrule = float, my-fzf-menu
-      windowrule = center, my-fzf-menu
+      windowrule = float, class:my-fzf-menu
+      windowrule = center, class:my-fzf-menu
 
       windowrule = float, title:^(Picture-in-Picture)$
-      windowrule = fullscreenstate * 2, ^(typst-preview)$
+      windowrule = fullscreenstate * 2, class:^(typst-preview)$
 
       workspace = HDMI-A-1,1
       workspace = HDMI-A-2,2
