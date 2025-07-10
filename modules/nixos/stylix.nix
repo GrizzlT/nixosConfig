@@ -8,7 +8,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/snazzy.yaml";
     fonts = {
       monospace = {
-        package = (pkgs.nerdfonts.override { fonts = [ "Hack" ]; });
+        package = pkgs.nerd-fonts.hack;
         name = "Hack Nerd Font Mono";
       };
       serif = config.stylix.fonts.monospace;
