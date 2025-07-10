@@ -9,7 +9,7 @@
     homeConfigurations = lib.mkHm {
       grizz = {
         modules = [
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
         ];
         hyprland = true;
         spicetify = true;
@@ -72,6 +72,7 @@
     # Not flakes
     wezterm.url = "github:wezterm/wezterm?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";
 
+    # TODO: check for new version?
     spicetify = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
