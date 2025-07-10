@@ -11,6 +11,6 @@
     enableZshIntegration = false;
     defaultCacheTtl = 1200;
     maxCacheTtl = 7200;
-    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentry.package = pkgs.pinentry-gtk2;
   };
 }

@@ -23,6 +23,11 @@
       name = "phinger-cursors-dark";
       size = 24;
     };
+    # iconTheme = {
+    #   enable = true;
+    #   light = "la-capitaine-icon-theme";
+    #   package = pkgs.la-capitaine-icon-theme;
+    # };
 
     autoEnable = false;
     targets.gtk.enable = true;
@@ -38,9 +43,5 @@
 
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "la-capitaine-icon-theme";
-      package = pkgs.la-capitaine-icon-theme;
-    };
   };
 }
