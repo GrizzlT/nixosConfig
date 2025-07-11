@@ -30,7 +30,7 @@ return {
     event = { "BufRead Cargo.toml" },
     config = function()
       require('crates').setup({
-        src = { cmp = { enabled = true, } },
+        completion = { cmp = { enabled = true, } },
         on_attach = function(bufnr)
           local crates = require('crates')
           local opts = function(d)

@@ -35,6 +35,13 @@ return {
         }
       })
 
+      -- vim.lsp.config('pylsp', {
+      --   settings = {
+      --     pylsp = {
+      --     }
+      --   }
+      -- })
+
       vim.lsp.config('lua_ls', {
         on_init = function(client)
           if client.workspace_folders then
@@ -92,6 +99,7 @@ return {
       vim.lsp.enable('openscad_lsp')
       vim.lsp.enable('jsonls')
       vim.lsp.enable('yamlls')
+      vim.lsp.enable('pylsp')
 
         -- ts_ls = {
           -- init_options = {
