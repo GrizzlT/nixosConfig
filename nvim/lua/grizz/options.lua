@@ -10,7 +10,6 @@ vim.opt.mouse = ""
 vim.opt.showmode = false
 vim.opt.completeopt = "menu,menuone,noinsert"
 vim.opt.virtualedit = "block"
-vim.opt.winborder = "single"
 
 -- Backup
 vim.opt.backupcopy = 'yes'

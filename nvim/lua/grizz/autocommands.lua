@@ -8,7 +8,21 @@ autocmd('FileType', {
   pattern = { 'rust', 'javascript', 'toml', 'c', 'python', 'typescript', 'nix', 'lua', 'gitcommit', 'gitignore', 'Dockerfile', 'typst' },
   callback = function ()
     vim.treesitter.start()
+    vim.o.winborder = 'rounded'
   end
+})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopeFindPre",
+  callback = function()
+    vim.opt_local.winborder = "none"
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+      callback = function()
+        vim.opt_local.winborder = "rounded"
+      end,
+    })
+  end,
 })
 
 autocmd('TextYankPost', {
