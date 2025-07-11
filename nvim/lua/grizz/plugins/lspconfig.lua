@@ -4,41 +4,95 @@ return {
     event = { 'BufReadPre', 'BufNewFile', },
     dependencies = {
       'barreiroleo/ltex-extra.nvim',
-      'hrsh7th/cmp-nvim-lsp',
       'folke/neodev.nvim',
       'b0o/schemastore.nvim',
     },
     config = function()
-      local lspconfig = require('lspconfig')
-
-      local lsp_capabilities = vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities()
-      )
-
-      local servers = {
-        nil_ls = {},
-        lua_ls = {},
-        taplo = {},
-        -- ccls = { init_options = { compilationDatabaseDirectory = "build"; } },
-        -- ccls = { },
-        clangd = {},
-        ltex = {
-          on_attach = function(client, bufnr)
-            require("ltex_extra").setup({
-              load_langs = { "en-US", "en-GB", "nl-BE" },
-              path = ".ltex-data/",
-            })
-          end,
-          autostart = false,
-        },
-        tinymist = {
-          settings = {
-            exportPdf = "onType",
-            outputPath = "$root/target/$dir/$name",
+      vim.lsp.config('jsonls', {
+        settings = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true, },
           }
-        },
+        }
+      })
+      vim.lsp.config('yamlls', {
+        settings = {
+          yaml = {
+            schemaStore = {
+              enable = false,
+              url = "",
+            },
+            schemas = require('schemastore').yaml.schemas(),
+          }
+        }
+      })
+
+      vim.lsp.config('tinymist', {
+        settings = {
+          exportPdf = "onType",
+          outputPath = "$root/target/$dir/$name",
+        }
+      })
+
+      vim.lsp.config('lua_ls', {
+        on_init = function(client)
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+              path ~= vim.fn.stdpath('config')
+              and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+              return
+            end
+          end
+
+          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most
+              -- likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+              -- Tell the language server how to find Lua modules same way as Neovim
+              -- (see `:h lua-module-load`)
+              path = {
+                'lua/?.lua',
+                'lua/?/init.lua',
+              },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME
+                -- Depending on the usage, you might want to add additional paths
+                -- here.
+                -- '${3rd}/luv/library'
+                -- '${3rd}/busted/library'
+              }
+              -- Or pull in all of 'runtimepath'.
+              -- NOTE: this is a lot slower and will cause issues when working on
+              -- your own configuration.
+              -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+              -- library = {
+              --   vim.api.nvim_get_runtime_file('', true),
+              -- }
+            }
+          })
+        end,
+        settings = {
+          Lua = {}
+        }
+      })
+
+      vim.lsp.enable('nil_ls')
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('taplo')
+      vim.lsp.enable('clangd')
+      vim.lsp.enable('tinymist')
+      vim.lsp.enable('openscad_lsp')
+      vim.lsp.enable('jsonls')
+      vim.lsp.enable('yamlls')
+
         -- ts_ls = {
           -- init_options = {
           --   preferences = {
@@ -53,52 +107,11 @@ return {
           --   }
           -- }
         -- },
-        tailwindcss = {},
-        pyright = {},
-        openscad_lsp = {},
-        jsonls = {
-          settings = {
-            json = {
-              schemas = require('schemastore').json.schemas(),
-              validate = { enable = true, },
-            }
-          }
-        },
-        yamlls = {
-          settings = {
-            yaml = {
-              schemaStore = {
-                enable = false,
-                url = "",
-              },
-              schemas = require('schemastore').yaml.schemas(),
-            }
-          }
-        },
-      }
-
-      for server_name, config in pairs(servers) do
-        lspconfig[server_name].setup(vim.tbl_deep_extend(
-          "force",
-          { capabilities = lsp_capabilities },
-          config
-        ))
-      end
 
       vim.diagnostic.config({
         severity_sort = true,
-        float = {border = 'rounded'},
+        float = { border = 'rounded' },
       })
-
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-        vim.lsp.handlers.hover,
-        {border = 'rounded'}
-      )
-
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-        vim.lsp.handlers.signature_help,
-        {border = 'rounded'}
-      )
 
       local function on_attach(client, bufnr)
         local opts = function(d)
@@ -108,11 +121,6 @@ return {
 
         if client ~= 'rust-analyzer' then
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts('Hover'))
-        -- else if client == 'tsserver' then
-        --   vim.api.nvim_create_autocmd('FormatOnSave', {
-        --     buffer = bufnr,
-        --     callback = vim.lsp.buf.format
-        --   })
         end
 
         if client ~= 'ltex' then

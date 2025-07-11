@@ -4,6 +4,13 @@ local autocmd = vim.api.nvim_create_autocmd
 local GrizzGroup = augroup('Grizz', {})
 local yank_group = augroup('HighlightYank', {})
 
+autocmd('FileType', {
+  pattern = { 'rust', 'javascript', 'toml', 'c', 'python', 'typescript', 'nix', 'lua', 'gitcommit', 'gitignore', 'Dockerfile', 'typst' },
+  callback = function ()
+    vim.treesitter.start()
+  end
+})
+
 autocmd('TextYankPost', {
   group = yank_group,
   pattern = '*',

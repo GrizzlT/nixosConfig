@@ -4,7 +4,6 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
-      'hrsh7th/nvim-cmp',
     },
     keys = {
       { "<leader>on", '<cmd>ObsidianQuickSwitch<cr>', desc = 'Quick switch', },
