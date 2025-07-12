@@ -21,7 +21,7 @@ in
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store
       # exec-once=${pkgs.swaybg}/bin/swaybg --mode fill --image ${../../../wallpapers/sunset-1920x1080.jpg}
 
-      windowrule = float, class:pavucontrol
+      windowrule = float, class:*.pavucontrol
       windowrule = float, class:wlogout
       windowrule = move 0 0, class:wlogout
       windowrule = size 100% 100%, class:wlogout

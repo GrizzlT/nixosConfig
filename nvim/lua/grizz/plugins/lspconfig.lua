@@ -99,7 +99,7 @@ return {
       vim.lsp.enable('openscad_lsp')
       vim.lsp.enable('jsonls')
       vim.lsp.enable('yamlls')
-      vim.lsp.enable('pylsp')
+      vim.lsp.enable('pyright')
 
         -- ts_ls = {
           -- init_options = {
