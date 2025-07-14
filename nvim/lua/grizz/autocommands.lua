@@ -5,7 +5,7 @@ local GrizzGroup = augroup('Grizz', {})
 local yank_group = augroup('HighlightYank', {})
 
 autocmd('FileType', {
-  pattern = { 'rust', 'javascript', 'toml', 'c', 'python', 'typescript', 'nix', 'lua', 'gitcommit', 'gitignore', 'Dockerfile', 'typst', 'yaml' },
+  pattern = { 'rust', 'javascript', 'toml', 'c', 'python', 'typescript', 'nix', 'lua', 'gitcommit', 'gitignore', 'Dockerfile', 'typst', 'yaml', 'markdown' },
   callback = function ()
     vim.treesitter.start()
     vim.o.winborder = 'rounded'

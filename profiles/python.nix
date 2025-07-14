@@ -1,13 +1,13 @@
 {
   mkProfile,
-  python311,
+  python312,
   pyright,
 }:
 
 mkProfile {
   name = "python";
   paths = [
-    (python311.withPackages (ps: with ps; [
+    (python312.withPackages (ps: with ps; [
       pycryptodome gmpy2
       wandb
       sympy
@@ -23,7 +23,6 @@ mkProfile {
       grpcio-tools
       rich
 
-      angr
       r2pipe
       rzpipe
       pwntools
@@ -37,7 +36,7 @@ mkProfile {
       # pyzbar
       pillow
 
-      pyzmq
+      websockets
       flask
 
       python-lsp-server

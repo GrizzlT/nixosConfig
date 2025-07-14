@@ -21,6 +21,7 @@ in
     ./betweenlands.nix
     ./morti-vpn.nix
     ./cacert.nix
+    ./emberling.nix
 
     ./user.nix
     ./network.nix
