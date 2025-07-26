@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     freecad
-    openscad
+    openscad-unstable
     blender
     darktable
     digikam

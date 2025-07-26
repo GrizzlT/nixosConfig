@@ -35,6 +35,7 @@ in
     "corefonts"
     "helvetica-neue-lt-std"
     "vista-fonts"
+    "saleae-logic-2"
   ];
 
   security.sudo.extraConfig = "Defaults lecture = never";

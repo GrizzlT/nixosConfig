@@ -27,7 +27,7 @@
     networks.emberling = {
       matchConfig.Name = "emberling";
       address = [
-        "10.174.1.2/32"
+        "10.174.1.3/16"
       ];
       DHCP = "no";
       networkConfig = {
