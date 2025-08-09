@@ -23,6 +23,7 @@ mkProfile {
       grpcio-tools
       rich
 
+      angr
       r2pipe
       rzpipe
       pwntools
