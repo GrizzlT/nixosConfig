@@ -50,6 +50,8 @@ mkProfile {
       scapy
       control
       scipy
+
+      subliminal
     ]))
     pyright
   ];

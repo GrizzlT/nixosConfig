@@ -11,7 +11,7 @@
           user = {
             name = "GrizzlT";
             email = "13691001+GrizzlT@users.noreply.github.com";
-            signingKey = "7F9B170ADDE10B46!";
+            signingKey = "25DDB581DA2025B7!";
           };
           commit = {
             gpgSign = true;

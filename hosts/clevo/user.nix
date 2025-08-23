@@ -31,6 +31,7 @@ in
     enable = true;
     gamescopeSession.enable = true;
   };
+  programs.gamemode.enable = true;
 
   # Shell
   programs.zsh.enable = true;
