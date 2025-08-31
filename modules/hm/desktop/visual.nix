@@ -11,6 +11,8 @@
     imv
     swayimg
     vlc
+
+    yt-dlp
   ];
 
   programs.mpv = {
