@@ -16,6 +16,7 @@
     typst-profile = import ./typst.nix;
     vpn = import ./vpn.nix;
     web = import ./web.nix;
+    haskell = import ./haskell.nix;
   };
   basePathEnvDefault = "GRIZZ_PROFILES";
 }) // {

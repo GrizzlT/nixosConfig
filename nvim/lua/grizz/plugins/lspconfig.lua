@@ -101,6 +101,8 @@ return {
       vim.lsp.enable('yamlls')
       vim.lsp.enable('pyright')
 
+      vim.lsp.enable('tailwindcss')
+      vim.lsp.enable('ts_ls')
         -- ts_ls = {
           -- init_options = {
           --   preferences = {
