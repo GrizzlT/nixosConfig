@@ -13,11 +13,18 @@
   binwalk,
   sqlitebrowser,
   sqlite,
+  pngtools,
+  exiftool,
   imagemagick,
   uv,
   unstable,
   graphviz,
   gv,
+  dumbpipe,
+  sendme,
+
+  sigdigger,
+  inspectrum,
 }:
 
 mkProfile {
@@ -34,9 +41,15 @@ mkProfile {
     ethtool
     binwalk
 
+    pngtools
+    exiftool
+
     unstable.saw-tools
     unstable.yosys
     gv
+
+    dumbpipe
+    sendme
 
     tigervnc
     pandoc
@@ -48,5 +61,8 @@ mkProfile {
 
     uv
     imagemagick
+
+    sigdigger
+    inspectrum
   ];
 }

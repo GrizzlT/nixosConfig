@@ -7,7 +7,7 @@ let
 in
 
 mkProfile {
-  name = "python";
+  name = "haskell";
   paths = [
     hPkgs.ghc
     hPkgs.cabal-fmt

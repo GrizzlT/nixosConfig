@@ -42,8 +42,6 @@
       end
 
       return {
-        harfbuzz_features = {},
-
         enable_wayland = true,
         audible_bell = "Disabled",
 

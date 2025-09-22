@@ -31,6 +31,9 @@ mkProfile {
       pyserial
       # pyocd
 
+      tifffile
+      imagecodecs
+
       # tensorflow
       # keras
       opencv4
