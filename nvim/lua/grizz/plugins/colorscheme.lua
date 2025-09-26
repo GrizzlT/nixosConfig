@@ -1,5 +1,26 @@
 return {
   {
+    "xero/miasma.nvim",
+    lazy = false,
+    priority = 1000,
+    -- config = function()
+    --   vim.cmd("colorscheme miasma")
+    -- end,
+  },
+  {
+    "savq/melange-nvim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require('nordic').load()
+    end
+  },
+  {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
     lazy = false,

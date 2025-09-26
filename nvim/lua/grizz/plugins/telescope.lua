@@ -9,6 +9,8 @@ return {
       'mrcjkb/telescope-manix',
       'debugloop/telescope-undo.nvim',
       'OliverChao/telescope-picker-list.nvim',
+      'mrcjkb/haskell-tools.nvim',
+      'luc-tielen/telescope_hoogle',
     },
     cmd = { "Telescope" },
     keys = {
@@ -67,6 +69,8 @@ return {
 
       -- load last
       telescope.load_extension("picker_list")
+      telescope.load_extension('ht')
+      telescope.load_extension('hoogle')
 
     end,
   },

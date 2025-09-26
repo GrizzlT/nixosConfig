@@ -150,6 +150,7 @@ return {
         vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts('Rename'))
         vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts('Signature help'))
         vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, opts('Signature help'))
+        vim.keymap.set("n", "<leader>lc", vim.lsp.codelens.run, opts('Run Codelens'))
       end
 
       vim.api.nvim_create_autocmd("LspAttach", {

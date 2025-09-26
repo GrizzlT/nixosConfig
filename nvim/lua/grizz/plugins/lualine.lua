@@ -7,7 +7,7 @@ return {
       require('lualine').setup({
         options = {
           -- theme = require('lualine.themes.onedark'),
-          require('lualine.themes.catppuccin'),
+          theme = 'nordic',
           globalstatus = true,
         },
         sections = {

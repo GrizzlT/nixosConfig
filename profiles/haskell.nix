@@ -12,6 +12,7 @@ mkProfile {
     hPkgs.ghc
     hPkgs.cabal-fmt
     hPkgs.cabal-install
+    hPkgs.hoogle
     hPkgs.haskell-language-server
   ];
 }
