@@ -13,7 +13,6 @@ mkProfile {
   name = "web";
   paths = [
     tcpdump
-    inetutils
     curl
     ngrok
     mitmproxy

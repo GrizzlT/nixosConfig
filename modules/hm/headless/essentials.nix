@@ -6,18 +6,26 @@
 
   home.packages = with pkgs; [
     neofetch
+
+    gron
     jq
     fd
+
     unzip
     zip
     p7zip
+
     du-dust
     duf
     dysk
+    dua
+
     tokei
+
     gping
     bandwhich
     procs
+
     has
     httpie
     doggo
