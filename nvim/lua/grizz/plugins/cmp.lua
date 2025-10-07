@@ -20,6 +20,9 @@ return {
         menu = { border = 'single', auto_show = true },
         documentation = { window = { border = 'single' }, auto_show = true, auto_show_delay_ms = 200 },
       },
+      keymap = {
+        ['<Tab>'] = false,
+      },
       signature = { window = { border = 'single' } },
       sources = {
         per_filetype = {
