@@ -23,6 +23,8 @@
   dumbpipe,
   sendme,
 
+  verilator,
+
   sigdigger,
   inspectrum,
 }:
@@ -64,5 +66,7 @@ mkProfile {
 
     sigdigger
     inspectrum
+
+    verilator
   ];
 }

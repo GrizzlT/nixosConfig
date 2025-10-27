@@ -77,16 +77,25 @@
 
       table ip6 firewall {
         chain incoming {
-          type filter hook input priority 0; policy drop;
-          # established/related connections
+          type filter hook input priority 0; policy accept;
+
           ct state { established, related, } accept
-          # invalid connections
+
           ct state invalid drop
-          # loopback interface
+
           iifname lo accept
-          # icmp
-          # routers may also want: mld-listener-query, nd-router-solicit
-          icmpv6 type {echo-request,nd-neighbor-solicit} accept
+
+          ip6 nexthdr udp udp dport { 546, 547 } accept
+
+          # ICMPv6 essential messages
+          ip6 nexthdr icmpv6 icmpv6 type {
+            133, # Router Solicitation
+            134, # Router Advertisement
+            135, # Neighbor Solicitation
+            136, # Neighbor Advertisement
+            128, # Echo Request (ping)
+            129  # Echo Reply (pong)
+          } accept
 
           tcp dport 8080 accept
         }

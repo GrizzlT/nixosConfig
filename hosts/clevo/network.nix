@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     dnsmasq
     wpa_supplicant_gui
+    ndisc6
   ];
 
   services.resolved = {
@@ -112,10 +113,26 @@
       "20-bond0" = {
         matchConfig.Name = "bond0";
         networkConfig = {
-          DHCP = "ipv4";
+          DHCP = "yes";
           MulticastDNS = true;
           LLMNR = false;
+
+          IPv6AcceptRA = true;         # accept Router Advertisements
+          DHCPPrefixDelegation = "yes";# optional — request PD if you need it
         };
+        # [IPv6AcceptRA] section (controls when DHCPv6 client starts)
+        ipv6AcceptRAConfig = {
+          DHCPv6Client = "always";     # force DHCPv6 client even if RA 'managed' flag isn't set
+          UseDNS = false;
+        };
+
+        # [DHCPv6] section (optional tweaks)
+        dhcpV6Config = {
+          UseDNS = false;
+        };
+        # dhcpV6Config = {
+        #   PrefixDelegation = true;
+        # };
       };
       "20-enp46s0-lan" = {
         matchConfig.Name = "ethvlan";
