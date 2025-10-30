@@ -276,6 +276,10 @@ in
         force_zero_scaling = true
       }
 
+      debug {
+        full_cm_proto = true
+      }
+
       animations {
         enabled = yes
         bezier = wind, 0.05, 0.9, 0.1, 1.05
