@@ -19,15 +19,15 @@
         };
         wireguardPeers = [{
           PublicKey = "ntAF2JIWzNiuePHnIdJUxFElWilTOd9xBhXoRFz4SQs=";
-          AllowedIPs = [ "10.72.73.0/16" ];
+          AllowedIPs = [ "10.72.73.0/24" ];
           Endpoint = "152.67.137.143:51823";
         }];
       };
     };
-    networks.emberling = {
-      matchConfig.Name = "emberling";
+    networks.thesis = {
+      matchConfig.Name = "thesis";
       address = [
-        "10.174.1.2/32"
+        "10.72.73.2/24"
       ];
       DHCP = "no";
       networkConfig = {
