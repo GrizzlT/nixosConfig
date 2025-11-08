@@ -24,6 +24,7 @@
   sendme,
 
   verilator,
+  hyperfine,
 
   sigdigger,
   inspectrum,
@@ -68,5 +69,7 @@ mkProfile {
     inspectrum
 
     verilator
+
+    hyperfine
   ];
 }

@@ -14,7 +14,6 @@ mkProfile {
       primefac
       pypng
       fastecdsa
-      ecdsa
       netifaces
 
       z3-solver
@@ -39,6 +38,8 @@ mkProfile {
       opencv4
       # pyzbar
       pillow
+      torch
+      gymnasium
 
       websockets
       flask
@@ -53,8 +54,13 @@ mkProfile {
       scapy
       control
       scipy
+      spicelib
+      google
 
       subliminal
+      polars
+      pandas
+      fastexcel
     ]))
     pyright
   ];

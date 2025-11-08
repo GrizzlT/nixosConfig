@@ -16,6 +16,7 @@
   mpremote,
   rshell,
   qFlipper,
+  ngspice,
 }:
 
 mkProfile {
@@ -39,5 +40,6 @@ mkProfile {
     qFlipper
 
     rshell
+    ngspice
   ];
 }
