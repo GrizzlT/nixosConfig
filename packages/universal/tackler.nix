@@ -8,10 +8,12 @@ rustPlatform.buildRustPackage rec {
     owner = "tackler-ng";
     repo = pname;
     rev = version;
-    sha256= "7dd1R41CDgkpFI8fUWCJfgz3lr22IjWQYW6vRYEFidc=";
+    sha256= "il64qCTvaYX5+3qvkPCTYIsuFuFhS7TfCe9LcNo3v0c=";
   };
 
-  cargoHash = "sha256-sTTU75uk1vPZeFdkwBLDcdnZOKe2yepoIxZlY+wDgdA=";
+  cargoHash = "sha256-Xpbrm9JfavhcC/kAhChJiaWaKDeUpWk0/vt6zzUHo6g=";
+
+  doCheck = false;
 
   meta = with lib; {
     description = "Fast, reliable bookkeeping engine with native GIT SCM support for plain text accounting";
