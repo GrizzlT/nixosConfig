@@ -8,6 +8,8 @@
     hledger-web
     hledger-utils
 
+    tackler
+
     taskwarrior3
     timewarrior
     zk
