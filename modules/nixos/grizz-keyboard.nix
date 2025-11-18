@@ -1,8 +1,9 @@
 { ... }:
 {
   services.xserver.xkb = {
-    layout = "grizz";
+    layout = "grizz,us";
     options = "ctrl:nocaps";
+    variant = ",intl";
     extraLayouts = {
       "grizz" = {
         languages = [ "nld" ];

@@ -55,7 +55,8 @@ mkProfile {
       control
       scipy
       spicelib
-      google
+      google-genai
+      python-dotenv
 
       subliminal
       polars

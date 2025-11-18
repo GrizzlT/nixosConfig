@@ -13,4 +13,6 @@ in {
   tackler = self.callPackage ./tackler.nix { inherit rustPlatform; };
 
   wezterm = inputs.wezterm.packages.${self.system}.default;
+
+  xmcl = self.callPackage ./xmcl.nix {};
 }
