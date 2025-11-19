@@ -23,6 +23,7 @@ let
     config.allowUnfreePredicate = pkg:
       builtins.elem (nixpkgs.lib.getName pkg) [
         "ngrok"
+        "gdlauncher-carbon"
       ];
   };
 in

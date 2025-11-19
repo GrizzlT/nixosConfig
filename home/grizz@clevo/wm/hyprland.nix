@@ -308,6 +308,10 @@ in
         kb_layout=us
         kb_options=grp:shifts_toggle,caps:swapescape
       }
+      device {
+        name = beekeeb-grizzlt-piantor
+        kb_layout=us
+      }
 
       input {
         numlock_by_default=true
