@@ -11,6 +11,7 @@
     passage
     age
     age-plugin-yubikey
+    age-plugin-fido2-hmac
     paperage
   ];
 }
