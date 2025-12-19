@@ -23,6 +23,7 @@
   dumbpipe,
   sendme,
 
+  bender,
   verilator,
   hyperfine,
 
@@ -68,6 +69,7 @@ mkProfile {
     sigdigger
     inspectrum
 
+    bender
     verilator
 
     hyperfine
