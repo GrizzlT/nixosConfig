@@ -72,11 +72,11 @@
     # Not flakes
     wezterm.url = "github:wezterm/wezterm?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";
 
-    # # TODO: check for new version?
-    # spicetify = {
-    #   url = "github:Gerg-L/spicetify-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # TODO: check for new version?
+    spicetify = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
