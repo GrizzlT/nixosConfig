@@ -64,10 +64,10 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    # nix-matlab = {
-    #   url = "gitlab:doronbehar/nix-matlab";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Not flakes
     wezterm.url = "github:wezterm/wezterm?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";

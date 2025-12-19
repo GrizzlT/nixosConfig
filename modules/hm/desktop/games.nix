@@ -5,7 +5,7 @@
     unstable.lunar-client
 
     mangohud
-    protonup
+    protonup-ng
   ];
 
   home.sessionVariables = {

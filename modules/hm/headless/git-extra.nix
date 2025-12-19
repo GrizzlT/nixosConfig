@@ -1,14 +1,15 @@
 { ... }:
 {
+  programs.delta = {
+    enable = true;
+    options = {
+      side-by-side = false;
+      line-numbers = false;
+    };
+    enableGitIntegration = true;
+  };
   programs.git = {
     lfs.enable = true;
-    delta = {
-      enable = true;
-      options = {
-        side-by-side = false;
-        line-numbers = false;
-      };
-    };
   };
 
   programs.lazygit = {

@@ -2,8 +2,31 @@
 {
   programs.git = {
     enable = true;
-    userName = "GrizzlT";
-    userEmail = "13691001+GrizzlT@users.noreply.github.com";
+    settings = {
+      user = {
+        email = "13691001+GrizzlT@users.noreply.github.com";
+        name = "GrizzlT";
+      };
+      alias = {
+        s = "status --short";
+        co = "checkout";
+        br = "branch";
+        c = "commit --verbose";
+        ca = "commit --amend --verbose";
+        can = "commit --amend --no-edit --verbose";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      core = {
+        autocrlf = "input";
+      };
+      status = {
+        branch = true;
+        showStash = true;
+        showUntrackedFiles = "all";
+      };
+    };
     includes = [
       {
         condition = "hasconfig:remote.*.url:git@github.com:*/**";
@@ -19,26 +42,5 @@
         };
       }
     ];
-    aliases = {
-      s = "status --short";
-      co = "checkout";
-      br = "branch";
-      c = "commit --verbose";
-      ca = "commit --amend --verbose";
-      can = "commit --amend --no-edit --verbose";
-    };
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        autocrlf = "input";
-      };
-      status = {
-        branch = true;
-        showStash = true;
-        showUntrackedFiles = "all";
-      };
-    };
   };
 }

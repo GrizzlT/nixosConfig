@@ -1,16 +1,17 @@
 { fetchFromGitHub, python3, twine }:
 python3.pkgs.buildPythonApplication rec {
   pname = "emoji-fzf";
-  version = "0.8.0";
+  version = "0.10.0";
+  format = "pyproject";
 
   src = fetchFromGitHub {
     owner = "noahp";
     repo = "emoji-fzf";
     rev = version;
-    sha256 = "KpJW91kGMvUe1OkThCdtb/XZ+NCZoNDTsoDdCddSIao=";
+    hash = "sha256-W1lCzV+RjhjjbD2sHPQayGB7iu9eIcvy7EPrxFkORv4=";
     fetchSubmodules = true;
   };
 
   buildInputs = [ twine ];
-  propagatedBuildInputs = with python3.pkgs; [ click ];
+  propagatedBuildInputs = with python3.pkgs; [ setuptools click ];
 }

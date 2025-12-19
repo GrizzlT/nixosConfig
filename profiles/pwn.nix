@@ -4,7 +4,6 @@
   socat,
   cutter,
   gdb,
-  pwndbg,
   gef,
   patchelf,
   ltrace,
@@ -26,7 +25,6 @@ mkProfile {
       p.rz-ghidra
     ]))
     gdb
-    pwndbg
     gef
     patchelf
     ltrace

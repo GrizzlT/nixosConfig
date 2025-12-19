@@ -15,7 +15,7 @@
     zip
     p7zip
 
-    du-dust
+    dust
     duf
     dysk
     dua
