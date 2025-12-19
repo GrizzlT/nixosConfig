@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot'";
         user = "greeter";
       };
     };

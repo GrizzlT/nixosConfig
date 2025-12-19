@@ -26,20 +26,14 @@
     extraPackages = with pkgs; [
       vulkan-loader
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       libvdpau-va-gl
     ];
     extraPackages32 = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       libvdpau-va-gl
     ];
-  };
-
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
-    extraPackages = [ pkgs.vulkan-tools ];
   };
 
   environment.variables.VDPAU_DRIVER = "va_gl";
