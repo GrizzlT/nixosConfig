@@ -10,7 +10,7 @@
   pulseview,
   sigrok-cli,
   openocd,
-  probe-rs,
+  probe-rs-tools,
   picotool,
   elf2uf2-rs,
   mpremote,
@@ -32,7 +32,7 @@ mkProfile {
     pulseview
     sigrok-cli
     openocd
-    probe-rs
+    probe-rs-tools
     elf2uf2-rs
     picotool
     mpremote

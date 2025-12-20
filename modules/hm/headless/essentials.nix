@@ -7,6 +7,9 @@
   home.packages = with pkgs; [
     neofetch
 
+    radicle-node
+    radicle-desktop
+
     gron
     jq
     fd
@@ -34,6 +37,10 @@
 
     shellcheck
   ];
+
+  home.sessionVariables = {
+    RAD_HOME = "$HOME/DATA/.radicle";
+  };
 
   programs = {
     htop.enable = true;

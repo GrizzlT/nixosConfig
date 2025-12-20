@@ -13,4 +13,7 @@ in {
   whatsapp-chat-exporter = self.callPackage ./whatsapp-chat-exporter.nix {};
   python311 = super.python311.override myOverride;
   python312 = super.python312.override myOverride;
+  python313 = super.python313.override myOverride;
+  python314 = super.python314.override myOverride;
+  python315 = super.python315.override myOverride;
 }

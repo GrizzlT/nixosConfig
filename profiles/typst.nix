@@ -1,9 +1,9 @@
 {
   mkProfile,
   unstable,
-  typstfmt,
+  typstyle,
   typst-live,
-  poppler_utils,
+  poppler-utils,
   ghostscript_headless,
   sioyek,
   harper,
@@ -14,9 +14,9 @@ mkProfile {
   paths = [
     unstable.typst
     unstable.tinymist
-    typstfmt
+    typstyle
     typst-live
-    poppler_utils
+    poppler-utils
     ghostscript_headless
     sioyek
 

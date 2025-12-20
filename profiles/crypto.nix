@@ -14,7 +14,7 @@ mkProfile {
         sympy
         primefac
         fastecdsa
-        ecdsa
+        # ecdsa
 
         grpcio
         grpcio-tools
