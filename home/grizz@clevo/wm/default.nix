@@ -9,7 +9,7 @@
   imports = [
     ./hyprland.nix
     ./hyprpaper.nix
-    ./kanshi.nix
+    # ./kanshi.nix
     ./waybar
     ./dunst
 
