@@ -4,4 +4,6 @@
     discord
     element-desktop
   ];
+
+  programs.vesktop.enable = true;
 }

@@ -54,7 +54,7 @@ in
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
       $music=${pkgs.spotifywm}/bin/spotify
-      $discord=${pkgs.discord}/bin/discord
+      $discord=${pkgs.vesktop}/bin/vesktop
       $grimblast=${pkgs.grimblast}/bin/grimblast
       $passage=${scripts.passage-fzf}/bin/passage-fzf-type
 
