@@ -113,18 +113,19 @@
       "20-bond0" = {
         matchConfig.Name = "bond0";
         networkConfig = {
-          DHCP = "yes";
+          DHCP = "ipv4";
           MulticastDNS = true;
           LLMNR = false;
 
           IPv6AcceptRA = true;         # accept Router Advertisements
           DHCPPrefixDelegation = "yes";# optional — request PD if you need it
+          LinkLocalAddressing = "ipv4";
         };
         # [IPv6AcceptRA] section (controls when DHCPv6 client starts)
-        ipv6AcceptRAConfig = {
-          DHCPv6Client = "always";     # force DHCPv6 client even if RA 'managed' flag isn't set
-          UseDNS = false;
-        };
+        # ipv6AcceptRAConfig = {
+        #   # DHCPv6Client = "always";     # force DHCPv6 client even if RA 'managed' flag isn't set
+        #   UseDNS = false;
+        # };
 
         # [DHCPv6] section (optional tweaks)
         dhcpV6Config = {

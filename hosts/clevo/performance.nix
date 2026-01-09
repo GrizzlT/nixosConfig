@@ -22,21 +22,20 @@
 
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
     extraPackages = with pkgs; [
       vulkan-loader
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vpl-gpu-rt
       libvdpau-va-gl
-    ];
-    extraPackages32 = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
-      libvdpau-va-gl
+
+      intel-compute-runtime
     ];
   };
 
-  environment.variables.VDPAU_DRIVER = "va_gl";
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
+  }; # Force intel-media-driver
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
