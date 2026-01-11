@@ -6,6 +6,7 @@
     blender
     darktable
     digikam
+    shotwell
     inkscape
     gimp
     imv
