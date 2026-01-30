@@ -15,6 +15,7 @@
 
     yt-dlp
     droidcam
+    mumble
   ];
 
   programs.mpv = {

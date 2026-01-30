@@ -16,6 +16,7 @@ in
     ./udev.nix
     ./syncthing.nix
     ./virtualisation.nix
+    ./murmur.nix
 
     # ./ecsc-dry-run.nix
     ./betweenlands.nix

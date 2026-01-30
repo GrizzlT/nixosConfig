@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   networking.firewall = {
     enable = false;
@@ -32,6 +32,9 @@
           tcp dport 8080 accept
           tcp dport 22000 accept
           udp dport { 21027, 22000 } accept
+
+          tcp dport ${config.services.murmur.port} accept
+          udp dport ${config.services.murmur.port} accept
 
           # icmp
           icmp type echo-request accept
