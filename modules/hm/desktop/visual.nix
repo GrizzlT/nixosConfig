@@ -14,6 +14,7 @@
     vlc
 
     yt-dlp
+    droidcam
   ];
 
   programs.mpv = {
@@ -22,7 +23,7 @@
 
   programs.obs-studio = {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture wlrobs ];
+    plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture wlrobs droidcam-obs ];
   };
 
   programs.satty.enable = true;

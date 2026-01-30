@@ -42,10 +42,15 @@ in
 
     supportedFilesystems.zfs = true;
     kernelParams = [ "nohibernate" ];
-    kernelModules = [ "kvm-intel" "i915" "v4l2loopback devices=2 video_nr=9,10 card_label=\"Android Cam\",\"OBS Cam\" exclusive_caps=1" ];
+    kernelModules = [ "kvm-intel" "i915" "v4l2loopback" "snd-aloop" ];
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
     ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=2 video_nr=9,10 card_label="Android Cam","OBS Cam" exclusive_caps=1
+      options snd slots=snd-hda-intel,snd-aloop,snd-aloop
+      options snd-aloop index=1,2 pcm_substreams=2,2
+    '';
   };
 
   systemd.enableEmergencyMode = false;

@@ -11,6 +11,8 @@
     git
     grizz-disk-setup
     grizz-zfs-diff
+    parted
+    util-linux
 
     age
     rage
