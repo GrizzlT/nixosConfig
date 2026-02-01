@@ -33,8 +33,8 @@
           tcp dport 22000 accept
           udp dport { 21027, 22000 } accept
 
-          tcp dport ${config.services.murmur.port} accept
-          udp dport ${config.services.murmur.port} accept
+          tcp dport ${toString config.services.murmur.port} accept
+          udp dport ${toString config.services.murmur.port} accept
 
           # icmp
           icmp type echo-request accept
