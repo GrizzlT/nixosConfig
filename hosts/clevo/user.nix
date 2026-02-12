@@ -25,6 +25,7 @@ in
 
   # Necessary for swaylock
   security.pam.services.swaylock = {};
+  services.gnome.gnome-keyring.enable = true;
 
   services.flatpak.enable = true;
 

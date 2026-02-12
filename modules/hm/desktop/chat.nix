@@ -4,7 +4,7 @@
     discord
     element-desktop
 
-    fluffychat
+    fractal
   ];
 
   programs.vesktop.enable = true;
