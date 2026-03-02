@@ -26,6 +26,7 @@ mkProfile {
       r2pipe
       rzpipe
       pwntools
+      ropper
       requests
       pyserial
       # pyocd
@@ -36,6 +37,7 @@ mkProfile {
       # tensorflow
       # keras
       opencv4
+      pyzbar
       # pyzbar
       pillow
       torch

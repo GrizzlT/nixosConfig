@@ -23,9 +23,17 @@
   dumbpipe,
   sendme,
 
+  wordlists,
+  net-tools,
+
+  opencode,
+
   bender,
   verilator,
   hyperfine,
+  snakemake,
+  pixi,
+  libcgroup,
 
   sigdigger,
   inspectrum,
@@ -71,7 +79,15 @@ mkProfile {
 
     bender
     verilator
+    snakemake
+    pixi
+
+    wordlists
+    net-tools
+
+    opencode
 
     hyperfine
+    libcgroup
   ];
 }
