@@ -69,6 +69,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    pwndbg = {
+      url = "github:pwndbg/pwndbg";
+    };
+
     # Not flakes
     wezterm.url = "github:wezterm/wezterm?dir=nix&rev=6f375e29a2c4d70b8b51956edd494693196c6692";
 
@@ -83,10 +87,12 @@
     extra-substituters = [
       "https://hyprland.cachix.org"
       "https://grizzlt.cachix.org"
+      "https://pwndbg.cachix.org"
     ];
     extra-trusted-public-keys = [
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "grizzlt.cachix.org-1:lbv8MslmgTPRlv1feXuGU+VUnEO92XKeedLeiv4ckIE="
+      "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
     ];
   };
 }

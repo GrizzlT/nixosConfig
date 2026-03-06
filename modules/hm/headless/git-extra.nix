@@ -15,7 +15,7 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.paging.pager = "delta --dark --paging=never";
+      git.pagers = [ { pager = "delta --dark --paging=never"; } ];
     };
   };
 }

@@ -23,6 +23,6 @@
   overlays = [
     inputs.snowcicles.inputs.agenix.overlays.default
     inputs.nix-matlab.overlay
-    (import ./overlay.nix)
+    (import ./overlay.nix inputs)
   ];
 }

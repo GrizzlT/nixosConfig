@@ -20,13 +20,12 @@
   unstable,
   graphviz,
   gv,
+  hexyl,
   dumbpipe,
   sendme,
 
   wordlists,
   net-tools,
-
-  opencode,
 
   bender,
   verilator,
@@ -59,6 +58,7 @@ mkProfile {
     unstable.saw-tools
     unstable.yosys
     gv
+    hexyl
 
     dumbpipe
     sendme
@@ -84,8 +84,6 @@ mkProfile {
 
     wordlists
     net-tools
-
-    opencode
 
     hyperfine
     libcgroup

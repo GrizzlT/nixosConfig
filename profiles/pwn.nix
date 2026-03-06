@@ -14,6 +14,8 @@
   ropgadget,
   rp,
   nmap,
+  pwndbg,
+  pwndbg-lldb,
 }:
 
 mkProfile {
@@ -32,6 +34,9 @@ mkProfile {
     radare2
     iaito
     rizin
+
+    pwndbg
+    pwndbg-lldb
 
     ropgadget
     rp

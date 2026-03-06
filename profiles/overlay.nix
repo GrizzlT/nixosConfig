@@ -1,3 +1,4 @@
+inputs:
 self: super: let
   myOverride = {
     packageOverrides = self': super': {
@@ -6,6 +7,14 @@ self: super: let
       iphone-backup-decrypt = self'.callPackage ./iphone_backup_decrypt.nix {};
 
       control = self'.callPackage ./control_py.nix {};
+
+      pwntools = super'.pwntools.overrideAttrs {
+        src = self.fetchPypi {
+          pname = "pwntools";
+          version = "4.15.0";
+          sha256 = "sha256-2ZqRcpjBynJBtRu6mtIhLyr0Qe9mSIBZskJlCOmip3Y=";
+        };
+      };
     };
   };
 in {
@@ -16,4 +25,6 @@ in {
   python313 = super.python313.override myOverride;
   python314 = super.python314.override myOverride;
   python315 = super.python315.override myOverride;
+
+  inherit (inputs.pwndbg.packages.${self.system}) pwndbg pwndbg-lldb;
 }
