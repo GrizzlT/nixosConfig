@@ -24,6 +24,8 @@
   dumbpipe,
   sendme,
 
+  ast-grep,
+
   wordlists,
   net-tools,
 
@@ -70,6 +72,8 @@ mkProfile {
     sqlite
 
     graphviz
+
+    ast-grep
 
     uv
     imagemagick

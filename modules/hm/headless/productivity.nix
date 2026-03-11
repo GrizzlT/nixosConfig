@@ -16,6 +16,6 @@
   ];
 
   home.sessionVariables = {
-    LEDGER_FILE = "$HOME/DATA/01_Administration/hledger/2024.journal";
+    LEDGER_FILE = "$HOME/DATA/01_Administration/Finances/hledger/current.journal";
   };
 }
