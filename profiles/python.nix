@@ -28,6 +28,7 @@ mkProfile {
       pwntools
       ropper
       requests
+      aiohttp
       pyserial
       # pyocd
 
@@ -45,6 +46,8 @@ mkProfile {
 
       websockets
       flask
+      playwright
+      mitmproxy
 
       python-lsp-server
 

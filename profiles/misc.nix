@@ -13,6 +13,7 @@
   binwalk,
   sqlitebrowser,
   sqlite,
+  csvlens,
   pngtools,
   exiftool,
   imagemagick,
@@ -70,6 +71,7 @@ mkProfile {
     texliveSmall
     sqlitebrowser
     sqlite
+    csvlens
 
     graphviz
 

@@ -11,6 +11,8 @@
       yaml-language-server
       vscode-langservers-extracted
 
+      just-lsp
+
       tree-sitter
 
       unixtools.xxd

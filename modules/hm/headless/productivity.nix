@@ -13,6 +13,8 @@
     taskwarrior3
     timewarrior
     zk
+
+    just
   ];
 
   home.sessionVariables = {
