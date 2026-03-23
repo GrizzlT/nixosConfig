@@ -12,6 +12,8 @@ in {
   paperage = self.callPackage ./paperage.nix { inherit rustPlatform; };
   tackler = self.callPackage ./tackler.nix { inherit rustPlatform; };
 
+  hledger-lsp = self.callPackage ./hledger-lsp.nix {};
+
   # wezterm = inputs.wezterm.packages.${self.system}.default;
 
   xmcl = self.callPackage ./xmcl.nix {};

@@ -12,6 +12,7 @@
       vscode-langservers-extracted
 
       just-lsp
+      hledger-lsp
 
       tree-sitter
 
