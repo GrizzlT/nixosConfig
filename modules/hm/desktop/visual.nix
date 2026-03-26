@@ -7,7 +7,9 @@
     darktable
     digikam
     shotwell
-    inkscape
+    (inkscape-with-extensions.override {
+      inkscapeExtensions = with inkscape-extensions; [ inkstitch ];
+    })
     gimp
     imv
     swayimg
