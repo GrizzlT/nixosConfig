@@ -38,4 +38,10 @@ require("lazy").setup("grizz.plugins", {
   },
 })
 
+vim.filetype.add({
+  extension = {
+    journal = "hledger",
+  },
+})
+
 vim.cmd("colorscheme nordic")

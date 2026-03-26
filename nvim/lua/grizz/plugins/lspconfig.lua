@@ -91,6 +91,10 @@ return {
         }
       })
 
+      vim.lsp.enable('hledger_lsp')
+
+      vim.lsp.enable('just')
+
       vim.lsp.enable('nil_ls')
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('taplo')
@@ -103,6 +107,7 @@ return {
 
       vim.lsp.enable('tailwindcss')
       vim.lsp.enable('ts_ls')
+
         -- ts_ls = {
           -- init_options = {
           --   preferences = {

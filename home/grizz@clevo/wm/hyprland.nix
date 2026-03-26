@@ -30,6 +30,8 @@ in
       windowrule = float, class:my-fzf-menu
       windowrule = center, class:my-fzf-menu
 
+      windowrule = float, class:org.inkscape.Inkscape
+
       windowrule = float, title:^(Picture-in-Picture)$
       windowrule = fullscreenstate * 2, class:^(typst-preview)$
 
