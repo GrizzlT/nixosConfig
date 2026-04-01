@@ -39,6 +39,12 @@
 
   sigdigger,
   inspectrum,
+
+  vscodium,
+  nrf-command-line-tools,
+  nrfconnect,
+  nrf5-sdk,
+  nrfutil,
 }:
 
 mkProfile {
@@ -93,5 +99,10 @@ mkProfile {
 
     hyperfine
     libcgroup
+
+    vscodium
+    nrf-command-line-tools
+    nrfconnect
+    nrf5-sdk
   ];
 }

@@ -32,6 +32,8 @@ mkProfile {
       pyserial
       # pyocd
 
+      nbtlib
+
       tifffile
       imagecodecs
 

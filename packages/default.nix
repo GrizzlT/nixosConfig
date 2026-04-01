@@ -24,7 +24,15 @@ let
       builtins.elem (nixpkgs.lib.getName pkg) [
         "ngrok"
         "gdlauncher-carbon"
+        "nrf-command-line-tools"
+        "segger-jlink"
+        "nrfconnect"
+        "nrf5-sdk"
       ];
+    config.permittedInsecurePackages = [
+      "segger-jlink-qt4-874"
+    ];
+    config.segger-jlink.acceptLicense = true;
   };
 in
 nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: let pkgs = forSystem system; in {
