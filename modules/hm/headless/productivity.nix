@@ -8,6 +8,8 @@
     hledger-web
     hledger-utils
 
+    monero-cli
+
     tackler
 
     taskwarrior3
