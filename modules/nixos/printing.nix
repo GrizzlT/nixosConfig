@@ -7,5 +7,7 @@
 
   services.avahi = {
     enable = true;
+    allowInterfaces = [ "bond0" ];
+    nssmdns4 = true;
   };
 }
