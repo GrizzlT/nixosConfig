@@ -27,14 +27,14 @@
           iifname { "vmbridge0", "ethvlan" } tcp dport 53 accept # DNS
           iifname { "vmbridge0", "ethvlan" } udp dport { 53, 67 } accept # DNS + DHCP
 
-          iifname { vmbridge0, ehtvlan, bond0 } udp dport 5353 accept # mDNS
+          iifname { vmbridge0, ethvlan, bond0 } udp dport 5353 accept # mDNS
 
           tcp dport { 8080, 8081, 8082 } accept
           tcp dport 22000 accept
           udp dport { 21027, 22000 } accept
 
-          tcp dport ${toString config.services.murmur.port} accept
-          udp dport ${toString config.services.murmur.port} accept
+          # tcp dport ${toString config.services.murmur.port} accept
+          # udp dport ${toString config.services.murmur.port} accept
 
           # icmp
           icmp type echo-request accept
@@ -63,6 +63,11 @@
           } oifname {
             "vmbridge0", ethvlan
           } ct state { established,related } counter accept comment "Allow established back to LANs"
+
+          # Allow lan traffic to go to lan
+          iifname { "lan-physical" } oifname { "bond0" } counter accept comment "Allow LAN traffic"
+          # Allow LAN to return
+          iifname { bond0 } oifname { "lan-physical" } counter accept comment "Allow LAN traffic"
         }
       }
 

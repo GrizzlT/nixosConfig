@@ -18,7 +18,6 @@
       TLP_PERSISTENT_DEFAULT = 1;
     };
   };
-  powerManagement.powertop.enable = true;
 
   hardware.graphics = {
     enable = true;
