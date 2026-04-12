@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   common = import ../../modules/nixos;
 in
@@ -9,5 +9,9 @@ in
 
   virtualisation.docker = {
     storageDriver = "zfs";
+    daemon.settings = {
+      firewall-backend = "nftables";
+    };
   };
+  systemd.services.docker.path = [ pkgs.nftables ];
 }
