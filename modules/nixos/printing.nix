@@ -10,4 +10,5 @@
     allowInterfaces = [ "bond0" ];
     nssmdns4 = true;
   };
+  systemd.services.avahi-daemon.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 }

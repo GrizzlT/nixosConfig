@@ -34,6 +34,7 @@ in
       };
     };
   };
+  systemd.services.iwd.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 
   networking.dhcpcd = {
     enable = true;
@@ -43,29 +44,60 @@ in
       noipv4ll
     '';
   };
+  systemd.services.dhcpcd.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 
   systemd.services.setup-public-network = {
-    before = [ "dhcpcd.service" "iwd.service" ];
+    before = [ "dhcpcd.service" "iwd.service" "tailscaled.service" "avahi-daemon.service" "nftables-physical.service" ];
     after = [ "dbus.service" "nftables.service" ];
     wants = [ "dbus.service" "nftables.service" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" "iwd.service" "avahi-daemon.service" "tailscaled.service" "dhcpcd.service" "nftables-physical.service" ];
+    requiredBy = [ "iwd.service" "tailscaled.service" "avahi-daemon.service" "dhcpcd.service" "nftables-physical.service" ];
+
     path = [ pkgs.openresolv pkgs.nftables ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "setup-public-network" /* bash */ ''
-        ${pkgs.iproute2}/bin/ip link add ethslave link ${public-ethernet} type macvlan mode bridge
-        ${pkgs.iproute2}/bin/ip link add bond0 type bond miimon 100 mode active-backup fail_over_mac none primary_reselect always primary ethslave
-        ${pkgs.iproute2}/bin/ip link set ethslave master bond0
-        ${pkgs.iproute2}/bin/ip link set ${public-wifi} master bond0
+        ${pkgs.iproute2}/bin/ip netns add physical
+        ${pkgs.iproute2}/bin/ip link set ${public-ethernet} netns physical
+        ${pkgs.iw}/bin/iw phy phy0 set netns name physical
+
+        ${pkgs.iproute2}/bin/ip -n physical link set lo up
+
+        ${pkgs.iproute2}/bin/ip -n physical link add ethslave link ${public-ethernet} type macvlan mode bridge
+        ${pkgs.iproute2}/bin/ip -n physical link add bond0 type bond miimon 100 mode active-backup fail_over_mac none primary_reselect always primary ethslave
+        ${pkgs.iproute2}/bin/ip -n physical link set ethslave master bond0
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-wifi} master bond0
+
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-ethernet} up
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-wifi} up
 
         ${pkgs.iproute2}/bin/ip link set ${public-ethernet} up
         ${pkgs.iproute2}/bin/ip link set ${public-wifi} up
 
-        ${pkgs.wireguard-tools}/bin/wg-quick up /home/grizz/DATA/.mullvad/mullvad.conf
+        ${pkgs.iproute2}/bin/ip -n physical link add dev mullvad type wireguard
+        ${pkgs.iproute2}/bin/ip -n physical link set mullvad netns 1
+        ${pkgs.wireguard-tools}/bin/wg setconf mullvad <(${pkgs.wireguard-tools}/bin/wg-quick strip /home/grizz/DATA/.mullvad/default.conf)
+        ${pkgs.iproute2}/bin/ip addr add 10.74.26.182/32 dev mullvad
+        ${pkgs.iproute2}/bin/ip addr add fc00:bbbb:bbbb:bb01::b:1ab5/128 dev mullvad
+        ${pkgs.iproute2}/bin/ip link set mullvad up
+        ${pkgs.iproute2}/bin/ip -4 route add default dev mullvad
+        ${pkgs.iproute2}/bin/ip -6 route add default dev mullvad
+
+        ${pkgs.iproute2}/bin/ip link add lan-virtual type veth peer name lan-physical netns physical
+        ${pkgs.iproute2}/bin/ip link set lan-virtual up
+        ${pkgs.iproute2}/bin/ip -n physical link set lan-physical up
+
+        ${pkgs.iproute2}/bin/ip addr add 198.18.13.13/30 dev lan-virtual
+        ${pkgs.iproute2}/bin/ip -n physical addr add 198.18.13.14/30 dev lan-physical
+        ${pkgs.iproute2}/bin/ip route add 192.168.0.0/16 via 198.18.13.14 dev lan-virtual
       '';
       ExecStop = pkgs.writeShellScript "shutdown-public-network" /* bash */ ''
-        ${pkgs.wireguard-tools}/bin/wg-quick down /home/grizz/DATA/.mullvad/mullvad.conf
+        ${pkgs.iproute2}/bin/ip link del mullvad
+
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-ethernet} netns 1
+        ${pkgs.iw}/bin/iw phy ${public-wifi} set netns 1
+        ${pkgs.iproute2}/bin/ip netns del physical
       '';
     };
   };
@@ -76,9 +108,9 @@ in
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "reset-iwd-wlan-master" /* bash */ ''
-        ${pkgs.iproute2}/bin/ip link set ${public-wifi} down
-        ${pkgs.iproute2}/bin/ip link set ${public-wifi} master bond0
-        ${pkgs.iproute2}/bin/ip link set ${public-wifi} up
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-wifi} down
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-wifi} master bond0
+        ${pkgs.iproute2}/bin/ip -n physical link set ${public-wifi} up
       '';
     };
   };
@@ -195,12 +227,13 @@ in
     '';
   };
 
+  systemd.services.dnsmasq.serviceConfig.ExecStartPost = ''${config.networking.resolvconf.package}/bin/resolvconf -u'';
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
       listen-address = [ "127.0.0.1" "192.168.213.1" "192.168.12.1" "172.17.0.1" ];
-      server = [ "100.64.0.23" ];
+      server = [ "100.64.0.63" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;

@@ -11,5 +11,6 @@ in
   environment.systemPackages = with pkgs; [ virt-manager ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.package = pkgs.docker_29;
   users.users.${user}.extraGroups = [ "docker" "libvirtd" ];
 }
