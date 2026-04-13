@@ -23,12 +23,12 @@
           iifname tailscale0 counter accept
 
           # DHCP + DNS for VMs + LAN
-          iifname { "vmbridge0", "ethvlan" } tcp dport 53 accept # DNS
-          iifname { "vmbridge0", "ethvlan" } udp dport { 53, 67 } accept # DNS + DHCP
-
-          # iifname { vmbridge0, ethvlan, bond0 } udp dport 5353 accept # mDNS
+          iifname { vmbridge0, lan-virtual } tcp dport 53 accept # DNS
+          iifname { vmbridge0, lan-virtual } udp dport 53 accept # DNS
+          iifname vmbridge0 udp dport 67 accept # DNS + DHCP
 
           tcp dport { 8080, 8081, 8082 } accept
+
           tcp dport 22000 accept comment "syncthing"
           udp dport { 21027, 22000 } accept comment "syncthing"
 
@@ -48,11 +48,8 @@
           ip saddr 172.16.0.0/12 ct state { established, related } counter accept
           ip daddr 172.16.0.0/12 ct state { established, related } counter accept
 
-          # Allow trusted network WAN access
-          # iifname { "vmbridge0", ethvlan } oifname { bond0, } counter accept comment "Allow trusted LAN to WAN"
-
-          # Allow established WAN to return
-          # iifname { bond0 } oifname { "vmbridge0", ethvlan } ct state { established,related } counter accept comment "Allow established back to LANs"
+          iifname vmbridge0 oifname mullvad counter accept comment "VM to WAN"
+          iifname mullvad oifname vmbridge0 ct state { established, related } counter accept comment "WAN reply to VM"
         }
 
         chain prerouting {
@@ -146,6 +143,7 @@
                   iifname lo accept
 
                   iifname bond0 udp dport 5353 accept comment "mDNS"
+                  iifname ethvlan udp dport 67 accept comment "DNS + DHCP"
 
                   tcp dport { 8080, 8081, 8082 }
 
@@ -161,6 +159,10 @@
 
                 chain prerouting {
                   type nat hook prerouting priority filter; policy accept;
+
+                  iifname ethvlan udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
+
+                  tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "open dev ports"
                 }
 
                 chain postrouting {

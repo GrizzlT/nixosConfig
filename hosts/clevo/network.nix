@@ -47,11 +47,11 @@ in
   systemd.services.dhcpcd.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 
   systemd.services.setup-public-network = {
-    before = [ "dhcpcd.service" "iwd.service" "tailscaled.service" "avahi-daemon.service" "nftables-physical.service" ];
+    before = [ "dhcpcd.service" "iwd.service" "tailscaled.service" "avahi-daemon.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
     after = [ "dbus.service" "nftables.service" ];
     wants = [ "dbus.service" "nftables.service" ];
-    wantedBy = [ "multi-user.target" "iwd.service" "avahi-daemon.service" "tailscaled.service" "dhcpcd.service" "nftables-physical.service" ];
-    requiredBy = [ "iwd.service" "tailscaled.service" "avahi-daemon.service" "dhcpcd.service" "nftables-physical.service" ];
+    wantedBy = [ "multi-user.target" "iwd.service" "avahi-daemon.service" "tailscaled.service" "dhcpcd.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
+    requiredBy = [ "iwd.service" "tailscaled.service" "avahi-daemon.service" "dhcpcd.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
 
     path = [ pkgs.openresolv pkgs.nftables ];
     serviceConfig = {
@@ -91,6 +91,14 @@ in
         ${pkgs.iproute2}/bin/ip addr add 198.18.13.13/30 dev lan-virtual
         ${pkgs.iproute2}/bin/ip -n physical addr add 198.18.13.14/30 dev lan-physical
         ${pkgs.iproute2}/bin/ip route add 192.168.0.0/16 via 198.18.13.14 dev lan-virtual
+
+        ${pkgs.iproute2}/bin/ip -n physical link add ethvlan link ${public-ethernet} type macvlan mode bridge
+        ${pkgs.iproute2}/bin/ip -n physical link set ethvlan down
+        ${pkgs.iproute2}/bin/ip -n physical addr add 192.168.12.1/24 dev ethvlan
+
+        ${pkgs.iproute2}/bin/ip link add vmbridge0 type bridge
+        ${pkgs.iproute2}/bin/ip link set vmbridge0 up
+        ${pkgs.iproute2}/bin/ip addr add 192.168.213.1/24 dev vmbridge0
       '';
       ExecStop = pkgs.writeShellScript "shutdown-public-network" /* bash */ ''
         ${pkgs.iproute2}/bin/ip link del mullvad
@@ -115,109 +123,6 @@ in
     };
   };
 
-  # systemd.network.wait-online.anyInterface = true;
-  #
-  # systemd.network = {
-  #   enable = false;
-  #   netdevs = {
-  #     "10-enp46s0-dhcp" = {
-  #       netdevConfig = {
-  #         Kind = "macvlan";
-  #         Name = "ethslave";
-  #       };
-  #       macvlanConfig = {
-  #         Mode = "bridge";
-  #       };
-  #     };
-  #     "10-enp46s0-lan" = {
-  #       netdevConfig = {
-  #         Kind = "macvlan";
-  #         Name = "ethvlan";
-  #       };
-  #       macvlanConfig = {
-  #         Mode = "bridge";
-  #       };
-  #     };
-  #     "20-wlan-bond" = {
-  #       netdevConfig = {
-  #         Kind = "bond";
-  #         Name = "bond0";
-  #       };
-  #       bondConfig = {
-  #         Mode = "active-backup";
-  #         PrimaryReselectPolicy = "always";
-  #         MIIMonitorSec = "1s";
-  #         FailOverMACPolicy = "active";
-  #       };
-  #     };
-  #     "20-vmbridge0".netdevConfig = {
-  #       Kind = "bridge";
-  #       Name = "vmbridge0";
-  #     };
-  #   };
-  #   networks = {
-  #     "10-wifi" = {
-  #       matchConfig.Name = "wlp0s20f3";
-  #       linkConfig.RequiredForOnline = "no";
-  #       networkConfig.Bond = "bond0";
-  #     };
-  #     "10-enp46s0" = {
-  #       matchConfig.Name = "enp46s0";
-  #       networkConfig.MACVLAN = [
-  #         "ethslave" "ethvlan"
-  #       ];
-  #       linkConfig.ARP = false;
-  #     };
-  #     "20-enp46s0-dhcp" = {
-  #       matchConfig.Name = "ethslave";
-  #       linkConfig = {
-  #         RequiredForOnline = "no";
-  #         ActivationPolicy = "manual";
-  #       };
-  #       networkConfig = {
-  #         Bond = "bond0";
-  #         PrimarySlave = true;
-  #       };
-  #     };
-  #     "20-bond0" = {
-  #       matchConfig.Name = "bond0";
-  #       networkConfig = {
-  #         DHCP = "ipv4";
-  #         MulticastDNS = true;
-  #         LLMNR = false;
-  #
-  #         IPv6AcceptRA = true;         # accept Router Advertisements
-  #         DHCPPrefixDelegation = "yes";# optional — request PD if you need it
-  #         LinkLocalAddressing = "ipv4";
-  #       };
-  #       # [IPv6AcceptRA] section (controls when DHCPv6 client starts)
-  #       # ipv6AcceptRAConfig = {
-  #       #   # DHCPv6Client = "always";     # force DHCPv6 client even if RA 'managed' flag isn't set
-  #       #   UseDNS = false;
-  #       # };
-  #
-  #       # [DHCPv6] section (optional tweaks)
-  #       dhcpV6Config = {
-  #         UseDNS = false;
-  #       };
-  #       # dhcpV6Config = {
-  #       #   PrefixDelegation = true;
-  #       # };
-  #     };
-  #     "20-enp46s0-lan" = {
-  #       matchConfig.Name = "ethvlan";
-  #       linkConfig.ActivationPolicy = "manual";
-  #       address = [ "192.168.12.1/24" ];
-  #     };
-  #     "30-vmbridge0" = {
-  #       matchConfig.Name = "vmbridge0";
-  #       address = [ "192.168.213.1/24" ];
-  #       linkConfig.RequiredForOnline = "no";
-  #       networkConfig.MulticastDNS = true;
-  #     };
-  #   };
-  # };
-
   networking.resolvconf = {
     enable = true;
     useLocalResolver = true;
@@ -232,7 +137,7 @@ in
     enable = true;
     resolveLocalQueries = false;
     settings = {
-      listen-address = [ "127.0.0.1" "192.168.213.1" "192.168.12.1" "172.17.0.1" ];
+      listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
       server = [ "100.64.0.63" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
@@ -240,14 +145,50 @@ in
       hostsdir = "/persist/etc/hosts";
       dhcp-range = [
         "set:vmnet,192.168.213.101,192.168.213.150,255.255.255.0,1w"
-        "set:lan,192.168.12.101,192.168.12.150,255.255.255.0,6h"
       ];
       dhcp-option = [
         "tag:vmnet,3,192.168.213.1"
-        "tag:lan,3,192.168.12.1"
       ];
       resolv-file = "/etc/dnsmasq-resolv.conf";
       conf-file = "/etc/dnsmasq-conf.conf";
+    };
+  };
+
+  systemd.services.kea-dhcp4-server.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
+  services.kea.dhcp4 = {
+    enable = true;
+    settings = {
+      # First we set up global values
+      valid-lifetime = 4000;
+      renew-timer = 1000;
+      rebind-timer = 2000;
+      interfaces-config = {
+        interfaces = [
+          "ethvlan"
+        ];
+      };
+      lease-database = {
+        name = "/var/lib/kea/dhcp4.leases";
+        persist = true;
+        type = "memfile";
+      };
+      subnet4 = [
+        {
+          id = 1;
+          pools = [
+            {
+              pool = "192.168.12.101 - 192.168.12.150";
+            }
+          ];
+          subnet = "192.168.12.0/24";
+        }
+      ];
+      option-data = [
+        {
+          name = "domain-name-servers";
+          data = [ "192.168.12.1" ];
+        }
+      ];
     };
   };
 }
