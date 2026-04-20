@@ -13,6 +13,17 @@ let
         };
       };
     };
+    emberling = {
+      PrivateKeyFile = "/persist/etc/emberlingWgPrivate";
+      addresses = [ "10.174.1.3/16" ];
+      peers = {
+        relay = {
+          PublicKey = "/x6enB4qXz/lLToqudIf1advT/9IIwo0eU+nuUtHayY=";
+          AllowedIPs = [ "10.174.0.0/16" ];
+          Endpoint = "152.67.137.143:51822";
+        };
+      };
+    };
   };
 in
 {
@@ -40,10 +51,14 @@ in
         ExecStart = pkgs.writeShellScript "setup-${name}-wg-tunnel" /* bash */ ''
           ip -n physical link add dev ${interfaceName} type wireguard
           ip -n physical link set ${interfaceName} netns 1
+          ip link set ${interfaceName} up
 
           ip link set ${interfaceName} mtu ${value.mtu or "1420"}
           wg set ${interfaceName} private-key ${value.PrivateKeyFile} ${peerArgs}
           ${ipAddrCmds}
+        '';
+        ExecStop = pkgs.writeShellScript "shutdown-${name}-wg-tunnel" /* bash */ ''
+          ip link del ${interfaceName}
         '';
       };
     } // lib.optionalAttrs (value.enableAtStart or true) {

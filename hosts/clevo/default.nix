@@ -20,11 +20,7 @@ in
 
     # ./ecsc-dry-run.nix
     ./vpn.nix
-    ./betweenlands.nix
-    ./morti-vpn.nix
     ./cacert.nix
-    ./emberling.nix
-    ./thesis.nix
 
     ./user.nix
     ./network.nix
