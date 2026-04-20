@@ -15,14 +15,12 @@
         chain incoming {
           type filter hook input priority 0; policy drop;
 
-          # established/related connections
           ct state { established, related } accept
           ct state invalid drop
           iifname lo accept
 
           iifname tailscale0 counter accept
 
-          # DHCP + DNS for VMs + LAN
           iifname { vmbridge0, lan-virtual } tcp dport 53 accept # DNS
           iifname { vmbridge0, lan-virtual } udp dport 53 accept # DNS
           iifname vmbridge0 udp dport 67 accept # DNS + DHCP
@@ -32,21 +30,17 @@
           tcp dport 22000 accept comment "syncthing"
           udp dport { 21027, 22000 } accept comment "syncthing"
 
-          # icmp
           icmp type echo-request accept
         }
 
         chain forward {
           type filter hook forward priority filter; policy drop;
 
-          # Allow docker networks
-          ip saddr 172.16.0.0/12 oifname mullvad accept
-          ip saddr 172.16.0.0/12 ip daddr 172.16.0.0/12 accept
-          # allow tailscale on docker
-          iifname tailscale0 ip daddr 172.16.0.0/12 accept
-          # allow established traffic
-          ip saddr 172.16.0.0/12 ct state { established, related } counter accept
-          ip daddr 172.16.0.0/12 ct state { established, related } counter accept
+          ip saddr 172.16.0.0/12 oifname mullvad accept comment "docker to WAN"
+          ip saddr 172.16.0.0/12 ip daddr 172.16.0.0/12 accept comment "docker internal forward"
+          iifname tailscale0 ip daddr 172.16.0.0/12 accept comment "tailscale0 to docker"
+          ip saddr 172.16.0.0/12 ct state { established, related } counter accept comment "docker established ->"
+          ip daddr 172.16.0.0/12 ct state { established, related } counter accept comment "-> docker established"
 
           iifname vmbridge0 oifname mullvad counter accept comment "VM to WAN"
           iifname mullvad oifname vmbridge0 ct state { established, related } counter accept comment "WAN reply to VM"
@@ -56,7 +50,6 @@
           type nat hook prerouting priority filter; policy accept;
         }
 
-        # Setup NAT masquerading on the wan interface
         chain postrouting {
           type nat hook postrouting priority filter; policy accept;
           oifname { mullvad } masquerade
@@ -71,10 +64,10 @@
           ct state invalid drop
           iifname lo accept
 
-          ip6 nexthdr udp udp dport { 546, 547 } accept
+          udp dport { 546, 547 } accept
 
           # ICMPv6 essential messages
-          ip6 nexthdr icmpv6 icmpv6 type {
+          icmpv6 type {
             133, # Router Solicitation
             134, # Router Advertisement
             135, # Neighbor Solicitation
@@ -85,6 +78,8 @@
           } accept
 
           tcp dport 8080 accept
+
+          iifname tailscale0 counter accept
         }
       }
     '';
@@ -163,7 +158,9 @@
 
                   iifname ethvlan udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
 
-                  tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "open dev ports"
+                  tcp dport 8080 dnat to 198.18.13.13:8080 comment "open dev port"
+                  tcp dport 8081 dnat to 198.18.13.13:8081 comment "open dev port"
+                  tcp dport 8082 dnat to 198.18.13.13:8082 comment "open dev port"
                 }
 
                 chain postrouting {
