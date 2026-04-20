@@ -151,6 +151,11 @@
 
                   iifname lan-physical oifname bond0 counter accept comment "Allow access to LAN"
                   iifname bond0 oifname lan-physical ct state { established, related } counter accept comment "Allow access to LAN"
+
+                  udp dport 53 oifname lan-physical counter accept comment "forward to inner firewall"
+                  tcp dport { 8080, 8081, 8082 } oifname lan-physical counter accept comment "forward to inner firewall"
+                  tcp dport 22000 oifname lan-physical counter accept comment "forward to inner firewall"
+                  udp dport { 21027, 22000 } oifname lan-physical counter accept comment "forward to inner firewall"
                 }
 
                 chain prerouting {
@@ -158,15 +163,16 @@
 
                   iifname ethvlan udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
 
-                  tcp dport 8080 dnat to 198.18.13.13:8080 comment "open dev port"
-                  tcp dport 8081 dnat to 198.18.13.13:8081 comment "open dev port"
-                  tcp dport 8082 dnat to 198.18.13.13:8082 comment "open dev port"
+                  tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "port forwarding"
+                  tcp dport 22000 dnat to 198.18.13.13 comment "syncthing"
+                  udp dport { 21027, 22000 } dnat to 198.18.13.13 comment "syncthing"
                 }
 
                 chain postrouting {
                   type nat hook postrouting priority filter; policy accept;
                   oifname bond0 masquerade
                   oifname ethvlan masquerade
+                  oifname lan-physical masquerade
                 }
               }
 
