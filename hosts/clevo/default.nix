@@ -19,6 +19,7 @@ in
     ./murmur.nix
 
     # ./ecsc-dry-run.nix
+    ./vpn.nix
     ./betweenlands.nix
     ./morti-vpn.nix
     ./cacert.nix

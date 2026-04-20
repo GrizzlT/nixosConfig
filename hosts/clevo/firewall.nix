@@ -79,6 +79,7 @@
             134, # Router Advertisement
             135, # Neighbor Solicitation
             136, # Neighbor Advertisement
+            137, # Redirect
             128, # Echo Request (ping)
             129  # Echo Reply (pong)
           } accept
@@ -168,6 +169,7 @@
                 chain postrouting {
                   type nat hook postrouting priority filter; policy accept;
                   oifname bond0 masquerade
+                  oifname ethvlan masquerade
                 }
               }
 
@@ -188,6 +190,7 @@
                     134, # Router Advertisement
                     135, # Neighbor Solicitation
                     136, # Neighbor Advertisement
+                    137, # Redirect
                     128, # Echo Request (ping)
                     129  # Echo Reply (pong)
                   } accept

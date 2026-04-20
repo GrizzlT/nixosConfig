@@ -186,7 +186,7 @@ in
       option-data = [
         {
           name = "domain-name-servers";
-          data = [ "192.168.12.1" ];
+          data = "192.168.12.1";
         }
       ];
     };
