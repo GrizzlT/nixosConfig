@@ -61,3 +61,10 @@ autocmd("BufWritePre", {
   end,
 })
 
+autocmd("User", {
+  group = augroup('nvim_ghost_user_autocommands', { clear = false, }),
+  pattern = "typst.app",
+  callback = function()
+    vim.bo.filetype = "typst"
+  end
+})

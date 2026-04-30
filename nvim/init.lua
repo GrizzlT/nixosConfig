@@ -44,4 +44,6 @@ vim.filetype.add({
   },
 })
 
+vim.g.nvim_ghost_autostart = 0
+
 vim.cmd("colorscheme nordic")

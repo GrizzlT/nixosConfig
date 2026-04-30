@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 let
   public-ethernet = "enp46s0";
-  public-wifi = "wlan0";
+  public-wifi = "wlp0s20f3";
 in
 {
   environment.systemPackages = with pkgs; [
@@ -22,18 +22,13 @@ in
 
     hostId = "13eb44cc";
 
-    wireless.iwd = {
-      enable = true;
-      settings = {
-        General = {
-          AddressRandomization = "disabled";
-        };
-        Network = {
-          NameResolvingService = "resolvconf";
-        };
-      };
-    };
+    wireless.iwd.enable = false;
+    wireless.enable = true;
+    wireless.userControlled.enable = true;
+    wireless.allowAuxiliaryImperativeNetworks = true;
+    wireless.extraConfigFiles = [ "/persist/etc/wpa_supplicant/wireless.conf" ];
   };
+  systemd.services.wpa_supplicant.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
   systemd.services.iwd.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 
   networking.dhcpcd = {
@@ -47,11 +42,11 @@ in
   systemd.services.dhcpcd.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
 
   systemd.services.setup-public-network = {
-    before = [ "dhcpcd.service" "iwd.service" "tailscaled.service" "avahi-daemon.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
+    before = [ "dhcpcd.service" "iwd.service" "wpa_supplicant.service" "tailscaled.service" "avahi-daemon.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
     after = [ "dbus.service" "nftables.service" ];
     wants = [ "dbus.service" "nftables.service" ];
     wantedBy = [ "multi-user.target" "iwd.service" "avahi-daemon.service" "tailscaled.service" "dhcpcd.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
-    requiredBy = [ "iwd.service" "tailscaled.service" "avahi-daemon.service" "dhcpcd.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
+    requiredBy = [ "iwd.service" "wpa_supplicant.service" "tailscaled.service" "avahi-daemon.service" "dhcpcd.service" "nftables-physical.service" "kea-dhcp4-server.service" ];
 
     path = [ pkgs.openresolv pkgs.nftables ];
     serviceConfig = {
@@ -110,8 +105,8 @@ in
     };
   };
   systemd.services.force-iwd-mac = {
-    after = [ "iwd.service" "setup-public-network.service" ];
-    wantedBy = [ "iwd.service" "multi-user.target" ];
+    after = [ "iwd.service" "wpa_supplicant.service" "setup-public-network.service" ];
+    wantedBy = [ "iwd.service" "wpa_supplicant.service" "multi-user.target" ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
@@ -138,7 +133,7 @@ in
     resolveLocalQueries = false;
     settings = {
       listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
-      server = [ "100.64.0.63" "/vpn.private/100.100.100.100" ];
+      server = [ "100.64.0.63" "/vpn.private/100.96.0.2" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;

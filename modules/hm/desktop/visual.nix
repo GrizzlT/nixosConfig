@@ -11,6 +11,7 @@
       inkscapeExtensions = with inkscape-extensions; [ inkstitch ];
     })
     gimp
+    aseprite
     imv
     swayimg
     vlc
