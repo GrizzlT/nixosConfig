@@ -9,7 +9,7 @@
   ethtool,
   tigervnc,
   pandoc,
-  texliveSmall,
+  texliveFull,
   binwalk,
   sqlitebrowser,
   sqlite,
@@ -74,7 +74,7 @@ mkProfile {
 
     tigervnc
     pandoc
-    texliveSmall
+    texliveFull
     sqlitebrowser
     sqlite
     csvlens

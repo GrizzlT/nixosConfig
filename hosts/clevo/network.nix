@@ -133,7 +133,7 @@ in
     resolveLocalQueries = false;
     settings = {
       listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
-      server = [ "100.64.0.63" "/vpn.private/100.96.0.2" ];
+      server = [ "100.64.0.2" "/vpn.private/100.96.0.2" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;
