@@ -3,6 +3,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    sideloadInitLua = true;
     extraPackages = with pkgs; [
       taplo nil ltex-ls
       lua-language-server
