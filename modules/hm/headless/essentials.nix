@@ -5,7 +5,7 @@
   ];
 
   home.packages = with pkgs; [
-    neofetch
+    # neofetch
 
     radicle-node
     radicle-desktop

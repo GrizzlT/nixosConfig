@@ -14,7 +14,7 @@ in
     enable = true;
     package = pkgs.hyprland;
     extraConfig = ''
-      exec-once=${pkgs.mate.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
+      exec-once=${pkgs.mate-polkit}/libexec/polkit-mate-authentication-agent-1 &
       exec-once=${pkgs.waybar}/bin/waybar
       exec-once=${pkgs.dunst}/bin/dunst
       exec-once=${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store
@@ -57,7 +57,7 @@ in
       $lock=${pkgs.swaylock}/bin/swaylock -f
       $wlogout=${scripts.wlogout}/bin/wlogout
       $music=${pkgs.spotifywm}/bin/spotify
-      $discord=${pkgs.vesktop}/bin/vesktop
+      $discord=${pkgs.discord}/bin/Discord
       $grimblast=${pkgs.grimblast}/bin/grimblast
       $passage=${scripts.passage-fzf}/bin/passage-fzf-type
 
