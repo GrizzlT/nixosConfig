@@ -16,11 +16,11 @@
 
       tree-sitter
 
-      unixtools.xxd
-      fd ripgrep wl-clipboard
-      gccgo gnumake
+      unixtools.xxd # Hex toggle
+      fd ripgrep wl-clipboard # telescope
+      # gccgo gnumake # ???
 
-      manix
+      manix # search
     ];
   };
 }
