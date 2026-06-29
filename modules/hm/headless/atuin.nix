@@ -14,6 +14,7 @@
         enabled = true;
         systemd_socket = true;
       };
+      ai.enabled = false;
     };
   };
 
