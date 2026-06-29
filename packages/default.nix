@@ -38,5 +38,5 @@ in
 nixpkgs.lib.recursiveUpdate (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ] (system: let pkgs = forSystem system; in {
   inherit (pkgs) grizz-disk-setup grizz-zfs-diff;
 })) (nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" "x86_64-darwin" ] (system: let pkgs = forSystem system; in {
-  inherit (pkgs) emoji-fzf porsmo awatcher paperage tackler neovim xmcl hledger-lsp;
+  inherit (pkgs) emoji-fzf porsmo awatcher paperage tackler neovim xmcl hledger-lsp cfait;
 } // (profiles.profiles pkgs)))

@@ -153,9 +153,14 @@
                   iifname bond0 oifname lan-physical ct state { established, related } counter accept comment "Allow access to LAN"
 
                   udp dport 53 oifname lan-physical counter accept comment "forward to inner firewall"
+                  udp sport 53 iifname lan-physical counter accept comment "inner to forward dns"
                   tcp dport { 8080, 8081, 8082 } oifname lan-physical counter accept comment "forward to inner firewall"
                   tcp dport 22000 oifname lan-physical counter accept comment "forward to inner firewall"
                   udp dport { 21027, 22000 } oifname lan-physical counter accept comment "forward to inner firewall"
+
+                  iifname ethvlan oifname bond0 accept comment "LAN access to WAN"
+                  iifname bond0 oifname ethvlan accept comment "WAN reply to LAN"
+                  icmp type echo-request accept
                 }
 
                 chain prerouting {

@@ -15,6 +15,7 @@
     taskwarrior3
     timewarrior
     zk
+    cfait
 
     just
   ];

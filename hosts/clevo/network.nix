@@ -183,6 +183,10 @@ in
           name = "domain-name-servers";
           data = "192.168.12.1";
         }
+        {
+          name = "routers";
+          data = "192.168.12.1";
+        }
       ];
     };
   };
