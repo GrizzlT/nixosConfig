@@ -4,10 +4,15 @@
     enable = true;
     settings = {
       splash = false;
-      preload = [ "${../../../wallpapers/sunset-1920x1080.jpg}" ];
       wallpaper = [
-        "eDP-1,${../../../wallpapers/sunset-1920x1080.jpg}"
-        "HDMI-A-1,${../../../wallpapers/sunset-1920x1080.jpg}"
+        {
+          monitor = "eDP-1";
+          path = ../../../wallpapers/sunset-1920x1080.jpg;
+        }
+        {
+          monitor = "HDMI-A-1";
+          path = ../../../wallpapers/sunset-1920x1080.jpg;
+        }
       ];
     };
   };
