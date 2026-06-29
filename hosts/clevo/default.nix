@@ -41,5 +41,5 @@ in
 
   security.sudo.extraConfig = "Defaults lecture = never";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "26.05";
 }
