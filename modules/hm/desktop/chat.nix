@@ -7,5 +7,5 @@
     fractal
   ];
 
-  programs.vesktop.enable = true;
+  # programs.vesktop.enable = true;
 }
