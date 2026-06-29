@@ -9,6 +9,7 @@ in
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  boot.initrd.systemd.enable = false;
   boot = {
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -25,11 +26,10 @@ in
         };
       };
 
-      # TODO: add back into new initrd functionality
-      # postResumeCommands = lib.mkAfter ''
-      #   cryptsetup close cryptkey
-      #   zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
-      # '';
+      postResumeCommands = lib.mkAfter ''
+        cryptsetup close cryptkey
+        zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
+      '';
     };
 
     loader = {
