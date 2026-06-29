@@ -218,8 +218,8 @@ in
 
       hl.bind(mainMod .. " + comma", hl.dsp.focus({ monitor = "l" }))
       hl.bind(mainMod .. " + semicolon", hl.dsp.focus({ monitor = "r" }))
-      hl.bind(mainMod .. " + SHIFT + comma", function() local w = hl.get_active_workspace(); if not w then return end; hl.dispatch(hl.dsp.workspace.move({ workspace = w.id, monitor = "l" })) end)
-      hl.bind(mainMod .. " + SHIFT + semicolon", function() local w = hl.get_active_workspace(); if not w then return end; hl.dispatch(hl.dsp.workspace.move({ workspace = w.id, monitor = "r" })) end)
+      hl.bind(mainMod .. " + SHIFT + comma", function() local w = hl.get_active_workspace(); if not w then return end; hl.dsp.workspace.move({ workspace = w.id, monitor = "l" }) end)
+      hl.bind(mainMod .. " + SHIFT + semicolon", function() local w = hl.get_active_workspace(); if not w then return end; hl.dsp.workspace.move({ workspace = w.id, monitor = "r" }) end)
       hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.swap_monitors({ monitor1 = "l", monitor2 = "r" }))
 
       -- Scroll through existing workspaces with mainMod + scroll
@@ -238,6 +238,13 @@ in
         name = "Floating-only windows",
         match = {
           class = "pavucontrol|.nkscape|inkstitch|Picture-in-Picture"
+        },
+        float = true,
+      })
+      hl.window_rule({
+        name = "Floating-only windows",
+        match = {
+          title = "Picture-in-Picture"
         },
         float = true,
       })

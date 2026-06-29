@@ -3,7 +3,16 @@ writeShellApplication {
   name = "launcher";
   runtimeInputs = [ hyprland foot fzf findutils coreutils ];
   text = ''
-    OPTS='--info=inline --print-query --bind=ctrl-space:print-query,tab:replace-query'
-    hyprctl dispatch exec "foot --app-id=my-fzf-menu bash -c \"compgen -c | fzf $OPTS | tail -1 | xargs hyprctl dispatch exec\""
+    hyprctl dispatch 'hl.dsp.exec_cmd("foot --app-id=my-fzf-menu -- bash ${
+      writeShellApplication {
+        name = "inner-launcher";
+        runtimeInputs = [ fzf findutils coreutils ];
+        text = ''
+          OPTS=("--info=inline" "--print-query" "--bind=ctrl-space:print-query,tab:replace-query")
+          cmd=$(compgen -c | fzf "''${OPTS[@]}" | tail -1)
+          hyprctl dispatch "hl.dsp.exec_cmd(\"$cmd\")"
+        '';
+      }
+    }/bin/inner-launcher")'
   '';
 }

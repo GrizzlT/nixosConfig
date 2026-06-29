@@ -12,7 +12,7 @@ let
           sed -e "s|$PREFIX/||" -e 's|\.age$||' | \
           fzf --height 40% --reverse --no-multi)"
       pass=$(passage "$name" | head -n 1)
-      hyprctl dispatch focuswindow "address:$1"
+      hyprctl dispatch "hl.dsp.focus({ window = \"address:$1\" })"
       echo "$pass" | tr -d '\n' | ydotool type --file -
     }
 
@@ -28,6 +28,6 @@ writeShellApplication {
   inherit runtimeInputs;
   text = ''
     window=$(hyprctl activewindow -j | jq -r '.address')
-    hyprctl dispatch exec "foot --app-id=my-fzf-menu ${promptScript}/bin/fzf-passage-prompt ''${window}"
+    hyprctl dispatch "hl.dsp.exec_cmd(\"foot --app-id=my-fzf-menu ${promptScript}/bin/fzf-passage-prompt ''${window}\")"
   '';
 }

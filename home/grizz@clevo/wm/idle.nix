@@ -11,7 +11,7 @@
   services.swayidle = {
     # enable = true;
     extraArgs = [ "-w" ];
-    systemdTarget = "hyprland-session.target";
+    systemdTargets = [ "hyprland-session.target" ];
     events = [
       {
         event = "before-sleep";
@@ -22,11 +22,6 @@
       {
         timeout = 180;
         command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-      {
-        timeout = 360;
-        command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-        resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
       }
     ];
   };

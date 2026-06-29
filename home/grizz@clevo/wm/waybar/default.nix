@@ -15,7 +15,7 @@ with config.stylix.fonts;
       modules-right = [ "custom/pipewire" "cpu" "memory" "network" "battery" "custom/wlogout" ];
 
       "hyprland/submap" = {
-        on-click = "hyprctl dispatch submap reset";
+        on-click = "hyprctl eval 'hl.dsp.submap(\"reset\")'";
         tooltip = "false";
       };
       keyboard-state = {
