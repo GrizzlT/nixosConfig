@@ -1,12 +1,12 @@
-{ writeShellApplication, light, libnotify }:
+{ writeShellApplication, brightnessctl, libnotify }:
 writeShellApplication {
   name = "brightness";
-  runtimeInputs = [ light libnotify ];
+  runtimeInputs = [ brightnessctl libnotify ];
   text = ''
 ## Script To Manage Brightness
 # Get brightness
     get_backlight() {
-      LIGHT=$(printf "%.0f\n" "$(light -G)")
+      LIGHT=$(( $(printf "%.0f\n" "$(brightnessctl g)")*100/$(printf "%.0f\n" "$(brightnessctl m)") ))
       echo "''${LIGHT}%"
     }
 
@@ -34,12 +34,12 @@ writeShellApplication {
 
 # Increase brightness
     inc_backlight() {
-      light -A 5 # && get_icon && notify_user
+      brightnessctl s +5%   # && get_icon && notify_user
     }
 
 # Decrease brightness
     dec_backlight() {
-      light -U 5 # && get_icon && notify_user
+      brightnessctl s 5%-   # && get_icon && notify_user
     }
 
 # Execute accordingly

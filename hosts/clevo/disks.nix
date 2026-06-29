@@ -25,10 +25,11 @@ in
         };
       };
 
-      postResumeCommands = lib.mkAfter ''
-        cryptsetup close cryptkey
-        zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
-      '';
+      # TODO: add back into new initrd functionality
+      # postResumeCommands = lib.mkAfter ''
+      #   cryptsetup close cryptkey
+      #   zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
+      # '';
     };
 
     loader = {

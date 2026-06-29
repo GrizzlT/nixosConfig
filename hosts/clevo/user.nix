@@ -16,8 +16,6 @@ in
 
   environment.systemPackages = [ config.boot.kernelPackages.perf pkgs.perf-tools pkgs.valgrind ];
 
-  programs.light.enable = true;
-
   # My window manager of choice
   programs.hyprland = {
     enable = true;

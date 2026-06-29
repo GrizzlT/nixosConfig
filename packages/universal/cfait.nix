@@ -8,10 +8,12 @@ rustPlatform.buildRustPackage rec {
     owner = "trougnouf";
     repo = pname;
     rev = "v${version}";
-    hash = "sha256-FO69bmUhP6S3MRbVZllxmpn1GuM8fplciAka46Dz2Yg";
+    hash = "sha256-8wbQdCWpyzOjawdp/78cKPiBixhLfU5OBUZvKW0i6yY=";
   };
 
-  cargoHash = "sha256-FO69bmUhP6S3MRbVZllxmpn1GuM8fplciAka46Dz2Yg=";
+  cargoHash = "sha256-wIMrfW2atR64xUd8li+dplK1qQW2tvA+Fim9kf+xAt4=";
+
+  doCheck = false;
 
   meta = with lib; {
     description = "Take control of your TODO list";

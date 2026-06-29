@@ -1,6 +1,6 @@
 inputs:
 self: super: let
-  toolchain = self.rust-bin.stable."1.85.0".minimal;
+  toolchain = self.rust-bin.stable."1.96.0".minimal;
   rustPlatform = super.makeRustPlatform {
     cargo = toolchain;
     rustc = toolchain;
