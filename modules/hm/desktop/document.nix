@@ -7,7 +7,6 @@
 
     appimage-run
     obsidian
-    logseq
 
     zotero
   ];
