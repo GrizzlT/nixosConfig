@@ -8,10 +8,11 @@ rustPlatform.buildRustPackage rec {
   version = "0.1.3";
 
   src = fetchFromGitHub {
-    owner = "rayfish";
+    owner = "GrizzlT";
     repo = pname;
-    tag = "v0.1.3";
-    hash = "sha256-pH+02DsyuWebPHUBzU1QZovB2kFa2da3oCsGIgCLRLM=";
+    # tag = "v0.1.3";
+    rev = "ee706c604a6c6e4051da341139ed4374733b56e7";
+    hash = "sha256-TPVqorX8DwwIV4ci/2OgFbnqiUsQKcYdFbpldldQ2/E=";
   };
 
   cargoHash = "sha256-K/FR2LH2yAe9nJJsREYCjGscOK8NXancjBHRjSbeF0Y=";

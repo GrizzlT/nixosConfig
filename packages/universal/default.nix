@@ -11,7 +11,7 @@ in {
   awatcher = self.callPackage ./awatcher.nix { inherit rustPlatform; };
   paperage = self.callPackage ./paperage.nix { inherit rustPlatform; };
   cfait = self.callPackage ./cfait.nix { inherit rustPlatform; };
-  rayfish = self.callPackage ./rayfish.nix { inherit rustPlatform; };
+  # rayfish = self.callPackage ./rayfish.nix { inherit rustPlatform; };
   tackler = self.callPackage ./tackler.nix { inherit rustPlatform; };
 
   hledger-lsp = self.callPackage ./hledger-lsp.nix {};

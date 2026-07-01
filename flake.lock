@@ -650,16 +650,19 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "rust-overlay": [
+          "rust-overlay"
+        ],
         "unstable": [
           "unstable"
         ]
       },
       "locked": {
-        "lastModified": 1782742493,
-        "narHash": "sha256-H0JEwzLCfmv7YQM2ggB+dba/LvUIED4Lk6a6MGSUUWk=",
+        "lastModified": 1782907108,
+        "narHash": "sha256-hUMT1q27K4cY7t3qeJTsCgvLk+T7T3eVg9py17CrsKE=",
         "owner": "GrizzlT",
         "repo": "snowcicles",
-        "rev": "a812668ac1be6c1bc2324d19fe0f86231711d2cb",
+        "rev": "93ffe94b2a338f1a1d494f5b74ab7ec44382b23a",
         "type": "github"
       },
       "original": {

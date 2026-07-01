@@ -29,7 +29,7 @@
     };
 
     overlays.default = nixpkgs.lib.composeManyExtensions [
-      inputs.rust-overlay.overlays.default
+      inputs.snowcicles.overlays.default
       (import ./packages/linux-only inputs)
       (import ./packages/universal inputs)
     ];
@@ -51,6 +51,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.unstable.follows = "unstable";
       inputs.home-manager.follows = "home-manager";
+      inputs.rust-overlay.follows = "rust-overlay";
     };
 
     # hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
