@@ -6,6 +6,7 @@
   minimal = ./minimal.nix;
   pipewire = ./pipewire.nix;
   printing = ./printing.nix;
+  rayfish = ./rayfish.nix;
   stylix = ./stylix.nix;
   tailscale = ./tailscale.nix;
   virtualisation = ./virtualisation.nix;
