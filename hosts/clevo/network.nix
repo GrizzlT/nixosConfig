@@ -127,13 +127,14 @@ in
     '';
   };
 
+  systemd.services.rayfish.after = [ "dnsmasq.service" ];
   systemd.services.dnsmasq.after = [ "resolvconf.service" ];
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
       listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
-      server = [ "100.64.0.2" "/vpn.private/100.96.0.2" ];
+      server = [ "100.64.0.2" "/vpn.private/100.65.37.160" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;

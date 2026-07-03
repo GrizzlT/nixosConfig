@@ -9,7 +9,7 @@
     settings = {
       enter_accept = false;
       key_path = "~/DATA/.atuin-key";
-      sync_address = "http://100.64.0.2:8011";
+      sync_address = "http://xub.personal.ray:8011";
       daemon = {
         enabled = true;
         systemd_socket = true;
