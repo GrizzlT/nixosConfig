@@ -119,6 +119,7 @@ in
     };
   };
 
+  networking.nameservers = [ "100.64.0.2" ];
   networking.resolvconf = {
     enable = true;
     useLocalResolver = true;
@@ -167,12 +168,6 @@ in
         {
           name = "vpn.private.";
           stub-host = [ "xub.personal.ray" ];
-        }
-      ];
-      forward-zone = [
-        {
-          name = ".";
-          forward-addr = [ "100.64.0.2" ];
         }
       ];
       remote-control.control-enable = true;

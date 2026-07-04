@@ -141,7 +141,7 @@
                   iifname bond0 udp dport 5353 accept comment "mDNS"
                   iifname ethvlan udp dport 67 accept comment "DNS + DHCP"
 
-                  tcp dport { 8080, 8081, 8082 }
+                  tcp dport { 8080, 8081, 8082 } accept
 
                   icmp type echo-request accept
                 }
