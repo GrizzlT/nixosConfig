@@ -218,9 +218,9 @@ in
 
       hl.bind(mainMod .. " + comma", hl.dsp.focus({ monitor = "l" }))
       hl.bind(mainMod .. " + semicolon", hl.dsp.focus({ monitor = "r" }))
-      hl.bind(mainMod .. " + SHIFT + comma", function() local w = hl.get_active_workspace(); if not w then return end; hl.dsp.workspace.move({ workspace = w.id, monitor = "l" }) end)
-      hl.bind(mainMod .. " + SHIFT + semicolon", function() local w = hl.get_active_workspace(); if not w then return end; hl.dsp.workspace.move({ workspace = w.id, monitor = "r" }) end)
-      hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.swap_monitors({ monitor1 = "l", monitor2 = "r" }))
+      hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.move({ monitor = "l" }))
+      hl.bind(mainMod .. " + SHIFT + semicolon", hl.dsp.workspace.move({ monitor = "r" }))
+      -- hl.bind(mainMod .. " + SHIFT + comma", hl.dsp.workspace.swap_monitors({ monitor1 = "l", monitor2 = "r" }))
 
       -- Scroll through existing workspaces with mainMod + scroll
       hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
