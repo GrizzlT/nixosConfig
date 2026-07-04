@@ -78,6 +78,7 @@ in
         ${pkgs.iproute2}/bin/ip link set mullvad up
         ${pkgs.iproute2}/bin/ip -4 route add default dev mullvad
         ${pkgs.iproute2}/bin/ip -6 route add default dev mullvad
+        ${pkgs.iproute2}/bin/ip route add 100.64.0.2/32 dev mullvad
 
         ${pkgs.iproute2}/bin/ip link add lan-virtual type veth peer name lan-physical netns physical
         ${pkgs.iproute2}/bin/ip link set lan-virtual up
@@ -122,19 +123,21 @@ in
     enable = true;
     useLocalResolver = true;
     extraConfig = ''
-      dnsmasq_conf=/etc/dnsmasq-conf.conf
-      dnsmasq_resolv=/etc/dnsmasq-resolv.conf
+      # dnsmasq_conf=/etc/dnsmasq-conf.conf
+      # dnsmasq_resolv=/etc/dnsmasq-resolv.conf
+      # Write out unbound configuration file
+      unbound_conf=/etc/unbound-resolvconf.conf
     '';
   };
 
-  systemd.services.rayfish.after = [ "dnsmasq.service" ];
+  systemd.services.rayfish.after = [ "dnsmasq.service" "unbound.service" ];
   systemd.services.dnsmasq.after = [ "resolvconf.service" ];
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
-      listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
-      server = [ "100.64.0.2" "/vpn.private/100.65.37.160" ];
+      listen-address = [ "192.168.213.1" "198.18.13.13" ];
+      server = [ "127.0.0.1" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;
@@ -147,6 +150,33 @@ in
       ];
       resolv-file = "/etc/dnsmasq-resolv.conf";
       conf-file = "/etc/dnsmasq-conf.conf";
+    };
+  };
+  services.unbound = {
+    enable = true;
+    settings = {
+      server = {
+        interface = [ "127.0.0.1" ];
+        val-permissive-mode = true;
+      };
+      stub-zone = [
+        {
+          name = "ray.";
+          stub-addr = [ "100.100.100.53" ];
+        }
+        {
+          name = "vpn.private.";
+          stub-host = [ "xub.personal.ray" ];
+        }
+      ];
+      forward-zone = [
+        {
+          name = ".";
+          forward-addr = [ "100.64.0.2" ];
+        }
+      ];
+      remote-control.control-enable = true;
+      include = "/etc/unbound-resolvconf.conf";
     };
   };
 

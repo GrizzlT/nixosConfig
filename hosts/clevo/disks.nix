@@ -28,8 +28,8 @@ in
 
       postResumeCommands = lib.mkAfter ''
         cryptsetup close cryptkey
-        zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
       '';
+        # zfs rollback -r ${zpool}/local/root@blank && echo blanked out root
     };
 
     loader = {
