@@ -119,26 +119,24 @@ in
     };
   };
 
-  networking.nameservers = [ "100.64.0.2" ];
   networking.resolvconf = {
     enable = true;
     useLocalResolver = true;
     extraConfig = ''
-      # dnsmasq_conf=/etc/dnsmasq-conf.conf
-      # dnsmasq_resolv=/etc/dnsmasq-resolv.conf
-      # Write out unbound configuration file
-      unbound_conf=/etc/unbound-resolvconf.conf
+      dnsmasq_conf=/etc/dnsmasq-conf.conf
+      dnsmasq_resolv=/etc/dnsmasq-resolv.conf
     '';
   };
+  networking.nameservers = [ "100.64.0.2" ];
 
-  systemd.services.rayfish.after = [ "dnsmasq.service" "unbound.service" ];
+  systemd.services.rayfish.after = [ "dnsmasq.service" ];
   systemd.services.dnsmasq.after = [ "resolvconf.service" ];
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
-      listen-address = [ "192.168.213.1" "198.18.13.13" ];
-      server = [ "127.0.0.1" ];
+      listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
+      server = [ "/vpn.private/100.65.37.160" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;
@@ -151,27 +149,6 @@ in
       ];
       resolv-file = "/etc/dnsmasq-resolv.conf";
       conf-file = "/etc/dnsmasq-conf.conf";
-    };
-  };
-  services.unbound = {
-    enable = true;
-    settings = {
-      server = {
-        interface = [ "127.0.0.1" ];
-        val-permissive-mode = true;
-      };
-      stub-zone = [
-        {
-          name = "ray.";
-          stub-addr = [ "100.100.100.53" ];
-        }
-        {
-          name = "vpn.private.";
-          stub-host = [ "xub.personal.ray" ];
-        }
-      ];
-      remote-control.control-enable = true;
-      include = "/etc/unbound-resolvconf.conf";
     };
   };
 
