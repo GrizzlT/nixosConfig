@@ -135,7 +135,7 @@ in
     enable = true;
     resolveLocalQueries = false;
     settings = {
-      listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" ];
+      listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" "172.17.0.1" ];
       server = [ "/vpn.private/100.65.37.160" ];
       bind-dynamic = true;
       dhcp-authoritative = true;

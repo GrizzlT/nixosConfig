@@ -37,13 +37,16 @@
           type filter hook forward priority filter; policy drop;
 
           ip saddr 172.16.0.0/12 oifname mullvad accept comment "docker to WAN"
+          ip saddr 172.16.0.0/12 oifname lan-virtual accept comment "docker to WAN"
           ip saddr 172.16.0.0/12 ip daddr 172.16.0.0/12 accept comment "docker internal forward"
           iifname tailscale0 ip daddr 172.16.0.0/12 accept comment "tailscale0 to docker"
           ip saddr 172.16.0.0/12 ct state { established, related } counter accept comment "docker established ->"
           ip daddr 172.16.0.0/12 ct state { established, related } counter accept comment "-> docker established"
 
           iifname vmbridge0 oifname mullvad counter accept comment "VM to WAN"
+          iifname vmbridge0 oifname lan-virtual counter accept comment "VM to WAN"
           iifname mullvad oifname vmbridge0 ct state { established, related } counter accept comment "WAN reply to VM"
+          iifname lan-virtual oifname vmbridge0 ct state { established, related } counter accept comment "WAN reply to VM"
         }
 
         chain prerouting {
@@ -52,7 +55,7 @@
 
         chain postrouting {
           type nat hook postrouting priority filter; policy accept;
-          oifname { mullvad } masquerade
+          oifname { mullvad, lan-virtual } masquerade
         }
       }
 
