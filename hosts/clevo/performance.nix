@@ -31,6 +31,9 @@
     ];
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
     VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl

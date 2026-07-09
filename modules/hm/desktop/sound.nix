@@ -6,4 +6,6 @@
     jackmix
     pw-volume
   ];
+
+  services.mpris-proxy.enable = true;
 }

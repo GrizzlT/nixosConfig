@@ -14,8 +14,6 @@ return {
     end,
   },
 
-  { 'wakatime/vim-wakatime', lazy = false },
-
   { 'subnut/nvim-ghost.nvim', lazy = false },
 
   {
