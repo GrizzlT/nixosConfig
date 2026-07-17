@@ -10,10 +10,14 @@
       table ip virtual-ip {
         chain output {
           type filter hook output priority 100; policy accept;
+
+          tcp sport { 6666, 6667 } counter queue num 0
         }
 
         chain incoming {
           type filter hook input priority 0; policy drop;
+
+          tcp dport { 6666, 6667 } counter queue num 0
 
           ct state { established, related } accept
           ct state invalid drop

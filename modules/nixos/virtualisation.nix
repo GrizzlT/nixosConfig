@@ -6,6 +6,7 @@ in
   virtualisation.libvirtd = {
     enable = true;
     allowedBridges = [ "virbr0" "vmbridge0" ];
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   };
   programs.dconf.enable = true;
   environment.systemPackages = with pkgs; [ virt-manager ];
