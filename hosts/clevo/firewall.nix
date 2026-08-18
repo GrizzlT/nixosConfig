@@ -156,8 +156,8 @@
                 chain forward {
                   type filter hook forward priority filter; policy drop;
 
-                  iifname lan-physical oifname bond0 counter accept comment "Allow access to LAN"
-                  iifname bond0 oifname lan-physical ct state { established, related } counter accept comment "Allow access to LAN"
+                  iifname lan-physical oifname { bond0, ethvlan } counter accept comment "Allow access to LAN"
+                  iifname { bond0, ethvlan } oifname lan-physical ct state { established, related } counter accept comment "Allow access to LAN"
 
                   udp dport 53 oifname lan-physical counter accept comment "forward to inner firewall"
                   udp sport 53 iifname lan-physical counter accept comment "inner to forward dns"

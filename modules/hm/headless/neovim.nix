@@ -11,6 +11,7 @@
       tailwindcss-language-server
       yaml-language-server
       vscode-langservers-extracted
+      protobuf-language-server
 
       just-lsp
       hledger-lsp

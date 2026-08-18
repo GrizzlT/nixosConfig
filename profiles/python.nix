@@ -1,13 +1,13 @@
 {
   mkProfile,
-  python312,
+  python313,
   pyright,
 }:
 
 mkProfile {
   name = "python";
   paths = [
-    (python312.withPackages (ps: with ps; [
+    (python313.withPackages (ps: with ps; [
       pycryptodome gmpy2
       wandb
       sympy
@@ -22,7 +22,7 @@ mkProfile {
       grpcio-tools
       rich
 
-      angr
+      # angr
       r2pipe
       rzpipe
       pwntools
@@ -69,6 +69,8 @@ mkProfile {
       polars
       pandas
       fastexcel
+
+      discordpy
     ]))
     pyright
   ];

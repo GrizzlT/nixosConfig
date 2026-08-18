@@ -41,10 +41,12 @@
   inspectrum,
 
   vscodium,
-  nrf-command-line-tools,
-  nrfconnect,
-  nrf5-sdk,
-  nrfutil,
+  # nrf-command-line-tools,
+  # nrfconnect,
+  # nrf5-sdk,
+  # nrfutil,
+
+  osmium-tool
 }:
 
 mkProfile {
@@ -101,8 +103,7 @@ mkProfile {
     libcgroup
 
     vscodium
-    nrf-command-line-tools
-    nrfconnect
-    nrf5-sdk
+
+    osmium-tool
   ];
 }
