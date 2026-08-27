@@ -6,6 +6,8 @@
 
     mangohud
     protonup-ng
+
+    (bottles.override { removeWarningPopup = true; })
   ];
 
   home.sessionVariables = {
