@@ -13,6 +13,8 @@
       vscode-langservers-extracted
       protobuf-language-server
 
+      ansible-language-server
+
       just-lsp
       hledger-lsp
 
