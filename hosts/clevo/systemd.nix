@@ -20,4 +20,10 @@
       ExecStart = ''${pkgs.bashNonInteractive}/bin/bash -c "echo Prepared for sleep"'';
     };
   };
+
+  services.logind.settings.Login = {
+    HandleLidSwitch = "hibernate";
+    HandleLidSwitchExternalPower = "suspend";
+    HandleLidSwitchDocked = "ignore";
+  };
 }

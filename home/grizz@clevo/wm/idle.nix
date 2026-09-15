@@ -9,18 +9,12 @@
   };
 
   services.swayidle = {
-    # enable = true;
+    enable = true;
     extraArgs = [ "-w" ];
     systemdTargets = [ "hyprland-session.target" ];
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-    ];
-    timeouts = [
-      {
-        timeout = 180;
         command = "${pkgs.swaylock}/bin/swaylock -f";
       }
     ];
