@@ -14,7 +14,7 @@ in
     shell = pkgs.fish;
   };
 
-  environment.systemPackages = [ config.boot.kernelPackages.perf pkgs.perf-tools pkgs.valgrind ];
+  environment.systemPackages = [ config.boot.kernelPackages.perf pkgs.perf-tools pkgs.valgrind pkgs.wine-wayland ];
 
   # My window manager of choice
   programs.hyprland = {

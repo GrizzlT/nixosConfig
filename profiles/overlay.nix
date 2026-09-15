@@ -3,6 +3,8 @@ self: super: let
   myOverride = {
     packageOverrides = self': super': {
       primefac = self'.callPackage ./primefac.nix {};
+      pyjls = self'.callPackage ./pyjls.nix {};
+      datamol = self'.callPackage ./datamol.nix {};
       spicelib = self'.callPackage ./spicelib.nix {};
       iphone-backup-decrypt = self'.callPackage ./iphone_backup_decrypt.nix {};
 

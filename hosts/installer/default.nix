@@ -19,6 +19,17 @@
     passage
 
     nixos-install-tools
+
+    restic
+    cryptsetup
+    sbctl
+
+    libxfs
+    dosfstools
+    lvm2
+    rclone
+
+    tomb
   ];
 
   # Useless filesystem that gets overriden
@@ -29,5 +40,5 @@
 
   boot.loader.grub.device = "nodev";
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "26.05";
 }

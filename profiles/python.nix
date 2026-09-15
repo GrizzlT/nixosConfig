@@ -70,7 +70,14 @@ mkProfile {
       pandas
       fastexcel
 
+      datamol
+
       discordpy
+
+      cocotb
+      klayout
+      gdstk
+      shapely
     ]))
     pyright
   ];

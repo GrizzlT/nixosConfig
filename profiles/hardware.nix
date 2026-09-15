@@ -17,6 +17,9 @@
   rshell,
   qFlipper,
   ngspice,
+  iverilog,
+  klayout,
+  magic-vlsi,
 }:
 
 mkProfile {
@@ -41,5 +44,9 @@ mkProfile {
 
     rshell
     ngspice
+
+    iverilog
+    klayout
+    magic-vlsi
   ];
 }

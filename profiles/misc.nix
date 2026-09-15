@@ -40,6 +40,8 @@
   sigdigger,
   inspectrum,
 
+  ansible,
+
   vscodium,
   # nrf-command-line-tools,
   # nrfconnect,
@@ -105,5 +107,7 @@ mkProfile {
     vscodium
 
     osmium-tool
+
+    ansible
   ];
 }

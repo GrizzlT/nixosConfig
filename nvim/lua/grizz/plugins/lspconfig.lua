@@ -94,6 +94,7 @@ return {
       vim.lsp.enable('hledger_lsp')
 
       vim.lsp.enable('just')
+      vim.lsp.enable('ansiblels')
 
       vim.lsp.enable('nil_ls')
       vim.lsp.enable('lua_ls')
