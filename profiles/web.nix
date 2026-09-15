@@ -6,7 +6,6 @@
   ngrok,
   mitmproxy,
   websploit,
-  nodePackages
 }:
 
 mkProfile {
@@ -17,6 +16,5 @@ mkProfile {
     ngrok
     mitmproxy
     websploit
-    nodePackages.localtunnel
   ];
 }

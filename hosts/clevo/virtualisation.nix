@@ -8,7 +8,6 @@ in
   ];
 
   virtualisation.docker = {
-    storageDriver = "zfs";
     daemon.settings = {
       firewall-backend = "nftables";
     };

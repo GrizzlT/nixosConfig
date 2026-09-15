@@ -7,7 +7,7 @@ in
 {
   imports = commonModules ++ [
     ./age.nix
-    ./disks.nix
+    ./boot.nix
     ./firewall.nix
     ./greetd
     ./performance.nix

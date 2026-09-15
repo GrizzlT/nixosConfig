@@ -70,8 +70,6 @@ mkProfile {
       pandas
       fastexcel
 
-      datamol
-
       discordpy
 
       cocotb

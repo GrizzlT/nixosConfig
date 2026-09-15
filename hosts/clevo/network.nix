@@ -24,7 +24,7 @@ in
 
     wireless.iwd.enable = false;
     wireless.enable = true;
-    wireless.userControlled.enable = true;
+    wireless.userControlled = true;
     wireless.allowAuxiliaryImperativeNetworks = true;
     wireless.extraConfigFiles = [ "/persist/etc/wpa_supplicant/wireless.conf" ];
   };
