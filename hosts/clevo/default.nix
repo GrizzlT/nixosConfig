@@ -24,6 +24,7 @@ in
 
     ./user.nix
     ./network.nix
+    ./systemd.nix
   ];
 
   services.fwupd.enable = true;

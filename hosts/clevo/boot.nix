@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, pkgs, ... }:
+{ config, modulesPath, pkgs, ... }:
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -11,7 +11,7 @@
       luks.devices = {
         crypted = {
           device = "/dev/disk/by-uuid/1575133b-1dc4-49fc-83b0-d5c21eaed2f2";
-	  # crypttabExtraOpts = [ "tpm2-device=auto" ];
+          # crypttabExtraOpts = [ "tpm2-device=auto" ]; # NOTE: Must be commented before secure boot is enabled
         };
       };
     };
@@ -19,10 +19,12 @@
     loader = {
       limine = {
         enable = true;
-	secureBoot.enable = false;
+        secureBoot.enable = true; # NOTE: Must be false on first install!!
       };
       efi.canTouchEfiVariables = true;
     };
+
+    resumeDevice = "/dev/vg0/swap";
 
     kernel.sysctl = {
       "net.ipv4.conf.all.forwarding" = true;
