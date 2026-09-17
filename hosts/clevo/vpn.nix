@@ -15,7 +15,7 @@ let
     };
     emberling = {
       PrivateKeyFile = "/persist/etc/emberlingWgPrivate";
-      addresses = [ "10.174.1.3/32" ];
+      addresses = [ "10.174.1.3/16" ];
       peers = {
         relay = {
           PublicKey = "/x6enB4qXz/lLToqudIf1advT/9IIwo0eU+nuUtHayY=";
