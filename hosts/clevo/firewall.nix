@@ -47,6 +47,7 @@
           ip saddr 172.16.0.0/12 ct state { established, related } counter accept comment "docker established ->"
           ip daddr 172.16.0.0/12 ct state { established, related } counter accept comment "-> docker established"
 
+          iifname vmbridge0 oifname vmbridge0 accept comment "VM to VM"
           iifname vmbridge0 oifname mullvad counter accept comment "VM to WAN"
           iifname vmbridge0 oifname lan-virtual counter accept comment "VM to WAN"
           iifname mullvad oifname vmbridge0 ct state { established, related } counter accept comment "WAN reply to VM"

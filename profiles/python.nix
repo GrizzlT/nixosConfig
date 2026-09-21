@@ -76,6 +76,8 @@ mkProfile {
       klayout
       gdstk
       shapely
+
+      customtkinter
     ]))
     pyright
   ];
