@@ -41,6 +41,7 @@
   inspectrum,
 
   ansible,
+  ansible-lint,
 
   vscodium,
   # nrf-command-line-tools,
@@ -48,7 +49,9 @@
   # nrf5-sdk,
   # nrfutil,
 
-  osmium-tool
+  osmium-tool,
+
+  screen,
 }:
 
 mkProfile {
@@ -109,5 +112,8 @@ mkProfile {
     osmium-tool
 
     ansible
+    ansible-lint
+
+    screen
   ];
 }

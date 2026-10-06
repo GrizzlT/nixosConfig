@@ -20,6 +20,9 @@
   iverilog,
   klayout,
   magic-vlsi,
+
+  esptool,
+  tio,
 }:
 
 mkProfile {
@@ -48,5 +51,8 @@ mkProfile {
     iverilog
     klayout
     magic-vlsi
+
+    esptool
+    tio
   ];
 }
