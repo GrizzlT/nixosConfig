@@ -129,7 +129,6 @@ in
   };
   networking.nameservers = [ "100.64.0.2" ];
 
-  systemd.services.rayfish.after = [ "dnsmasq.service" ];
   systemd.services.dnsmasq.after = [ "resolvconf.service" ];
   services.dnsmasq = {
     enable = true;

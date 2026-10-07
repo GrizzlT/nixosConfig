@@ -40,6 +40,11 @@ let
         example = [ "10.0.0.1/24" ];
       };
 
+      extraCommands = mkOption {
+        type = types.lines;
+        default = "";
+      };
+
       peers = mkOption {
         type = types.attrsOf (types.submodule peerModule);
         default = { };
@@ -79,23 +84,29 @@ in
 
         ${peers}
       '';
-      ipAddrCmds = lib.concatMapStringsSep "\n" (addr: "ip addr add ${addr} dev ${name}") value.addresses or [];
+      ipAddrCmds = lib.concatMapStringsSep "\n" (addr: "nsenter -t 1 -n ip addr add ${addr} dev ${name}") value.addresses or [];
     in {
       name = "wiresneak-${name}";
       value = {
         description = "wiresneak tunnel for interface ${name}";
         wantedBy = ["multi-user.target"];
-        wants = ["network.target"];
-        after = ["network.target"];
+        wants = ["network.target" "setup-public-network.service" "dnsmasq.service"];
+        after = ["network.target" "setup-public-network.service" "dnsmasq.service"];
 
-        path = [ pkgs.iproute2 ];
+        path = [ pkgs.iproute2 pkgs.util-linux ];
         serviceConfig = {
           Type = "notify";
           ExecStart = "${cfg.package}/bin/wiresneakd serve ${configFile} ${name}";
           ExecStartPost = pkgs.writeShellScript "wiresneak-set-addrs-${name}" ''
+            ip link set ${name} netns 1
+
             ${ipAddrCmds}
-            ip link set up ${name}
+            nsenter -t 1 -n ip link set up ${name}
+
+            ${value.extraCommands}
           '';
+          NetworkNamespacePath = "/var/run/netns/physical";
+          BindReadOnlyPaths = ["/etc/netns/physical/resolv.conf:/etc/resolv.conf"];
         };
       };
     }) cfg.networks;

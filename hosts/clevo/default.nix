@@ -40,8 +40,6 @@ in
     "saleae-logic-2"
   ];
 
-  services.rayfish.enable = true;
-
   security.sudo.extraConfig = "Defaults lecture = never";
 
   system.stateVersion = "26.05";

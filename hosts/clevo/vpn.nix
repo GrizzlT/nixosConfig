@@ -16,6 +16,8 @@ let
   };
 in
 {
+  environment.systemPackages = [ pkgs.wiresneak ];
+
   systemd.services = lib.mapAttrs' (name: value: let
     interfaceName = value.interface or name;
     peerArgs = lib.concatMapAttrsStringSep " " (_: peer:
@@ -56,13 +58,13 @@ in
   }) networks;
 
   services.wiresneakd.networks = {
-    guinea = {
-      privateKey = "/persist/etc/guineaWsPrivate";
-      addresses = [ "10.175.13.1/24" ];
+    management = {
+      privateKey = "/persist/etc/managementWsPrivate";
+      addresses = [ "fd7a:bada:1b1e:1::1/48" ];
       peers = {
-        dashboard = {
-          publicKey = "3a730bb85782ba73f7911c4dbeb8f552b753f111148dd48423318dd98e2a795c";
-          allowedIPs = [ "10.175.13.2/32" ];
+        proxmox-management = {
+          publicKey = "beeb2977349e51ed358436b559ff3acccb4fc33420271c48639af53c476b9a2d";
+          allowedIPs = [ "fd7a:bada:1b1e:1::2/128" "fd7a:bada:1b1e:2:1::/80" ];
         };
       };
     };
