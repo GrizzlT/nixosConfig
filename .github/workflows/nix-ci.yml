@@ -34,7 +34,7 @@ jobs:
           - 'nixosConfigurations.clevo.pkgs.emoji-fzf'
           - 'nixosConfigurations.clevo.pkgs.sway'
           - 'nixosConfigurations.clevo.pkgs.waybar'
-          - 'nixosConfigurations.clevo.pkgs.rayfish'
+          - 'nixosConfigurations.clevo.pkgs.wiresneak'
 
     runs-on: ubuntu-latest
     steps:

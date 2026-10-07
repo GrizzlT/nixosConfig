@@ -2,17 +2,6 @@
 
 let
   networks = {
-    thesis = {
-      PrivateKeyFile = "/persist/etc/thesisWgPrivate";
-      addresses = [ "10.72.73.2/24" ];
-      peers = {
-        relay = {
-          PublicKey = "ntAF2JIWzNiuePHnIdJUxFElWilTOd9xBhXoRFz4SQs=";
-          AllowedIPs = [ "10.72.73.0/24" ];
-          Endpoint = "152.67.137.143:51823";
-        };
-      };
-    };
     emberling = {
       PrivateKeyFile = "/persist/etc/emberlingWgPrivate";
       addresses = [ "10.174.1.3/16" ];
@@ -65,4 +54,17 @@ in
       wantedBy = [ "multi-user.target" ];
     };
   }) networks;
+
+  services.wiresneakd.networks = {
+    guinea = {
+      privateKey = "/persist/etc/guineaWsPrivate";
+      addresses = [ "10.175.13.1/24" ];
+      peers = {
+        dashboard = {
+          publicKey = "3a730bb85782ba73f7911c4dbeb8f552b753f111148dd48423318dd98e2a795c";
+          allowedIPs = [ "10.175.13.2/32" ];
+        };
+      };
+    };
+  };
 }

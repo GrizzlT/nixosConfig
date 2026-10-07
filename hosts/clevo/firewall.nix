@@ -174,7 +174,6 @@
                 chain prerouting {
                   type nat hook prerouting priority filter; policy accept;
 
-                  ip daddr 127.0.0.1/32 udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
                   iifname ethvlan udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
 
                   iifname != lan-virtual tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "port forwarding"

@@ -151,6 +151,9 @@ in
       conf-file = "/etc/dnsmasq-conf.conf";
     };
   };
+  environment.etc."netns/physical/resolv.conf".text = ''
+    nameserver 198.18.13.13
+  '';
 
   systemd.services.kea-dhcp4-server.serviceConfig.NetworkNamespacePath = "/var/run/netns/physical";
   services.kea.dhcp4 = {

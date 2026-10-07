@@ -1,5 +1,5 @@
 inputs:
-final: prev: {
-  grizz-disk-setup = final.callPackage ./grizz-disk-setup.nix {};
-  grizz-zfs-diff = final.callPackage ./grizz-zfs-diff.nix {};
+self: super: {
+  grizz-disk-setup = self.callPackage ./grizz-disk-setup.nix {};
+  grizz-zfs-diff = self.callPackage ./grizz-zfs-diff.nix {};
 }

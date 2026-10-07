@@ -8,6 +8,7 @@
   printing = ./printing.nix;
   stylix = ./stylix.nix;
   tailscale = ./tailscale.nix;
+  wiresneak = ./wiresneak.nix;
   virtualisation = ./virtualisation.nix;
   wireshark = ./wireshark.nix;
   xorg = ./xorg.nix;
