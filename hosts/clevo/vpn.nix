@@ -61,10 +61,19 @@ in
     management = {
       privateKey = "/persist/etc/managementWsPrivate";
       addresses = [ "fd7a:bada:1b1e:1::1/48" ];
+      bootstrapDns = [ "https://dns.quad9.net@9.9.9.9/dns-query" "https://dns.quad9.net@149.112.112.112/dns-query" "https://cloudflare-dns.com@1.1.1.1/dns-query" "https://cloudflare-dns.com@1.0.0.1/dns-query" ];
       peers = {
         proxmox-management = {
           publicKey = "beeb2977349e51ed358436b559ff3acccb4fc33420271c48639af53c476b9a2d";
           allowedIPs = [ "fd7a:bada:1b1e:1::2/128" "fd7a:bada:1b1e:2:1::/80" ];
+        };
+        giada = {
+          publicKey = "558857b7be8bb243b9e0744f64febe328b826d871692c88f5d9e993cff0b7db6";
+          allowedIPs = [ "fd7a:bada:1b1e:2:ffff::2/128" ];
+        };
+        xub = {
+          publicKey = "982e972fedb6b2b78883c07415b146a0bda755a681323999aaac3edf2cd55563";
+          allowedIPs = [ "fd7a:bada:1b1e:2:ffff::3/128" ];
         };
       };
     };

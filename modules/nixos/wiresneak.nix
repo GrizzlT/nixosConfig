@@ -40,6 +40,12 @@ let
         example = [ "10.0.0.1/24" ];
       };
 
+      bootstrapDns = mkOption {
+        type = types.listOf types.str;
+        default = [ ];
+        description = "Bootstrap DNS to resolve relay addresses";
+      };
+
       extraCommands = mkOption {
         type = types.lines;
         default = "";
@@ -81,6 +87,7 @@ in
         [Interface]
         PrivateKey = "${value.privateKey}"
         Addresses = [${lib.concatMapStringsSep "," (v: "\"${v}\"") value.addresses}]
+        BootstrapDNS = [${lib.concatMapStringsSep "," (v: "\"${v}\"") value.bootstrapDns}]
 
         ${peers}
       '';
