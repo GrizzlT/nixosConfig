@@ -97,8 +97,8 @@ in
       value = {
         description = "wiresneak tunnel for interface ${name}";
         wantedBy = ["multi-user.target"];
-        wants = ["network.target" "setup-public-network.service" "dnsmasq.service"];
-        after = ["network.target" "setup-public-network.service" "dnsmasq.service"];
+        wants = ["network.target" "setup-public-network.service"];
+        after = ["network.target" "setup-public-network.service"];
 
         path = [ pkgs.iproute2 pkgs.util-linux ];
         serviceConfig = {

@@ -73,7 +73,7 @@ in
         };
         xub = {
           publicKey = "982e972fedb6b2b78883c07415b146a0bda755a681323999aaac3edf2cd55563";
-          allowedIPs = [ "fd7a:bada:1b1e:2:ffff::3/128" ];
+          allowedIPs = [ "fd7a:bada:1b1e:2:ffff::3/128" "fd7a:bada:1b1e:1::3/128" ];
         };
       };
     };

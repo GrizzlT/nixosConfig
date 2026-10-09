@@ -127,15 +127,15 @@ in
       dnsmasq_resolv=/etc/dnsmasq-resolv.conf
     '';
   };
-  networking.nameservers = [ "100.64.0.2" ];
+  networking.nameservers = [ "fd7a:bada:1b1e:2:ffff::3" ];
 
-  systemd.services.dnsmasq.after = [ "resolvconf.service" ];
+  systemd.services.dnsmasq.after = [ "resolvconf.service" "wiresneak-management.service" ];
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
       listen-address = [ "127.0.0.1" "192.168.213.1" "198.18.13.13" "172.17.0.1" ];
-      server = [ "/vpn.private/100.65.37.160" ];
+      server = [ "/grizz.internal/fd7a:bada:1b1e:2:ffff::3" ];
       bind-dynamic = true;
       dhcp-authoritative = true;
       enable-dbus = true;
