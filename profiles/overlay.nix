@@ -2,11 +2,15 @@ inputs:
 self: super: let
   myOverride = {
     packageOverrides = self': super': {
-      primefac = self'.callPackage ./primefac.nix {};
-      pyjls = self'.callPackage ./pyjls.nix {};
-      datamol = self'.callPackage ./datamol.nix {};
-      spicelib = self'.callPackage ./spicelib.nix {};
+      primefac = self'.callPackage ./python/primefac.nix {};
+      pyjls = self'.callPackage ./python/pyjls.nix {};
+      datamol = self'.callPackage ./python/datamol.nix {};
+      spicelib = self'.callPackage ./python/spicelib.nix {};
       iphone-backup-decrypt = self'.callPackage ./iphone_backup_decrypt.nix {};
+
+      aiologic = self'.callPackage ./python/aiologic.nix {};
+      ctf-attackapi = self'.callPackage ./python/ctf-attackapi.nix {};
+      ecsc2026 = self'.callPackage ./python/ecsc2026.nix {};
 
       control = self'.callPackage ./control_py.nix {};
 

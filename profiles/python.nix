@@ -78,6 +78,8 @@ mkProfile {
       shapely
 
       customtkinter
+
+      ecsc2026
     ]))
     pyright
   ];

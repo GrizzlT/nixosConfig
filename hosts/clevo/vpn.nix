@@ -75,7 +75,11 @@ in
           publicKey = "982e972fedb6b2b78883c07415b146a0bda755a681323999aaac3edf2cd55563";
           allowedIPs = [ "fd7a:bada:1b1e:2:ffff::3/128" "fd7a:bada:1b1e:1::3/128" ];
         };
-      };
+        curly = {
+          publicKey = "37aa0f82532a13ab4a68eca8a0dc7c459b7d6d681ce96d197eee181f603419b0";
+          allowedIPs = [ "fd7a:bada:1b1e:2:ffff::4/128" ];
+        };
+     };
     };
   };
 }
