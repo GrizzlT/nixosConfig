@@ -9,7 +9,7 @@ in
   users.users.${user} = {
     hashedPasswordFile = "/persist/users/${user}/passwordFile";
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "wireshark" "disk" "dialout" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" "wireshark" "disk" "dialout" "plugdev" ];
     packages = [ pkgs.home-manager ];
     shell = pkgs.fish;
   };

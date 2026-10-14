@@ -7,6 +7,7 @@
       SUBSYSTEM=="block", ENV{ID_VENDOR_ID}=="2e8a", ENV{ID_MODEL_ID}=="0003", GROUP="wheel", MODE="0660"
       SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="0925", ATTR{idProduct}=="3881", MODE="0666"
       SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="21a9", ATTR{idProduct}=="1001", MODE="0666"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="37de", ATTR{idProduct}=="fffd", MODE="0666", GROUP="dialout"
 
 
       # Copy this file to /etc/udev/rules.d/

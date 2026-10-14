@@ -176,7 +176,7 @@
 
                   iifname ethvlan udp dport 53 dnat to 198.18.13.13:53 comment "DNS passthrough"
 
-                  iifname != lan-virtual tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "port forwarding"
+                  # iifname != lan-virtual tcp dport { 8080, 8081, 8082 } dnat to 198.18.13.13 comment "port forwarding"
                   tcp dport 22000 dnat to 198.18.13.13 comment "syncthing"
                   udp dport { 21027, 22000 } dnat to 198.18.13.13 comment "syncthing"
                 }

@@ -80,6 +80,7 @@ mkProfile {
       customtkinter
 
       ecsc2026
+      faultier
     ]))
     pyright
   ];

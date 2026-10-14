@@ -2,6 +2,8 @@
 let
   public-ethernet = "enp46s0";
   public-wifi = "wlp0s20f3";
+
+  dhcp-prefix = "192.168.12";
 in
 {
   environment.systemPackages = with pkgs; [
@@ -90,7 +92,7 @@ in
 
         ${pkgs.iproute2}/bin/ip -n physical link add ethvlan link ${public-ethernet} type macvlan mode bridge
         ${pkgs.iproute2}/bin/ip -n physical link set ethvlan down
-        ${pkgs.iproute2}/bin/ip -n physical addr add 192.168.12.1/24 dev ethvlan
+        ${pkgs.iproute2}/bin/ip -n physical addr add ${dhcp-prefix}.1/24 dev ethvlan
 
         ${pkgs.iproute2}/bin/ip link add vmbridge0 type bridge
         ${pkgs.iproute2}/bin/ip link set vmbridge0 up
@@ -177,20 +179,20 @@ in
           id = 1;
           pools = [
             {
-              pool = "192.168.12.101 - 192.168.12.150";
+              pool = "${dhcp-prefix}.101 - ${dhcp-prefix}.150";
             }
           ];
-          subnet = "192.168.12.0/24";
+          subnet = "${dhcp-prefix}.0/24";
         }
       ];
       option-data = [
         {
           name = "domain-name-servers";
-          data = "192.168.12.1";
+          data = "${dhcp-prefix}.1";
         }
         {
           name = "routers";
-          data = "192.168.12.1";
+          data = "${dhcp-prefix}.1";
         }
       ];
     };

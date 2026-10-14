@@ -12,6 +12,8 @@ self: super: let
       ctf-attackapi = self'.callPackage ./python/ctf-attackapi.nix {};
       ecsc2026 = self'.callPackage ./python/ecsc2026.nix {};
 
+      faultier = self'.callPackage ./python/faultier.nix {};
+
       control = self'.callPackage ./control_py.nix {};
 
       pwntools = super'.pwntools.overrideAttrs {

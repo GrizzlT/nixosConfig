@@ -13,6 +13,18 @@ let
         };
       };
     };
+    ecsc2026 = {
+      PrivateKeyFile = "/persist/etc/ecsc2026WgPrivate";
+      addresses = [ "10.60.4.24/16" ];
+      peers = {
+        gateway = {
+          PublicKey = "ewYXaeVwKEFmYGx2cfjkcEBfvR9kCT7iUPaIBkpEpjU=";
+          AllowedIPs = [ "10.60.0.0/16" ];
+          Endpoint = "213.239.140.237:31504";
+          PersistentKeepalive = 20;
+        };
+      };
+    };
   };
 in
 {
@@ -23,7 +35,7 @@ in
     peerArgs = lib.concatMapAttrsStringSep " " (_: peer:
       "peer ${peer.PublicKey}"
       + (lib.optionalString (peer ? Endpoint) " endpoint ${peer.Endpoint}")
-      + (lib.optionalString (peer ? PersistentKeepalive) " persistent-keepalive ${peer.PersistentKeepalive}")
+      + (lib.optionalString (peer ? PersistentKeepalive) " persistent-keepalive ${toString peer.PersistentKeepalive}")
       + (lib.optionalString (peer ? AllowedIPs) " allowed-ips ${lib.concatStringsSep "," peer.AllowedIPs}")
       ) value.peers or {};
 
