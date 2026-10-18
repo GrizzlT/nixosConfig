@@ -3,7 +3,7 @@ let
   public-ethernet = "enp46s0";
   public-wifi = "wlp0s20f3";
 
-  dhcp-prefix = "192.168.12";
+  dhcp-prefix = "192.168.41";
 in
 {
   environment.systemPackages = with pkgs; [

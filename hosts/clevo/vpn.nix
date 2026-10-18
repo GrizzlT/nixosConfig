@@ -13,18 +13,6 @@ let
         };
       };
     };
-    ecsc2026 = {
-      PrivateKeyFile = "/persist/etc/ecsc2026WgPrivate";
-      addresses = [ "10.60.4.24/16" ];
-      peers = {
-        gateway = {
-          PublicKey = "ewYXaeVwKEFmYGx2cfjkcEBfvR9kCT7iUPaIBkpEpjU=";
-          AllowedIPs = [ "10.60.0.0/16" ];
-          Endpoint = "213.239.140.237:31504";
-          PersistentKeepalive = 20;
-        };
-      };
-    };
   };
 in
 {

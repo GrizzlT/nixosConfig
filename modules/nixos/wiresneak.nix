@@ -112,6 +112,7 @@ in
 
             ${value.extraCommands}
           '';
+          TimeoutStartSec = "infinity";
           NetworkNamespacePath = "/var/run/netns/physical";
           BindReadOnlyPaths = ["/etc/netns/physical/resolv.conf:/etc/resolv.conf"];
         };

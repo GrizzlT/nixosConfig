@@ -10,7 +10,7 @@
       enter_accept = false;
       key_path = "~/DATA/.atuin/.atuin-key";
       db_path = "~/DATA/.atuin/history.db";
-      sync_address = "http://xub.personal.ray:8011";
+      # sync_address = "http://xub.personal.ray:8011";
       daemon = {
         enabled = true;
         systemd_socket = true;
