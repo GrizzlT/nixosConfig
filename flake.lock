@@ -658,11 +658,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791467119,
-        "narHash": "sha256-QwIPmZaf0HiYiQZUl2PFr80BX/Yq2cePLOD29aH7iVg=",
+        "lastModified": 1792661229,
+        "narHash": "sha256-iuKWEj57g3dPZgSxS3em+fDu3+FJsKmc3SU1KxkIuWM=",
         "owner": "GrizzlT",
         "repo": "snowcicles",
-        "rev": "b8ec2fd38340620310eb5825404ef5cc8ba92712",
+        "rev": "3d7fb34046e774f385b32a468fc3ed0c6459c502",
         "type": "github"
       },
       "original": {
